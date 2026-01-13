@@ -1,0 +1,364 @@
+/*
+ * This stylesheet consolidates the inline styles originally defined in index.html
+ * and adds custom classes for new components such as the map overlay panel,
+ * video lesson section, calendar display and general utility helpers.  Where
+ * appropriate the variables defined in the Tailwind configuration (via the
+ * script tag in index.html) are used implicitly by utility classes on
+ * elements, so only bespoke CSS rules are declared here.  Keeping these
+ * styles in a dedicated file reduces page weight and enables caching across
+ * multiple pages.
+ */
+
+/* Hide scrollbars globally and prevent horizontal overflow */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    overflow-x: hidden;
+}
+
+/*
+ * Typography enhancements
+ *
+ * To introduce greater variety of typefaces across the site, we set default
+ * families for body copy, headings and monospaced elements. These fonts
+ * correspond to the additional Google fonts imported in the HTML head.
+ * The body uses Inter with Plus Jakarta Sans as fallback; headings use
+ * Playfair Display with Merriweather as a secondary choice, giving them
+ * a more elegant, serif appearance; and code/pre elements use JetBrains
+ * Mono for clear monospace rendering. If a browser cannot load these
+ * families, it will gracefully fall back to system sans or serif fonts.
+ */
+body {
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Merriweather', serif;
+}
+pre, code {
+    font-family: 'JetBrains Mono', monospace;
+}
+::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+    width: 0;
+    background: transparent;
+}
+
+/* Utility class to outline dark text on light backgrounds */
+.text-outline-black {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+                 -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.theme-text-outline.dark-mode-outline {
+    text-shadow: -0.5px -0.5px 0 #000,
+                 0.5px -0.5px 0 #000,
+                 -0.5px 0.5px 0 #000,
+                 0.5px 0.5px 0 #000;
+}
+.theme-text-outline.light-mode-outline {
+    text-shadow: -0.5px -0.5px 0 #fff,
+                 0.5px -0.5px 0 #fff,
+                 -0.5px 0.5px 0 #fff,
+                 0.5px 0.5px 0 #fff;
+}
+
+/* Nav glass effect with transition on transform and background */
+.nav-glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+/* Hero slideshow fades */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Map box shadows for light/dark modes */
+.map-glow-dark {
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.2);
+}
+.map-glow-light {
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+}
+.map-overlay-blur {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* Accordion animations for FAQ */
+.accordion-content {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+.accordion-content.open {
+    max-height: 500px;
+    opacity: 1;
+}
+.rotate-icon {
+    transition: transform 0.3s ease;
+}
+.rotate-icon.active {
+    transform: rotate(180deg);
+}
+
+/* Testimonials scaling */
+.testimonial-card {
+    transition: transform 0.5s ease, opacity 0.5s ease, width 0.3s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+.testimonial-card.active-card {
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 10;
+}
+.testimonial-img-shadow {
+    box-shadow: 0 0 15px 2px #2563EB;
+}
+
+/* Contact slider animation */
+.contact-slider {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sticky sections maintain 100vh height and hide overflow */
+.sticky-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* Rounded corners override */
+.box-radius {
+    border-radius: 12px !important;
+}
+
+/* Service section card backgrounds */
+.service-card {
+    /* Use cover positioning to fill the box */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* semi-transparent dark overlay for readability */
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+.service-card > * {
+    position: relative;
+    z-index: 1;
+}
+.service-card:hover {
+    /* Slight brightness increase on hover */
+    filter: brightness(1.1);
+}
+
+/* Form validation states */
+.input-valid {
+    border-color: #22c55e !important;
+    box-shadow: 0 0 10px #22c55e !important;
+}
+.input-focus {
+    border-color: #2563EB !important;
+    box-shadow: 0 0 10px #2563EB !important;
+}
+
+/* AI chat widget animations */
+#ai-chat-widget {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    transform-origin: bottom right;
+}
+#ai-chat-widget.hidden-widget {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+.chat-message {
+    max-width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease;
+}
+.user-msg {
+    background-color: #2563EB;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.ai-msg {
+    background-color: #374151;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.typing-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ccc;
+    animation: typing 1.4s infinite ease-in-out both;
+    margin: 0 2px;
+}
+.typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+.typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+@keyframes typing {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Hide default Google map labels and controls */
+.gmnoprint,
+.gm-style-cc,
+.gmnoscreen {
+    display: none !important;
+}
+
+/* Navigation dots: bigger base size and interactive scaling */
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 50%;
+    margin: 12px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.nav-dot.active {
+    background-color: #2563EB;
+    transform: scale(0.5);
+}
+.nav-dot:hover {
+    transform: scale(1.1);
+    background-color: #2563EB;
+}
+
+/* Custom map overlay panel replacing Google Maps default overlay.
+ * This panel will slide over the map and contains an image header,
+ * ratings, buttons and contact information.  It uses flexbox to
+ * organize its content and ensures overflow is hidden on smaller
+ * screens.  Pointer events are enabled to interact with links and
+ * buttons. */
+.map-overlay-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 320px;
+    max-width: 80vw;
+    background-color: rgba(255,255,255,0.9);
+    color: #0c0c0d;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    overflow: hidden;
+    z-index: 20;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+/* Dark mode support */
+.dark .map-overlay-panel {
+    background-color: rgba(0,0,0,0.7);
+    color: #f3f4f6;
+}
+
+/* Video section overlay to darken the video background */
+.lesson-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Calendar grid: 7 columns representing days of week */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.calendar-cell {
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-align: center;
+}
+.calendar-cell.workday {
+    background-color: #ECFDF5;
+    color: #065F46;
+}
+.calendar-cell.offhours {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+.calendar-cell.holiday {
+    background-color: #FEF2F2;
+    color: #991B1B;
+}
+.calendar-legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+.calendar-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-block;
+}
+

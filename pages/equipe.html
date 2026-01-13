@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre&nbsp;Équipe&nbsp;| Déboucheur&nbsp;Expert</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import extended font families for varied typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Impact&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { ony: '#0F0F10', websiteBlue: '#1E3A8A' },
+                    fontFamily: {
+                        header: ['Black Ops One', 'system-ui'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: { 'custom': '15px' }
+                }
+            }
+        }
+    </script>
+    <!-- External stylesheet for team page -->
+    <link rel="stylesheet" href="../assets/styles/style_01.css">
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+
+    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
+        <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex flex-col leading-none hover-scale">
+                <span class="text-sm font-header dark:text-white">DÉBOUCHEUR</span>
+                <span class="text-base font-extrabold text-blue-600 dark:text-blue-500">EXPERT</span>
+            </a>
+            <div class="flex gap-4">
+                <button id="theme-toggle" class="p-2 radius-override hover:bg-gray-200 dark:hover:bg-white/10 transition hover-scale">
+                    <span class="text-xs font-bold uppercase">Thème</span>
+                </button>
+                <button id="lang-toggle" class="p-2 radius-override bg-gray-200 dark:bg-white/10 font-bold hover-scale w-10 h-10 flex items-center justify-center">
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[40vh] min-h-[300px] flex items-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 z-0">
+            <!-- Use correct relative path to slide image -->
+            <img src="../assets/images/slide/slide_03.webp" class="w-full h-full object-cover opacity-60 dark:opacity-40" alt="Equipe">
+        </div>
+        <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
+            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Notre Équipe</h1>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Billy -->
+            <div class="bg-white dark:bg-white/5 p-8 radius-override border border-gray-200 dark:border-white/10 shadow-2xl flex flex-col items-center text-center hover-scale transition duration-300">
+                <img src="../assets/images/equipe/equipe_00.webp" alt="Billy St-Hilaire" class="w-48 h-48 radius-override object-cover mb-6 border-4 border-blue-600 shadow-lg">
+                <h2 class="text-2xl font-header text-blue-600 dark:text-blue-500 uppercase mb-2">Billy&nbsp;St‑Hilaire</h2>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6" data-translate="martin_role">Plombier&nbsp;retraité&nbsp;&amp;&nbsp;Propriétaire</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="martin_bio">
+                    Billy&nbsp;St‑Hilaire est un ancien plombier possédant plus de quinze années d’expérience. Après une carrière bien remplie, il se consacre désormais à offrir son expertise comme propriétaire de Déboucheur&nbsp;Expert. Passionné par les nouvelles technologies et la mécanique, il veille à ce que chaque intervention soit réalisée avec la même précision et la même rigueur que celles de sa carrière de plombier.
+                </p>
+            </div>
+
+            <!-- Nancy -->
+            <div class="bg-white dark:bg-white/5 p-8 radius-override border border-gray-200 dark:border-white/10 shadow-2xl flex flex-col items-center text-center hover-scale transition duration-300">
+                <img src="../assets/images/equipe/equipe_01.webp" alt="Nancy Boulianne" class="w-48 h-48 radius-override object-cover mb-6 border-4 border-blue-600 shadow-lg">
+                <h2 class="text-2xl font-header text-blue-600 dark:text-blue-500 uppercase mb-2">Nancy&nbsp;Boulianne</h2>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6" data-translate="cedrick_role">Conductrice&nbsp;&amp;&nbsp;Associée</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="cedrick_bio">
+                    Nancy&nbsp;Boulianne est conductrice et associée au sein de l’entreprise. Elle accompagne Billy lors des interventions et s’assure que l’équipe arrive à destination rapidement et en toute sécurité. Fortement organisée et chaleureuse, elle joue un rôle clé pour offrir un service incomparable.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-4 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500">
+        <p>&copy; 2026 Déboucheur Expert (unclogged.me). <a href="../index.html" class="underline">Retour à l'accueil</a></p>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                page_title: "Notre Équipe",
+                martin_role: "Plombier retraité & Propriétaire",
+                martin_bio: "Billy St‑Hilaire est un ancien plombier possédant plus de quinze années d’expérience. Après une carrière bien remplie, il se consacre désormais à offrir son expertise comme propriétaire de Déboucheur&nbsp;Expert. Passionné par les nouvelles technologies et la mécanique, il veille à ce que chaque intervention soit réalisée avec la même précision et la même rigueur que celles de sa carrière de plombier.",
+                cedrick_role: "Conductrice & Associée",
+                cedrick_bio: "Nancy Boulianne est conductrice et associée au sein de l’entreprise. Elle accompagne Billy lors des interventions et s’assure que l’équipe arrive à destination rapidement et en toute sécurité. Fortement organisée et chaleureuse, elle joue un rôle clé pour offrir un service incomparable."
+            },
+            en: {
+                page_title: "Our Team",
+                martin_role: "Retired Plumber & Owner",
+                martin_bio: "Billy St‑Hilaire is a retired plumber with more than fifteen years of experience. After a successful career he now dedicates himself to offering his expertise as the owner of Déboucheur Expert. Passionate about new technologies and mechanics, he ensures that every intervention is carried out with the same precision and rigour as during his plumbing career.",
+                cedrick_role: "Driver & Partner",
+                cedrick_bio: "Nancy Boulianne is the driver and partner in the business. She accompanies Billy on service calls and makes sure the team arrives quickly and safely. Well organised and friendly, she plays a key role in delivering an exceptional service."
+            }
+        };
+
+        let currentLang = 'fr';
+        
+        function updateContent() {
+            document.querySelector('[data-translate="page_title"]').textContent = translations[currentLang].page_title;
+            document.querySelector('[data-translate="martin_role"]').textContent = translations[currentLang].martin_role;
+            document.querySelector('[data-translate="martin_bio"]').textContent = translations[currentLang].martin_bio;
+            document.querySelector('[data-translate="cedrick_role"]').textContent = translations[currentLang].cedrick_role;
+            document.querySelector('[data-translate="cedrick_bio"]').textContent = translations[currentLang].cedrick_bio;
+            document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+        }
+
+        document.getElementById('lang-toggle').onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; updateContent(); };
+        
+        // Theme
+        if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').onclick = () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+    </script>
+    <!-- Register service worker for offline support -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../service-worker.js').catch(err => console.warn('SW reg failed', err));
+        });
+      }
+    </script>
+</body>
+</html>
