@@ -1,0 +1,87 @@
+/*
+ * Custom styles for the availability & rates (calendar) page.  The
+ * navigation bar uses the same glass effect and radius utilities as
+ * other pages, and additional classes define the calendar grid and
+ * colour-coded cells.
+ */
+
+@font-face {
+    font-family: 'Black Ops One';
+    src: url('../fonts/BlackOps.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('../fonts/PlusJakartaSans.ttf') format('truetype');
+}
+
+.glass-nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease-in-out;
+}
+.radius-override {
+    border-radius: 15px !important;
+}
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*
+ * Typography enhancements for the calendar page
+ */
+body {
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Merriweather', serif;
+}
+pre, code {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Calendar layout definitions */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.calendar-cell {
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-align: center;
+}
+.calendar-cell.workday {
+    background-color: #ECFDF5;
+    color: #065F46;
+}
+.calendar-cell.offhours {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+.calendar-cell.holiday {
+    background-color: #FEF2F2;
+    color: #991B1B;
+}
+.calendar-legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+.calendar-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-block;
+}
