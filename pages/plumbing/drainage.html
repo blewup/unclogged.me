@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <title>Système de Drainage | Guide Plomberie | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Comprendre le système de drainage et d'évacuation des eaux usées : circuits d'eau, siphons, ventilation primaire et secondaire. Guide Déboucheur Expert.">
+    <meta lang="en" name="description" content="Understanding drainage and wastewater systems: water circuits, traps, primary and secondary ventilation. Déboucheur Expert Guide.">
+
+    <!-- Preload hero slides -->
+    <link rel="preload" as="image" href="../../assets/images/slide/slide_10.webp">
+    <link rel="preload" as="image" href="../../assets/images/slide/slide_11.webp">
+
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link href="../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local Fonts (NO external CDN) -->
+    <link rel="stylesheet" href="../../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../../assets/styles/style_00.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      }
+    }
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        .toc-link {
+            transition: all 0.3s ease;
+        }
+        .toc-link:hover {
+            padding-left: 1rem;
+            color: #2563EB;
+        }
+        .info-box {
+            border-left: 4px solid #2563EB;
+            background: rgba(37, 99, 235, 0.1);
+        }
+        .warning-box {
+            border-left: 4px solid #C41E3A;
+            background: rgba(196, 30, 58, 0.1);
+        }
+        .success-box {
+            border-left: 4px solid #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+        .circuit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .circuit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+    
+    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+        <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>URGENCE 24/7</span>
+    </a>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-lightBase/90 dark:bg-darkBase/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-4">
+                    <a href="../../index.html" class="flex items-center gap-2">
+                        <img src="../../assets/images/logo/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+                        <span class="font-ops text-lg text-websiteBlue hidden sm:block">Déboucheur Expert</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="../prices.html" class="font-ops text-sm hover:text-websiteBlue transition">TARIFS</a>
+                    <a href="../plumbing.html" class="font-ops text-sm text-websiteBlue">GUIDE</a>
+                    <a href="../events.html" class="font-ops text-sm hover:text-websiteBlue transition">CALENDRIER</a>
+                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-websiteBlue transition">CONTACT</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
+                        <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="w-5 h-5 block dark:hidden text-purple-600" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    <button onclick="toggleLang()" class="font-ops text-xs px-2 py-1 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <span id="lang-display">EN</span>
+                    </button>
+                    <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white px-3 py-1 rounded-lg font-ops text-xs transition">
+                        URGENCE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-gradient relative pt-24 pb-16 min-h-[40vh] flex items-center">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-[url('../../assets/images/slide/slide_05.webp')] bg-cover bg-center"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm mb-4 text-gray-300">
+                <a href="../../index.html" class="hover:text-white">Accueil</a>
+                <span class="mx-2">/</span>
+                <a href="../plumbing.html" class="hover:text-white">Guide Plomberie</a>
+                <span class="mx-2">/</span>
+                <span class="text-websiteBlue">Système de Drainage</span>
+            </nav>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-ops text-white mb-4">
+                SYSTÈME DE <span class="text-websiteBlue">DRAINAGE</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl">
+                Comprendre les 4 circuits de votre plomberie : eau froide, eau chaude, évacuation et ventilation.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            <!-- TABLE OF CONTENTS - Sidebar -->
+            <aside class="lg:col-span-1">
+                <div class="sticky top-24 bg-lightAlt dark:bg-darkAlt rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="font-ops text-lg mb-4 text-websiteBlue">TABLE DES MATIÈRES</h3>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Introduction</a>
+                        <a href="#circuits" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Les 4 circuits</a>
+                        <a href="#alimentation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Système d'alimentation</a>
+                        <a href="#vanne" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Compteur et vanne</a>
+                        <a href="#evacuation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Évacuation</a>
+                        <a href="#siphons" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Rôle des siphons</a>
+                        <a href="#pente" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Pente d'évacuation</a>
+                        <a href="#ventilation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Ventilation</a>
+                        <a href="#reperer" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Repérer vos circuits</a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <h4 class="font-ops text-sm mb-3">AUTRES SECTIONS</h4>
+                        <nav class="space-y-2 text-sm">
+                            <a href="supply.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Alimentation en eau</a>
+                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Débouchage</a>
+                            <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Normes plomberie</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN ARTICLE -->
+            <article class="lg:col-span-3 space-y-8">
+                
+                <!-- À retenir -->
+                <div class="success-box rounded-xl p-6">
+                    <h4 class="font-ops text-deboucheurGreen mb-4">À RETENIR</h4>
+                    <ul class="grid md:grid-cols-2 gap-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Votre plomberie comprend <strong>4 circuits distincts</strong> : eau froide, eau chaude, évacuation et ventilation.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>La <strong>vanne d'arrêt générale</strong> coupe toute l'eau de la maison en cas d'urgence.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>La <strong>ventilation primaire</strong> débouchant sur le toit évite les remontées d'odeurs.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Savoir <strong>localiser vos circuits</strong> facilite les interventions.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Introduction -->
+                <section id="introduction" class="scroll-mt-24">
+                    <p class="text-lg leading-relaxed">
+                        Avant de se lancer dans des travaux de plomberie, il est important de bien connaître son système de plomberie. Où vont ces canalisations ? Lesquelles contiennent les eaux propres et lesquelles rejettent les eaux usées ?
+                    </p>
+                    <p class="mt-4">
+                        Cette connaissance devient cruciale en cas de fuite ou d'urgence. Dans une maison, <strong>quatre circuits</strong> permettent à l'eau de circuler : distribution d'eau froide et d'eau chaude, ventilation des tuyaux et évacuation des eaux usées.
+                    </p>
+                </section>
+
+                <!-- Les 4 circuits -->
+                <section id="circuits" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6">LES 4 CIRCUITS DE VOTRE PLOMBERIE</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="circuit-card bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border-2 border-blue-200 dark:border-blue-800">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            </div>
+                            <h3 class="font-ops text-xl text-blue-600 dark:text-blue-400 mb-2">EAU FROIDE</h3>
+                            <p class="text-sm">Distribution de l'eau potable froide depuis le réseau public vers tous les points d'eau de la maison.</p>
+                        </div>
+                        
+                        <div class="circuit-card bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border-2 border-red-200 dark:border-red-800">
+                            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                            </div>
+                            <h3 class="font-ops text-xl text-red-600 dark:text-red-400 mb-2">EAU CHAUDE</h3>
+                            <p class="text-sm">Après passage par le chauffe-eau, l'eau chaude est distribuée aux robinets, douches et appareils.</p>
+                        </div>
+                        
+                        <div class="circuit-card bg-gray-100 dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-300 dark:border-gray-600">
+                            <div class="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            </div>
+                            <h3 class="font-ops text-xl mb-2">ÉVACUATION</h3>
+                            <p class="text-sm">Collecte et acheminement des eaux usées vers les égouts ou la fosse septique.</p>
+                        </div>
+                        
+                        <div class="circuit-card bg-green-50 dark:bg-green-900/20 rounded-xl p-6 border-2 border-green-200 dark:border-green-800">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                            </div>
+                            <h3 class="font-ops text-xl text-green-600 dark:text-green-400 mb-2">VENTILATION</h3>
+                            <p class="text-sm">Circulation d'air dans les canalisations pour maintenir la pression et évacuer les odeurs.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Système d'alimentation -->
+                <section id="alimentation" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">1</span>
+                        SYSTÈME D'ALIMENTATION
+                    </h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <p class="mb-4">
+                            Généralement, les habitations sont raccordées au système d'alimentation de la ville. L'eau, acheminée via la <strong>canalisation de branchement</strong>, est ensuite répartie grâce aux <strong>colonnes d'eau</strong> à tous les raccordements des différentes pièces.
+                        </p>
+                        <p>
+                            Après raccordement au système de chauffe-eau, les tuyaux se scindent en système d'eau chaude et en système d'eau froide.
+                        </p>
+                        
+                        <div class="info-box rounded-lg p-4 mt-4">
+                            <h4 class="font-bold text-sm mb-2">💧 Cas particulier : double circuit d'eau froide</h4>
+                            <p class="text-sm">Il existe parfois deux circuits d'eau froide, qui permettent de séparer l'eau potable de l'eau courante (pour l'arrosage ou les toilettes par exemple), mais ce cas de figure reste rare dans les habitations résidentielles.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Compteur et vanne -->
+                <section id="vanne" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-cardinal rounded-full flex items-center justify-center text-white text-lg">!</span>
+                        COMPTEUR ET VANNE D'ARRÊT
+                    </h2>
+                    <div class="warning-box rounded-xl p-6">
+                        <h4 class="font-ops text-cardinal mb-4">POINTS DE CONTRÔLE ESSENTIELS</h4>
+                        <p class="mb-4">
+                            C'est au niveau du raccordement entre le système général et celui du bâtiment que se trouvent deux éléments essentiels :
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                <h5 class="font-bold mb-2">📊 Le Compteur</h5>
+                                <p class="text-sm">Mesure votre consommation d'eau. Il appartient à votre compagnie des eaux et permet de calculer votre facture.</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                <h5 class="font-bold mb-2">🔴 La Vanne d'arrêt</h5>
+                                <p class="text-sm">Généralement située juste après le compteur, se présente sous la forme d'un robinet ou d'une manette à tourner d'un quart de tour.</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm font-bold text-cardinal">
+                            ⚠️ En cas de fuite importante, savoir localiser cette vanne peut vous éviter une inondation. Chaque seconde compte !
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Système d'évacuation -->
+                <section id="evacuation" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">2</span>
+                        SYSTÈME D'ÉVACUATION
+                    </h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <p class="mb-4">
+                            À la sortie des appareils (machines à laver, éviers, toilettes, etc.) les canalisations collectent les eaux usées. Toutes les canalisations d'eaux usées débouchent dans une même <strong>colonne du système de plomberie</strong> afin d'être acheminées vers le collecteur principal d'évacuation, et enfin rejetées dans le système d'égout de la ville.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Rôle des siphons -->
+                <section id="siphons" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6">LE RÔLE DES SIPHONS</h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/3 flex justify-center">
+                                <div class="w-32 h-48 bg-lightAlt dark:bg-darkAlt rounded-lg flex items-center justify-center">
+                                    <svg class="w-20 h-20 text-websiteBlue" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="3">
+                                        <!-- Pipe shape forming a U -->
+                                        <path d="M30 10 L30 50 Q30 80 50 80 Q70 80 70 50 L70 10" stroke-linecap="round"/>
+                                        <!-- Water level -->
+                                        <path d="M35 60 Q50 70 65 60" stroke="#2563EB" stroke-width="4"/>
+                                        <text x="50" y="100" text-anchor="middle" fill="currentColor" font-size="10">SIPHON</text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <p class="mb-4">
+                                    Chaque appareil sanitaire est équipé d'un <strong>siphon</strong>, en forme de « U ». Il retient une certaine quantité d'eau pour empêcher la remontée de l'air vicié.
+                                </p>
+                                <p class="mb-4">
+                                    Cette <strong>garde d'eau</strong> forme une barrière contre les odeurs d'égout.
+                                </p>
+                                <div class="warning-box rounded-lg p-3 text-sm">
+                                    <strong>⚠️ Important :</strong> Sans siphon fonctionnel, votre salle de bain empesterait rapidement !
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pente d'évacuation -->
+                <section id="pente" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6">LA PENTE D'ÉVACUATION</h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <p class="mb-4">
+                            Les tuyaux acheminent par gravité l'eau usée d'un appareil vers un collecteur d'évacuation. Ces canalisations doivent respecter une <strong>pente minimale</strong> pour garantir un écoulement optimal.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 my-6">
+                            <div class="text-center p-4 bg-deboucheurGreen/10 rounded-lg border border-deboucheurGreen/30">
+                                <div class="text-2xl font-ops text-deboucheurGreen">1-3 cm/m</div>
+                                <p class="text-sm mt-1">Pente idéale</p>
+                            </div>
+                            <div class="text-center p-4 bg-cardinal/10 rounded-lg border border-cardinal/30">
+                                <div class="text-2xl font-ops text-cardinal">&lt; 1 cm/m</div>
+                                <p class="text-sm mt-1">Stagnation</p>
+                            </div>
+                            <div class="text-center p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/30">
+                                <div class="text-2xl font-ops text-yellow-600">&gt; 3 cm/m</div>
+                                <p class="text-sm mt-1">Vide les siphons</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Une pente trop faible provoque la stagnation, une pente trop forte peut vider prématurément les siphons.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Système de ventilation -->
+                <section id="ventilation" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">3</span>
+                        SYSTÈME DE VENTILATION
+                    </h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <p class="mb-4">
+                            Une <strong>colonne de ventilation</strong> permet la circulation de l'air et le maintien d'une pression constante dans tout le circuit d'évacuation. Ce tuyau vertical débouche sur le toit et permet de créer une circulation d'air dans le circuit et d'expulser l'air vicié.
+                        </p>
+                        
+                        <div class="info-box rounded-lg p-4 my-6">
+                            <h4 class="font-bold mb-2">🌬️ Pourquoi la ventilation est-elle indispensable ?</h4>
+                            <p class="text-sm">
+                                Il n'y a pas de bonne évacuation des eaux usées sans une ventilation primaire efficace. Son objectif est de prévenir les variations de pression dans les colonnes de chute des eaux usées.
+                            </p>
+                            <p class="text-sm mt-2">
+                                <strong>Sans ventilation adéquate :</strong> le passage d'une grosse masse d'eau crée une forte dépression qui aspire la garde d'eau du siphon, ce qui remonte et répand des mauvaises odeurs dans la pièce.
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
+                                <h4 class="font-ops text-sm mb-2">VENTILATION PRIMAIRE</h4>
+                                <p class="text-xs">Les colonnes de chute doivent être prolongées en toiture jusqu'à l'air libre. Elle favorise le bon écoulement et évite l'effet de siphonnement.</p>
+                            </div>
+                            <div class="p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
+                                <h4 class="font-ops text-sm mb-2">VENTILATION SECONDAIRE</h4>
+                                <p class="text-xs">Dans certaines configurations complexes, une ventilation secondaire peut être ajoutée pour desservir des appareils éloignés de la colonne principale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Repérer vos circuits -->
+                <section id="reperer" class="scroll-mt-24">
+                    <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">4</span>
+                        REPÉRER VOS CIRCUITS
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Compteur et vanne -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                            <h3 class="font-ops text-xl mb-4">📍 Localiser le compteur et la vanne principale</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
+                                    <h4 class="font-bold text-sm mb-2">🏠 En maison individuelle</h4>
+                                    <ul class="text-xs space-y-1">
+                                        <li>• Au sous-sol</li>
+                                        <li>• Dans le garage</li>
+                                        <li>• Dans un regard extérieur près de la rue</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
+                                    <h4 class="font-bold text-sm mb-2">🏢 En appartement</h4>
+                                    <ul class="text-xs space-y-1">
+                                        <li>• Dans les parties communes (cave, local technique)</li>
+                                        <li>• Parfois dans l'appartement près de l'entrée</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-sm text-cardinal font-bold">
+                                ⚠️ Identifiez la vanne d'arrêt dès maintenant et vérifiez qu'elle fonctionne !
+                            </p>
+                        </div>
+                        
+                        <!-- Colonnes montantes -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                            <h3 class="font-ops text-xl mb-4">📍 Identifier les colonnes montantes</h3>
+                            <p class="mb-4 text-sm">
+                                Dans les habitations à étages, les colonnes montantes sont des tuyaux verticaux qui distribuent l'eau ou collectent les eaux usées. Elles sont souvent dissimulées dans les cloisons, mais vous pouvez les repérer :
+                            </p>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-websiteBlue">→</span>
+                                    Dans les gaines techniques (souvent dans la salle de bain ou la cuisine)
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-websiteBlue">→</span>
+                                    Le long des murs dans les caves ou sous-sols
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-websiteBlue">→</span>
+                                    Par le bruit de l'eau qui circule quand vous ouvrez un robinet à l'étage
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Évacuations -->
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                            <h3 class="font-ops text-xl mb-4">📍 Repérer les évacuations</h3>
+                            <p class="text-sm">
+                                Les évacuations partent horizontalement de chaque appareil et rejoignent une colonne verticale. Les tuyaux d'évacuation sont généralement en <strong>PVC gris ou blanc</strong>, plus larges que les tuyaux d'alimentation (diamètres de 32 à 100 mm).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Avant d'effectuer des travaux -->
+                <section class="scroll-mt-24">
+                    <div class="warning-box rounded-xl p-6">
+                        <h3 class="font-ops text-xl text-cardinal mb-4">🔧 AVANT D'EFFECTUER DES TRAVAUX</h3>
+                        <p class="mb-4">
+                            De nos jours, les canalisations d'évacuation sont constituées de matériaux plastiques, la plupart du temps en <strong>PVC ou en ABS</strong> dans le résidentiel léger, et non plus en plomb.
+                        </p>
+                        <p class="mb-4">
+                            Les arrivées d'eau peuvent être faites de <strong>polyéthylène ou de polypropylène</strong>, légers et peu onéreux. Les tuyaux de cuivre, très résistants et moins bruyants, sont plus lourds et difficiles à manier.
+                        </p>
+                        <p class="font-bold">
+                            ⚠️ N'oubliez pas de couper l'arrivée générale d'eau avant tout travail, au niveau de votre cave ou de l'entrée de votre appartement.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <section class="bg-gradient-to-r from-websiteBlue to-blue-700 rounded-2xl p-8 text-white text-center">
+                    <h3 class="font-ops text-2xl mb-4">BESOIN D'UN PROFESSIONNEL ?</h3>
+                    <p class="mb-6 max-w-2xl mx-auto">Pour plus de sérénité lors de vos travaux, contactez un artisan plombier qualifié.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-websiteBlue font-ops rounded-lg hover:bg-gray-100 transition">
+                            📞 +1 (514) 972-2078
+                        </a>
+                        <a href="../../index.html#contact" class="px-8 py-3 bg-cardinal text-white font-ops rounded-lg hover:bg-red-700 transition">
+                            DEMANDER UN DEVIS
+                        </a>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkAlt text-gray-400 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-ops text-white mb-4">DÉBOUCHEUR EXPERT</h4>
+                    <p class="text-sm">Service de plomberie résidentielle à Montréal et Montérégie. Urgence 24/7.</p>
+                </div>
+                <div>
+                    <h4 class="font-ops text-white mb-4">GUIDE PLOMBERIE</h4>
+                    <nav class="space-y-2 text-sm">
+                        <a href="supply.html" class="block hover:text-websiteBlue">Alimentation en eau</a>
+                        <a href="drainage.html" class="block hover:text-websiteBlue">Système de drainage</a>
+                        <a href="debouchage.html" class="block hover:text-websiteBlue">Débouchage</a>
+                        <a href="normes.html" class="block hover:text-websiteBlue">Normes plomberie</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-ops text-white mb-4">CONTACT</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="tel:+14385302343" class="block text-websiteBlue hover:underline">+1 (514) 972-2078</a>
+                        <a href="tel:+14387657040" class="block text-pink-500 hover:underline">+1 (438) 765-7040</a>
+                        <a href="mailto:info@deboucheur.expert" class="block hover:text-websiteBlue">info@deboucheur.expert</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-ops text-white mb-4">LÉGAL</h4>
+                    <nav class="space-y-2 text-sm">
+                        <a href="../politics.html" class="block hover:text-websiteBlue">Confidentialité</a>
+                        <a href="../conditions.html" class="block hover:text-websiteBlue">Conditions</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2026 Déboucheur Expert (unclogged.me). Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        
+        // Language toggle
+        let currentLang = 'fr';
+        function toggleLang() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.getElementById('lang-display').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+            localStorage.setItem('language', currentLang);
+        }
+        
+        // Initialize theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                currentLang = savedLang;
+                document.getElementById('lang-display').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+            }
+        })();
+        
+        // Smooth scroll for TOC links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+<script src="../../assets/scripts/icons.js" defer></script>
+</body>
+</html>

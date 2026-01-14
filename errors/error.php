@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur <?php echo isset($_GET['code']) ? htmlspecialchars($_GET['code']) : ''; ?> - Déboucheur Expert</title>
+    
+    <!-- Favicons -->
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="../assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link rel="manifest" href="../manifest.json">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/styles/fonts.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+        .error-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+        .error-code { font-size: clamp(6rem, 20vw, 12rem); line-height: 1; }
+        .glitch { animation: glitch 1s infinite; }
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 0 #C41E3A, -2px 0 #2563EB; }
+            25% { text-shadow: -2px 0 #C41E3A, 2px 0 #2563EB; }
+            50% { text-shadow: 2px 2px #C41E3A, -2px -2px #2563EB; }
+            75% { text-shadow: -2px 2px #C41E3A, 2px -2px #2563EB; }
+        }
+        .pipe-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .water-drop {
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.6;
+            animation: drop 2s infinite ease-in;
+        }
+        @keyframes drop {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+    
+    <!-- Water drops animation -->
+    <div class="pipe-animation" id="water-animation"></div>
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-lightBase/90 dark:bg-darkBase/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 h-16">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10">
+                <span class="font-ops text-xl text-gray-900 dark:text-white">Déboucheur Expert</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="../index.html" class="font-ops text-sm text-gray-600 dark:text-gray-300 hover:text-websiteBlue transition">ACCUEIL</a>
+                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops text-sm flex items-center gap-2">
+                    <i class="fas fa-phone-alt"></i> URGENCE
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <div class="error-container px-4 pt-16">
+        <div class="text-center max-w-2xl">
+            <?php
+            $code = isset($_GET['code']) ? intval($_GET['code']) : 500;
+            
+            $errors = [
+                400 => ['title' => 'Requête invalide', 'desc' => 'La requête envoyée contient une erreur.', 'icon' => 'fa-question-circle'],
+                401 => ['title' => 'Non autorisé', 'desc' => 'Authentification requise pour accéder à cette page.', 'icon' => 'fa-lock'],
+                403 => ['title' => 'Accès interdit', 'desc' => 'Vous n\'avez pas la permission d\'accéder à cette ressource.', 'icon' => 'fa-ban'],
+                404 => ['title' => 'Page introuvable', 'desc' => 'Cette page semble avoir été débouchée... ou n\'existe pas!', 'icon' => 'fa-search'],
+                405 => ['title' => 'Méthode non autorisée', 'desc' => 'Cette méthode de requête n\'est pas supportée.', 'icon' => 'fa-hand-paper'],
+                408 => ['title' => 'Délai dépassé', 'desc' => 'Le serveur a mis trop de temps à répondre.', 'icon' => 'fa-clock'],
+                410 => ['title' => 'Ressource supprimée', 'desc' => 'Cette ressource n\'est plus disponible.', 'icon' => 'fa-trash'],
+                429 => ['title' => 'Trop de requêtes', 'desc' => 'Veuillez patienter avant de réessayer.', 'icon' => 'fa-tachometer-alt'],
+                500 => ['title' => 'Erreur serveur', 'desc' => 'Notre plombier travaille à résoudre le problème!', 'icon' => 'fa-tools'],
+                502 => ['title' => 'Passerelle incorrecte', 'desc' => 'Le serveur a reçu une réponse invalide.', 'icon' => 'fa-network-wired'],
+                503 => ['title' => 'Service indisponible', 'desc' => 'Maintenance en cours. Revenez bientôt!', 'icon' => 'fa-wrench'],
+                504 => ['title' => 'Délai de passerelle', 'desc' => 'Le serveur n\'a pas répondu à temps.', 'icon' => 'fa-hourglass-half'],
+            ];
+            
+            $error = $errors[$code] ?? ['title' => 'Erreur inconnue', 'desc' => 'Une erreur inattendue s\'est produite.', 'icon' => 'fa-exclamation-triangle'];
+            ?>
+            
+            <div class="mb-6">
+                <i class="fas <?php echo $error['icon']; ?> text-6xl text-cardinal mb-4"></i>
+            </div>
+            
+            <h1 class="error-code font-ops text-gray-900 dark:text-white glitch"><?php echo $code; ?></h1>
+            
+            <h2 class="text-2xl md:text-3xl font-ops text-cardinal mb-4"><?php echo htmlspecialchars($error['title']); ?></h2>
+            
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8"><?php echo htmlspecialchars($error['desc']); ?></p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html" class="bg-websiteBlue hover:bg-blue-700 text-white font-ops px-6 py-3 rounded-lg transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fas fa-home"></i> Retour à l'accueil
+                </a>
+                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white font-ops px-6 py-3 rounded-lg transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> Appelez-nous
+                </a>
+            </div>
+            
+            <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">
+                Si le problème persiste, contactez-nous au <a href="tel:+14385302343" class="text-websiteBlue hover:underline">438-530-2343</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-4">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="../pages/politiques.html" class="hover:text-websiteBlue">Politique de confidentialité</a>
+                <a href="../pages/conditions.html" class="hover:text-websiteBlue">Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create water drop animations
+        const waterContainer = document.getElementById('water-animation');
+        function createDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'water-drop';
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDelay = Math.random() * 2 + 's';
+            drop.style.animationDuration = (1.5 + Math.random()) + 's';
+            waterContainer.appendChild(drop);
+            setTimeout(() => drop.remove(), 3000);
+        }
+        // Create drops periodically
+        setInterval(createDrop, 300);
+        for (let i = 0; i < 10; i++) setTimeout(createDrop, i * 200);
+        
+        // Theme detection
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <script src="../assets/scripts/icons.js" defer></script>
+</body>
+</html>

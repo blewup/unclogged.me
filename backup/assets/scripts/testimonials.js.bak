@@ -1,0 +1,181 @@
+/**
+ * Déboucheur Expert - Testimonials Module
+ * Handles testimonial carousel with enhanced styling
+ */
+
+const testimonials = [
+    { 
+        name: "JEAN TREMBLAY", 
+        img: "assets/images/clients/client_00.png", 
+        stars: 5, 
+        text: "Service impeccable! Billy est arrivé rapidement et a réglé le problème en un rien de temps. Je recommande fortement pour tous vos besoins de plomberie résidentielle." 
+    },
+    { 
+        name: "SOPHIE LAPOINTE", 
+        img: "assets/images/clients/client_01.png", 
+        stars: 5, 
+        text: "Très rapide et courtois. Le travail a été fait proprement, sans laisser de traces. Une expérience client fantastique du début à la fin. Merci encore!" 
+    },
+    { 
+        name: "MARC GAGNON", 
+        img: "assets/images/clients/client_02.png", 
+        stars: 4, 
+        text: "Bon travail sur la tuyauterie de ma cuisine. Le prix était juste et le délai respecté. Je n'hésiterai pas à rappeler pour d'autres travaux." 
+    },
+    { 
+        name: "PIERRETTE BOUCHER", 
+        img: "assets/images/clients/client_03.png", 
+        stars: 5, 
+        text: "Aucun frais caché, ce qui est rare de nos jours. Billy est honnête et compétent. Merci pour le service d'urgence un dimanche." 
+    },
+    { 
+        name: "JULIE ROY", 
+        img: "assets/images/clients/client_04.png", 
+        stars: 5, 
+        text: "Courtois et professionnel. Il a pris le temps de m'expliquer le problème et la solution. Très satisfaite du résultat final." 
+    },
+    { 
+        name: "LUC MARTIN", 
+        img: "assets/images/clients/client_05.png", 
+        stars: 4, 
+        text: "Efficace et rapide. Le débouchage a été fait en quelques minutes. Un vrai expert qui connait son métier sur le bout des doigts." 
+    },
+    { 
+        name: "ISABELLE COTE", 
+        img: "assets/images/clients/client_06.png", 
+        stars: 5, 
+        text: "Je ne ferai affaire qu'avec lui dorénavant. Un service de qualité supérieure, une ponctualité exemplaire et un tarif très compétitif." 
+    },
+    { 
+        name: "ERIC LAVOIE", 
+        img: "assets/images/clients/client_07.png", 
+        stars: 5, 
+        text: "Compétent et honnête. Une rareté dans le domaine de la construction. Il a réparé une fuite que d'autres n'avaient pas trouvée." 
+    }
+];
+
+let currentTestimonialSlide = 0;
+
+function getTestimonialItemsPerPage() {
+    const ratio = window.innerWidth / window.innerHeight;
+    if (ratio >= 1.7) return 4;
+    if (ratio >= 0.9 && ratio < 1.7) return 3;
+    return 2;
+}
+
+function renderStars(count) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        if (i < count) {
+            stars += '<span class="text-yellow-400 text-2xl md:text-3xl" style="margin: 0 2px;">★</span>';
+        } else {
+            stars += '<span class="text-gray-400 text-2xl md:text-3xl" style="margin: 0 2px;">☆</span>';
+        }
+    }
+    return stars;
+}
+
+function renderTestimonials() {
+    const track = document.getElementById('testimonial-track');
+    const dotsContainer = document.getElementById('testimonial-dots');
+    
+    if (!track || !dotsContainer) return;
+    
+    track.innerHTML = '';
+    dotsContainer.innerHTML = '';
+    
+    const itemsPerPage = getTestimonialItemsPerPage();
+    const displayList = [...testimonials, ...testimonials, ...testimonials];
+    
+    displayList.forEach((t, index) => {
+        const card = document.createElement('div');
+        const widthPercent = 100 / itemsPerPage;
+        card.style.width = `${widthPercent}%`;
+        card.className = "flex-shrink-0 p-4 testimonial-card h-[65vh]";
+        
+        card.innerHTML = `
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl border-2 border-gray-200 dark:border-gray-700 h-full flex flex-col items-center text-center overflow-hidden justify-between hover:shadow-2xl transition-shadow">
+                <img src="${t.img}" onerror="this.src='https://via.placeholder.com/150'" 
+                     class="w-24 h-24 rounded-full object-cover mb-4 shadow-lg border-4 border-websiteBlue/30 aspect-square">
+                <div class="flex-grow flex flex-col justify-center">
+                    <h4 class="font-ops text-lg md:text-xl text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
+                    <div class="mb-3" style="min-width: calc(100% + 10px); margin-left: -5px;">
+                        ${renderStars(t.stars)}
+                    </div>
+                    <p class="font-comic text-base md:text-lg text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[25vh] scrollbar-thin leading-relaxed">"${t.text}"</p>
+                </div>
+            </div>
+        `;
+        track.appendChild(card);
+    });
+    
+    for (let i = 0; i < testimonials.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = `w-3 h-3 rounded-full ${i === currentTestimonialSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer transition-colors hover:bg-websiteBlue/70`;
+        dot.onclick = () => { 
+            currentTestimonialSlide = i; 
+            updateTestimonialCarousel(); 
+        };
+        dotsContainer.appendChild(dot);
+    }
+    
+    updateActiveTestimonialCard();
+}
+
+function updateTestimonialCarousel() {
+    const track = document.getElementById('testimonial-track');
+    const dotsContainer = document.getElementById('testimonial-dots');
+    
+    if (!track || !dotsContainer) return;
+    
+    const itemsPerPage = getTestimonialItemsPerPage();
+    const widthPercent = 100 / itemsPerPage;
+    track.style.transform = `translateX(-${currentTestimonialSlide * widthPercent}%)`;
+    
+    Array.from(dotsContainer.children).forEach((d, i) => {
+        d.className = `w-3 h-3 rounded-full ${i === currentTestimonialSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer transition-colors hover:bg-websiteBlue/70`;
+    });
+    
+    updateActiveTestimonialCard();
+}
+
+function updateActiveTestimonialCard() {
+    const cards = document.querySelectorAll('.testimonial-card');
+    const itemsPerPage = getTestimonialItemsPerPage();
+    
+    cards.forEach(c => c.classList.remove('active-card'));
+    
+    let activeOffset = 1;
+    if (itemsPerPage === 2) activeOffset = 1;
+    
+    if (cards[currentTestimonialSlide + activeOffset]) {
+        cards[currentTestimonialSlide + activeOffset].classList.add('active-card');
+    }
+}
+
+// Initialize testimonials
+document.addEventListener('DOMContentLoaded', () => {
+    renderTestimonials();
+    
+    // Auto-rotate testimonials
+    setInterval(() => {
+        currentTestimonialSlide++;
+        if (currentTestimonialSlide >= testimonials.length * 2) {
+            const track = document.getElementById('testimonial-track');
+            if (track) {
+                track.style.transition = 'none';
+                currentTestimonialSlide = 0;
+                track.style.transform = 'translateX(0)';
+                setTimeout(() => track.style.transition = 'transform 0.7s ease-in-out', 50);
+            }
+        } else {
+            updateTestimonialCarousel();
+        }
+    }, 12000);
+    
+    // Re-render on resize
+    window.addEventListener('resize', () => {
+        renderTestimonials();
+        updateTestimonialCarousel();
+    });
+});

@@ -1,0 +1,47 @@
+/*
+ * Custom styles for the team page (équipe).  These classes replicate the
+ * effects that were previously defined inline in the HTML head of the
+ * original template and ensure consistent behaviour across pages.
+ */
+
+@font-face {
+    font-family: 'Black Ops One';
+    src: url('../fonts/BlackOps.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('../fonts/PlusJakartaSans.ttf') format('truetype');
+}
+
+.glass-nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease-in-out;
+}
+
+/*
+ * Typography enhancements for the team page
+ *
+ * Define default font families for body text, headings and code blocks.
+ */
+body {
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Merriweather', serif;
+}
+pre, code {
+    font-family: 'JetBrains Mono', monospace;
+}
+.radius-override {
+    border-radius: 15px !important;
+}
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+/* Smooth scrolling when navigating within the page */
+html {
+    scroll-behavior: smooth;
+}

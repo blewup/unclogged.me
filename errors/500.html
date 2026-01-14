@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Erreur serveur | Déboucheur Expert</title>
+    
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="../assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link rel="manifest" href="../manifest.json">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/styles/fonts.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { min-height: 100vh; width: 100vw; overflow-x: hidden; }
+        .error-section { min-height: calc(100vh - 8rem); display: flex; align-items: center; justify-content: center; }
+        .error-code { font-size: clamp(8rem, 25vw, 14rem); line-height: 1; }
+        .shake { animation: shake 0.5s ease-in-out infinite; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-1deg); }
+            75% { transform: translateX(5px) rotate(1deg); }
+        }
+        .gear { animation: spin 4s linear infinite; transform-origin: center; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .gear-reverse { animation: spin-reverse 3s linear infinite; transform-origin: center; }
+        @keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        .steam { animation: steam 2s ease-out infinite; }
+        @keyframes steam {
+            0% { opacity: 0; transform: translateY(0) scale(1); }
+            50% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-30px) scale(1.5); }
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-lightBase/90 dark:bg-darkBase/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 h-16">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full shake">
+                <span class="font-ops text-lg md:text-xl text-gray-900 dark:text-white">Déboucheur Expert</span>
+            </a>
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="../index.html" class="font-ops text-xs md:text-sm text-gray-600 dark:text-gray-300 hover:text-websiteBlue transition hidden sm:block">ACCUEIL</a>
+                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white px-3 md:px-4 py-2 rounded-lg font-ops text-xs md:text-sm flex items-center gap-2">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="hidden sm:inline">URGENCE 24/7</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <section class="error-section px-4 pt-16">
+        <div class="text-center max-w-3xl mx-auto">
+            
+            <!-- Animated Gears SVG -->
+            <div class="mb-8 relative w-64 h-48 mx-auto">
+                <svg viewBox="0 0 200 150" class="w-full h-auto">
+                    <!-- Steam clouds -->
+                    <circle cx="100" cy="30" r="8" fill="#9CA3AF" class="steam"/>
+                    <circle cx="85" cy="25" r="6" fill="#9CA3AF" class="steam" style="animation-delay: 0.3s"/>
+                    <circle cx="115" cy="28" r="5" fill="#9CA3AF" class="steam" style="animation-delay: 0.6s"/>
+                    
+                    <!-- Big gear -->
+                    <g class="gear" style="transform-origin: 80px 90px;">
+                        <circle cx="80" cy="90" r="35" fill="#4B5563"/>
+                        <circle cx="80" cy="90" r="25" fill="#374151"/>
+                        <circle cx="80" cy="90" r="10" fill="#1F2937"/>
+                        <!-- Gear teeth -->
+                        <rect x="75" y="50" width="10" height="15" fill="#4B5563"/>
+                        <rect x="75" y="115" width="10" height="15" fill="#4B5563"/>
+                        <rect x="40" y="85" width="15" height="10" fill="#4B5563"/>
+                        <rect x="105" y="85" width="15" height="10" fill="#4B5563"/>
+                        <rect x="50" y="60" width="12" height="10" transform="rotate(-45 56 65)" fill="#4B5563"/>
+                        <rect x="100" y="60" width="12" height="10" transform="rotate(45 106 65)" fill="#4B5563"/>
+                        <rect x="50" y="110" width="12" height="10" transform="rotate(45 56 115)" fill="#4B5563"/>
+                        <rect x="100" y="110" width="12" height="10" transform="rotate(-45 106 115)" fill="#4B5563"/>
+                    </g>
+                    
+                    <!-- Small gear -->
+                    <g class="gear-reverse" style="transform-origin: 135px 70px;">
+                        <circle cx="135" cy="70" r="20" fill="#C41E3A"/>
+                        <circle cx="135" cy="70" r="12" fill="#991B1B"/>
+                        <circle cx="135" cy="70" r="5" fill="#7F1D1D"/>
+                        <!-- Gear teeth -->
+                        <rect x="132" y="47" width="6" height="10" fill="#C41E3A"/>
+                        <rect x="132" y="83" width="6" height="10" fill="#C41E3A"/>
+                        <rect x="112" y="67" width="10" height="6" fill="#C41E3A"/>
+                        <rect x="148" y="67" width="10" height="6" fill="#C41E3A"/>
+                    </g>
+                    
+                    <!-- Wrench -->
+                    <g transform="translate(150, 100) rotate(30)">
+                        <rect x="0" y="0" width="6" height="35" rx="2" fill="#F59E0B"/>
+                        <circle cx="3" cy="38" r="8" fill="none" stroke="#F59E0B" stroke-width="3"/>
+                    </g>
+                    
+                    <!-- Warning sign -->
+                    <polygon points="25,130 45,95 65,130" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    <text x="45" y="125" font-size="20" fill="#B45309" text-anchor="middle" font-weight="bold">!</text>
+                </svg>
+            </div>
+            
+            <h1 class="error-code font-ops text-gray-900 dark:text-white">500</h1>
+            
+            <h2 class="text-2xl md:text-4xl font-ops text-cardinal mb-4">ERREUR SERVEUR</h2>
+            
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4">
+                Notre <span class="text-websiteBlue font-bold">plombier numérique</span> travaille sur le problème!
+            </p>
+            <p class="text-base text-gray-500 dark:text-gray-400 mb-8">
+                Le serveur a rencontré une erreur inattendue. Veuillez réessayer dans quelques instants.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button onclick="location.reload()" class="bg-websiteBlue hover:bg-blue-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-redo"></i> Réessayer
+                </button>
+                <a href="../index.html" class="bg-gray-600 hover:bg-gray-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-home"></i> Accueil
+                </a>
+                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-phone-alt animate-pulse"></i> Appelez Billy!
+                </a>
+            </div>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700 rounded-xl p-6 max-w-lg mx-auto">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-exclamation-triangle text-yellow-600 text-xl mt-1"></i>
+                    <div class="text-left">
+                        <p class="font-bold text-yellow-800 dark:text-yellow-200 mb-1">En cas d'urgence plomberie</p>
+                        <p class="text-sm text-yellow-700 dark:text-yellow-300">
+                            Ne vous inquiétez pas pour le site! Pour toute urgence de plomberie, 
+                            appelez directement au <a href="tel:+14385302343" class="font-bold underline">438-530-2343</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-4">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="../pages/politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a>
+                <a href="../pages/conditions.html" class="hover:text-websiteBlue transition">Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme detection
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+<script src="../assets/scripts/icons.js" defer></script>
+</body>
+</html>

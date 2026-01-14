@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier des disponibilités | Déboucheur&nbsp;Expert</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import extended font families for varied typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Impact&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ony: '#0F0F10',
+                        websiteBlue: '#1E3A8A'
+                    },
+                    fontFamily: {
+                        header: ['Black Ops One', 'system-ui'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: { 'custom': '15px' }
+                }
+            }
+        }
+    </script>
+    <!-- External stylesheet for calendar page -->
+    <link rel="stylesheet" href="../assets/styles/style_05.css">
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
+        <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex flex-col leading-none hover-scale">
+                <span class="text-sm font-header dark:text-white">DÉBOUCHEUR</span>
+                <span class="text-base font-extrabold text-blue-600 dark:text-blue-500">EXPERT</span>
+            </a>
+            <div class="flex gap-4">
+                <button id="theme-toggle" class="p-2 radius-override hover:bg-gray-200 dark:hover:bg-white/10 transition hover-scale">
+                    <span class="text-xs font-bold uppercase">Thème</span>
+                </button>
+                <button id="lang-toggle" class="p-2 radius-override bg-gray-200 dark:bg-white/10 font-bold hover-scale w-10 h-10 flex items-center justify-center">
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[35vh] min-h-[250px] flex items-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1499114398317-8b3791f684b2?auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover opacity-60 dark:opacity-40" alt="Calendrier">
+        </div>
+        <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
+            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Disponibilités &amp; Tarifs</h1>
+            <p class="text-gray-300 mt-2 text-lg italic" data-translate="page_subtitle">Planifiez vos interventions à l'avance grâce à notre calendrier dynamique</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div id="calendar-container" class="space-y-12"></div>
+        <div class="calendar-legend">
+            <span><span class="legend-swatch" style="background-color:#ECFDF5;"></span> <span data-translate="legend_work">Horaire régulier (8h‑18h)</span></span>
+            <span><span class="legend-swatch" style="background-color:#FEF3C7;"></span> <span data-translate="legend_off">Hors horaires (18h‑8h et fins de semaine)</span></span>
+            <span><span class="legend-swatch" style="background-color:#FEF2F2;"></span> <span data-translate="legend_holiday">Jours fériés &amp; événements</span></span>
+        </div>
+    </main>
+
+    <footer class="py-8 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500 bg-white dark:bg-[#0F0F10] transition-colors duration-300">
+        <p class="mb-2">&copy; 2026 Déboucheur&nbsp;Expert (unclogged.me). Tous droits réservés.</p>
+        <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 radius-override transition hover-scale">Retour à l'accueil</a>
+    </footer>
+
+    <!-- Register service worker for offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../service-worker.js').catch(err => console.warn('SW reg failed', err));
+            });
+        }
+    </script>
+
+    <script>
+        // Language strings
+        const translations = {
+            fr: {
+                page_title: "Disponibilités & Tarifs",
+                page_subtitle: "Planifiez vos interventions à l'avance grâce à notre calendrier dynamique",
+                legend_work: "Horaire régulier (8h‑18h)",
+                legend_off: "Hors horaires (18h‑8h et fins de semaine)",
+                legend_holiday: "Jours fériés & événements"
+            },
+            en: {
+                page_title: "Availability & Rates",
+                page_subtitle: "Plan your interventions in advance with our dynamic calendar",
+                legend_work: "Regular hours (8am‑6pm)",
+                legend_off: "Off hours (6pm‑8am & weekends)",
+                legend_holiday: "Holidays & events"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        // List of holidays (Canadian/federal & local) for 2026 (YYYY-MM-DD)
+        const holidays = [
+            '2026-01-01', // New Year's Day
+            '2026-04-03', // Good Friday (approx)
+            '2026-05-18', // Victoria Day
+            '2026-06-24', // Saint-Jean-Baptiste Day
+            '2026-07-01', // Canada Day
+            '2026-09-07', // Labour Day (first Monday of Sept)
+            '2026-10-12', // Thanksgiving (second Monday of Oct)
+            '2026-12-25', // Christmas Day
+            '2026-12-26'  // Boxing Day
+        ];
+
+        function generateCalendar() {
+            const container = document.getElementById('calendar-container');
+            container.innerHTML = '';
+            const today = new Date();
+            const startYear = today.getFullYear();
+            for (let m = 0; m < 12; m++) {
+                const monthDate = new Date(startYear, today.getMonth() + m, 1);
+                const monthName = monthDate.toLocaleDateString(currentLang === 'fr' ? 'fr-CA' : 'en-CA', { month: 'long', year: 'numeric' });
+                // Create month wrapper
+                const monthWrapper = document.createElement('div');
+                monthWrapper.className = 'border border-gray-200 dark:border-white/10 p-4 radius-override shadow-sm';
+                const title = document.createElement('h3');
+                title.className = 'font-header text-xl text-blue-600 dark:text-blue-400 mb-2 capitalize';
+                title.textContent = monthName;
+                const grid = document.createElement('div');
+                grid.className = 'calendar-grid text-xs';
+                // Add weekday headers
+                const weekdays = currentLang === 'fr'
+                    ? ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+                    : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                weekdays.forEach(day => {
+                    const cell = document.createElement('div');
+                    cell.className = 'font-bold text-center py-1';
+                    cell.textContent = day;
+                    grid.appendChild(cell);
+                });
+                // Determine first day offset
+                const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1).getDay();
+                // In JS, Sunday=0; adjust to Monday start
+                let offset = (firstDay + 6) % 7;
+                for (let i = 0; i < offset; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'calendar-cell';
+                    grid.appendChild(emptyCell);
+                }
+                // Days in month
+                const daysInMonth = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0).getDate();
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dateObj = new Date(monthDate.getFullYear(), monthDate.getMonth(), d);
+                    const iso = dateObj.toISOString().split('T')[0];
+                    const cell = document.createElement('div');
+                    cell.className = 'calendar-cell';
+                    // Determine class based on day type
+                    const dayOfWeek = dateObj.getDay();
+                    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                    let cellClass = 'workday';
+                    if (holidays.includes(iso)) {
+                        cellClass = 'holiday';
+                    } else if (isWeekend) {
+                        cellClass = 'offhours';
+                    }
+                    cell.classList.add(cellClass);
+                    cell.textContent = d;
+                    grid.appendChild(cell);
+                }
+                monthWrapper.appendChild(title);
+                monthWrapper.appendChild(grid);
+                container.appendChild(monthWrapper);
+            }
+        }
+
+        document.getElementById('lang-toggle').onclick = () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+            // Update header and legend texts
+            document.querySelector('[data-translate="page_title"]').textContent = translations[currentLang].page_title;
+            document.querySelector('[data-translate="page_subtitle"]').textContent = translations[currentLang].page_subtitle;
+            document.querySelector('[data-translate="legend_work"]').textContent = translations[currentLang].legend_work;
+            document.querySelector('[data-translate="legend_off"]').textContent = translations[currentLang].legend_off;
+            document.querySelector('[data-translate="legend_holiday"]').textContent = translations[currentLang].legend_holiday;
+            generateCalendar();
+        };
+
+        // Theme toggle
+        if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').onclick = () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+
+        function generateCalendar() {
+            generateCalendar = generateCalendar; // function alias; real logic above
+        }
+        // On load generate the calendar
+        window.onload = () => {
+            generateCalendar = () => {};
+            // Actually call the logic defined earlier
+        };
+        // Immediately call the real generator after definitions
+        generateCalendar = function() {
+            const container = document.getElementById('calendar-container');
+            container.innerHTML = '';
+            const today = new Date();
+            const startYear = today.getFullYear();
+            for (let m = 0; m < 12; m++) {
+                const monthDate = new Date(startYear, today.getMonth() + m, 1);
+                const monthName = monthDate.toLocaleDateString(currentLang === 'fr' ? 'fr-CA' : 'en-CA', { month: 'long', year: 'numeric' });
+                const monthWrapper = document.createElement('div');
+                monthWrapper.className = 'border border-gray-200 dark:border-white/10 p-4 radius-override shadow-sm';
+                const title = document.createElement('h3');
+                title.className = 'font-header text-xl text-blue-600 dark:text-blue-400 mb-2 capitalize';
+                title.textContent = monthName;
+                const grid = document.createElement('div');
+                grid.className = 'calendar-grid text-xs';
+                const weekdays = currentLang === 'fr'
+                    ? ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+                    : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                weekdays.forEach(day => {
+                    const cell = document.createElement('div');
+                    cell.className = 'font-bold text-center py-1';
+                    cell.textContent = day;
+                    grid.appendChild(cell);
+                });
+                const firstDay = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1).getDay();
+                let offset = (firstDay + 6) % 7;
+                for (let i = 0; i < offset; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'calendar-cell';
+                    grid.appendChild(emptyCell);
+                }
+                const daysInMonth = new Date(monthDate.getFullYear(), monthDate.getMonth() + 1, 0).getDate();
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dateObj = new Date(monthDate.getFullYear(), monthDate.getMonth(), d);
+                    const iso = dateObj.toISOString().split('T')[0];
+                    const cell = document.createElement('div');
+                    cell.className = 'calendar-cell';
+                    const dayOfWeek = dateObj.getDay();
+                    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                    let cellClass = 'workday';
+                    if (holidays.includes(iso)) {
+                        cellClass = 'holiday';
+                    } else if (isWeekend) {
+                        cellClass = 'offhours';
+                    }
+                    cell.classList.add(cellClass);
+                    cell.textContent = d;
+                    grid.appendChild(cell);
+                }
+                monthWrapper.appendChild(title);
+                monthWrapper.appendChild(grid);
+                container.appendChild(monthWrapper);
+            }
+        };
+        // Initialize calendar and update legend translation
+        window.addEventListener('load', () => {
+            document.querySelector('[data-translate="page_title"]').textContent = translations[currentLang].page_title;
+            document.querySelector('[data-translate="page_subtitle"]').textContent = translations[currentLang].page_subtitle;
+            document.querySelector('[data-translate="legend_work"]').textContent = translations[currentLang].legend_work;
+            document.querySelector('[data-translate="legend_off"]').textContent = translations[currentLang].legend_off;
+            document.querySelector('[data-translate="legend_holiday"]').textContent = translations[currentLang].legend_holiday;
+            generateCalendar();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+/**
+ * Déboucheur Expert - Shared Components
+ * Injects navbar, footer and hero sections across all pages
+ */
+
+const SharedComponents = {
+    // Configuration
+    config: {
+        primaryPhone: '514-972-2078',
+        secondaryPhone: '438-765-7040',
+        siteName: 'Déboucheur Expert',
+        baseUrl: '/'
+    },
+
+    // Get path prefix based on current location
+    getPathPrefix: function() {
+        const path = window.location.pathname;
+        return path.includes('/pages/') ? '../' : '';
+    },
+
+    // Generate navbar HTML
+    getNavbar: function(activePage = '') {
+        const prefix = this.getPathPrefix();
+        const isPage = prefix === '../';
+        
+        return `
+        <nav id="shared-navbar" class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md h-16 transition-transform duration-300">
+            <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+                <a href="${prefix}index.html" class="flex items-center gap-2">
+                    <img src="${prefix}assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="font-ops text-lg text-white">${this.config.siteName}</span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="${isPage ? '' : 'pages/'}tarification.html" class="font-ops text-sm text-white/80 hover:text-white transition ${activePage === 'tarifs' ? 'text-websiteBlue' : ''}">TARIFS</a>
+                    <a href="${isPage ? '' : 'pages/'}plomberie.html" class="font-ops text-sm text-white/80 hover:text-white transition ${activePage === 'guide' ? 'text-websiteBlue' : ''}">GUIDE</a>
+                    <a href="${isPage ? '' : 'pages/'}events.html" class="font-ops text-sm text-white/80 hover:text-white transition ${activePage === 'events' ? 'text-websiteBlue' : ''}">CALENDRIER</a>
+                    <a href="${prefix}index.html#contact" class="font-ops text-sm text-white/80 hover:text-white transition">CONTACT</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="SharedComponents.toggleTheme()" class="text-white hover:scale-110 transition-transform">
+                        <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
+                        <i class="fas fa-moon text-purple-400 dark:hidden"></i>
+                    </button>
+                    <a href="tel:+1${this.config.primaryPhone.replace(/-/g, '')}" class="bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops text-sm flex items-center gap-2">
+                        <i class="fas fa-phone-alt animate-pulse"></i>
+                        <span class="hidden sm:inline">URGENCE</span>
+                    </a>
+                </div>
+            </div>
+        </nav>`;
+    },
+
+    // Generate hero section HTML
+    getHero: function(title, subtitle, backgroundImage) {
+        const prefix = this.getPathPrefix();
+        const bgStyle = backgroundImage 
+            ? `background-image: url('${backgroundImage}')`
+            : `background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=80')`;
+        
+        return `
+        <section class="relative h-[40vh] min-h-[300px] bg-cover bg-center bg-fixed" style="${bgStyle}">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+            <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 pt-16">
+                <h1 class="text-4xl md:text-5xl font-ops text-white mb-3">${title}</h1>
+                ${subtitle ? `<p class="text-lg md:text-xl text-gray-200 max-w-2xl">${subtitle}</p>` : ''}
+            </div>
+        </section>`;
+    },
+
+    // Generate footer HTML
+    getFooter: function() {
+        const prefix = this.getPathPrefix();
+        const isPage = prefix === '../';
+        
+        return `
+        <footer class="bg-darkBase border-t border-gray-800 py-8">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <img src="${prefix}assets/images/logo/logo.png" alt="Logo" class="h-12 w-12 rounded-full">
+                            <span class="font-ops text-xl text-white">Déboucheur Expert</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Service de plomberie résidentielle à Montréal et Montérégie.</p>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <div>
+                        <h4 class="font-ops text-white mb-4">NAVIGATION</h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li><a href="${prefix}index.html" class="hover:text-websiteBlue transition">Accueil</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}tarification.html" class="hover:text-websiteBlue transition">Tarification</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}plomberie.html" class="hover:text-websiteBlue transition">Guide</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}events.html" class="hover:text-websiteBlue transition">Calendrier</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Legal -->
+                    <div>
+                        <h4 class="font-ops text-white mb-4">LÉGAL</h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li><a href="${isPage ? '' : 'pages/'}politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}conditions.html" class="hover:text-websiteBlue transition">Conditions</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}equipe.html" class="hover:text-websiteBlue transition">Équipe</a></li>
+                            <li><a href="${isPage ? '' : 'pages/'}tools.html" class="hover:text-websiteBlue transition">Outils</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-ops text-white mb-4">CONTACT</h4>
+                        <div class="space-y-3 text-sm text-gray-400">
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-phone text-websiteBlue"></i>
+                                <a href="tel:+1${this.config.primaryPhone.replace(/-/g, '')}" class="hover:text-websiteBlue transition">${this.config.primaryPhone}</a>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-phone text-pink-500"></i>
+                                <a href="tel:+1${this.config.secondaryPhone.replace(/-/g, '')}" class="hover:text-pink-400 transition">${this.config.secondaryPhone}</a>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-envelope text-gray-500"></i>
+                                <a href="mailto:info@unclogged.me" class="hover:text-websiteBlue transition">info@unclogged.me</a>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt text-gray-500"></i>
+                                <span>Montréal & Montérégie</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Bar -->
+                <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between">
+                    <p class="text-gray-500 text-sm">&copy; 2024 Billy St-Hilaire - Déboucheur Expert</p>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-500 hover:text-blue-500 transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-blue-400 transition"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-red-500 transition"><i class="fab fa-google text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>`;
+    },
+
+    // Theme toggle
+    toggleTheme: function() {
+        document.documentElement.classList.toggle('dark');
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+    },
+
+    // Initialize theme from localStorage
+    initTheme: function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (savedTheme === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    },
+
+    // Auto-inject components
+    init: function(options = {}) {
+        this.initTheme();
+        
+        // Inject navbar if placeholder exists
+        const navPlaceholder = document.getElementById('navbar-placeholder');
+        if (navPlaceholder) {
+            navPlaceholder.outerHTML = this.getNavbar(options.activePage);
+        }
+
+        // Inject hero if placeholder exists
+        const heroPlaceholder = document.getElementById('hero-placeholder');
+        if (heroPlaceholder) {
+            const title = heroPlaceholder.dataset.title || 'Déboucheur Expert';
+            const subtitle = heroPlaceholder.dataset.subtitle || '';
+            const bg = heroPlaceholder.dataset.bg || '';
+            heroPlaceholder.outerHTML = this.getHero(title, subtitle, bg);
+        }
+
+        // Inject footer if placeholder exists
+        const footerPlaceholder = document.getElementById('footer-placeholder');
+        if (footerPlaceholder) {
+            footerPlaceholder.outerHTML = this.getFooter();
+        }
+    }
+};
+
+// Auto-init on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.SharedComponentsConfig) {
+        SharedComponents.init(window.SharedComponentsConfig);
+    }
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = SharedComponents;
+}

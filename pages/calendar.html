@@ -1,46 +1,130 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier des disponibilités | Déboucheur&nbsp;Expert</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Calendrier des disponibilités | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Calendrier des disponibilités de Déboucheur Expert. Consultez nos horaires et planifiez votre rendez-vous de plomberie à Montréal et Montérégie.">
+    <meta lang="en" name="description" content="Déboucheur Expert availability calendar. Check our schedule and plan your plumbing appointment in Montreal and Montérégie.">
+    
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Preconnect to Google Fonts for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Import extended font families for varied typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Impact&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Local Fonts (NO external CDN) -->
+    <link rel="stylesheet" href="../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../assets/styles/style_05.css">
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
                         ony: '#0F0F10',
-                        websiteBlue: '#1E3A8A'
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
                     },
                     fontFamily: {
-                        header: ['Black Ops One', 'system-ui'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        ops: ['"Black Ops One"', 'cursive'],
+                        header: ['"Black Ops One"', 'system-ui'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
                         playfair: ['"Playfair Display"', 'serif'],
                         merriweather: ['Merriweather', 'serif'],
                         inter: ['Inter', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     borderRadius: { 'custom': '15px' }
                 }
             }
         }
     </script>
-    <!-- External stylesheet for calendar page -->
-    <link rel="stylesheet" href="../assets/styles/style_05.css">
-    <!-- Manifest for PWA -->
-    <link rel="manifest" href="../manifest.json">
+    
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+
+    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-[#C41E3A] hover:bg-red-700 text-white px-4 py-2 rounded-lg font-header shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2" style="border-radius:8px;">
+        <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>URGENCE 24/7</span>
+    </a>
+
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
         <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -279,5 +363,6 @@
             generateCalendar();
         });
     </script>
+<script src="../assets/scripts/icons.js" defer></script>
 </body>
 </html>
