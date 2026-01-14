@@ -1,0 +1,142 @@
+/**
+ * Déboucheur Expert - Local Fonts Stylesheet
+ * All fonts loaded locally for privacy and performance
+ * No external font providers (Google Fonts, Adobe, etc.)
+ */
+
+/* Inter - Primary Sans-Serif Font */
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-static/Inter-Regular.woff2') format('woff2'),
+         url('../fonts/inter-static/Inter-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-static/Inter-Bold.woff2') format('woff2'),
+         url('../fonts/inter-static/Inter-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* JetBrains Mono - Monospace Font */
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/jetbrains-static/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('../fonts/jetbrains-static/JetBrainsMono-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/jetbrains-static/JetBrainsMono-Bold.woff2') format('woff2'),
+         url('../fonts/jetbrains-static/JetBrainsMono-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Playfair Display - Serif Heading Font */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/playfair-static/PlayfairDisplay-Regular.woff2') format('woff2'),
+         url('../fonts/playfair-static/PlayfairDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fonts/playfair-static/PlayfairDisplay-Bold.woff2') format('woff2'),
+         url('../fonts/playfair-static/PlayfairDisplay-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Black Ops One - Display/Header Font (loaded from system or fallback) */
+@font-face {
+    font-family: 'Black Ops One';
+    src: local('Black Ops One'),
+         url('../fonts/blackops/BlackOpsOne-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Comic Sans MS - Fallback to system */
+/* Note: Comic Sans is typically available on most systems */
+/* If not available, falls back to cursive generic family */
+
+/* Impact - System Font Fallback */
+/* Impact is typically available on Windows/Mac systems */
+
+/* Merriweather - Serif Font for body text */
+@font-face {
+    font-family: 'Merriweather';
+    src: local('Merriweather'),
+         url('../fonts/merriweather/Merriweather-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Merriweather';
+    src: local('Merriweather Bold'),
+         url('../fonts/merriweather/Merriweather-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Plus Jakarta Sans - Modern Sans-Serif */
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: local('Plus Jakarta Sans'),
+         url('../fonts/jakarta/PlusJakartaSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: local('Plus Jakarta Sans Bold'),
+         url('../fonts/jakarta/PlusJakartaSans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font Stack Fallbacks */
+:root {
+    --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Playfair Display', 'Merriweather', Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace;
+    --font-display: 'Black Ops One', Impact, 'Arial Black', sans-serif;
+    --font-comic: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive, sans-serif;
+}
+
+/* Apply font variables */
+body {
+    font-family: var(--font-comic);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+}
+
+code, pre, .font-mono {
+    font-family: var(--font-mono);
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.font-sans {
+    font-family: var(--font-sans);
+}

@@ -1,0 +1,146 @@
+<!--
+    SHARED HEAD COMPONENT - Déboucheur Expert
+    Include this in pages after the opening <head> tag
+    Provides: meta tags, favicons, Tailwind, local fonts, structured data
+    
+    Usage: Copy this content into the <head> section of each page
+    OR load via JavaScript with fetch() and innerHTML injection
+-->
+
+<!-- Security & Performance Headers -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Extended Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/logo/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/logo/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/images/logo/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/images/logo/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/images/logo/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/images/logo/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="../assets/images/logo/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../assets/images/logo/favicon-128.png" sizes="128x128">
+<link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+<meta name="application-name" content="Déboucheur Expert">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="../assets/images/logo/mstile-144x144.png">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#2563EB">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Local Fonts (NO external CDN) -->
+<link rel="stylesheet" href="../assets/styles/fonts.css">
+
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../assets/styles/style_00.css">
+
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    darkBase: '#000000',
+                    darkAlt: '#131313',
+                    lightBase: '#FFFFFF',
+                    lightAlt: '#F2F2F2',
+                    cardinal: '#C41E3A',
+                    deboucheurGreen: '#22c55e',
+                    websiteBlue: '#2563EB',
+                },
+                fontFamily: {
+                    ops: ['"Black Ops One"', 'cursive'],
+                    impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                    comic: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
+                    playfair: ['"Playfair Display"', 'serif'],
+                    merriweather: ['Merriweather', 'serif'],
+                    inter: ['Inter', 'sans-serif'],
+                    mono: ['"JetBrains Mono"', 'monospace'],
+                    jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                },
+                screens: {
+                    'portrait': {'raw': '(orientation: portrait)'},
+                    'landscape': {'raw': '(orientation: landscape)'},
+                },
+                animation: {
+                    'bounce-slow': 'bounce 3s infinite',
+                }
+            }
+        }
+    }
+</script>
+
+<!-- Structured Data for Search Engines (English) -->
+<script lang="en" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Unclogged by Déboucheur Expert",
+  "alternateName": "unclogged.me",
+  "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+  "url": "https://unclogged.me",
+  "logo": "https://unclogged.me/assets/images/logo/logo.png",
+  "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+  "telephone": "+1-438-530-2343",
+  "priceRange": "200$ - 640$/h CAD +tx",
+  "areaServed": ["Montreal", "Montérégie"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "290 Rue Lord #01",
+    "addressLocality": "Napierville",
+    "addressRegion": "QC",
+    "postalCode": "J0J 1L0",
+    "addressCountry": "CA"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+  ]
+}
+</script>
+
+<!-- Structured Data for Search Engines (French) -->
+<script lang="fr" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Déboucheur Expert (unclogged.me)",
+  "alternateName": "Déboucheur",
+  "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+  "url": "https://deboucheur.expert",
+  "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+  "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+  "telephone": "+1-438-530-2343",
+  "priceRange": "200$ - 640$/h CAD +tx",
+  "areaServed": ["Montreal", "Montérégie"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "290 Rue Lord #01",
+    "addressLocality": "Napierville",
+    "addressRegion": "QC",
+    "postalCode": "J0J 1L0",
+    "addressCountry": "CA"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+  ]
+}
+</script>
+
+<!-- Global Icons Library -->
+<script src="../assets/scripts/icons.js" defer></script>

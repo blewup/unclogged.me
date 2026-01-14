@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions&nbsp;d'Utilisation&nbsp;| Déboucheur&nbsp;Expert</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import extended font families for varied typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Impact&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { ony: '#0F0F10', websiteBlue: '#1E3A8A' },
+                    fontFamily: {
+                        header: ['Black Ops One', 'system-ui'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: { 'custom': '15px' }
+                }
+            }
+        }
+    </script>
+    <!-- External stylesheet for conditions page -->
+    <link rel="stylesheet" href="../assets/styles/style_02.css">
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+
+    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
+        <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex flex-col leading-none hover-scale">
+                <span class="text-sm font-header dark:text-white">DÉBOUCHEUR</span>
+                <span class="text-base font-extrabold text-blue-600 dark:text-blue-500">EXPERT</span>
+            </a>
+            <div class="flex gap-4">
+                <button id="theme-toggle" class="p-2 radius-override hover:bg-gray-200 dark:hover:bg-white/10 transition hover-scale">
+                    <span class="text-xs font-bold uppercase">Thème</span>
+                </button>
+                <button id="lang-toggle" class="p-2 radius-override bg-gray-200 dark:bg-white/10 font-bold hover-scale w-10 h-10 flex items-center justify-center">
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[40vh] min-h-[300px] flex items-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 z-0">
+            <!-- Use correct relative path for slide image -->
+            <img src="../assets/images/slide/slide_02.webp" class="w-full h-full object-cover opacity-60 dark:opacity-40" alt="Conditions">
+        </div>
+        <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
+            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Conditions d'Utilisation</h1>
+            <p class="text-gray-300 mt-4 text-lg italic" data-translate="page_subtitle">Règles et Engagements contractuels</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
+        <aside class="md:w-1/4">
+            <div class="sticky top-24 bg-white dark:bg-white/5 p-6 radius-override border border-gray-200 dark:border-white/10 shadow-lg">
+                <h3 class="font-header text-xl mb-4 text-blue-600 dark:text-blue-500" data-translate="index_title">Index</h3>
+                <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300" id="index-list">
+                    <!-- JS Generated -->
+                </ul>
+            </div>
+        </aside>
+
+        <article class="md:w-3/4 space-y-8 text-justify leading-relaxed" id="terms-content">
+            <!-- Content via JS -->
+        </article>
+    </main>
+
+    <footer class="py-8 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500 bg-white dark:bg-[#0F0F10] transition-colors duration-300">
+        <p class="mb-2">&copy; 2025 Plomberie Martin Boisvert. Tous droits réservés.</p>
+        <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 radius-override transition hover-scale">Retour à l'accueil</a>
+    </footer>
+
+    <script>
+        const content = {
+            fr: [
+                { id: "1", title: "Objet du contrat", text: "Le présent contrat a pour objet la réalisation des travaux de plomberie décrits au devis signé par les parties. Nous nous engageons à fournir une main-d'œuvre qualifiée et conforme aux normes en vigueur au Québec (Code de construction du Québec, Chapitre III, Plomberie)." },
+                { id: "2", title: "Prix et modalités de paiement", text: "Le prix est indiqué au devis. Un acompte peut être demandé à la signature pour couvrir l'achat de matériaux spécifiques. Le solde est payable à la fin des travaux, sur réception de la facture. Tout retard de paiement pourra entraîner des frais d'intérêt au taux légal en vigueur." },
+                { id: "3", title: "Frais de déplacement", text: "Des frais de déplacement fixes ou kilométriques peuvent être appliqués pour les interventions en dehors de la zone desservie habituelle (Grand Montréal / Rive-Sud). Ces frais seront clairement indiqués avant le début des travaux." },
+                { id: "4", title: "Délais d’exécution", text: "Les travaux seront réalisés dans les délais convenus, sous réserve des aléas techniques (découverte de vices cachés, structures non conformes) ou des approvisionnements (rupture de stock fournisseur). Nous nous engageons à informer le client de tout retard significatif." },
+                { id: "5", title: "Garantie", text: "Les travaux sont garantis contre tout défaut de main‑d’œuvre pendant la période légale applicable. Les pièces fournies sont couvertes par la garantie du fabricant. Cette garantie ne couvre pas les dommages causés par une mauvaise utilisation, le gel, ou l'usure normale." },
+                { id: "6", title: "Responsabilité et limites", text: "La responsabilité du plombier est limitée au montant du contrat pour les dommages directs, sauf en cas de faute lourde ou intentionnelle. Nous ne sommes pas responsables des dommages préexistants ou des conséquences de l'état vétuste des installations du client." },
+                { id: "7", title: "Annulation", text: "Conformément aux règles de l’Office de la protection du consommateur (OPC) du Québec, le client peut annuler le contrat sans frais dans les délais prévus par la Loi sur la protection du consommateur, notamment en cas de démarchage ou de vente itinérante." },
+                { id: "8", title: "Protection des données", text: "Les données personnelles collectées dans le cadre du contrat (nom, adresse, informations de paiement) sont traitées strictement pour l'exécution des travaux et la facturation, conformément à notre politique de confidentialité." },
+                { id: "9", title: "Loi applicable", text: "Le présent contrat est régi par les lois du Québec. Tout litige relatif à son interprétation ou son exécution relève de la compétence exclusive des tribunaux du district judiciaire de Longueuil." }
+            ],
+            en: [
+                { id: "1", title: "Scope of Work", text: "This contract pertains to the plumbing work described in the estimate signed by both parties. We commit to providing qualified labor compliant with current Quebec standards (Construction Code of Quebec, Chapter III, Plumbing)." },
+                { id: "2", title: "Pricing and Payment Terms", text: "The price is specified in the estimate. A deposit may be required upon signing to cover specific materials. The balance is due upon completion of the work, upon receipt of invoice. Late payments may incur interest charges at the legal rate." },
+                { id: "3", title: "Travel Charges", text: "Fixed or mileage-based travel charges may apply for service calls outside the designated service area (Greater Montreal / South Shore). These charges will be clearly indicated prior to commencement." },
+                { id: "4", title: "Timeframe", text: "Work will be completed within the agreed timeframe, subject to technical contingencies (hidden defects, non-compliant structures) or supply delays. We commit to informing the client of any significant delay." },
+                { id: "5", title: "Warranty", text: "Workmanship is warranted against defects for the applicable legal period. Supplied parts are covered by the manufacturer's warranty. This warranty does not cover damages caused by misuse, freezing, or normal wear and tear." },
+                { id: "6", title: "Liability and Limitations", text: "The plumber’s liability is limited to the contract amount for direct damages, except in cases of gross negligence or wilful misconduct. We are not liable for pre-existing damages or consequences of the client's aging installations." },
+                { id: "7", title: "Cancellation", text: "The client may cancel the contract without charge within the timeframes provided by the Consumer Protection Act (OPC), particularly in cases of itinerant sales." },
+                { id: "8", title: "Privacy Protection", text: "Personal data collected (name, address, payment info) is processed strictly for work execution and billing, in accordance with our privacy policy." },
+                { id: "9", title: "Governing Law", text: "This contract is governed by the laws of Quebec. Any dispute regarding its interpretation or execution falls under the exclusive jurisdiction of the courts of the judicial district of Longueuil." }
+            ]
+        };
+
+        let currentLang = 'fr';
+        const pageSubtitles = { fr: "Règles et Engagements contractuels", en: "Rules and Contractual Commitments" };
+        
+        function render() {
+            const list = document.getElementById('index-list');
+            const article = document.getElementById('terms-content');
+            const data = content[currentLang];
+            
+            list.innerHTML = '';
+            article.innerHTML = '';
+            
+            document.querySelector('[data-translate="page_title"]').textContent = currentLang === 'fr' ? "Conditions d'Utilisation" : "Terms of Use";
+            document.querySelector('[data-translate="page_subtitle"]').textContent = pageSubtitles[currentLang];
+            document.querySelector('[data-translate="index_title"]').textContent = currentLang === 'fr' ? "Index" : "Index";
+            document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+
+            data.forEach(item => {
+                // Index with badges matching colors
+                list.innerHTML += `<li><a href="#term${item.id}" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">${item.id}</span> ${item.title}</a></li>`;
+                
+                // Content sections styled like Privacy Policy
+                article.innerHTML += `
+                    <section id="term${item.id}" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-3">
+                            <span class="text-4xl opacity-20">${item.id.padStart(2, '0')}</span> ${item.title}
+                        </h2>
+                        <p>${item.text}</p>
+                    </section>
+                `;
+            });
+        }
+
+        document.getElementById('lang-toggle').onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; render(); };
+        
+        if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').onclick = () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+
+        render();
+    </script>
+    <!-- Register service worker for offline support -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../service-worker.js').catch(err => console.warn('SW reg failed', err));
+        });
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déboucheur Expert &ndash; Hors ligne</title>
+    <link rel="stylesheet" href="assets/styles/style_00.css">
+    <style>
+        body { display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; background: #0a0a0a; color: #f3f4f6; font-family: 'Comic Sans MS', sans-serif; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; }
+        p { font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        a { color: #2563EB; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Vous êtes hors ligne</h1>
+        <p>Il semble que vous ne disposiez pas d'une connexion Internet. Certaines fonctionnalités du site peuvent ne pas fonctionner correctement. Veuillez vérifier votre connexion et réessayer. Thank you for your patience.</p>
+        <p>Retourner à la page d’accueil : <a href="index.html">Déboucheur Expert</a></p>
+    </div>
+</body>
+</html>

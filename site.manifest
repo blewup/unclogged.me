@@ -1,100 +1,203 @@
 {
-  "name": "Déboucheur Expert (unclogged.me)",
-  "short_name": "Expert",
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
+  "name": "Déboucheur Expert",
+  "short_name": "Déboucheur",
+  "description": "Anything related to residential plumbing service calls: unclogging blocked drains, fixing leaking pipes, or troubleshooting why you ran out of water. Most issues are solved on the first visit, however some tasks (like main valve replacement) require the city to intervene and a certified master plumber. No new construction: only a certified master plumber or journeyman working for a master can handle permitting and insurance matters.",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
-  "start_url": "/",
+  "orientation": "any",
+  "background_color": "#000000",
+  "theme_color": "#2563EB",
+  "lang": "fr-CA",
+  "dir": "ltr",
+  "categories": ["business", "utilities", "lifestyle"],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/images/logo/apple-touch-icon-57x57.png",
-      "sizes": "57x57",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-114x114.png",
-      "sizes": "114x114",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-60x60.png",
-      "sizes": "60x60",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-120x120.png",
-      "sizes": "120x120",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-76x76.png",
-      "sizes": "76x76",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/apple-touch-icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/favicon-196x196.png",
-      "sizes": "196x196",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/images/logo/favicon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
+      "src": "assets/images/logo/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/favicon-32x32.png",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "assets/images/logo/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
+      "src": "assets/images/logo/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/favicon-128.png",
       "sizes": "128x128",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-196x196.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/logo/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-57x57.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-60x60.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-76x76.png",
+      "sizes": "76x76",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-114x114.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/mstile-70x70.png",
       "sizes": "70x70",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/mstile-144x144.png",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/mstile-150x150.png",
       "sizes": "150x150",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/mstile-310x150.png",
       "sizes": "310x150",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "assets/images/logo/mstile-310x310.png",
       "sizes": "310x310",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Urgence 24/7",
+      "short_name": "Urgence",
+      "description": "Appelez pour une urgence plomberie",
+      "url": "tel:+15149722078",
+      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Tarification",
+      "short_name": "Prix",
+      "description": "Consultez nos tarifs",
+      "url": "/pages/prices.html",
+      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Guide Plomberie",
+      "short_name": "Guide",
+      "description": "Conseils et informations plomberie",
+      "url": "/pages/plumbing.html",
+      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Nous contacter",
+      "url": "/index.html#contact",
+      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/slide/slide_00.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Page d'accueil - Déboucheur Expert"
+    },
+    {
+      "src": "assets/images/slide/slide_01.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Services de plomberie"
+    }
+  ],
+  "related_applications": [],
+  "serviceworker": {
+    "src": "service-worker.js",
+    "scope": "/",
+    "type": "classic",
+    "update_via_cache": "none"
+  },
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }
