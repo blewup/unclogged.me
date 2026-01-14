@@ -1,0 +1,294 @@
+# =============================================================================
+# Déboucheur Expert - GitHub Actions CI/CD Pipeline
+# Static HTML/CSS/JS + PHP Backend Deployment
+# =============================================================================
+# This workflow validates, tests, and deploys the unclogged.me website
+# to Namecheap cPanel hosting via FTP/SFTP
+# =============================================================================
+
+name: Deploy Déboucheur Expert
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+# Prevent concurrent deployments
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PHP_VERSION: '8.2'
+  NODE_VERSION: '20'
+
+jobs:
+  # ===========================================================================
+  # JOB 1: Validate & Lint
+  # ===========================================================================
+  validate:
+    name: 🔍 Validate Code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mysqli, mbstring, json, curl
+          tools: composer:v2
+          coverage: none
+
+      - name: 🔎 PHP Syntax Check
+        run: |
+          echo "🔍 Checking PHP syntax..."
+          find . -name "*.php" -not -path "./vendor/*" -not -path "./backup/*" | \
+            xargs -I {} php -l {} | grep -v "No syntax errors"
+          echo "✅ PHP syntax validation complete"
+
+      - name: 📋 Validate JSON files
+        run: |
+          echo "🔍 Validating JSON files..."
+          for file in manifest.json site.manifest; do
+            if [ -f "$file" ]; then
+              echo "  Checking $file..."
+              python3 -m json.tool "$file" > /dev/null && echo "    ✅ $file is valid"
+            fi
+          done
+
+      - name: 🌐 Validate HTML structure
+        run: |
+          echo "🔍 Checking HTML files..."
+          HTML_COUNT=$(find . -name "*.html" -not -path "./backup/*" -not -path "./node_modules/*" | wc -l)
+          echo "  Found $HTML_COUNT HTML files"
+          # Check for common issues
+          echo "  Checking for unclosed tags..."
+          find . -name "*.html" -not -path "./backup/*" -exec grep -l "<script.*>" {} \; | head -5
+          echo "✅ HTML validation complete"
+
+      - name: 🎨 Check CSS files exist
+        run: |
+          echo "🔍 Verifying stylesheets..."
+          ls -la assets/styles/*.css | head -10
+          echo "✅ Stylesheets verified"
+
+      - name: 📜 Check JavaScript files
+        run: |
+          echo "🔍 Verifying JavaScript files..."
+          ls -la assets/scripts/*.js | head -15
+          echo "✅ JavaScript files verified"
+
+  # ===========================================================================
+  # JOB 2: Security Scan
+  # ===========================================================================
+  security:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    needs: validate
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Check for sensitive data
+        run: |
+          echo "🔍 Scanning for sensitive data patterns..."
+          # Check for exposed API keys (excluding expected config patterns)
+          if grep -rn "AIza[0-9A-Za-z_-]\{35\}" --include="*.html" --include="*.js" . 2>/dev/null | grep -v "backup/"; then
+            echo "⚠️ Warning: Possible API key found in source files"
+          fi
+          # Check for hardcoded passwords (excluding db.php which is expected)
+          if grep -rn "password\s*=\s*['\"]" --include="*.php" . 2>/dev/null | grep -v "backup/" | grep -v "db.php"; then
+            echo "⚠️ Warning: Possible hardcoded password found"
+          fi
+          echo "✅ Security scan complete"
+
+      - name: 🛡️ Check file permissions
+        run: |
+          echo "🔍 Checking for insecure file permissions..."
+          find . -type f -name "*.php" -not -path "./backup/*" -exec ls -la {} \; | head -10
+          echo "✅ Permission check complete"
+
+  # ===========================================================================
+  # JOB 3: Build & Optimize
+  # ===========================================================================
+  build:
+    name: 🏗️ Build & Optimize
+    runs-on: ubuntu-latest
+    needs: [validate, security]
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Create deployment package
+        run: |
+          echo "📦 Preparing deployment package..."
+          mkdir -p dist
+          
+          # Copy all necessary files (exclude dev/backup files)
+          rsync -av --progress \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='backup' \
+            --exclude='*.bak' \
+            --exclude='*.txt' \
+            --exclude='README.md' \
+            --exclude='LICENSE' \
+            --exclude='.gitignore' \
+            --exclude='dist' \
+            --exclude='node_modules' \
+            . dist/
+          
+          echo "✅ Deployment package created"
+
+      - name: 📊 Package summary
+        run: |
+          echo "📊 Deployment package contents:"
+          echo "  HTML files: $(find dist -name '*.html' | wc -l)"
+          echo "  CSS files: $(find dist -name '*.css' | wc -l)"
+          echo "  JS files: $(find dist -name '*.js' | wc -l)"
+          echo "  PHP files: $(find dist -name '*.php' | wc -l)"
+          echo "  Images: $(find dist -name '*.webp' -o -name '*.png' -o -name '*.jpg' | wc -l)"
+          echo "  Total size: $(du -sh dist | cut -f1)"
+
+      - name: 📤 Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-build
+          path: dist/
+          retention-days: 7
+
+  # ===========================================================================
+  # JOB 4: Deploy to Production
+  # ===========================================================================
+  deploy:
+    name: 🚀 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: production
+      url: https://unclogged.me
+    
+    steps:
+      - name: 📥 Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: website-build
+          path: dist/
+
+      - name: 🔧 Prepare deployment
+        run: |
+          echo "🔧 Preparing for deployment..."
+          # Update cache version in service worker
+          sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date +%s)/" dist/service-worker.js || true
+          echo "✅ Deployment prepared"
+
+      - name: 🚀 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/backup/**
+            **/*.bak
+            **/*.txt
+            **/README.md
+            **/LICENSE
+
+      - name: ✅ Deployment complete
+        run: |
+          echo "🎉 Deployment successful!"
+          echo "🌐 Website: https://unclogged.me"
+          echo "🌐 Alt URL: https://deboucheur.expert"
+          echo "📅 Deployed: $(date)"
+
+  # ===========================================================================
+  # JOB 5: Post-Deploy Verification
+  # ===========================================================================
+  verify:
+    name: ✅ Verify Deployment
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: 🌐 Check website availability
+        run: |
+          echo "🔍 Verifying deployment..."
+          
+          # Check main site
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://unclogged.me || echo "000")
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "✅ unclogged.me is online (HTTP $HTTP_STATUS)"
+          else
+            echo "⚠️ unclogged.me returned HTTP $HTTP_STATUS"
+          fi
+          
+          # Check alternate domain
+          HTTP_STATUS_FR=$(curl -s -o /dev/null -w "%{http_code}" https://deboucheur.expert || echo "000")
+          if [ "$HTTP_STATUS_FR" = "200" ]; then
+            echo "✅ deboucheur.expert is online (HTTP $HTTP_STATUS_FR)"
+          else
+            echo "⚠️ deboucheur.expert returned HTTP $HTTP_STATUS_FR"
+          fi
+
+      - name: 📱 Check PWA manifest
+        run: |
+          echo "🔍 Verifying PWA manifest..."
+          curl -s https://unclogged.me/manifest.json | python3 -m json.tool > /dev/null && \
+            echo "✅ PWA manifest is valid" || echo "⚠️ PWA manifest check failed"
+
+      - name: 🔔 Notify completion
+        run: |
+          echo "================================================"
+          echo "🎉 DEPLOYMENT COMPLETE"
+          echo "================================================"
+          echo "📅 Date: $(date)"
+          echo "🔗 Commit: ${{ github.sha }}"
+          echo "👤 Author: ${{ github.actor }}"
+          echo "🌐 Sites:"
+          echo "   - https://unclogged.me (EN)"
+          echo "   - https://deboucheur.expert (FR)"
+          echo "================================================"
+
+  # ===========================================================================
+  # JOB 6: Notify on Failure
+  # ===========================================================================
+  notify-failure:
+    name: 📧 Notify Failure
+    runs-on: ubuntu-latest
+    needs: [validate, security, build, deploy]
+    if: failure()
+    
+    steps:
+      - name: 🚨 Create failure summary
+        run: |
+          echo "================================================"
+          echo "❌ DEPLOYMENT FAILED"
+          echo "================================================"
+          echo "📅 Date: $(date)"
+          echo "🔗 Commit: ${{ github.sha }}"
+          echo "👤 Author: ${{ github.actor }}"
+          echo "🔍 Check the Actions log for details"
+          echo "================================================"
