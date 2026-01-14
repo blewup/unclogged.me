@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarification | Déboucheur Expert</title>
+    <meta name="description" content="Découvrez nos tarifs transparents pour le débouchage et la plomberie résidentielle. Prix selon le diamètre de câble, l'horaire et les options.">
+    
+    <!-- Favicons -->
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="../assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link rel="manifest" href="../manifest.json">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { min-height: 100vh; width: 100vw; overflow-x: hidden; }
+        
+        .price-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .price-highlight {
+            background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .price-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #C41E3A;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .cable-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .pricing-table th {
+            background: rgba(37, 99, 235, 0.2);
+            font-weight: bold;
+        }
+        
+        .pricing-table tr:hover td {
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .multiplier-badge {
+            display: inline-block;
+            background: #22c55e;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+
+    <!-- Hero Section -->
+    <section class="relative h-[50vh] min-h-[400px] bg-cover bg-center bg-fixed" style="background-image: url('../assets/images/slide/slide_03.webp');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-ops text-white mb-4">
+                <i class="fas fa-dollar-sign text-deboucheurGreen mr-4"></i>TARIFS
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mb-8">
+                Des prix transparents pour un service de qualité
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-xl border border-white/20">
+                    <span class="text-3xl font-ops text-deboucheurGreen">200$</span>
+                    <span class="text-white ml-2">à partir de</span>
+                </div>
+                <div class="bg-cardinal/80 px-6 py-3 rounded-xl">
+                    <i class="fas fa-clock text-white mr-2"></i>
+                    <span class="text-white font-bold">24/7 Urgence disponible</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navbar -->
+        <nav class="absolute top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md h-16">
+            <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="font-ops text-lg text-white">Déboucheur Expert</span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="font-ops text-sm text-white/80 hover:text-white transition hidden md:block">ACCUEIL</a>
+                    <a href="events.html" class="font-ops text-sm text-white/80 hover:text-white transition hidden md:block">CALENDRIER</a>
+                    <a href="tel:+15149722078" class="bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops text-sm flex items-center gap-2">
+                        <i class="fas fa-phone-alt animate-pulse"></i>
+                        <span class="hidden sm:inline">URGENCE 24/7</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Quick Price Cards -->
+    <section class="py-12 px-4 -mt-16 relative z-20">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Standard -->
+            <div class="price-card rounded-2xl p-6 bg-white dark:bg-gray-800 shadow-xl relative">
+                <div class="cable-icon bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                    <i class="fas fa-minus"></i>
+                </div>
+                <h3 class="font-ops text-xl text-center mb-2">CÂBLE STANDARD</h3>
+                <p class="text-center text-gray-500 mb-4">1/4" à 3/8"</p>
+                <div class="text-center mb-4">
+                    <span class="text-4xl font-ops text-websiteBlue">320$</span>
+                    <span class="text-gray-500">/1ère heure</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Lavabos et éviers
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Baignoires
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Petites conduites
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Medium - Highlighted -->
+            <div class="price-card rounded-2xl p-6 price-highlight shadow-2xl transform scale-105 relative">
+                <span class="price-badge">POPULAIRE</span>
+                <div class="cable-icon bg-white/20 text-white">
+                    <i class="fas fa-grip-lines"></i>
+                </div>
+                <h3 class="font-ops text-xl text-center mb-2">CÂBLE MOYEN</h3>
+                <p class="text-center text-blue-200 mb-4">1/2"</p>
+                <div class="text-center mb-4">
+                    <span class="text-4xl font-ops">480$</span>
+                    <span class="text-blue-200">/1ère heure</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check"></i>
+                        Toilettes
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check"></i>
+                        Drains de plancher
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check"></i>
+                        Conduites moyennes
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Large -->
+            <div class="price-card rounded-2xl p-6 bg-white dark:bg-gray-800 shadow-xl relative">
+                <div class="cable-icon bg-cardinal/20 text-cardinal">
+                    <i class="fas fa-grip-lines-vertical"></i>
+                </div>
+                <h3 class="font-ops text-xl text-center mb-2">GROS CÂBLE</h3>
+                <p class="text-center text-gray-500 mb-4">5/8" à 3/4"</p>
+                <div class="text-center mb-4">
+                    <span class="text-4xl font-ops text-cardinal">560$</span>
+                    <span class="text-gray-500">/1ère heure</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Égouts principaux
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Conduites d'entrée
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check text-deboucheurGreen"></i>
+                        Blocages majeurs
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Pricing Table -->
+    <section class="py-12 px-4 bg-lightAlt dark:bg-darkAlt">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-ops text-center mb-8">
+                <i class="fas fa-table text-websiteBlue mr-3"></i>
+                GRILLE TARIFAIRE COMPLÈTE
+            </h2>
+            
+            <div class="table-responsive bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                <table class="pricing-table">
+                    <thead>
+                        <tr class="bg-websiteBlue text-white">
+                            <th class="text-left p-4">Service / Diamètre</th>
+                            <th>Jours ouvrables<br><span class="text-xs font-normal opacity-80">8h-18h</span></th>
+                            <th>Nuit & Week-ends<br><span class="text-xs font-normal opacity-80">18h-8h</span></th>
+                            <th>Jours fériés<br><span class="text-xs font-normal opacity-80">24h</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm md:text-base">
+                        <tr>
+                            <td class="text-left font-bold">
+                                <i class="fas fa-minus text-gray-400 mr-2"></i>
+                                Câble 1/4" à 3/8"
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-websiteBlue">320$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-yellow-600">480$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-cardinal">640$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-50 dark:bg-gray-700/30">
+                            <td class="text-left font-bold">
+                                <i class="fas fa-grip-lines text-websiteBlue mr-2"></i>
+                                Câble 1/2"
+                                <span class="multiplier-badge">×1.5</span>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-websiteBlue">480$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-yellow-600">720$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-cardinal">960$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left font-bold">
+                                <i class="fas fa-grip-lines-vertical text-cardinal mr-2"></i>
+                                Câble 5/8" & 3/4"
+                                <span class="multiplier-badge">×1.75</span>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-websiteBlue">560$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-yellow-600">840$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                            <td>
+                                <div class="font-bold text-lg text-cardinal">1120$</div>
+                                <div class="text-xs text-gray-500">1ère heure</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                    <h4 class="font-bold mb-2">
+                        <i class="fas fa-clock text-websiteBlue mr-2"></i>
+                        Heures supplémentaires (2-6h)
+                    </h4>
+                    <p class="text-gray-600 dark:text-gray-400">50% du taux de la 1ère heure par heure additionnelle</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                    <h4 class="font-bold mb-2">
+                        <i class="fas fa-hourglass-half text-yellow-500 mr-2"></i>
+                        Heures prolongées (7-12h)
+                    </h4>
+                    <p class="text-gray-600 dark:text-gray-400">100% du taux de la 1ère heure par heure</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                    <h4 class="font-bold mb-2">
+                        <i class="fas fa-car text-deboucheurGreen mr-2"></i>
+                        Déplacement
+                    </h4>
+                    <p class="text-gray-600 dark:text-gray-400">Inclus dans un rayon de 30 km de Montréal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-ops text-center mb-8">
+                <i class="fas fa-plus-circle text-deboucheurGreen mr-3"></i>
+                SERVICES ADDITIONNELS
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+                    <i class="fas fa-video text-4xl text-websiteBlue mb-4"></i>
+                    <h3 class="font-ops text-lg mb-2">Inspection Caméra</h3>
+                    <div class="text-2xl font-ops text-websiteBlue mb-2">150$</div>
+                    <p class="text-sm text-gray-500">Diagnostic visuel HD</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+                    <i class="fas fa-water text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="font-ops text-lg mb-2">Hydro-Jet</h3>
+                    <div class="text-2xl font-ops text-websiteBlue mb-2">200$+</div>
+                    <p class="text-sm text-gray-500">Nettoyage haute pression</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+                    <i class="fas fa-file-alt text-4xl text-deboucheurGreen mb-4"></i>
+                    <h3 class="font-ops text-lg mb-2">Rapport Détaillé</h3>
+                    <div class="text-2xl font-ops text-websiteBlue mb-2">75$</div>
+                    <p class="text-sm text-gray-500">Avec vidéo et photos</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center">
+                    <i class="fas fa-shield-alt text-4xl text-cardinal mb-4"></i>
+                    <h3 class="font-ops text-lg mb-2">Garantie Étendue</h3>
+                    <div class="text-2xl font-ops text-websiteBlue mb-2">100$</div>
+                    <p class="text-sm text-gray-500">90 jours additionnels</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-websiteBlue">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h2 class="text-4xl font-ops mb-4">
+                <i class="fas fa-phone-alt animate-pulse mr-4"></i>
+                OBTENEZ UNE SOUMISSION GRATUITE
+            </h2>
+            <p class="text-xl mb-8 text-blue-100">
+                Appelez maintenant pour une évaluation sans frais
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+15149722078" class="bg-white text-websiteBlue font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-gray-100 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
+                    <i class="fas fa-phone-alt"></i>
+                    514-972-2078
+                </a>
+                <a href="tel:+14387657040" class="bg-pink-500 text-white font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-pink-600 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
+                    <i class="fas fa-mobile-alt"></i>
+                    438-765-7040
+                </a>
+            </div>
+            <p class="mt-6 text-sm text-blue-200">
+                <i class="fas fa-info-circle mr-2"></i>
+                Tous les prix sont en dollars canadiens et n'incluent pas les taxes applicables.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-6">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a>
+                <a href="conditions.html" class="hover:text-websiteBlue transition">Conditions</a>
+                <a href="../index.html" class="hover:text-websiteBlue transition">Accueil</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme detection
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>

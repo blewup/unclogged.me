@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page introuvable | Déboucheur Expert</title>
+    
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="../assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link rel="manifest" href="../manifest.json">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { min-height: 100vh; width: 100vw; overflow-x: hidden; }
+        .error-section { min-height: calc(100vh - 8rem); display: flex; align-items: center; justify-content: center; }
+        .error-code { font-size: clamp(8rem, 25vw, 14rem); line-height: 1; }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .pipe-svg { max-width: 300px; margin: 0 auto; }
+        .water-leak { animation: leak 1.5s ease-in-out infinite; }
+        @keyframes leak {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.8; transform: scaleY(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-lightBase/90 dark:bg-darkBase/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 h-16">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+                <span class="font-ops text-lg md:text-xl text-gray-900 dark:text-white">Déboucheur Expert</span>
+            </a>
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="../index.html" class="font-ops text-xs md:text-sm text-gray-600 dark:text-gray-300 hover:text-websiteBlue transition hidden sm:block">ACCUEIL</a>
+                <a href="tel:+15149722078" class="bg-cardinal hover:bg-red-700 text-white px-3 md:px-4 py-2 rounded-lg font-ops text-xs md:text-sm flex items-center gap-2">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="hidden sm:inline">URGENCE 24/7</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <section class="error-section px-4 pt-16">
+        <div class="text-center max-w-3xl mx-auto">
+            
+            <!-- Animated Pipe SVG -->
+            <div class="pipe-svg mb-8 float-animation">
+                <svg viewBox="0 0 200 150" class="w-full h-auto">
+                    <!-- Pipe -->
+                    <rect x="60" y="20" width="80" height="30" rx="5" fill="#4B5563"/>
+                    <rect x="65" y="25" width="70" height="20" rx="3" fill="#374151"/>
+                    
+                    <!-- Pipe bend -->
+                    <rect x="85" y="50" width="30" height="60" rx="5" fill="#4B5563"/>
+                    <rect x="90" y="55" width="20" height="50" rx="3" fill="#374151"/>
+                    
+                    <!-- Water drops -->
+                    <ellipse cx="100" cy="125" rx="15" ry="5" fill="#3B82F6" opacity="0.3" class="water-leak"/>
+                    <path d="M95 110 Q100 125 105 110" fill="#3B82F6" opacity="0.6" class="water-leak"/>
+                    <circle cx="92" cy="130" r="3" fill="#60A5FA" opacity="0.5" class="water-leak" style="animation-delay: 0.2s"/>
+                    <circle cx="108" cy="128" r="2" fill="#60A5FA" opacity="0.5" class="water-leak" style="animation-delay: 0.4s"/>
+                    
+                    <!-- Wrench -->
+                    <g transform="translate(140, 60) rotate(45)">
+                        <rect x="0" y="0" width="8" height="40" rx="2" fill="#F59E0B"/>
+                        <circle cx="4" cy="45" r="10" fill="none" stroke="#F59E0B" stroke-width="4"/>
+                    </g>
+                    
+                    <!-- Question mark -->
+                    <text x="30" y="80" font-size="40" fill="#C41E3A" font-family="Black Ops One">?</text>
+                </svg>
+            </div>
+            
+            <h1 class="error-code font-ops text-gray-900 dark:text-white">404</h1>
+            
+            <h2 class="text-2xl md:text-4xl font-ops text-cardinal mb-4">PAGE INTROUVABLE</h2>
+            
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4">
+                Oups! Cette page semble avoir été <span class="text-websiteBlue font-bold">débouchée</span>...
+            </p>
+            <p class="text-base text-gray-500 dark:text-gray-400 mb-8">
+                La page que vous recherchez n'existe pas ou a été déplacée.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="../index.html" class="bg-websiteBlue hover:bg-blue-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-home"></i> Retour à l'accueil
+                </a>
+                <a href="tel:+15149722078" class="bg-cardinal hover:bg-red-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-phone-alt animate-pulse"></i> Appelez Billy!
+                </a>
+            </div>
+            
+            <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 max-w-md mx-auto">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Besoin d'aide urgente?</p>
+                <a href="tel:+15149722078" class="text-2xl font-ops text-websiteBlue hover:text-blue-700">
+                    <i class="fas fa-phone-alt mr-2"></i>514-972-2078
+                </a>
+                <p class="text-xs text-gray-500 mt-2">Service disponible 24h/24, 7j/7</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-4">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
+            <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="../pages/politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a>
+                <a href="../pages/conditions.html" class="hover:text-websiteBlue transition">Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme detection
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>

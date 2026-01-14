@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur | Déboucheur Expert</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-16x16.png" sizes="16x16" />
+    <link href="assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/styles/style_00.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .error-code {
+            font-size: clamp(8rem, 20vw, 16rem);
+            line-height: 1;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+        }
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .error-header {
+            height: 32vh;
+            min-height: 200px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .error-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/header/header_00.webp') center/cover no-repeat;
+            opacity: 0.3;
+        }
+        .error-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        .pipe-animation {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, #2563EB, transparent);
+            animation: flow 3s ease-in-out infinite;
+        }
+        @keyframes flow {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+    
+    <div class="error-container">
+        <!-- Header with error code -->
+        <header class="error-header">
+            <div class="relative z-10 text-center">
+                <h1 id="error-code" class="error-code font-ops text-white"></h1>
+            </div>
+            <div class="pipe-animation"></div>
+        </header>
+        
+        <!-- Main content -->
+        <main class="error-content bg-lightBase dark:bg-darkBase">
+            <div class="max-w-2xl mx-auto">
+                <h2 id="error-title" class="text-3xl md:text-4xl font-ops mb-4 text-gray-900 dark:text-white"></h2>
+                <p id="error-message" class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8"></p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/" class="px-8 py-3 bg-websiteBlue hover:bg-blue-700 text-white font-ops rounded-lg shadow-lg transition-all hover:scale-105" data-translate="back_home">
+                        Retour à l'accueil
+                    </a>
+                    <a href="tel:+14385302343" class="px-8 py-3 bg-cardinal hover:bg-red-700 text-white font-ops rounded-lg shadow-lg transition-all hover:scale-105" data-translate="call_us">
+                        Appelez-nous
+                    </a>
+                </div>
+                
+                <div class="mt-12 p-6 bg-lightAlt dark:bg-darkAlt rounded-xl border border-gray-200 dark:border-gray-700">
+                    <h3 class="font-ops text-lg mb-4 text-websiteBlue" data-translate="need_help">Besoin d'aide ?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-websiteBlue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+14385302343" class="text-websiteBlue hover:underline font-bold">+1 (514) 972-2078</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+14387657040" class="text-pink-500 hover:underline font-bold">+1 (438) 765-7040</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <a href="mailto:info@deboucheur.expert" class="hover:underline">info@deboucheur.expert</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <a href="https://unclogged.me" class="hover:underline">unclogged.me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="py-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500">
+            <p>&copy; 2026 Déboucheur Expert (unclogged.me). Tous droits réservés.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Error code definitions
+        const errorData = {
+            '400': {
+                title: { fr: 'Requête Invalide', en: 'Bad Request' },
+                message: { fr: 'La requête envoyée au serveur est invalide ou mal formée.', en: 'The request sent to the server is invalid or malformed.' }
+            },
+            '401': {
+                title: { fr: 'Non Autorisé', en: 'Unauthorized' },
+                message: { fr: 'Vous devez être authentifié pour accéder à cette ressource.', en: 'You must be authenticated to access this resource.' }
+            },
+            '403': {
+                title: { fr: 'Accès Interdit', en: 'Forbidden' },
+                message: { fr: 'Vous n\'avez pas la permission d\'accéder à cette page.', en: 'You do not have permission to access this page.' }
+            },
+            '404': {
+                title: { fr: 'Page Non Trouvée', en: 'Page Not Found' },
+                message: { fr: 'Oups ! La page que vous cherchez semble avoir fui... comme un tuyau mal joint.', en: 'Oops! The page you\'re looking for seems to have leaked away... like a poorly sealed pipe.' }
+            },
+            '500': {
+                title: { fr: 'Erreur Serveur', en: 'Server Error' },
+                message: { fr: 'Notre serveur a rencontré un problème. Nos plombiers numériques travaillent dessus !', en: 'Our server encountered a problem. Our digital plumbers are working on it!' }
+            },
+            '503': {
+                title: { fr: 'Service Indisponible', en: 'Service Unavailable' },
+                message: { fr: 'Le service est temporairement indisponible. Veuillez réessayer dans quelques minutes.', en: 'The service is temporarily unavailable. Please try again in a few minutes.' }
+            }
+        };
+        
+        // Detect language
+        const userLang = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
+        const lang = ['fr', 'en'].includes(userLang) ? userLang : 'fr';
+        
+        // Get error code from URL parameter or default to 404
+        const urlParams = new URLSearchParams(window.location.search);
+        let errorCode = urlParams.get('code') || '404';
+        
+        // Validate error code
+        if (!errorData[errorCode]) {
+            errorCode = '404';
+        }
+        
+        // Update page content
+        const error = errorData[errorCode];
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = error.title[lang];
+        document.getElementById('error-message').textContent = error.message[lang];
+        document.title = `${errorCode} - ${error.title[lang]} | Déboucheur Expert`;
+        
+        // Update translations
+        const translations = {
+            fr: {
+                back_home: 'Retour à l\'accueil',
+                call_us: 'Appelez-nous',
+                need_help: 'Besoin d\'aide ?'
+            },
+            en: {
+                back_home: 'Back to Home',
+                call_us: 'Call Us',
+                need_help: 'Need Help?'
+            }
+        };
+        
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        
+        // Theme detection
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

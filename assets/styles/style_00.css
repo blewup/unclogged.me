@@ -1,364 +1,646 @@
-/*
- * This stylesheet consolidates the inline styles originally defined in index.html
- * and adds custom classes for new components such as the map overlay panel,
- * video lesson section, calendar display and general utility helpers.  Where
- * appropriate the variables defined in the Tailwind configuration (via the
- * script tag in index.html) are used implicitly by utility classes on
- * elements, so only bespoke CSS rules are declared here.  Keeping these
- * styles in a dedicated file reduces page weight and enables caching across
- * multiple pages.
+/**
+ * Déboucheur Expert - Main Stylesheet
+ * Custom CSS extending Tailwind CSS
+ * @version 2.0.0
+ * @author Déboucheur Expert Team
  */
 
-/* Hide scrollbars globally and prevent horizontal overflow */
-html, body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+    /* Colors */
+    --color-dark-base: #000000;
+    --color-dark-alt: #131313;
+    --color-light-base: #FFFFFF;
+    --color-light-alt: #F2F2F2;
+    --color-cardinal: #C41E3A;
+    --color-green: #22c55e;
+    --color-blue: #2563EB;
+    --color-blue-dark: #1d4ed8;
+    
+    /* Spacing */
+    --radius-base: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+    --transition-carousel: 700ms ease-in-out;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.4);
+    --shadow-glow-green: 0 0 40px rgba(34, 197, 94, 0.4);
+    
+    /* Z-index layers */
+    --z-base: 1;
+    --z-sticky: 10;
+    --z-navbar: 50;
+    --z-urgency: 60;
+    --z-chat-btn: 70;
+    --z-chat: 80;
+    --z-modal: 90;
+    --z-progress: 1000;
+}
+
+/* ============================================
+   BASE STYLES & RESETS
+   ============================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
     overflow-x: hidden;
 }
 
-/*
- * Typography enhancements
- *
- * To introduce greater variety of typefaces across the site, we set default
- * families for body copy, headings and monospaced elements. These fonts
- * correspond to the additional Google fonts imported in the HTML head.
- * The body uses Inter with Plus Jakarta Sans as fallback; headings use
- * Playfair Display with Merriweather as a secondary choice, giving them
- * a more elegant, serif appearance; and code/pre elements use JetBrains
- * Mono for clear monospace rendering. If a browser cannot load these
- * families, it will gracefully fall back to system sans or serif fonts.
- */
-body {
-    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+/* Scrollbar hiding for clean UI */
+.scrollbar-hide::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', 'Merriweather', serif;
+
+.scrollbar-hide,
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-pre, code {
-    font-family: 'JetBrains Mono', monospace;
+
+/* Thin scrollbar variant */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
-::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-    width: 0;
+
+.scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* Utility class to outline dark text on light backgrounds */
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.box-radius {
+    border-radius: var(--radius-base);
+}
+
+.box-radius-lg {
+    border-radius: var(--radius-lg);
+}
+
+.transition-base {
+    transition: all var(--transition-base);
+}
+
+/* Text outline utilities */
 .text-outline-black {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
-                 -1px 1px 0 #000, 1px 1px 0 #000;
-}
-.theme-text-outline.dark-mode-outline {
-    text-shadow: -0.5px -0.5px 0 #000,
-                 0.5px -0.5px 0 #000,
-                 -0.5px 0.5px 0 #000,
-                 0.5px 0.5px 0 #000;
-}
-.theme-text-outline.light-mode-outline {
-    text-shadow: -0.5px -0.5px 0 #fff,
-                 0.5px -0.5px 0 #fff,
-                 -0.5px 0.5px 0 #fff,
-                 0.5px 0.5px 0 #fff;
+    text-shadow: 
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000;
 }
 
-/* Nav glass effect with transition on transform and background */
+.text-outline-white {
+    text-shadow: 
+        1px 1px 0 #fff,
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff;
+}
+
+/* Theme-adaptive text outlines */
+.theme-text-outline {
+    text-shadow: 
+        1px 1px 0 rgba(0, 0, 0, 0.3),
+        -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark .dark-mode-outline {
+    text-shadow: 
+        1px 1px 0 rgba(255, 255, 255, 0.15),
+        -1px -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.light-mode-outline {
+    text-shadow: 
+        1px 1px 0 rgba(0, 0, 0, 0.2),
+        -1px -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
 .nav-glass {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-/* Hero slideshow fades */
-.hero-slide {
+.nav-link {
+    position: relative;
+    transition: all var(--transition-base);
+}
+
+.nav-link::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-.hero-slide.active {
-    opacity: 1;
-}
-
-/* Map box shadows for light/dark modes */
-.map-glow-dark {
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.2);
-}
-.map-glow-light {
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
-}
-.map-overlay-blur {
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.35);
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-blue);
+    transition: all var(--transition-base);
+    transform: translateX(-50%);
 }
 
-/* Accordion animations for FAQ */
-.accordion-content {
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* Navigation dots */
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    margin: 8px 0;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.nav-dot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--color-blue);
+}
+
+/* ============================================
+   DROPDOWN MENU
+   ============================================ */
+.dropdown-closed {
     max-height: 0;
     opacity: 0;
-    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    pointer-events: none;
+    transition: all var(--transition-base);
 }
-.accordion-content.open {
+
+.dropdown-open {
     max-height: 500px;
     opacity: 1;
-}
-.rotate-icon {
-    transition: transform 0.3s ease;
-}
-.rotate-icon.active {
-    transform: rotate(180deg);
+    transform: scaleY(1);
+    pointer-events: auto;
+    transition: all var(--transition-slow);
 }
 
-/* Testimonials scaling */
-.testimonial-card {
-    transition: transform 0.5s ease, opacity 0.5s ease, width 0.3s ease;
-    opacity: 0.5;
-    transform: scale(0.9);
-}
-.testimonial-card.active-card {
-    opacity: 1;
-    transform: scale(1.1);
-    z-index: 10;
-}
-.testimonial-img-shadow {
-    box-shadow: 0 0 15px 2px #2563EB;
+.dropdown-content {
+    transform-origin: top;
+    animation: dropdown-unroll 0.3s ease-out;
 }
 
-/* Contact slider animation */
-.contact-slider {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Sticky sections maintain 100vh height and hide overflow */
-.sticky-section {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow: hidden;
-}
-
-/* Rounded corners override */
-.box-radius {
-    border-radius: 12px !important;
-}
-
-/* Service section card backgrounds */
-.service-card {
-    /* Use cover positioning to fill the box */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-}
-.service-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* semi-transparent dark overlay for readability */
-    background-color: rgba(0, 0, 0, 0.45);
-    z-index: 0;
-}
-.service-card > * {
-    position: relative;
-    z-index: 1;
-}
-.service-card:hover {
-    /* Slight brightness increase on hover */
-    filter: brightness(1.1);
-}
-
-/* Form validation states */
-.input-valid {
-    border-color: #22c55e !important;
-    box-shadow: 0 0 10px #22c55e !important;
-}
-.input-focus {
-    border-color: #2563EB !important;
-    box-shadow: 0 0 10px #2563EB !important;
-}
-
-/* AI chat widget animations */
-#ai-chat-widget {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    transform-origin: bottom right;
-}
-#ai-chat-widget.hidden-widget {
-    transform: scale(0);
-    opacity: 0;
-    pointer-events: none;
-}
-.chat-message {
-    max-width: 80%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    animation: fadeIn 0.3s ease;
-}
-.user-msg {
-    background-color: #2563EB;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
-}
-.ai-msg {
-    background-color: #374151;
-    color: white;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-}
-@keyframes fadeIn {
+@keyframes dropdown-unroll {
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
+/* ============================================
+   HERO & SLIDESHOW
+   ============================================ */
+.sticky-section {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* ============================================
+   SERVICE CARDS
+   ============================================ */
+.service-card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.7) 100%
+    );
+    transition: opacity var(--transition-base);
+}
+
+.dark .service-card::before {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+}
+
+.service-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ============================================
+   ACCORDION
+   ============================================ */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 
+        max-height var(--transition-slow),
+        opacity var(--transition-base);
+}
+
+.accordion-content.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.rotate-icon {
+    transition: transform var(--transition-base);
+}
+
+.rotate-icon.active {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   TESTIMONIALS CAROUSEL
+   ============================================ */
+.testimonial-card {
+    opacity: 0.6;
+    transform: scale(0.9);
+    transition: all var(--transition-carousel);
+    will-change: transform, opacity;
+}
+
+.testimonial-card.active-card {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.testimonial-img-shadow {
+    box-shadow: 
+        0 4px 15px rgba(37, 99, 235, 0.3),
+        0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.input-focus {
+    border-color: var(--color-blue) !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.input-valid {
+    border-color: var(--color-green) !important;
+}
+
+.input-error {
+    border-color: var(--color-cardinal) !important;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Contact slider for mobile */
+.contact-slider {
+    transition: transform var(--transition-slow);
+}
+
+/* ============================================
+   AI CHAT WIDGET
+   ============================================ */
+.hidden-widget {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all var(--transition-base);
+}
+
+#ai-chat-widget:not(.hidden-widget) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.ai-msg {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+    color: white;
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    border-bottom-left-radius: 4px;
+    max-width: 85%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    animation: message-in 0.3s ease;
+}
+
+.user-msg {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    border-bottom-right-radius: 4px;
+    max-width: 85%;
+    margin-left: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    animation: message-in 0.3s ease;
+}
+
+@keyframes message-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typing indicator */
 .typing-dot {
     display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #ccc;
-    animation: typing 1.4s infinite ease-in-out both;
+    width: 8px;
+    height: 8px;
     margin: 0 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-full);
+    animation: typing-bounce 1.4s infinite ease-in-out both;
 }
-.typing-dot:nth-child(1) {
-    animation-delay: -0.32s;
-}
-.typing-dot:nth-child(2) {
-    animation-delay: -0.16s;
-}
-@keyframes typing {
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typing-bounce {
     0%, 80%, 100% {
-        transform: scale(0);
+        transform: scale(0.6);
+        opacity: 0.4;
     }
     40% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Hide default Google map labels and controls */
-.gmnoprint,
-.gm-style-cc,
-.gmnoscreen {
-    display: none !important;
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.map-glow-light {
+    box-shadow: 
+        inset 0 0 60px rgba(37, 99, 235, 0.15),
+        0 0 30px rgba(37, 99, 235, 0.1);
 }
 
-/* Navigation dots: bigger base size and interactive scaling */
-.nav-dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(156, 163, 175, 0.5);
-    border-radius: 50%;
-    margin: 12px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.nav-dot.active {
-    background-color: #2563EB;
-    transform: scale(0.5);
-}
-.nav-dot:hover {
-    transform: scale(1.1);
-    background-color: #2563EB;
+.map-glow-dark {
+    box-shadow: 
+        inset 0 0 60px rgba(37, 99, 235, 0.25),
+        0 0 40px rgba(37, 99, 235, 0.2);
 }
 
-/* Custom map overlay panel replacing Google Maps default overlay.
- * This panel will slide over the map and contains an image header,
- * ratings, buttons and contact information.  It uses flexbox to
- * organize its content and ensures overflow is hidden on smaller
- * screens.  Pointer events are enabled to interact with links and
- * buttons. */
 .map-overlay-panel {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 320px;
-    max-width: 80vw;
-    background-color: rgba(255,255,255,0.9);
-    color: #0c0c0d;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    top: 10%;
+    left: 2%;
+    width: clamp(280px, 25vw, 380px);
+    max-height: 80%;
+    background: var(--color-light-base);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
     overflow: hidden;
     z-index: 20;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-/* Dark mode support */
-.dark .map-overlay-panel {
-    background-color: rgba(0,0,0,0.7);
-    color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Video section overlay to darken the video background */
+.dark .map-overlay-panel {
+    background: var(--color-dark-alt);
+}
+
+/* ============================================
+   LESSONS SECTION
+   ============================================ */
 .lesson-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
     text-align: center;
     padding: 2rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 10;
 }
 
-/* Calendar grid: 7 columns representing days of week */
+/* ============================================
+   CALENDAR GRID
+   ============================================ */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 4px;
 }
-.calendar-cell {
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    text-align: center;
-}
-.calendar-cell.workday {
-    background-color: #ECFDF5;
-    color: #065F46;
-}
-.calendar-cell.offhours {
-    background-color: #FEF3C7;
-    color: #92400E;
-}
-.calendar-cell.holiday {
-    background-color: #FEF2F2;
-    color: #991B1B;
-}
-.calendar-legend {
+
+.calendar-day {
+    aspect-ratio: 1;
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    font-size: 0.8rem;
-}
-.calendar-legend span {
-    display: inline-flex;
     align-items: center;
-    gap: 4px;
-}
-.legend-swatch {
-    width: 14px;
-    height: 14px;
-    border-radius: 2px;
-    display: inline-block;
+    justify-content: center;
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-weight: 500;
 }
 
+.calendar-day:hover:not(.calendar-day-disabled) {
+    background-color: rgba(37, 99, 235, 0.1);
+    transform: scale(1.05);
+}
+
+.calendar-day-today {
+    background-color: var(--color-blue);
+    color: white;
+    font-weight: 700;
+}
+
+.calendar-day-selected {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.calendar-day-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.calendar-day-booked {
+    background-color: var(--color-cardinal);
+    color: white;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-slide {
+        transition: opacity 0.1s ease;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    .nav-glass,
+    #ai-chat-widget,
+    #urgency-btn,
+    #scroll-top-btn,
+    .nav-dot,
+    #cookie-banner {
+        display: none !important;
+    }
+    
+    .sticky-section {
+        position: relative;
+        page-break-inside: avoid;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* ============================================
+   DARK MODE SPECIFIC OVERRIDES
+   ============================================ */
+.dark body {
+    color-scheme: dark;
+}
+
+.dark ::selection {
+    background: var(--color-blue);
+    color: white;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+@media (max-width: 768px) {
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+        margin: 6px 0;
+    }
+    
+    .map-overlay-panel {
+        width: 90%;
+        left: 5%;
+        top: 5%;
+        max-height: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --radius-base: 6px;
+        --radius-lg: 12px;
+    }
+}

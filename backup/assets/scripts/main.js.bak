@@ -1,0 +1,542 @@
+/**
+ * Déboucheur Expert - Main JavaScript Module
+ * Handles navigation, tracking, theming, and core functionality
+ */
+
+// ============================================================================
+// CONFIGURATION
+// ============================================================================
+
+const CONFIG = {
+    apiBase: '/api',
+    autoRotateInterval: 12000,      // 12 seconds
+    pauseDuration: 120000,           // 2 minutes
+    testimonialInterval: 12000,      // 12 seconds
+    overlayRotateInterval: 30000,    // 30 seconds
+    trackingEnabled: true,
+    geminiApiKey: ''                 // Set your API key
+};
+
+// ============================================================================
+// SESSION MANAGEMENT
+// ============================================================================
+
+const Session = {
+    id: null,
+    
+    init() {
+        this.id = localStorage.getItem('sessionId');
+        if (!this.id) {
+            this.id = this.generateId();
+            localStorage.setItem('sessionId', this.id);
+        }
+        return this.id;
+    },
+    
+    generateId() {
+        return 'ses_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    },
+    
+    get() {
+        return this.id || this.init();
+    }
+};
+
+// ============================================================================
+// LANGUAGE MANAGEMENT
+// ============================================================================
+
+let currentLang = localStorage.getItem('language') || 'fr';
+
+const translations = {
+    fr: {
+        nav_services: "SERVICES",
+        nav_answers: "REPONSES",
+        nav_contact: "CONTACT",
+        nav_location: "LOCALISATION",
+        nav_tarifs: "TARIFICATION",
+        nav_calendar: "DISPONIBILITÉS",
+        urgence: "URGENCE 24/7",
+        hero_l1: "BIENVENU CHEZ",
+        hero_l3: "LE DEBOUCHEUR",
+        hero_text: "Avec plus de 15 ans d'expérience en plomberie, 10 ans comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.",
+        btn_rdv: "PRENDRE RENDEZ-VOUS",
+        services_title: "NOS SERVICES",
+        services_sub: "DE PLOMBERIE",
+        srv_urgence: "URGENCE 24/7",
+        srv_urgence_desc: "Intervention rapide. Nuit et jour.",
+        srv_reno: "RÉNOVATION",
+        srv_reno_desc: "Salle de bain, cuisine, tuyauterie neuve.",
+        srv_insp: "INSPECTION",
+        srv_insp_desc: "Caméra HD. Rapport précis.",
+        srv_debouch: "DEBOUCHAGE",
+        srv_debouch_desc: "Égouts, lavabos et toilettes.",
+        exp_title1: "POURQUOI",
+        exp_title2: "CHOISIR NOTRE",
+        exp_title3: "EXPERTISE ?",
+        exp_intro: "Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.",
+        exp_comp_title: "COMPÉTENCES VARIÉES",
+        exp_comp_text: "Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.",
+        exp_ponc_title: "PONCTUEL ET ASSIDU",
+        exp_ponc_text: "Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.",
+        faq_title: "FOIRE AUX QUESTIONS",
+        faq_q1: "QUELS SONT VOS TARIFS ?",
+        faq_a1: "Contactez-nous pour une estimation gratuite.",
+        faq_q2: "URGENCE DÉBOUCHAGE ?",
+        faq_a2: "Ligne d'urgence 24/7 disponible.",
+        faq_q3: "DÉPLACEMENT SUR LA RIVE-NORD ?",
+        faq_a3: "Principalement Rive-Sud et Montréal.",
+        faq_q4: "GARANTIE SUR LES TRAVAUX ?",
+        faq_a4: "Oui, tous nos travaux sont garantis.",
+        faq_q5: "ACCEPTEZ-VOUS LES CARTES ?",
+        faq_a5: "Oui, crédit, débit et virements acceptés.",
+        contact_send: "ENVOYEZ",
+        contact_info: "INFOS",
+        btn_send: "ENVOYER",
+        testimonials_title: "TÉMOIGNAGES",
+        phone_title: "TELEPHONE",
+        cookie_msg: "En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.",
+        cookie_accept: "Accepter",
+        cookie_learn: "En savoir plus",
+        ped_man: "L'HOMME :",
+        ped_exp: "EXPÉRIENCES :",
+        ped_bio: "BIOGRAPHIE :",
+        form_required: "Veuillez remplir tous les champs obligatoires.",
+        form_sending: "Envoi en cours…",
+        form_success: "Merci ! Votre message a été envoyé.",
+        form_error: "Erreur : impossible d'envoyer. Réessayez plus tard."
+    },
+    en: {
+        nav_services: "SERVICES",
+        nav_answers: "ANSWERS",
+        nav_contact: "CONTACT",
+        nav_location: "LOCATION",
+        nav_tarifs: "PRICING",
+        nav_calendar: "AVAILABILITY",
+        urgence: "EMERGENCY 24/7",
+        hero_l1: "WELCOME TO",
+        hero_l3: "THE UNCLOGGER",
+        hero_text: "With over 15 years of plumbing experience, 10 years as a journeyman. Billy St-Hilaire is at your service with guaranteed satisfaction.",
+        btn_rdv: "BOOK APPOINTMENT",
+        services_title: "OUR SERVICES",
+        services_sub: "PLUMBING",
+        srv_urgence: "EMERGENCY 24/7",
+        srv_urgence_desc: "Quick intervention. Day and night.",
+        srv_reno: "RENOVATION",
+        srv_reno_desc: "Bathroom, kitchen, new piping.",
+        srv_insp: "INSPECTION",
+        srv_insp_desc: "HD Camera. Detailed report.",
+        srv_debouch: "UNCLOGGING",
+        srv_debouch_desc: "Sewers, sinks and toilets.",
+        exp_title1: "WHY",
+        exp_title2: "CHOOSE OUR",
+        exp_title3: "EXPERTISE ?",
+        exp_intro: "With Billy St-Hilaire, traditional know-how and modern technologies are combined.",
+        exp_comp_title: "VARIED SKILLS",
+        exp_comp_text: "MIG, TIG and SMAW welding. Journeyman Plumber, HVAC Tech. Experience to spare.",
+        exp_ponc_title: "PUNCTUAL AND DEDICATED",
+        exp_ponc_text: "Confirmation call made 24h before. *Late cancellation fees apply.",
+        faq_title: "FREQUENTLY ASKED QUESTIONS",
+        faq_q1: "WHAT ARE YOUR RATES?",
+        faq_a1: "Contact us for a free estimate.",
+        faq_q2: "UNCLOGGING EMERGENCY?",
+        faq_a2: "24/7 emergency line available.",
+        faq_q3: "DO YOU SERVICE NORTH SHORE?",
+        faq_a3: "Mainly South Shore and Montreal.",
+        faq_q4: "WARRANTY ON WORK?",
+        faq_a4: "Yes, all our work is guaranteed.",
+        faq_q5: "DO YOU ACCEPT CARDS?",
+        faq_a5: "Yes, credit, debit and transfers accepted.",
+        contact_send: "SEND",
+        contact_info: "INFO",
+        btn_send: "SEND",
+        testimonials_title: "TESTIMONIALS",
+        phone_title: "PHONE",
+        cookie_msg: "By continuing to browse, you accept the use of cookies to improve your experience.",
+        cookie_accept: "Accept",
+        cookie_learn: "Learn more",
+        ped_man: "THE MAN:",
+        ped_exp: "EXPERIENCE:",
+        ped_bio: "BIOGRAPHY:",
+        form_required: "Please fill in all required fields.",
+        form_sending: "Sending…",
+        form_success: "Thank you! Your message has been sent.",
+        form_error: "Error: could not send. Please try again later."
+    }
+};
+
+function toggleLanguage() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    applyTranslations();
+    localStorage.setItem('language', currentLang);
+    
+    const langDisplay = document.getElementById('lang-display');
+    if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    
+    trackEvent('language_change', { language: currentLang });
+}
+
+function applyTranslations() {
+    document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (translations[currentLang][key]) {
+            el.innerText = translations[currentLang][key];
+        }
+    });
+}
+
+function t(key) {
+    return translations[currentLang][key] || key;
+}
+
+// ============================================================================
+// THEME MANAGEMENT
+// ============================================================================
+
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    trackEvent('theme_change', { theme: isDark ? 'dark' : 'light' });
+}
+
+function initTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+    } else if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.classList.remove('dark');
+    }
+}
+
+// ============================================================================
+// TRACKING
+// ============================================================================
+
+async function trackEvent(eventType, data = {}) {
+    if (!CONFIG.trackingEnabled) return;
+    
+    try {
+        const payload = {
+            sessionId: Session.get(),
+            eventType,
+            pageUrl: window.location.href,
+            ...data
+        };
+        
+        await fetch(`${CONFIG.apiBase}/event.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+    } catch (e) {
+        console.debug('Tracking error:', e);
+    }
+}
+
+async function trackPageView() {
+    try {
+        const data = {
+            sessionId: Session.get(),
+            page: window.location.pathname,
+            referrer: document.referrer,
+            screenWidth: window.innerWidth,
+            screenHeight: window.innerHeight,
+            language: currentLang,
+            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        };
+        
+        await fetch(`${CONFIG.apiBase}/track.php`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    } catch (e) {
+        console.debug('Page view tracking error:', e);
+    }
+}
+
+// ============================================================================
+// FORM HANDLING
+// ============================================================================
+
+function saveCache(key, value) {
+    localStorage.setItem(key, value);
+}
+
+function restoreFormCache() {
+    const fields = ['fname', 'lname', 'email', 'phone', 'msg'];
+    fields.forEach(f => {
+        const val = localStorage.getItem(f);
+        const el = document.getElementById(f);
+        if (val && el) el.value = val;
+    });
+}
+
+async function submitContact() {
+    const fname = document.getElementById('fname')?.value.trim();
+    const lname = document.getElementById('lname')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const phone = document.getElementById('phone')?.value.trim();
+    const msg = document.getElementById('msg')?.value.trim();
+    const statusDiv = document.getElementById('contact-status');
+    
+    if (!statusDiv) return;
+    
+    statusDiv.className = 'text-xs md:text-sm font-bold mt-2';
+    
+    if (!fname || !lname || !email || !msg) {
+        statusDiv.classList.remove('hidden');
+        statusDiv.classList.add('text-red-600');
+        statusDiv.innerText = t('form_required');
+        return;
+    }
+    
+    statusDiv.classList.remove('hidden');
+    statusDiv.classList.add('text-websiteBlue');
+    statusDiv.innerText = t('form_sending');
+    
+    trackEvent('form_submit', { formId: 'contact' });
+    
+    try {
+        const formData = new FormData();
+        formData.append('fname', fname);
+        formData.append('lname', lname);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('msg', msg);
+        formData.append('lang', currentLang);
+        formData.append('env', 'prod');
+        
+        const fileInput = document.getElementById('attachment');
+        if (fileInput?.files?.length > 0) {
+            formData.append('attachment', fileInput.files[0]);
+        }
+        
+        const res = await fetch(`${CONFIG.apiBase}/contact.php`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await res.json();
+        
+        if (data?.status === 'ok') {
+            statusDiv.classList.remove('text-websiteBlue');
+            statusDiv.classList.add('text-green-600');
+            statusDiv.innerText = t('form_success');
+            
+            ['fname', 'lname', 'email', 'phone', 'msg'].forEach(key => {
+                localStorage.removeItem(key);
+                const el = document.getElementById(key);
+                if (el) el.value = '';
+            });
+            
+            if (fileInput) fileInput.value = '';
+        } else {
+            throw new Error('Bad response');
+        }
+    } catch (err) {
+        statusDiv.classList.remove('text-websiteBlue');
+        statusDiv.classList.add('text-red-600');
+        statusDiv.innerText = t('form_error');
+    }
+}
+
+// ============================================================================
+// NAVIGATION
+// ============================================================================
+
+let autoRotateTimer = null;
+let isPaused = false;
+let currentSectionIndex = 0;
+
+function scrollToSection(index) {
+    const h = window.innerHeight;
+    window.scrollTo({ top: index * h, behavior: 'smooth' });
+    currentSectionIndex = index;
+    
+    // Pause auto-rotation for 2 minutes when user clicks
+    pauseAutoRotate();
+}
+
+function pauseAutoRotate() {
+    isPaused = true;
+    clearInterval(autoRotateTimer);
+    
+    setTimeout(() => {
+        isPaused = false;
+        startAutoRotate();
+    }, CONFIG.pauseDuration);
+}
+
+function startAutoRotate() {
+    if (isPaused) return;
+    
+    clearInterval(autoRotateTimer);
+    autoRotateTimer = setInterval(() => {
+        if (!isPaused) {
+            currentSectionIndex = (currentSectionIndex + 1) % 8;
+            scrollToSection(currentSectionIndex);
+        }
+    }, CONFIG.autoRotateInterval);
+}
+
+function updateNavDots() {
+    const scrollPos = window.scrollY;
+    const h = window.innerHeight;
+    const dots = document.querySelectorAll('.nav-dot');
+    
+    dots.forEach(d => d.classList.remove('active'));
+    
+    const activeIndex = Math.round(scrollPos / h);
+    if (dots[activeIndex]) {
+        dots[activeIndex].classList.add('active');
+        currentSectionIndex = activeIndex;
+    }
+}
+
+// ============================================================================
+// MOBILE MENU
+// ============================================================================
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) menu.classList.toggle('hidden');
+}
+
+// ============================================================================
+// DROPDOWN MENU
+// ============================================================================
+
+function toggleDropdownMenu() {
+    const dropdown = document.getElementById('dropdown-menu');
+    if (!dropdown) return;
+    
+    dropdown.classList.toggle('dropdown-open');
+    trackEvent('dropdown_toggle', { open: dropdown.classList.contains('dropdown-open') });
+}
+
+// ============================================================================
+// ACCORDION
+// ============================================================================
+
+function toggleAccordion(btn) {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector('.rotate-icon');
+    
+    content.classList.toggle('open');
+    icon?.classList.toggle('active');
+    
+    trackEvent('accordion_toggle', { 
+        question: btn.querySelector('[data-translate]')?.getAttribute('data-translate') 
+    });
+}
+
+// ============================================================================
+// CONTACT SLIDER (Mobile)
+// ============================================================================
+
+function slideContact(index) {
+    const track = document.getElementById('contact-slider-track');
+    if (track) {
+        track.style.transform = index === 1 ? 'translateX(-50%)' : 'translateX(0%)';
+    }
+}
+
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    Session.init();
+    initTheme();
+    restoreFormCache();
+    applyTranslations();
+    trackPageView();
+    
+    // Update language display
+    const langDisplay = document.getElementById('lang-display');
+    if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    
+    // Start auto-rotation for sticky sections
+    startAutoRotate();
+    
+    // Scroll event handlers
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY;
+        const navbar = document.getElementById('navbar');
+        
+        // Navbar hide/show
+        if (navbar) {
+            if (scrollPos > lastScrollY && scrollPos > 100) {
+                navbar.style.transform = 'translateY(-40vh)';
+            } else if (scrollPos < lastScrollY - 15 || scrollPos < 50) {
+                navbar.style.transform = 'translateY(0)';
+            }
+        }
+        
+        lastScrollY = scrollPos;
+        updateNavDots();
+        
+        // Update scroll progress bar
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) {
+            const doc = document.documentElement;
+            const scrollHeight = doc.scrollHeight - doc.clientHeight;
+            const progress = scrollHeight > 0 ? (scrollPos / scrollHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }
+    });
+    
+    // Scroll to top button
+    const scrollBtn = document.getElementById('scroll-top-btn');
+    if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > window.innerHeight) {
+                scrollBtn.classList.remove('hidden');
+            } else {
+                scrollBtn.classList.add('hidden');
+            }
+        });
+        
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    // Track clicks on important elements
+    document.querySelectorAll('a[href^="tel:"]').forEach(el => {
+        el.addEventListener('click', () => trackEvent('phone_click', { phone: el.href }));
+    });
+    
+    document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+        el.addEventListener('click', () => trackEvent('email_click', { email: el.href }));
+    });
+});
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .catch(err => console.warn('SW registration failed:', err));
+    });
+}
+
+// Export for global access
+window.DeboucheurApp = {
+    toggleLanguage,
+    toggleTheme,
+    toggleMobileMenu,
+    toggleDropdownMenu,
+    toggleAccordion,
+    scrollToSection,
+    slideContact,
+    submitContact,
+    saveCache,
+    trackEvent,
+    t,
+    currentLang: () => currentLang
+};

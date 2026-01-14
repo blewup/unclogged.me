@@ -1,0 +1,48 @@
+/*
+ * Custom styles for the conditions page.  These classes replicate the
+ * blur navigation bar and card effects from the original inline CSS.
+ * See style_01.css for further explanation.  This file is intentionally
+ * simple as Tailwind handles most layout and colour concerns.
+ */
+
+@font-face {
+    font-family: 'Black Ops One';
+    src: url('../fonts/BlackOps.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('../fonts/PlusJakartaSans.ttf') format('truetype');
+}
+.glass-nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease-in-out;
+}
+.radius-override {
+    border-radius: 15px !important;
+}
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/*
+ * Typography enhancements
+ *
+ * Provide default font families across this page to utilise our expanded
+ * font repertoire. Body text uses Inter with Plus Jakarta Sans fallback,
+ * headings use Playfair Display and Merriweather, while monospace text
+ * employs JetBrains Mono.
+ */
+body {
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Merriweather', serif;
+}
+pre, code {
+    font-family: 'JetBrains Mono', monospace;
+}
