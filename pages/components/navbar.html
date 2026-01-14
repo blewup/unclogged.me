@@ -1,0 +1,199 @@
+<!--
+    NAVBAR COMPONENT - Déboucheur Expert
+    Include this in all pages using: <div id="navbar-container"></div>
+    Then load with: loadComponent('navbar-container', 'components/navbar.html')
+    
+    For index.html use: loadComponent('navbar-container', 'pages/components/navbar.html')
+-->
+
+<!-- URGENCY BUTTON - Always visible, never hidden with navbar -->
+<a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+    <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span data-translate="urgence">URGENCE 24/7</span>
+</a>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed z-50 rounded-l-xl border-l border-b border-white/10 shadow-2xl nav-glass bg-lightBase/90 dark:bg-darkBase/90 transition-transform duration-300"
+     style="height: 12vh; left: 6vw; top: 2vh; right: 0;">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div class="flex items-center justify-between h-full">
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
+                <a href="#" class="nav-logo flex items-center gap-2 hover:scale-105 transition-transform" onclick="goHome(event)">
+                    <img src="" alt="Logo" class="h-10 w-10 rounded-full nav-logo-img" data-src-index="../assets/images/logo/logo.png" data-src-page="assets/images/logo/logo.png">
+                </a>
+                <a href="#" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_tarifs" data-href-index="pages/prices.html" data-href-page="prices.html">TARIFICATION</a>
+                <a href="#" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_guide" data-href-index="pages/plumbing.html" data-href-page="plumbing.html">GUIDE</a>
+                <a href="#" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_calendar" data-href-index="pages/events.html" data-href-page="events.html">CALENDRIER</a>
+                <a href="#" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_team" data-href-index="pages/team.html" data-href-page="team.html">ÉQUIPE</a>
+                <a href="#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                
+                <!-- Dropdown Trigger -->
+                <div class="relative" id="dropdown-container">
+                    <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all flex items-center gap-2">
+                        <span data-translate="nav_more">PLUS</span>
+                        <svg class="w-4 h-4 dropdown-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="dropdown-menu" class="absolute top-full right-0 mt-2 w-[20vw] min-w-[200px] bg-lightBase dark:bg-darkAlt border border-white/10 rounded-xl shadow-2xl overflow-hidden dropdown-closed">
+                        <div class="dropdown-content py-2">
+                            <a href="#" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all" data-href-index="pages/team.html" data-href-page="team.html">ÉQUIPE</a>
+                            <a href="#" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all" data-href-index="pages/tools.html" data-href-page="tools.html">OUTILS</a>
+                            <a href="#" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all" data-href-index="pages/politics.html" data-href-page="politics.html">CONFIDENTIALITÉ</a>
+                            <a href="#" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all" data-href-index="pages/conditions.html" data-href-page="conditions.html">CONDITIONS</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                            <a href="#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">
+                                <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>LOCALISATION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Theme and Language Toggles -->
+            <div class="flex flex-col items-center justify-center space-y-2 ml-4 shrink-0">
+                <button onclick="toggleTheme()" class="hover:scale-110 transition-transform" aria-label="Toggle theme">
+                    <svg class="w-5 h-5 text-yellow-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+                    <svg class="w-5 h-5 text-purple-600 block dark:hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                </button>
+                <button onclick="toggleLanguage()" class="text-gray-600 dark:text-white font-ops text-xs hover:scale-110 transition-transform">
+                    <span id="lang-display">EN</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center ml-4">
+                <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-websiteBlue focus:outline-none" aria-label="Toggle mobile menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="#" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue" data-href-index="pages/prices.html" data-href-page="prices.html">TARIFICATION</a>
+            <a href="#" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue" data-href-index="pages/plumbing.html" data-href-page="plumbing.html">GUIDE</a>
+            <a href="#" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue" data-href-index="pages/events.html" data-href-page="events.html">CALENDRIER</a>
+            <a href="#contact" class="font-ops text-websiteBlue block px-3 py-2 text-lg">CONTACT</a>
+            <a href="#" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue" data-href-index="pages/team.html" data-href-page="team.html">ÉQUIPE</a>
+            <a href="#" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue" data-href-index="pages/tools.html" data-href-page="tools.html">OUTILS</a>
+            <a href="#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">LOCALISATION</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+// Initialize navbar links based on context (index vs subpage)
+(function initNavbarLinks() {
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const prefix = isIndex ? 'data-href-index' : 'data-href-page';
+    const imgPrefix = isIndex ? 'data-src-index' : 'data-src-page';
+    
+    // Update all navigation links
+    document.querySelectorAll('[data-href-index]').forEach(link => {
+        const href = link.getAttribute(prefix);
+        if (href) link.href = href;
+    });
+    
+    // Update logo image
+    document.querySelectorAll('[data-src-index]').forEach(img => {
+        const src = img.getAttribute(imgPrefix);
+        if (src) img.src = src;
+    });
+})();
+
+// Navigate home
+function goHome(e) {
+    e.preventDefault();
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    window.location.href = isIndex ? 'index.html' : '../index.html';
+}
+
+// Dropdown toggle
+function toggleDropdown() {
+    const menu = document.getElementById('dropdown-menu');
+    const icon = document.querySelector('.dropdown-icon');
+    if (menu) {
+        menu.classList.toggle('dropdown-closed');
+        menu.classList.toggle('dropdown-open');
+    }
+    if (icon) icon.classList.toggle('rotate-180');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    const container = document.getElementById('dropdown-container');
+    const menu = document.getElementById('dropdown-menu');
+    if (container && menu && !container.contains(e.target)) {
+        menu.classList.add('dropdown-closed');
+        menu.classList.remove('dropdown-open');
+        document.querySelector('.dropdown-icon')?.classList.remove('rotate-180');
+    }
+});
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) menu.classList.toggle('hidden');
+}
+
+// Theme toggle
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+}
+
+// Language toggle
+let currentLang = localStorage.getItem('language') || 'fr';
+function toggleLanguage() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    // Apply translations if translations object exists
+    if (typeof translations !== 'undefined') {
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                el.innerText = translations[currentLang][key];
+            }
+        });
+    }
+    localStorage.setItem('language', currentLang);
+}
+
+// Initialize theme and language from localStorage
+(function initThemeAndLang() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+    }
+    
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+        currentLang = savedLang;
+        const langDisplay = document.getElementById('lang-display');
+        if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    }
+})();
+
+// Navbar hide/show on scroll (navbar hides, emergency button stays visible)
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY;
+    const navbar = document.getElementById('navbar');
+    
+    if (navbar) {
+        // Hide navbar on scroll down after 100px, show on scroll up
+        if (scrollPos > lastScrollY && scrollPos > 100) {
+            navbar.style.transform = 'translateY(-40vh)';
+        } else if (scrollPos < lastScrollY - 15 || scrollPos < 50) {
+            navbar.style.transform = 'translateY(0)';
+        }
+    }
+    lastScrollY = scrollPos;
+});
+</script>

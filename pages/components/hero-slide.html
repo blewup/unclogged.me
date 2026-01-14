@@ -1,0 +1,87 @@
+<!--
+    HERO SLIDESHOW COMPONENT - Déboucheur Expert
+    This component contains slides 11-16 (last 6 slides) for use in subpages
+    The index.html uses slides 00-05 (first 6 slides) directly in the file
+    
+    Include this in subpages using: <div id="hero-container"></div>
+    Then load with: loadComponent('hero-container', 'components/hero-slide.html')
+-->
+
+<section id="hero" class="sticky-section z-10 relative w-full bg-lightBase dark:bg-darkBase" style="height: 100vh;">
+    <!-- Hero Slideshow with last 6 slides (11-16) -->
+    <div id="hero-slideshow" class="absolute inset-0 z-0">
+        <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_12.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_13.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_14.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_15.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_16.webp')"></div>
+    </div>
+    
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-20 h-full flex flex-col justify-start items-start text-left pt-[14vh] w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%;">
+        <div class="space-y-2 mb-8 mt-10 w-full relative">
+            <h2 class="text-3xl md:text-4xl font-ops text-white text-outline-black" data-translate="hero_l1">BIENVENU CHEZ</h2>
+            <h2 class="text-3xl md:text-5xl font-ops text-blue-600 text-outline-black">BILLY ST-HILAIRE,</h2>
+            <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
+        </div>
+        
+        <p class="font-comic text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
+            Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
+        </p>
+
+        <div class="absolute bottom-[2%] left-[2%] w-auto" style="height: 8%;">
+            <a href="#contact" class="flex items-center justify-center h-full bg-websiteBlue text-white font-ops text-2xl px-8 rounded-full shadow-lg border-2 border-black transform transition-transform hover:scale-110" data-translate="btn_rdv">
+                PRENDRE RENDEZ-VOUS
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+// Hero slideshow animation for subpages
+(function initHeroSlideshow() {
+    const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // Change slide every 5 seconds
+    setInterval(nextSlide, 5000);
+})();
+</script>
+
+<style>
+/* Hero slide styles */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Text outline for readability on image backgrounds */
+.text-outline-black {
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        2px 2px 4px rgba(0,0,0,0.5);
+}
+</style>

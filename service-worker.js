@@ -39,7 +39,7 @@ const PRECACHE_URLS = [
   './assets/images/location/lord_logo.webp',
   './assets/images/location/apt_logo.webp',
   './offline.html',
-  './pages/tarification.html'
+  './pages/prices.html'
 ];
 
 self.addEventListener('install', event => {

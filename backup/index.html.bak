@@ -1,0 +1,1046 @@
+            
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- User Cache Meta Data (Simulation) -->
+    <meta name="user-cache-control" content="store-all">
+    <meta name="server-log" content="conscent.php">
+    
+    <!-- Search‑engine description updated with our full service offer. -->
+    <meta name="description" content="Anything related to residential plumbing service calls: unclogging blocked drains, fixing leaking pipes, or troubleshooting why you ran out of water. Most issues are solved on the first visit, however some tasks (like main valve replacement) require the city to intervene and a certified master plumber. No new construction: only a certified master plumber or journeyman working for a master can handle permitting and insurance matters.">
+    <!-- Page title follows our brand naming convention -->
+    <title>Déboucheur Expert (unclogged.me)</title>
+
+    <!-- Favicons -->
+    <link href="assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="assets/images/logo/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+    <link href="assets/images/logo/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+    <link href="assets/images/logo/favicon-48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+    <link href="assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link href="assets/images/logo/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+    <link href="assets/images/logo/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+    <meta id="msapplication-TileColor" name="msapplication-TileColor"/>
+    <meta content="assets/images/logo/mstile-150x150.png" name="msapplication-TileImage"/>
+    <!-- PWA Manifest & Preloads -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Preload hero images to improve first paint -->
+    <link rel="preload" as="image" href="assets/images/slide/slide_00.webp">
+    <link rel="preload" as="image" href="assets/images/slide/slide_01.webp">
+    <link rel="preload" as="image" href="assets/images/slide/slide_02.webp">
+    <link rel="preload" as="image" href="assets/images/slide/slide_03.webp">
+    <link rel="preload" as="image" href="assets/images/slide/slide_04.webp">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Preconnect to font providers for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Import additional font families for enhanced typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Comic+Sans+MS&family=Impact&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        comic: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Use external stylesheet for main styles -->
+    <link rel="stylesheet" href="assets/styles/style_00.css">
+
+    <!-- Structured data for search engines describing our plumbing business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo_01.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_00.webp",
+      "telephone": "+1-514-972-2078",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 relative font-comic transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Scroll progress bar shows how much of the page has been viewed -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-websiteBlue z-[1000] transition-all ease-linear" style="width:0;"></div>
+
+    <!-- NAVIGATION DOTS (Right Center) -->
+    <div class="fixed right-[2%] top-1/2 transform -translate-y-1/2 z-[100] flex flex-col items-center">
+        <!-- 8 Dots for 8 Sections (hero, services, expertise, FAQ, contact, temoignages, lessons, map) -->
+        <div class="nav-dot active" onclick="scrollToSection(0, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(3, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(4, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(5, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(6, true)"></div>
+        <div class="nav-dot" onclick="scrollToSection(7, true)"></div>
+    </div>
+
+    <!-- URGENCY BUTTON -->
+    <a href="tel:+15149722078" id="urgency-btn" class="fixed top-[13vh] right-4 z-[60] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+        <i class="fas fa-phone-alt animate-pulse"></i> 
+        <span data-translate="urgence">URGENCE 24/7</span>
+    </a>
+
+    <!-- L'APPRENTI BUTTON -->
+    <button onclick="toggleChat()" class="fixed bottom-[2%] right-[2%] z-[70] bg-websiteBlue hover:bg-blue-600 text-white rounded-full shadow-2xl p-0 transition-transform hover:scale-110 border-2 border-white animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
+        <img src="assets/images/logo/logo.png" alt="L'Apprenti" class="w-full h-full object-cover">
+    </button>
+
+    <!-- AI CHAT WIDGET -->
+    <div id="ai-chat-widget" class="fixed bottom-[12%] right-[5%] z-[80] w-80 md:w-96 bg-gray-900 border border-gray-700 box-radius shadow-2xl overflow-hidden flex flex-col hidden-widget" style="height: 500px; max-height: 70vh;">
+        <div class="bg-websiteBlue p-4 flex justify-between items-center border-b border-blue-600">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-robot text-white text-xl"></i>
+                <div>
+                    <h4 class="font-ops text-white text-sm">Apprenti Deboucheur</h4>
+                    <p class="text-xs text-blue-100">Assistant IA & Diagnostic</p>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="text-white hover:text-gray-200"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-messages" class="flex-grow overflow-y-auto p-4 flex flex-col gap-2 bg-gray-800 scrollbar-thin">
+            <div class="ai-msg">Bonjour! Je suis l'assistant virtuel de Billy. Je peux répondre à vos questions ou analyser une photo de votre problème de plomberie! 🛠️📸</div>
+        </div>
+        <div class="p-3 bg-gray-900 border-t border-gray-700">
+            <div class="flex items-center gap-2 mb-2">
+                <label for="image-upload" class="cursor-pointer text-gray-400 hover:text-websiteBlue transition p-2"><i class="fas fa-camera text-xl"></i></label>
+                <input type="file" id="image-upload" accept="image/*" class="hidden" onchange="handleImageUpload(this)">
+                <span id="file-name" class="text-xs text-gray-500 truncate max-w-[100px]"></span>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-websiteBlue outline-none" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="bg-websiteBlue hover:bg-blue-600 text-white p-2 box-radius transition"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR (Updated with page links and dropdown) -->
+    <nav id="navbar" class="fixed z-50 rounded-l-xl border-l border-b border-white/10 shadow-2xl nav-glass bg-lightBase/90 dark:bg-darkBase/90 transition-transform duration-300"
+         style="height: 12vh; left: 6vw; top: 2vh; right: 0;">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div class="flex items-center justify-between h-full">
+                <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
+                    <a href="pages/tarification.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                    <a href="pages/plomberie.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
+                    <a href="pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
+                    <a href="#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                    <!-- Dropdown Trigger -->
+                    <div class="relative" id="dropdown-container">
+                        <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all flex items-center gap-2">
+                            <span data-translate="nav_more">PLUS</span>
+                            <i class="fas fa-chevron-down text-sm dropdown-icon transition-transform"></i>
+                        </button>
+                        <!-- Dropdown Menu with carpet-unroll animation -->
+                        <div id="dropdown-menu" class="absolute top-full right-0 mt-2 w-[20vw] min-w-[200px] bg-lightBase dark:bg-darkAlt border border-white/10 rounded-xl shadow-2xl overflow-hidden dropdown-closed">
+                            <div class="dropdown-content py-2">
+                                <a href="pages/equipe.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">ÉQUIPE</a>
+                                <a href="pages/tools.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">OUTILS</a>
+                                <a href="pages/politiques.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONFIDENTIALITÉ</a>
+                                <a href="pages/conditions.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONDITIONS</a>
+                                <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                                <a href="#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all"><i class="fas fa-map-marker-alt mr-2"></i>LOCALISATION</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2 ml-4 shrink-0">
+                    <button onclick="toggleTheme()" class="hover:scale-110 transition-transform">
+                        <i class="fas fa-sun text-yellow-400 text-lg hidden dark:block"></i>
+                        <i class="fas fa-moon text-purple-600 text-lg block dark:hidden"></i>
+                    </button>
+                    <button onclick="toggleLanguage()" class="text-gray-600 dark:text-white font-ops text-xs hover:scale-110 transition-transform">
+                        <span id="lang-display">EN</span>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center ml-4">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-websiteBlue focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="pages/tarification.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">TARIFICATION</a>
+                <a href="pages/plomberie.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">GUIDE</a>
+                <a href="pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">CALENDRIER</a>
+                <a href="#contact" class="font-ops text-websiteBlue block px-3 py-2 text-lg">CONTACT</a>
+                <a href="pages/equipe.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">ÉQUIPE</a>
+                <a href="pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">OUTILS</a>
+                <a href="#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">LOCALISATION</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="sticky-section z-10 relative w-full bg-lightBase dark:bg-darkBase">
+        <div id="hero-slideshow" class="absolute inset-0 z-0">
+            <div class="hero-slide active" style="background-image: url('assets/images/slide/slide_00.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_01.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_02.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_03.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_04.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_05.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_06.webp')"></div>
+            <!-- Added extra slides for extended header visual variety -->
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_07.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_08.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_09.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_10.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_11.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_12.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_13.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_14.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_15.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/slide/slide_16.webp')"></div>
+        </div>
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+        <div class="relative z-20 h-full flex flex-col justify-start items-start text-left pt-[14vh] w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%;">
+            <div class="space-y-2 mb-8 mt-10 w-full relative">
+                <h2 class="text-3xl md:text-4xl font-ops text-white text-outline-black" data-translate="hero_l1">BIENVENU CHEZ</h2>
+                <h2 class="text-3xl md:text-5xl font-ops text-blue-600 text-outline-black">BILLY ST-HILAIRE,</h2>
+                <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
+            </div>
+            
+            <p class="font-comic text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
+                Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
+            </p>
+
+            <div class="absolute bottom-[2%] left-[2%] w-auto" style="height: 8%;">
+                <a href="#contact" class="flex items-center justify-center h-full bg-websiteBlue hover:bg-blue-700 text-white font-ops text-2xl px-8 rounded-full shadow-lg border-2 border-black transform hover:scale-105 transition-all" data-translate="btn_rdv">
+                    PRENDRE RENDEZ-VOUS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SERVICES -->
+    <section id="services" class="sticky-section z-20 bg-lightAlt dark:bg-darkAlt transition-colors flex flex-col justify-center">
+        <div class="w-full h-full flex flex-col justify-center px-4 md:px-8">
+            <div class="text-center mb-8 h-[15vh] flex flex-col justify-center shrink-0">
+                <h2 class="text-4xl md:text-5xl font-ops text-gray-900 dark:text-white mb-0">
+                    <span data-translate="services_title">NOS SERVICES</span> <span class="text-websiteBlue" data-translate="services_sub">DE PLOMBERIE</span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-2 grid-rows-2 gap-4 w-full h-[75vh]">
+                <div class="service-card p-[2%] m-[2%] flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_00.webp');">
+                    <i class="fas fa-exclamation-triangle text-4xl text-cardinal mb-2"></i>
+                    <h3 class="font-ops text-xl md:text-3xl text-gray-900 dark:text-white mb-2" data-translate="srv_urgence">URGENCE 24/7</h3>
+                    <p class="font-comic text-xs md:text-lg text-gray-600 dark:text-gray-300" data-translate="srv_urgence_desc">Intervention rapide. Nuit et jour.</p>
+                </div>
+                <div class="service-card p-[2%] m-[2%] flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_01.webp');">
+                    <i class="fas fa-tools text-4xl text-websiteBlue mb-2"></i>
+                    <h3 class="font-ops text-xl md:text-3xl text-gray-900 dark:text-white mb-2" data-translate="srv_reno">RÉNOVATION</h3>
+                    <p class="font-comic text-xs md:text-lg text-gray-600 dark:text-gray-300" data-translate="srv_reno_desc">Salle de bain, cuisine, tuyauterie neuve.</p>
+                </div>
+                <div class="service-card p-[2%] m-[2%] flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_02.webp');">
+                    <i class="fas fa-search text-4xl text-yellow-500 mb-2"></i>
+                    <h3 class="font-ops text-xl md:text-3xl text-gray-900 dark:text-white mb-2" data-translate="srv_insp">INSPECTION</h3>
+                    <p class="font-comic text-xs md:text-lg text-gray-600 dark:text-gray-300" data-translate="srv_insp_desc">Caméra HD. Rapport précis.</p>
+                </div>
+                <div class="service-card p-[2%] m-[2%] flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_03.webp');">
+                    <i class="fas fa-toilet text-4xl text-deboucheurGreen mb-2"></i>
+                    <h3 class="font-ops text-xl md:text-3xl text-gray-900 dark:text-white mb-2" data-translate="srv_debouch">DEBOUCHAGE</h3>
+                    <p class="font-comic text-xs md:text-lg text-gray-600 dark:text-gray-300" data-translate="srv_debouch_desc">Égouts, lavabos et toilettes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. EXPERTISE -->
+    <section id="expertise" class="sticky-section z-30 bg-lightBase dark:bg-darkBase transition-colors flex items-center relative" style="height: 100vh;">
+        <div class="absolute top-[-2vh] bottom-[-2vh] left-0 right-0 bg-lightBase dark:bg-darkBase z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="flex flex-col md:flex-row items-stretch gap-8 h-full py-10">
+                <div class="md:w-1/3 flex-shrink-0 hidden md:block box-radius shadow-2xl border-4 border-gray-800 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); height: 80vh;"></div>
+                <div class="md:w-2/3 space-y-6 flex flex-col justify-center">
+                    <h2 class="text-4xl md:text-5xl font-ops text-gray-900 dark:text-white leading-none">
+                        <span data-translate="exp_title1">POURQUOI</span><br>
+                        <span data-translate="exp_title2">CHOISIR NOTRE</span><br>
+                        <span class="text-websiteBlue" data-translate="exp_title3">EXPERTISE ?</span>
+                    </h2>
+                    <p class="font-comic text-lg text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="exp_intro">Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.</p>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="border-l-4 border-cardinal pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_comp_title">COMPÉTENCES VARIÉES</h4><p class="font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="exp_comp_text">Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.</p></div>
+                        <div class="border-l-4 border-websiteBlue pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_ponc_title">PONCTUEL ET ASSIDU</h4><p class="font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="exp_ponc_text">Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FAQ -->
+    <section id="faq" class="sticky-section z-40 bg-lightAlt dark:bg-darkAlt transition-colors flex flex-col justify-center h-screen">
+        <div class="max-w-4xl mx-auto px-4 w-full">
+            <h3 class="text-3xl font-ops text-center text-gray-900 dark:text-white mb-8 pt-[2vh]" data-translate="faq_title">FOIRE AUX QUESTIONS</h3>
+            <div class="space-y-3 overflow-y-auto max-h-[80vh] scrollbar-thin p-2">
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-lg text-gray-900 dark:text-white" data-translate="faq_q1">QUELS SONT VOS TARIFS ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-6 py-4 font-comic text-gray-600 dark:text-gray-300" data-translate="faq_a1">Contactez-nous pour une estimation gratuite.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-lg text-gray-900 dark:text-white" data-translate="faq_q2">URGENCE DÉBOUCHAGE ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-6 py-4 font-comic text-gray-600 dark:text-gray-300" data-translate="faq_a2">Ligne d'urgence 24/7 disponible.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-lg text-gray-900 dark:text-white" data-translate="faq_q3">DÉPLACEMENT SUR LA RIVE-NORD ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-6 py-4 font-comic text-gray-600 dark:text-gray-300" data-translate="faq_a3">Principalement Rive-Sud et Montréal.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-lg text-gray-900 dark:text-white" data-translate="faq_q4">GARANTIE SUR LES TRAVAUX ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-6 py-4 font-comic text-gray-600 dark:text-gray-300" data-translate="faq_a4">Oui, tous nos travaux sont garantis.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-lg text-gray-900 dark:text-white" data-translate="faq_q5">ACCEPTEZ-VOUS LES CARTES ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-6 py-4 font-comic text-gray-600 dark:text-gray-300" data-translate="faq_a5">Oui, crédit, débit et virements acceptés.</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRAPPER 5-8 -->
+    <div class="relative z-50 bg-lightBase dark:bg-darkBase">
+        
+        <!-- 5. CONTACT (100vh) - Raised 2% higher, bg opacity 0.15 + blur -->
+        <section id="contact" class="sticky-section relative w-full overflow-hidden bg-cover bg-fixed bg-center" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); height: 100vh;">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 w-full h-full flex flex-col justify-center py-[2vh]">
+                <div class="w-full md:max-w-7xl md:mx-auto md:px-4 h-[96vh]">
+                    <div id="contact-slider-track" class="contact-slider flex w-[200vw] md:w-full md:grid md:grid-cols-2 md:gap-8 items-start h-full pt-10" style="transform: translateY(-4%);"> <!-- Raised 2% more than previous (-2%) = -4% approx, or just ensure visually higher -->
+                        
+                        <!-- Left: Form -->
+                        <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
+                            <!-- bg-white/15 = opacity 0.15 -->
+                            <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
+                                <h3 class="text-2xl font-ops mb-4 flex items-center gap-3 text-websiteBlue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_send"><i class="fas fa-paper-plane"></i> ENVOYEZ</h3>
+                                <form class="space-y-3 flex-grow flex flex-col">
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <input type="text" id="fname" placeholder="Prénom" oninput="saveCache('fname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                        <input type="text" id="lname" placeholder="Nom" oninput="saveCache('lname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                    </div>
+                                    <input type="email" id="email" placeholder="Email" oninput="saveCache('email', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                    <input type="tel" id="phone" placeholder="(###)###-####" oninput="saveCache('phone', this.value); formatPhone(this); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                    <textarea id="msg" placeholder="Message" oninput="saveCache('msg', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full flex-grow bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold"></textarea>
+                                    <!-- File input for optional attachment -->
+                                    <input type="file" id="attachment" accept=".png,.jpg,.jpeg,.webp,.avif" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold file:mr-2 file:px-4 file:py-2 file:border-0 file:bg-websiteBlue file:text-white file:rounded-full">
+                                    <button id="contact-submit" type="button" class="w-full bg-websiteBlue hover:bg-blue-700 text-white font-ops text-xl py-3 box-radius shadow-lg" data-translate="btn_send" onclick="submitContact()">ENVOYER</button>
+                                    <div id="contact-status" class="hidden text-xs md:text-sm font-bold mt-2"></div>
+                                </form>
+                            </div>
+                            <button onclick="slideContact(1)" class="md:hidden absolute top-1/2 right-2 z-50 w-12 h-12 bg-websiteBlue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+
+                        <!-- Right: Infos -->
+                        <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
+                            <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
+                                <h3 class="text-2xl font-ops mb-6 flex items-center gap-3 text-websiteBlue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_info"><i class="fas fa-address-card"></i> INFOS</h3>
+                                <div class="space-y-6 font-comic dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
+                                    <div><h4 class="font-ops text-sm uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4><p class="text-xs">Billy St-Hilaire, 35 ans,</p><p class="text-xs">Diplômé de l'École des Métiers,</p><p class="text-xs">de la Construction de Montréal,</p></div>
+                                    <div><h4 class="font-ops text-sm uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4><p class="text-xs">10 ans pour le groupe Centco inc,</p><p class="text-xs">Contrats multiples avec le local 144,</p><p class="text-xs">Fier supporteur et employé de</p><p class="text-xs">Plomberie Martin Boisvert enr.</p></div>
+                                    <div><h4 class="font-ops text-sm uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4><p class="text-xs">Toujours actif pour répondre aux</p><p class="text-xs">diverses appels de services.</p><p class="text-xs">Que ce soit pour changer une valve</p><p class="text-xs">ou réparer un tuyau qui coule.</p><p class="text-xs">Le déboucheur sait s'y prendre.</p><p class="text-[10px] mt-1 font-bold italic">*Aucune construction neuve</p></div>
+                                </div>
+                            </div>
+                            <button onclick="slideContact(0)" class="md:hidden absolute top-1/2 left-2 z-50 w-12 h-12 bg-websiteBlue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TEMOIGNAGES (100vh, 60vh box) -->
+        <section id="temoignages" class="h-screen flex flex-col justify-center bg-lightAlt dark:bg-darkAlt overflow-hidden relative">
+            <h2 class="text-4xl font-ops text-center text-gray-900 dark:text-white mb-8" data-translate="testimonials_title">TÉMOIGNAGES</h2>
+            <div class="relative w-full h-[70vh]"> 
+                <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out h-full items-center pl-4">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+            <div id="testimonial-dots" class="flex justify-center gap-2 pb-8"></div>
+        </section>
+
+        <!-- 7. LESSONS SECTION (Video background) -->
+        <section id="lessons" class="sticky-section relative w-full overflow-hidden bg-black text-white">
+            <!-- Video fills the entire section and plays silently in a loop.  It will start once the user reaches this section. -->
+            <video id="lesson-video" class="absolute inset-0 w-full h-full object-cover" src="assets/videos/video_00.mp4" muted loop playsinline preload="metadata"></video>
+            <!-- Semi-transparent overlay with call‑to‑action -->
+            <div class="lesson-overlay">
+                <h2 class="text-4xl md:text-6xl font-ops mb-4">Leçons&nbsp;Interactives</h2>
+                <p class="max-w-xl mb-6 text-lg md:text-xl">Découvrez des conseils pratiques de plomberie avec Billy et apprenez à mieux comprendre votre système de drainage. Cette vidéo boucle toutes les 40&nbsp;secondes.</p>
+                <button onclick="scrollToSection(7)" class="bg-websiteBlue hover:bg-blue-700 px-8 py-3 font-ops text-lg rounded-full border-2 border-black shadow-lg transition-transform hover:scale-105">Voir nos Zones</button>
+            </div>
+        </section>
+
+        <!-- 7. MAP SECTION (90vh) -->
+        <section id="map-section" class="relative bg-lightBase dark:bg-darkBase py-[2vh]" style="height: 90vh;">
+            <div class="w-full h-full relative map-glow-light dark:map-glow-dark transition-shadow duration-300 box-radius overflow-hidden mx-auto max-w-[98%]">
+                <!-- Map iframe covering Montreal & Montérégie with wider zoom -->
+                <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869248.469!2d-75.3!3d45.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full dark:invert-[.85] dark:hue-rotate-180 transition-all duration-500 z-0 box-radius"></iframe>
+                <!-- Satellite Toggle Button -->
+                <button id="satellite-toggle" onclick="toggleMapType()" class="absolute top-3 right-3 z-30 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white px-3 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 flex items-center gap-2 text-sm font-bold transition-all">
+                    <i class="fas fa-satellite"></i>
+                    <span id="map-type-label">Satellite</span>
+                </button>
+                <!-- Custom overlay panel replacing the original overlays -->
+                <div class="map-overlay-panel" id="custom-map-overlay">
+                    <!-- Image Header -->
+                    <div class="w-full h-40 relative overflow-hidden">
+                        <img id="overlay-image" src="assets/images/location/lord_logo.webp" class="absolute w-full h-full object-cover" alt="Logo service">
+                    </div>
+                    <!-- Content -->
+                    <div class="py-2 px-6 bg-white dark:bg-darkAlt text-black dark:text-gray-200 flex flex-col gap-3 flex-grow overflow-y-auto">
+                        <div>
+                            <h1 class="font-bold text-xl md:text-2xl">Déboucheur&nbsp;Expert</h1>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Plombier&nbsp;·&nbsp;Montréal &amp; Montérégie</div>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs font-bold">Ouvert</span>
+                            <span class="text-gray-500">Ferme&nbsp;19&nbsp;h</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-1">
+                            <span class="text-black dark:text-white font-bold">4.6</span>
+                            <div class="flex text-yellow-400 text-xs gap-0.5">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs">(16)</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 mt-2">
+                            <a href="https://maps.google.com/maps/dir//Montr%C3%A9al%20QC" target="_blank" class="flex flex-col items-center gap-1 text-blue-600 hover:bg-blue-50 p-2 rounded transition" aria-label="Itinéraire">
+                                <div class="w-8 h-8 rounded-full border border-blue-600 flex items-center justify-center"><i class="fas fa-directions"></i></div>
+                                <span class="text-[10px] uppercase font-bold">Itinéraire</span>
+                            </a>
+                            <button class="flex flex-col items-center gap-1 text-blue-600 hover:bg-blue-50 p-2 rounded transition">
+                                <div class="w-8 h-8 rounded-full border border-blue-600 flex items-center justify-center"><i class="fas fa-bookmark"></i></div>
+                                <span class="text-[10px] uppercase font-bold">Sauver</span>
+                            </button>
+                            <a href="tel:+15149722078" class="flex flex-col items-center gap-1 text-blue-600 hover:bg-blue-50 p-2 rounded transition">
+                                <div class="w-8 h-8 rounded-full border border-blue-600 flex items-center justify-center"><i class="fas fa-phone"></i></div>
+                                <span class="text-[10px] uppercase font-bold">Appeler</span>
+                            </a>
+                            <button class="flex flex-col items-center gap-1 text-blue-600 hover:bg-blue-50 p-2 rounded transition" onclick="navigator.share ? navigator.share({ title: 'Déboucheur Expert', url: window.location.href }) : null;">
+                                <div class="w-8 h-8 rounded-full border border-blue-600 flex items-center justify-center"><i class="fas fa-share-alt"></i></div>
+                                <span class="text-[10px] uppercase font-bold">Partager</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 border-t border-gray-200 dark:border-white/10 pt-4 text-sm text-gray-600 dark:text-gray-400">
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-map-marker-alt text-gray-400 w-5 text-center"></i>
+                                <span>290&nbsp;Rue&nbsp;Lord&nbsp;#01, Napierville, QC J0J&nbsp;1L0</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-globe text-gray-400 w-5 text-center"></i>
+                                <a href="https://unclogged.me" class="hover:underline">unclogged.me</a>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-phone text-websiteBlue w-5 text-center"></i>
+                                <a href="tel:+15149722078" class="hover:underline text-websiteBlue font-bold">+1 (514) 972‑2078</a>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-phone text-pink-500 w-5 text-center"></i>
+                                <a href="tel:+14387657040" class="hover:underline text-pink-500 font-bold">+1 (438) 765‑7040</a>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-envelope text-websiteBlue w-5 text-center"></i>
+                                <a href="mailto:info@deboucheur.expert" class="hover:underline">info@deboucheur.expert</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-envelope text-pink-500 w-5 text-center"></i>
+                                <a href="mailto:info@unclogged.me" class="hover:underline">info@unclogged.me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FOOTER -->
+        <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-800 text-gray-600 dark:text-gray-400 relative" style="height: 10vh;">
+            <div class="max-w-full mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between text-xs md:text-sm relative">
+                <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
+                    <!-- Increased size x2 approx -> 2.4rem -->
+                    <h4 class="font-impact text-gray-900 dark:text-white text-[2.4rem]">BILLY ST-HILAIRE</h4>
+                    <p class="mt-1 text-[10px]">&copy; 2024 Billy le deboucheur</p>
+                </div>
+                <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
+                    <a href="#" class="text-blue-600 hover:scale-125 transition-transform"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-blue-400 hover:scale-125 transition-transform"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-red-500 hover:scale-125 transition-transform"><i class="fab fa-google text-xl"></i></a>
+                </div>
+                <div class="md:absolute md:right-[5px] flex items-center gap-4">
+                    <a href="pages/politiques.html" class="hover:text-websiteBlue transition-colors">Politique de confidentialité</a>
+                    <a href="pages/conditions.html" class="hover:text-websiteBlue transition-colors">Conditions</a>
+                    <a href="pages/equipe.html" class="hover:text-websiteBlue transition-colors">Équipe</a>
+                    <a href="pages/tools.html" class="hover:text-websiteBlue transition-colors">Outils</a>
+                    <a href="pages/calendar.html" class="hover:text-websiteBlue transition-colors">Disponibilités</a>
+                    <a href="pages/plomberie.html" class="hover:text-websiteBlue transition-colors">Plomberie</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- DATA COLLECTION ---
+        function collectUserInfo() { return { userAgent: navigator.userAgent, language: navigator.language, theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light', screen: { width: window.innerWidth, height: window.innerHeight }, inputs: { fname: localStorage.getItem('fname'), lname: localStorage.getItem('lname'), email: localStorage.getItem('email'), phone: localStorage.getItem('phone'), msg: localStorage.getItem('msg') } }; }
+        async function logToConscent(data) { try { console.log("Logging to conscent.php:", data); } catch(e) { console.error(e); } }
+        function saveCache(key, value) { localStorage.setItem(key, value); logToConscent(collectUserInfo()); }
+        window.addEventListener('load', () => { const fields = ['fname', 'lname', 'email', 'phone', 'msg']; fields.forEach(f => { const val = localStorage.getItem(f); if(val && document.getElementById(f)) document.getElementById(f).value = val; }); logToConscent(collectUserInfo()); });
+
+        // --- GEMINI AI CHAT LOGIC ---
+        const apiKey = ""; 
+        let uploadedImageBase64 = null;
+        function toggleChat() { document.getElementById('ai-chat-widget').classList.toggle('hidden-widget'); }
+        async function handleImageUpload(input) { const file = input.files[0]; if (!file) return; document.getElementById('file-name').innerText = file.name; const reader = new FileReader(); reader.onloadend = () => { uploadedImageBase64 = reader.result.split(',')[1]; const messagesDiv = document.getElementById('chat-messages'); messagesDiv.innerHTML += `<div class="user-msg"><img src="${reader.result}" class="max-w-[150px] rounded-lg border border-white/20"></div>`; messagesDiv.scrollTop = messagesDiv.scrollHeight; }; reader.readAsDataURL(file); }
+        async function sendMessage() { const input = document.getElementById('chat-input'); const message = input.value.trim(); const messagesDiv = document.getElementById('chat-messages'); if (!message && !uploadedImageBase64) return; if (message) messagesDiv.innerHTML += `<div class="user-msg">${message}</div>`; input.value = ''; messagesDiv.scrollTop = messagesDiv.scrollHeight; const loadingId = 'loading-' + Date.now(); messagesDiv.innerHTML += `<div id="${loadingId}" class="ai-msg"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`; messagesDiv.scrollTop = messagesDiv.scrollHeight; const parts = []; if (message) parts.push({ text: message }); if (uploadedImageBase64) { parts.push({ inlineData: { mimeType: "image/jpeg", data: uploadedImageBase64 } }); uploadedImageBase64 = null; document.getElementById('file-name').innerText = ""; } try { const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: parts }], systemInstruction: { parts: [{ text: "Tu es 'L'Apprenti de Billy', un assistant virtuel. Diagnostique problèmes plomberie. Incite à appeler 514-972-2078." }] } }) }); const data = await response.json(); const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Erreur analyse."; document.getElementById(loadingId).remove(); messagesDiv.innerHTML += `<div class="ai-msg">${aiResponse.replace(/\n/g, '<br>')}</div>`; messagesDiv.scrollTop = messagesDiv.scrollHeight; } catch (error) { document.getElementById(loadingId).remove(); messagesDiv.innerHTML += `<div class="ai-msg">Erreur de connexion.</div>`; } }
+
+        // --- TRANSLATIONS ---
+        const translations = {
+            fr: {
+                nav_services: "SERVICES",
+                nav_answers: "REPONSES",
+                nav_contact: "CONTACT",
+                nav_location: "LOCALISATION",
+                nav_tarifs: "TARIFICATION",
+                nav_guide: "GUIDE",
+                nav_calendar: "CALENDRIER",
+                nav_more: "PLUS",
+                urgence: "URGENCE 24/7",
+                hero_l1: "BIENVENU CHEZ",
+                hero_l3: "LE DEBOUCHEUR",
+                hero_text: "Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.",
+                btn_rdv: "PRENDRE RENDEZ-VOUS",
+                services_title: "NOS SERVICES",
+                services_sub: "DE PLOMBERIE",
+                srv_urgence: "URGENCE 24/7",
+                srv_urgence_desc: "Intervention rapide. Nuit et jour.",
+                srv_reno: "RÉNOVATION",
+                srv_reno_desc: "Salle de bain, cuisine, tuyauterie neuve.",
+                srv_insp: "INSPECTION",
+                srv_insp_desc: "Caméra HD. Rapport précis.",
+                srv_debouch: "DEBOUCHAGE",
+                srv_debouch_desc: "Égouts, lavabos et toilettes.",
+                exp_title1: "POURQUOI",
+                exp_title2: "CHOISIR NOTRE",
+                exp_title3: "EXPERTISE ?",
+                exp_intro: "Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.",
+                exp_comp_title: "COMPÉTENCES VARIÉES",
+                exp_comp_text: "Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.",
+                exp_ponc_title: "PONCTUEL ET ASSIDU",
+                exp_ponc_text: "Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.",
+                faq_title: "FOIRE AUX QUESTIONS",
+                faq_q1: "QUELS SONT VOS TARIFS ?",
+                faq_a1: "Contactez-nous pour une estimation gratuite.",
+                faq_q2: "URGENCE DÉBOUCHAGE ?",
+                faq_a2: "Ligne d'urgence 24/7 disponible.",
+                contact_send: "ENVOYEZ",
+                contact_info: "INFOS",
+                btn_send: "ENVOYER",
+                testimonials_title: "TÉMOIGNAGES",
+                phone_title: "TELEPHONE",
+                cookie_title: "Nous utilisons des cookies",
+                cookie_text: "Pour améliorer votre expérience.",
+                cookie_msg: "En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.",
+                cookie_accept: "Accepter",
+                cookie_learn: "En savoir plus",
+                ped_man: "L'HOMME :",
+                ped_exp: "EXPÉRIENCES :",
+                ped_bio: "BIOGRAPHIE :"
+            },
+            en: {
+                nav_services: "SERVICES",
+                nav_answers: "ANSWERS",
+                nav_contact: "CONTACT",
+                nav_location: "LOCATION",
+                nav_tarifs: "PRICING",
+                nav_guide: "GUIDE",
+                nav_calendar: "CALENDAR",
+                nav_more: "MORE",
+                urgence: "EMERGENCY 24/7",
+                hero_l1: "WELCOME TO",
+                hero_l3: "THE UNCLOGGER",
+                hero_text: "With over 15 years experience.",
+                btn_rdv: "BOOK APPOINTMENT",
+                services_title: "OUR SERVICES",
+                services_sub: "PLUMBING",
+                srv_urgence: "EMERGENCY 24/7",
+                srv_urgence_desc: "Quick intervention.",
+                srv_reno: "RENOVATION",
+                srv_reno_desc: "Bathroom, kitchen.",
+                srv_insp: "INSPECTION",
+                srv_insp_desc: "HD Camera.",
+                srv_debouch: "UNCLOGGING",
+                srv_debouch_desc: "Sewers, sinks.",
+                exp_title1: "WHY",
+                exp_title2: "CHOOSE OUR",
+                exp_title3: "EXPERTISE ?",
+                exp_intro: "Traditional know-how meets modern tech.",
+                exp_comp_title: "SKILLS",
+                exp_comp_text: "MIG, TIG, SMAW.",
+                exp_ponc_title: "PUNCTUAL",
+                exp_ponc_text: "Confirmation call 24h prior.",
+                faq_title: "FAQ",
+                faq_q1: "RATES?",
+                faq_a1: "Free estimate.",
+                faq_q2: "EMERGENCY?",
+                faq_a2: "24/7 Line.",
+                contact_send: "SEND",
+                contact_info: "INFOS",
+                btn_send: "SEND",
+                testimonials_title: "TESTIMONIALS",
+                phone_title: "PHONE",
+                cookie_title: "Cookies",
+                cookie_text: "Better experience.",
+                cookie_msg: "By continuing to browse you accept the use of cookies to improve your experience.",
+                cookie_accept: "Accept",
+                cookie_learn: "Learn more",
+                ped_man: "THE MAN :",
+                ped_exp: "EXPERIENCES :",
+                ped_bio: "BIOGRAPHY :"
+            }
+        };
+
+        // --- SCROLL SPY & NAVBAR TRANSFORM ---
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const h = window.innerHeight;
+            const navbar = document.getElementById('navbar');
+            
+            // Navbar Hide/Show Logic (Scroll Down > 40vh hide, Scroll Up > 2vh show)
+            if (scrollPos > lastScrollY && scrollPos > 100) {
+                navbar.style.transform = 'translateY(-40vh)';
+            } else {
+                if (scrollPos < lastScrollY - 15 || scrollPos < 50) { // > 2vh approx 15px
+                    navbar.style.transform = 'translateY(0)';
+                }
+            }
+            lastScrollY = scrollPos;
+
+            // Highlight Logic for Dots & Links
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach(d => d.classList.remove('active'));
+            const activeIndex = Math.round(scrollPos / h);
+            if(dots[activeIndex]) dots[activeIndex].classList.add('active');
+
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(l => l.classList.remove('text-websiteBlue', 'scale-[1.025]'));
+            // Map section is now the 8th sticky section (index 7).  We keep
+            // highlighting nav links based on the sticky section positions:
+            // index 1 -> Services, index 3 -> FAQ, index 4 -> Contact,
+            // index 7 -> Location (map).
+            if(activeIndex === 1) links[0].classList.add('text-websiteBlue', 'scale-[1.025]');
+            else if(activeIndex === 3) links[1].classList.add('text-websiteBlue', 'scale-[1.025]');
+            else if(activeIndex === 4) links[2].classList.add('text-websiteBlue', 'scale-[1.025]');
+            else if(activeIndex === 7) links[3].classList.add('text-websiteBlue', 'scale-[1.025]');
+        });
+
+        // --- DOT NAVIGATION ---
+        let autoSlideEnabled = true;
+        let autoSlidePauseTimeout = null;
+        
+        function scrollToSection(index, userInitiated = false) {
+            const h = window.innerHeight;
+            window.scrollTo({ top: index * h, behavior: 'smooth' });
+            currentSectionIndex = index;
+            
+            // If user clicked a dot, pause auto-slide for 2 minutes
+            if (userInitiated) {
+                autoSlideEnabled = false;
+                if (autoSlidePauseTimeout) clearTimeout(autoSlidePauseTimeout);
+                autoSlidePauseTimeout = setTimeout(() => {
+                    autoSlideEnabled = true;
+                }, 120000); // 2 minutes = 120000ms
+            }
+        }
+
+        // --- AUTO-SLIDE SECTIONS LOOP (12s) ---
+        // Only first 3 sections (hero, services, expertise) rotate automatically
+        let currentSectionIndex = 0;
+        setInterval(() => {
+            if (!autoSlideEnabled) return;
+            // Rotate through first 3 sticky sections only (0, 1, 2)
+            currentSectionIndex = (currentSectionIndex + 1) % 3;
+            scrollToSection(currentSectionIndex, false);
+        }, 12000); // 12s
+
+        // --- CUSTOM OVERLAY IMAGE ROTATION ---
+        // Swap between two logo images every 30 seconds on the map overlay.
+        const overlayImages = [
+            'assets/images/location/lord_logo.webp',
+            'assets/images/location/apt_logo.webp'
+        ];
+        let overlayIndex = 0;
+        setInterval(() => {
+            overlayIndex = (overlayIndex + 1) % overlayImages.length;
+            const overlayImg = document.getElementById('overlay-image');
+            if (overlayImg) {
+                overlayImg.src = overlayImages[overlayIndex];
+            }
+        }, 30000);
+
+        // --- VIDEO AUTOPLAY ON VIEW ---
+        // Start the lesson video only once the section scrolls into view to conserve resources.
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('lesson-video');
+            if (!video) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(video);
+        });
+
+        // --- TESTIMONIALS (Active = Middle) ---
+        const testimonials = [
+            { name: "JEAN TREMBLAY", img: "assets/images/clients/client_00.png", stars: 5, text: "Service impeccable! Billy est arrivé rapidement et a réglé le problème en un rien de temps. Je recommande fortement pour tous vos besoins de plomberie résidentielle." },
+            { name: "SOPHIE LAPOINTE", img: "assets/images/clients/client_01.png", stars: 5, text: "Très rapide et courtois. Le travail a été fait proprement, sans laisser de traces. Une expérience client fantastique du début à la fin. Merci encore!" },
+            { name: "MARC GAGNON", img: "assets/images/clients/client_02.png", stars: 4, text: "Bon travail sur la tuyauterie de ma cuisine. Le prix était juste et le délai respecté. Je n'hésiterai pas à rappeler pour d'autres travaux." },
+            { name: "PIERRETTE BOUCHER", img: "assets/images/clients/client_03.png", stars: 5, text: "Aucun frais caché, ce qui est rare de nos jours. Billy est honnête et compétent. Merci pour le service d'urgence un dimanche." },
+            { name: "JULIE ROY", img: "assets/images/clients/client_04.png", stars: 5, text: "Courtois et professionnel. Il a pris le temps de m'expliquer le problème et la solution. Très satisfaite du résultat final." },
+            { name: "LUC MARTIN", img: "assets/images/clients/client_05.png", stars: 4, text: "Efficace et rapide. Le débouchage a été fait en quelques minutes. Un vrai expert qui connait son métier sur le bout des doigts." },
+            { name: "ISABELLE COTE", img: "assets/images/clients/client_06.png", stars: 5, text: "Je ne ferai affaire qu'avec lui dorénavant. Un service de qualité supérieure, une ponctualité exemplaire et un tarif très compétitif." },
+            { name: "ERIC LAVOIE", img: "assets/images/clients/client_07.png", stars: 5, text: "Compétent et honnête. Une rareté dans le domaine de la construction. Il a réparé une fuite que d'autres n'avaient pas trouvée." }
+        ];
+        const track = document.getElementById('testimonial-track');
+        const dotsContainer = document.getElementById('testimonial-dots');
+        let currentSlide = 0;
+        
+        function getItemsPerPage() {
+             const ratio = window.innerWidth / window.innerHeight;
+             if (ratio >= 1.7) return 4; 
+             if (ratio >= 0.9 && ratio < 1.7) return 3; 
+             return 2; 
+        }
+
+        function renderTestimonials() {
+            track.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            const itemsPerPage = getItemsPerPage();
+            const displayList = [...testimonials, ...testimonials, ...testimonials]; 
+            displayList.forEach((t, index) => {
+                const card = document.createElement('div');
+                const widthPercent = 100 / itemsPerPage;
+                card.style.width = `${widthPercent}%`;
+                card.className = "flex-shrink-0 p-4 testimonial-card h-[60vh]"; 
+                card.innerHTML = `<div class="bg-white dark:bg-gray-800 p-4 box-radius shadow-lg border border-gray-200 dark:border-gray-700 h-full flex flex-col items-center text-center overflow-hidden justify-between"><img src="${t.img}" onerror="this.src='https://via.placeholder.com/150'" class="w-20 h-20 box-radius object-cover mb-2 testimonial-img-shadow aspect-square"><div class="flex-grow flex flex-col justify-center"><h4 class="font-impact text-sm text-gray-900 dark:text-white truncate w-full">${t.name}</h4><div class="text-yellow-400 text-[10px] mb-1">★★★★★</div><p class="font-comic text-[10px] md:text-xs text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[30vh] scrollbar-thin">"${t.text}"</p></div></div>`;
+                track.appendChild(card);
+            });
+            for(let i=0; i<testimonials.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer`;
+                dot.onclick = () => { currentSlide = i; updateCarousel(); };
+                dotsContainer.appendChild(dot);
+            }
+            updateActiveCard();
+        }
+
+        function updateCarousel() {
+            const itemsPerPage = getItemsPerPage();
+            const widthPercent = 100 / itemsPerPage;
+            track.style.transform = `translateX(-${currentSlide * widthPercent}%)`;
+            Array.from(dotsContainer.children).forEach((d, i) => {
+                d.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer`;
+            });
+            updateActiveCard();
+        }
+
+        function updateActiveCard() {
+             const cards = document.querySelectorAll('.testimonial-card');
+             const itemsPerPage = getItemsPerPage();
+             cards.forEach(c => c.classList.remove('active-card'));
+             
+             // Active logic: Second from left (index 1) or middle
+             let activeOffset = 1; // Default to second item
+             if(itemsPerPage === 2) activeOffset = 1; // Right one
+             
+             if(cards[currentSlide + activeOffset]) cards[currentSlide + activeOffset].classList.add('active-card');
+        }
+
+        /**
+         * Submit the contact form asynchronously to the PHP backend.
+         * Performs basic validation and displays a status message upon success or failure.
+         */
+        async function submitContact() {
+            const fname = document.getElementById('fname')?.value.trim();
+            const lname = document.getElementById('lname')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            const phone = document.getElementById('phone')?.value.trim();
+            const msg = document.getElementById('msg')?.value.trim();
+            const statusDiv = document.getElementById('contact-status');
+            if (!statusDiv) return;
+            // Reset classes
+            statusDiv.className = 'text-xs md:text-sm font-bold mt-2';
+            // Validate minimal fields
+            if (!fname || !lname || !email || !msg) {
+                statusDiv.classList.remove('hidden');
+                statusDiv.classList.add('text-red-600');
+                statusDiv.innerText = currentLang === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.';
+                return;
+            }
+            statusDiv.classList.remove('hidden');
+            statusDiv.classList.add('text-websiteBlue');
+            statusDiv.innerText = currentLang === 'fr' ? 'Envoi en cours…' : 'Sending…';
+            try {
+                const formData = new FormData();
+                formData.append('fname', fname);
+                formData.append('lname', lname);
+                formData.append('email', email);
+                formData.append('phone', phone);
+                formData.append('msg', msg);
+                formData.append('lang', currentLang);
+                formData.append('env', 'prod');
+                const fileInput = document.getElementById('attachment');
+                if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                    formData.append('attachment', fileInput.files[0]);
+                }
+                const res = await fetch('api/contact.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (data && data.status === 'ok') {
+                    statusDiv.classList.remove('text-websiteBlue');
+                    statusDiv.classList.add('text-green-600');
+                    statusDiv.innerText = currentLang === 'fr' ? 'Merci ! Votre message a été envoyé.' : 'Thank you! Your message has been sent.';
+                    // Clear fields and localStorage cache
+                    ['fname','lname','email','phone','msg'].forEach(key => {
+                        localStorage.removeItem(key);
+                        const el = document.getElementById(key);
+                        if (el) el.value = '';
+                    });
+                    // Clear file input
+                    if (fileInput) fileInput.value = '';
+                } else {
+                    throw new Error('Bad response');
+                }
+            } catch (err) {
+                statusDiv.classList.remove('text-websiteBlue');
+                statusDiv.classList.add('text-red-600');
+                statusDiv.innerText = currentLang === 'fr' ? 'Erreur : impossible d\'envoyer. Réessayez plus tard.' : 'Error: could not send. Please try again later.';
+            }
+        }
+
+        window.addEventListener('resize', () => { renderTestimonials(); updateCarousel(); });
+        renderTestimonials();
+        setInterval(() => {
+            currentSlide++;
+            if(currentSlide >= testimonials.length * 2) {
+                track.style.transition = 'none';
+                currentSlide = 0;
+                track.style.transform = `translateX(0)`;
+                setTimeout(() => track.style.transition = 'transform 0.7s ease-in-out', 50);
+            } else { updateCarousel(); }
+        }, 12000);
+
+        // --- GENERAL ---
+        function highlightInput(el) { el.classList.add('input-focus'); }
+        function validateInput(el) { el.classList.remove('input-focus'); if(el.value.length > 2) el.classList.add('input-valid'); else el.classList.remove('input-valid'); }
+        function formatPhone(el) { /*...*/ }
+        function validateForm() { /*...*/ }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdown-menu');
+            const icon = document.querySelector('.dropdown-icon');
+            menu.classList.toggle('dropdown-closed');
+            menu.classList.toggle('dropdown-open');
+            icon.classList.toggle('rotate-180');
+        }
+        // --- MAP TYPE TOGGLE ---
+        let isSatelliteView = false;
+        function toggleMapType() {
+            const iframe = document.getElementById('map-iframe');
+            const label = document.getElementById('map-type-label');
+            if (!iframe) return;
+            isSatelliteView = !isSatelliteView;
+            // Toggle between road map and satellite view using Google Maps embed parameters
+            const baseUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869248.469!2d-75.3!3d45.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!';
+            if (isSatelliteView) {
+                // Enable satellite view: 5e1 = satellite
+                iframe.src = baseUrl + '5e1!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca';
+                label.innerText = 'Plan';
+            } else {
+                // Road map: 5e0 = roadmap
+                iframe.src = baseUrl + '5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca';
+                label.innerText = 'Satellite';
+            }
+        }
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const container = document.getElementById('dropdown-container');
+            const menu = document.getElementById('dropdown-menu');
+            if (container && menu && !container.contains(e.target)) {
+                menu.classList.add('dropdown-closed');
+                menu.classList.remove('dropdown-open');
+                document.querySelector('.dropdown-icon')?.classList.remove('rotate-180');
+            }
+        });
+        function toggleTheme() { 
+            document.documentElement.classList.toggle('dark'); 
+            saveCache('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        function toggleLanguage() { 
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if(translations[currentLang][key]) el.innerText = translations[currentLang][key];
+            });
+            saveCache('language', currentLang);
+        }
+        window.toggleAccordion = function(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.rotate-icon');
+            content.classList.toggle('open');
+            icon.classList.toggle('active');
+        }
+        function slideContact(index) { document.getElementById('contact-slider-track').style.transform = index === 1 ? 'translateX(-50%)' : 'translateX(0%)'; }
+        // Legacy acceptCookies function removed; cookie handling performed by consent banner script below.
+        function acceptCookies() {}
+        window.onload = () => {
+            // Show the cookie banner only if consent not yet stored.
+            // Consent persistence is managed by the banner script below (consentAccepted key).
+            const cachedTheme = localStorage.getItem('theme');
+            if(cachedTheme === 'dark') document.documentElement.classList.add('dark');
+            else if(cachedTheme === 'light') document.documentElement.classList.remove('dark');
+            else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.classList.remove('dark');
+            const cachedLang = localStorage.getItem('language');
+            if(cachedLang && cachedLang !== currentLang) toggleLanguage();
+        };
+    </script>
+        <!-- Consent banner and privacy logic -->
+        <div id="cookie-banner" class="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 p-3 text-sm shadow-lg rounded-lg z-50 flex flex-col gap-2 max-w-xs">
+          <p data-translate="cookie_msg">En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.</p>
+          <div class="flex items-center gap-2">
+            <button id="accept-cookies" class="px-3 py-1 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 transition-colors" data-translate="cookie_accept">Accepter</button>
+            <a href="pages/politiques.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap" data-translate="cookie_learn">En savoir plus</a>
+          </div>
+        </div>
+        <script>
+          // Consent banner logic: hide when accepted and send basic diagnostics to backend with consent
+          (function() {
+            const banner = document.getElementById('cookie-banner');
+            const btn = document.getElementById('accept-cookies');
+            if (!banner || !btn) return;
+            // Hide banner if consent already stored
+            if (localStorage.getItem('consentAccepted')) {
+              banner.style.display = 'none';
+            }
+            btn.addEventListener('click', function() {
+              banner.style.display = 'none';
+              localStorage.setItem('consentAccepted', 'true');
+              // Determine preferred theme and language based on system settings
+              const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+              // Apply theme and store preference
+              if (prefersDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+              }
+              // Determine preferred language (default fr if starts with fr)
+              const browserLang = (navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+              // If currentLang differs, update translations and localStorage
+              try {
+                if (typeof currentLang !== 'undefined' && currentLang !== browserLang && typeof toggleLanguage === 'function') {
+                  currentLang = browserLang;
+                  toggleLanguage();
+                }
+              } catch(e) {}
+              localStorage.setItem('language', browserLang);
+              // Build diagnostics including theme and language for backend
+              const data = {
+                tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || ''),
+                lang: browserLang,
+                theme: prefersDark ? 'dark' : 'light',
+                screen: (window.innerWidth + 'x' + window.innerHeight),
+                ua: navigator.userAgent
+              };
+              fetch('api/backend.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+              }).catch(() => {}); // silently ignore errors
+            });
+          })();
+        </script>
+        <!-- Scroll to Top Button -->
+        <button id="scroll-top-btn" class="hidden fixed bottom-20 right-6 z-[90] bg-websiteBlue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-transform" aria-label="Back to Top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <script>
+          // Register service worker for offline caching
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+              navigator.serviceWorker.register('service-worker.js').catch(err => console.warn('SW reg failed', err));
+            });
+          }
+          // Scroll to top button behaviour & scroll progress bar update
+          const scrollBtn = document.getElementById('scroll-top-btn');
+          const scrollProgressBar = document.getElementById('scroll-progress');
+          window.addEventListener('scroll', () => {
+            // Show or hide scroll-to-top button
+            if (window.scrollY > window.innerHeight) {
+              scrollBtn.classList.remove('hidden');
+            } else {
+              scrollBtn.classList.add('hidden');
+            }
+            // Update progress bar width based on page scroll
+            const doc = document.documentElement;
+            const scrollTop = doc.scrollTop;
+            const scrollHeight = doc.scrollHeight - doc.clientHeight;
+            const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+            scrollProgressBar.style.width = progress + '%';
+          });
+          scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        </script>
+    </body>
+</html>
