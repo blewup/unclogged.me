@@ -1,98 +1,26 @@
 {
   "name": "Déboucheur Expert (unclogged.me)",
   "short_name": "Déboucheur",
-  "description": "Tout ce qui touche aux appels de services de plomberie résidentielle : débouchage, réparation de fuites, dépannage. La plupart des problèmes sont résolus lors de la première visite. | Anything related to residential plumbing service calls: unclogging blocked drains, fixing leaks, troubleshooting water issues. Most issues solved on the first visit.",
-  "start_url": "/index.html",
-  "scope": "/",
-  "id": "/",
+  "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+  "start_url": "https://deboucheur.expert/index.html",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
-  "orientation": "any",
   "background_color": "#000000",
   "theme_color": "#2563EB",
-  "lang": "fr-CA",
-  "dir": "ltr",
-  "categories": ["business", "utilities", "lifestyle"],
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "assets/images/slide/slide_00.webp",
-      "sizes": "1920x1080",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Déboucheur Expert - Page d'accueil / Home page"
-    }
-  ],
   "icons": [
-    {
-      "src": "assets/images/logo/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/images/logo/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/images/logo/favicon-48x48.png",
-      "sizes": "48x48",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/images/logo/favicon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/images/logo/favicon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
     {
       "src": "assets/images/logo/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "assets/images/logo/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Urgence 24/7 | Emergency 24/7",
-      "short_name": "Urgence",
-      "description": "Appelez immédiatement pour une urgence plomberie | Call immediately for plumbing emergency",
-      "url": "tel:+14385302343",
-      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+      "type": "image/png"
     },
     {
-      "name": "Tarification | Pricing",
-      "short_name": "Prix",
-      "description": "Consultez nos tarifs | View our rates",
-      "url": "/pages/prices.html",
-      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Contactez-nous | Contact us",
-      "url": "/index.html#contact",
-      "icons": [{ "src": "assets/images/logo/favicon-96x96.png", "sizes": "96x96" }]
+      "src": "assets/images/logo/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
     }
-  ],
-  "related_applications": [],
-  "handle_links": "preferred",
-  "launch_handler": {
-    "client_mode": "navigate-existing"
-  }
+  ]
 }
