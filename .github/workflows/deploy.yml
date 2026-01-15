@@ -70,6 +70,9 @@ jobs:
             exit 1
           fi
           echo "✅ All PHP files passed syntax validation"
+          find . -name "*.php" -not -path "./vendor/*" -not -path "./backup/*" | \
+            xargs -I {} php -l {} | grep -v "No syntax errors"
+          echo "✅ PHP syntax validation complete"
 
       - name: 📋 Validate JSON files
         run: |
