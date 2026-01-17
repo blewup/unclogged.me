@@ -1,14 +1,16 @@
 /**
  * Déboucheur Expert - Components Loader
- * Loads reusable HTML components (navbar, footer, hero) into pages
+ * Loads reusable HTML components (navbar, footer, hero, banner, helper) into pages
  * 
  * Usage:
  *   <div id="navbar-container"></div>
- *   <script src="components/components-loader.js"></script>
+ *   <div id="footer-container"></div>
+ *   <div id="banner-container"></div>
+ *   <div id="helper-container"></div>
+ *   <script src="../assets/scripts/components/loader.js"></script>
  *   
  * For index.html:
- *   <div id="navbar-container"></div>
- *   <script src="pages/components/components-loader.js"></script>
+ *   <script src="assets/scripts/components/loader.js"></script>
  */
 
 // Determine if we're on index.html or a subpage
@@ -16,8 +18,18 @@ const isIndexPage = window.location.pathname.endsWith('index.html') ||
                     window.location.pathname.endsWith('/') ||
                     window.location.pathname === '';
 
-// Base path for components
-const componentsBasePath = isIndexPage ? 'pages/components/' : 'components/';
+// Determine if we're in errors folder
+const isErrorPage = window.location.pathname.includes('/errors/');
+
+// Base path for components based on current location
+let componentsBasePath;
+if (isIndexPage) {
+    componentsBasePath = 'pages/components/';
+} else if (isErrorPage) {
+    componentsBasePath = '../pages/components/';
+} else {
+    componentsBasePath = 'components/';
+}
 
 /**
  * Load an HTML component into a container
@@ -68,7 +80,7 @@ async function loadComponent(containerId, componentPath) {
 }
 
 /**
- * Load all standard components (navbar and footer)
+ * Load all standard components (navbar, footer, banner, helper)
  * Call this on DOMContentLoaded
  */
 function loadStandardComponents() {
@@ -82,9 +94,19 @@ function loadStandardComponents() {
         loadComponent('footer-container', componentsBasePath + 'footer.html');
     }
     
-    // Load hero slideshow if container exists (only for pages that need it)
+    // Load hero slideshow if container exists (uses hero.html now)
     if (document.getElementById('hero-container')) {
-        loadComponent('hero-container', componentsBasePath + 'hero-slide.html');
+        loadComponent('hero-container', componentsBasePath + 'hero.html');
+    }
+    
+    // Load cookie banner if container exists
+    if (document.getElementById('banner-container')) {
+        loadComponent('banner-container', componentsBasePath + 'banner.html');
+    }
+    
+    // Load AI helper chat widget if container exists
+    if (document.getElementById('helper-container')) {
+        loadComponent('helper-container', componentsBasePath + 'helper.html');
     }
 }
 
@@ -98,3 +120,4 @@ if (document.readyState === 'loading') {
 // Export for manual use
 window.loadComponent = loadComponent;
 window.loadStandardComponents = loadStandardComponents;
+
