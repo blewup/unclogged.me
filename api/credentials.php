@@ -22,9 +22,9 @@ class SecureCredentials {
     // Encrypted tokens (generated using Python Fernet)
     private static array $encryptedTokens = [
         'email_password' => 'gAAAAABpa0fK_5U0zQmk6CCwlPfbvD8WbvIbmD4les3ykgcIL2Anr-507Sg8zXYZvsKbxYlxNzY1MUwbUxn_ct7nhHYO84nPrQ==',
+        'twilio_auth_token' => 'gAAAAABpa1F4uvWD1ktHYMgUPgNNobGbdZg9nPjsKWoCe44BO_AKVjSTEUPa4wZScwmTrWaw58s5DNo8qJ0z5CUERNW51eQicEPxBQ0fMiJneybP0ffVjSmBgoBbrQek5jNl0i3mjbjx',
         // Add more encrypted tokens as needed:
         // 'gemini_api_key' => 'encrypted_token_here',
-        // 'twilio_auth_token' => 'encrypted_token_here',
     ];
     
     /**
@@ -169,13 +169,13 @@ class SecureCredentials {
     
     /**
      * Twilio SMS configuration
-     * Set these environment variables or add encrypted tokens
+     * Credentials stored encrypted - no env vars needed
      */
     public static function getTwilioConfig(): array {
         return [
-            'account_sid' => getenv('TWILIO_SID') ?: '',
-            'auth_token' => getenv('TWILIO_TOKEN') ?: '', // Or use: self::get('twilio_auth_token')
-            'from_number' => getenv('TWILIO_FROM') ?: '',
+            'account_sid' => 'AC2a232bd5f87d8f272c490ef7951f8550',
+            'auth_token' => self::get('twilio_auth_token'),
+            'from_number' => '+18126489709',
             'owner_phone' => '+14385302343',
             'secondary_phone' => '+14387657040',
             'webhook_url' => 'https://deboucheur.expert/api/sms-webhook.php',

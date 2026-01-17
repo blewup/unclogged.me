@@ -52,7 +52,29 @@ api/
    - Looks for unread emails with `REPLY:` in subject
    - Extracts session ID and stores reply in database
 
-### Cron Job Setup
+### Option A: Email Piping (Recommended)
+
+Email piping is faster and more reliable than IMAP polling. The email is processed instantly when it arrives.
+
+**cPanel Setup:**
+
+1. Go to: **cPanel → Email → Forwarders**
+2. Click **Add Forwarder**
+3. Configure:
+   - **Address to Forward:** `reply` (or `info`)
+   - **Domain:** deboucheur.expert
+   - **Destination:** Select **Pipe to a Program**
+   - **Path:** `/home/YOUR_USER/public_html/api/email-pipe.php`
+4. Click **Add Forwarder**
+
+5. Make the script executable:
+   ```bash
+   chmod +x /home/YOUR_USER/public_html/api/email-pipe.php
+   ```
+
+### Option B: IMAP Polling (Fallback)
+
+If piping is not available, use the cron job approach:
 
 Add this to cPanel → Cron Jobs:
 
@@ -64,17 +86,17 @@ Add this to cPanel → Cron Jobs:
 
 ## 2. SMS Configuration (Twilio)
 
-### Required Twilio Credentials
+### Current Twilio Configuration
 
-Set these as environment variables on your server:
+All credentials are stored encrypted in `credentials.php`:
 
-```bash
-export TWILIO_SID="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-export TWILIO_TOKEN="your_auth_token_here"
-export TWILIO_FROM="+1234567890"  # Your Twilio phone number
-```
-
-Or add them encrypted to `credentials.php`.
+| Setting | Value |
+|---------|-------|
+| **Account SID** | AC2a232bd5f87d8f272c490ef7951f8550 |
+| **Auth Token** | (encrypted) |
+| **From Number** | +18126489709 |
+| **Owner Phone** | +14385302343 |
+| **Secondary Phone** | +14387657040 |
 
 ### Twilio Console Setup
 
