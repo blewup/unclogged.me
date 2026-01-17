@@ -147,7 +147,7 @@ const SharedComponents = (() => {
                     <a href="${prefix}pages/conditions.html" class="hover:text-blue transition-colors">Conditions</a>
                     <a href="${prefix}pages/team.html" class="hover:text-blue transition-colors">Équipe</a>
                     <a href="${prefix}pages/tools.html" class="hover:text-blue transition-colors">Outils</a>
-                    <a href="${prefix}pages/calendar.html" class="hover:text-blue transition-colors">Disponibilités</a>
+                    <a href="${prefix}pages/events.html" class="hover:text-blue transition-colors">Disponibilités</a>
                     <a href="${prefix}pages/plumbing.html" class="hover:text-blue transition-colors">Plomberie</a>
                 </div>
             </div>
