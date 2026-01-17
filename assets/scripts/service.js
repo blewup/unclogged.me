@@ -1,7 +1,8 @@
-const CACHE_NAME = 'deboucheur-cache-v2';
+const CACHE_NAME = 'deboucheur-cache-v3';
 const PRECACHE_URLS = [
   './index.html',
   './manifest.json',
+  // Core Stylesheets
   './assets/styles/style_00.css',
   './assets/styles/style_01.css',
   './assets/styles/style_02.css',
@@ -10,6 +11,14 @@ const PRECACHE_URLS = [
   './assets/styles/style_05.css',
   './assets/styles/style_06.css',
   './assets/styles/style_07.css',
+  './assets/styles/fonts.css',
+  './assets/styles/tailwind.css',
+  './assets/styles/panda.css',
+  // Core Scripts
+  './assets/scripts/libs.js',
+  './assets/scripts/main.js',
+  './assets/scripts/time.js',
+  './assets/scripts/icons.js',
   // Slides
   './assets/images/slide/slide_00.webp',
   './assets/images/slide/slide_01.webp',

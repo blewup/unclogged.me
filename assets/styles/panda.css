@@ -1,0 +1,848 @@
+/**
+ * Déboucheur Expert - Panda CSS Inspired Effects
+ * Modern visual effects and utilities inspired by Panda CSS
+ * Works alongside Tailwind CSS v4.1
+ * @version 1.0.0
+ * @author Déboucheur Expert Team
+ */
+
+/* ============================================
+   PANDA-STYLE CSS VARIABLES (TOKENS)
+   ============================================ */
+:root {
+    /* Enhanced Color Palette */
+    --panda-blue-50: #eff6ff;
+    --panda-blue-100: #dbeafe;
+    --panda-blue-200: #bfdbfe;
+    --panda-blue-300: #93c5fd;
+    --panda-blue-400: #60a5fa;
+    --panda-blue-500: #3b82f6;
+    --panda-blue-600: #2563eb;
+    --panda-blue-700: #1d4ed8;
+    --panda-blue-800: #1e40af;
+    --panda-blue-900: #1e3a8a;
+    
+    --panda-red-50: #fef2f2;
+    --panda-red-100: #fee2e2;
+    --panda-red-200: #fecaca;
+    --panda-red-300: #fca5a5;
+    --panda-red-400: #f87171;
+    --panda-red-500: #ef4444;
+    --panda-red-600: #dc2626;
+    --panda-red-700: #b91c1c;
+    --panda-red-800: #991b1b;
+    --panda-red-900: #7f1d1d;
+    
+    --panda-green-50: #f0fdf4;
+    --panda-green-100: #dcfce7;
+    --panda-green-200: #bbf7d0;
+    --panda-green-300: #86efac;
+    --panda-green-400: #4ade80;
+    --panda-green-500: #22c55e;
+    --panda-green-600: #16a34a;
+    --panda-green-700: #15803d;
+    --panda-green-800: #166534;
+    --panda-green-900: #14532d;
+    
+    /* Gradient Tokens */
+    --gradient-primary: linear-gradient(135deg, var(--panda-blue-500) 0%, var(--panda-blue-700) 100%);
+    --gradient-danger: linear-gradient(135deg, var(--panda-red-500) 0%, var(--panda-red-700) 100%);
+    --gradient-success: linear-gradient(135deg, var(--panda-green-500) 0%, var(--panda-green-700) 100%);
+    --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsla(28,100%,74%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsla(189,100%,56%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsla(355,100%,93%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 80% 50%, hsla(340,100%,76%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, hsla(22,100%,77%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 80% 100%, hsla(242,100%,70%,0.3) 0px, transparent 50%),
+                     radial-gradient(at 0% 0%, hsla(343,100%,76%,0.3) 0px, transparent 50%);
+    
+    /* Animation Tokens */
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-snap: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Blur Tokens */
+    --blur-sm: 4px;
+    --blur-md: 8px;
+    --blur-lg: 16px;
+    --blur-xl: 24px;
+    --blur-2xl: 40px;
+    
+    /* Shadow Tokens (Enhanced) */
+    --shadow-glow-sm: 0 0 10px rgba(37, 99, 235, 0.3);
+    --shadow-glow-md: 0 0 20px rgba(37, 99, 235, 0.4);
+    --shadow-glow-lg: 0 0 40px rgba(37, 99, 235, 0.5);
+    --shadow-glow-red: 0 0 20px rgba(196, 30, 58, 0.4);
+    --shadow-glow-green: 0 0 20px rgba(34, 197, 94, 0.4);
+    --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    --shadow-3d: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    --shadow-float: 0 20px 50px -15px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITIES
+   ============================================ */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(var(--blur-xl)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-inner-glow);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+}
+
+.dark .glass-nav {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* ============================================
+   GRADIENT UTILITIES
+   ============================================ */
+.gradient-primary { background: var(--gradient-primary); }
+.gradient-danger { background: var(--gradient-danger); }
+.gradient-success { background: var(--gradient-success); }
+.gradient-dark { background: var(--gradient-dark); }
+.gradient-glass { background: var(--gradient-glass); }
+.gradient-mesh { background: var(--gradient-mesh); }
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text-animated {
+    background: linear-gradient(90deg, 
+        var(--panda-blue-500), 
+        var(--panda-green-500), 
+        var(--panda-blue-500));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
+}
+
+/* Animated gradient border */
+.gradient-border {
+    position: relative;
+    border-radius: var(--radius-base);
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, 
+        var(--panda-blue-500), 
+        var(--panda-green-500), 
+        var(--panda-red-500),
+        var(--panda-blue-500));
+    background-size: 300% 100%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: gradient-border-shift 4s linear infinite;
+}
+
+@keyframes gradient-border-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+.glow { box-shadow: var(--shadow-glow-md); }
+.glow-sm { box-shadow: var(--shadow-glow-sm); }
+.glow-lg { box-shadow: var(--shadow-glow-lg); }
+.glow-red { box-shadow: var(--shadow-glow-red); }
+.glow-green { box-shadow: var(--shadow-glow-green); }
+
+.glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: var(--shadow-glow-sm); }
+    50% { box-shadow: var(--shadow-glow-lg); }
+}
+
+.text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+.text-glow-blue {
+    text-shadow: 0 0 10px var(--panda-blue-500), 0 0 20px var(--panda-blue-500);
+}
+
+/* ============================================
+   3D & DEPTH EFFECTS
+   ============================================ */
+.shadow-3d { box-shadow: var(--shadow-3d); }
+.shadow-float { box-shadow: var(--shadow-float); }
+
+.perspective-1000 { perspective: 1000px; }
+.perspective-2000 { perspective: 2000px; }
+
+.preserve-3d { transform-style: preserve-3d; }
+
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.5s var(--ease-smooth);
+}
+
+.card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+}
+
+.tilt-on-hover {
+    transition: transform 0.3s var(--ease-spring);
+}
+
+.tilt-on-hover:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+}
+
+/* ============================================
+   ANIMATION UTILITIES
+   ============================================ */
+
+/* Fade animations */
+.animate-fadeIn {
+    animation: fadeIn 0.5s var(--ease-smooth) forwards;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s var(--ease-smooth) forwards;
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.6s var(--ease-smooth) forwards;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.6s var(--ease-smooth) forwards;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.6s var(--ease-smooth) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale animations */
+.animate-scaleIn {
+    animation: scaleIn 0.4s var(--ease-bounce) forwards;
+}
+
+.animate-scaleUp {
+    animation: scaleUp 0.3s var(--ease-spring) forwards;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Slide animations */
+.animate-slideInUp {
+    animation: slideInUp 0.5s var(--ease-smooth) forwards;
+}
+
+.animate-slideInDown {
+    animation: slideInDown 0.5s var(--ease-smooth) forwards;
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Float animation */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Shimmer effect */
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+/* Pulse ring effect */
+.pulse-ring {
+    position: relative;
+}
+
+.pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid currentColor;
+    border-radius: inherit;
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+.hover-lift {
+    transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-float);
+}
+
+.hover-grow {
+    transition: transform 0.2s var(--ease-spring);
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.hover-shrink:active {
+    transform: scale(0.95);
+}
+
+.hover-glow:hover {
+    box-shadow: var(--shadow-glow-md);
+}
+
+.hover-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.hover-shine:hover::before {
+    left: 100%;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS (Intersection Observer)
+   ============================================ */
+[data-animate] {
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
+}
+
+[data-animate="fade-up"] { transform: translateY(30px); }
+[data-animate="fade-down"] { transform: translateY(-30px); }
+[data-animate="fade-left"] { transform: translateX(-30px); }
+[data-animate="fade-right"] { transform: translateX(30px); }
+[data-animate="scale"] { transform: scale(0.9); }
+[data-animate="rotate"] { transform: rotate(-5deg) scale(0.95); }
+
+[data-animate].visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Stagger children */
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+.stagger-children.visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+/* ============================================
+   INTERACTIVE ELEMENTS
+   ============================================ */
+
+/* Modern button styles */
+.btn-panda {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-base);
+    font-weight: 600;
+    overflow: hidden;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.btn-panda-primary {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.btn-panda-primary:hover {
+    box-shadow: var(--shadow-glow-md);
+    transform: translateY(-2px);
+}
+
+.btn-panda-primary:active {
+    transform: translateY(0);
+}
+
+.btn-panda-outline {
+    background: transparent;
+    border: 2px solid var(--panda-blue-500);
+    color: var(--panda-blue-500);
+}
+
+.btn-panda-outline:hover {
+    background: var(--panda-blue-500);
+    color: white;
+}
+
+/* Card styles */
+.card-panda {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.card-panda:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--panda-blue-500);
+    box-shadow: var(--shadow-glow-sm);
+}
+
+/* ============================================
+   MONTREAL TIME WIDGET STYLES
+   ============================================ */
+.montreal-clock {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.montreal-clock-time {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.montreal-clock-date {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    text-transform: capitalize;
+}
+
+.business-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.business-status.open {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--panda-green-400);
+}
+
+.business-status.closed {
+    background: rgba(196, 30, 58, 0.2);
+    color: var(--panda-red-400);
+}
+
+.business-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .animate-fadeIn,
+    .animate-fadeInUp,
+    .animate-fadeInDown,
+    .animate-fadeInLeft,
+    .animate-fadeInRight,
+    .animate-scaleIn,
+    .animate-scaleUp,
+    .animate-slideInUp,
+    .animate-slideInDown,
+    .animate-float,
+    .shimmer::after,
+    .pulse-ring::before,
+    .gradient-text-animated,
+    .gradient-border::before,
+    .glow-pulse {
+        animation: none !important;
+    }
+    
+    .hover-lift:hover,
+    .hover-grow:hover,
+    .card-3d:hover,
+    .tilt-on-hover:hover {
+        transform: none !important;
+    }
+    
+    [data-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Dark mode adjustments */
+.dark .glass {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dark .glass-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .card-panda {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dark .card-panda:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   UI SIZE ADJUSTMENTS (Déboucheur Expert)
+   ============================================ */
+
+/* --- Theme/Language Toggle Buttons (2x smaller, icons 0.8x) --- */
+.navbar-toggle {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 2px;
+}
+
+.navbar-toggle i,
+.navbar-toggle svg {
+    font-size: 0.65rem !important;
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0.8);
+}
+
+.navbar-toggle span {
+    font-size: 0.55rem !important;
+}
+
+/* --- Services Icons (8x smaller) --- */
+.service-icon-sm {
+    font-size: 0.75rem !important;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+#services .service-card i,
+#services .service-card svg {
+    font-size: 0.875rem !important;
+    width: 14px;
+    height: 14px;
+}
+
+/* --- FAQ Caret Icons (10x smaller) --- */
+.faq-caret-sm {
+    font-size: 0.5rem !important;
+    width: 8px;
+    height: 8px;
+}
+
+#faq .rotate-icon,
+#faq .fa-chevron-down {
+    font-size: 0.5rem !important;
+    width: 8px;
+    height: 8px;
+}
+
+/* --- Testimonials Enlargements --- */
+/* Text 2.5x larger */
+.testimonial-text-lg {
+    font-size: 1.5rem !important;
+}
+
+#testimonial-track .testimonial-card p,
+.testimonial-card .font-comic {
+    font-size: 1.25rem !important;
+    line-height: 1.6;
+}
+
+/* Pictures and subtitles 2.4x larger */
+.testimonial-card img {
+    width: 192px !important;
+    height: 192px !important;
+}
+
+.testimonial-card h4 {
+    font-size: 1.68rem !important;
+}
+
+/* Stars 5x larger */
+.testimonial-card .text-yellow-400,
+.testimonial-stars-lg {
+    font-size: 2.5rem !important;
+}
+
+/* --- Contact Section Enlargements --- */
+/* Contact titles 2x larger */
+#contact h3 {
+    font-size: 2.5rem !important;
+}
+
+@media (min-width: 768px) {
+    #contact h3 {
+        font-size: 3rem !important;
+    }
+}
+
+/* Info subtitles and text 2.2x larger */
+#contact h4 {
+    font-size: 1.32rem !important;
+}
+
+@media (min-width: 768px) {
+    #contact h4 {
+        font-size: 1.54rem !important;
+    }
+}
+
+#contact p {
+    font-size: 1.1rem !important;
+}
+
+@media (min-width: 768px) {
+    #contact p {
+        font-size: 1.32rem !important;
+    }
+}
+
+/* --- Hero Section Positioning from Bottom --- */
+.hero-content-bottom {
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding-left: 2%;
+    padding-right: 18%;
+}
+
+.hero-btn-container {
+    margin: 5px;
+}
+
+.hero-text-container {
+    margin: 7px 12px;
+}
+
+.hero-title-container {
+    margin: 7px 12px;
+}
+
+/* --- Map Action Buttons --- */
+.map-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: inherit;
+    text-decoration: none;
+    font-family: 'Black Ops One', cursive;
+    font-size: 0.65rem;
+}
+
+.map-action-btn:hover {
+    transform: scale(1.1);
+}
+
+.map-action-btn i,
+.map-action-btn svg {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.map-actions-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    gap: 4px;
+}
+
+/* --- Font Family Enforcement for Titles/Buttons/Navbar --- */
+h1, h2, h3, h4, h5, h6,
+.font-ops,
+button,
+.nav-link,
+a.nav-link,
+[class*="btn"],
+.navbar a,
+#navbar a,
+#mobile-menu a,
+.dropdown-content a {
+    font-family: 'Black Ops One', Impact, 'Arial Black', sans-serif !important;
+}
+
+/* Ensure only testimonials and FAQ answers use Comic Sans */
+.testimonial-card .font-comic,
+#faq .accordion-content .font-playfair,
+.faq-answer {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important;
+}
+
+/* Override any conflicting Comic Sans on titles/buttons */
+h1.font-comic, h2.font-comic, h3.font-comic, h4.font-comic,
+button.font-comic,
+.nav-link.font-comic {
+    font-family: 'Black Ops One', Impact, 'Arial Black', sans-serif !important;
+}
+
+/* --- Navbar Time Widget --- */
+.navbar-time-widget {
+    font-family: 'Black Ops One', cursive;
+    font-size: 0.65rem;
+    text-align: center;
+    line-height: 1.2;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.navbar-time-widget .time-display {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.navbar-time-widget .date-display {
+    font-size: 0.55rem;
+    opacity: 0.8;
+}

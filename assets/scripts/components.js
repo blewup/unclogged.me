@@ -59,23 +59,23 @@ const SharedComponents = (() => {
             <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div class="flex items-center justify-between h-full">
                     <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
-                        <a href="${prefix}pages/prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
-                        <a href="${prefix}pages/plumbing.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
-                        <a href="${prefix}pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
-                        <a href="${prefix}pages/team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
-                        <a href="${indexPath}index.html#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                        <a href="${prefix}pages/prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                        <a href="${prefix}pages/plumbing.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
+                        <a href="${prefix}pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
+                        <a href="${prefix}pages/team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
+                        <a href="${indexPath}index.html#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
                         <div class="relative" id="dropdown-container">
-                            <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all flex items-center gap-2">
+                            <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all flex items-center gap-2">
                                 <span data-translate="nav_more">PLUS</span>
                                 ${Icons.chevronDown}
                             </button>
                             <div id="dropdown-menu" class="absolute top-full right-0 mt-2 w-[20vw] min-w-[200px] bg-lightBase dark:bg-darkAlt border border-white/10 rounded-xl shadow-2xl overflow-hidden dropdown-closed">
                                 <div class="dropdown-content py-2">
-                                    <a href="${prefix}pages/tools.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">OUTILS</a>
-                                    <a href="${prefix}pages/politics.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONFIDENTIALITÉ</a>
-                                    <a href="${prefix}pages/conditions.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONDITIONS</a>
+                                    <a href="${prefix}pages/tools.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">OUTILS</a>
+                                    <a href="${prefix}pages/politics.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">CONFIDENTIALITÉ</a>
+                                    <a href="${prefix}pages/conditions.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">CONDITIONS</a>
                                     <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-                                    <a href="${indexPath}index.html#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">${Icons.phone} LOCALISATION</a>
+                                    <a href="${indexPath}index.html#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">${Icons.phone} LOCALISATION</a>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ const SharedComponents = (() => {
                         </button>
                     </div>
                     <div class="md:hidden flex items-center ml-4">
-                        <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-websiteBlue focus:outline-none" aria-label="Menu">
+                        <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-blue focus:outline-none" aria-label="Menu">
                             ${Icons.bars}
                         </button>
                     </div>
@@ -98,13 +98,13 @@ const SharedComponents = (() => {
             </div>
             <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="${prefix}pages/prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">TARIFICATION</a>
-                    <a href="${prefix}pages/plumbing.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">GUIDE</a>
-                    <a href="${prefix}pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">CALENDRIER</a>
-                    <a href="${indexPath}index.html#contact" class="font-ops text-websiteBlue block px-3 py-2 text-lg">CONTACT</a>
-                    <a href="${prefix}pages/team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">ÉQUIPE</a>
-                    <a href="${prefix}pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">OUTILS</a>
-                    <a href="${indexPath}index.html#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">LOCALISATION</a>
+                    <a href="${prefix}pages/prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">TARIFICATION</a>
+                    <a href="${prefix}pages/plumbing.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">GUIDE</a>
+                    <a href="${prefix}pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">CALENDRIER</a>
+                    <a href="${indexPath}index.html#contact" class="font-ops text-blue block px-3 py-2 text-lg">CONTACT</a>
+                    <a href="${prefix}pages/team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">ÉQUIPE</a>
+                    <a href="${prefix}pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">OUTILS</a>
+                    <a href="${indexPath}index.html#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">LOCALISATION</a>
                 </div>
             </div>
         </nav>`;
@@ -143,12 +143,12 @@ const SharedComponents = (() => {
                     <a href="${CONFIG.social.google}" class="text-red-500 hover:scale-125 transition-transform" aria-label="Google">${Icons.google}</a>
                 </div>
                 <div class="md:absolute md:right-[5px] flex items-center gap-4">
-                    <a href="${prefix}pages/politics.html" class="hover:text-websiteBlue transition-colors">Politique de confidentialité</a>
-                    <a href="${prefix}pages/conditions.html" class="hover:text-websiteBlue transition-colors">Conditions</a>
-                    <a href="${prefix}pages/team.html" class="hover:text-websiteBlue transition-colors">Équipe</a>
-                    <a href="${prefix}pages/tools.html" class="hover:text-websiteBlue transition-colors">Outils</a>
-                    <a href="${prefix}pages/calendar.html" class="hover:text-websiteBlue transition-colors">Disponibilités</a>
-                    <a href="${prefix}pages/plumbing.html" class="hover:text-websiteBlue transition-colors">Plomberie</a>
+                    <a href="${prefix}pages/politics.html" class="hover:text-blue transition-colors">Politique de confidentialité</a>
+                    <a href="${prefix}pages/conditions.html" class="hover:text-blue transition-colors">Conditions</a>
+                    <a href="${prefix}pages/team.html" class="hover:text-blue transition-colors">Équipe</a>
+                    <a href="${prefix}pages/tools.html" class="hover:text-blue transition-colors">Outils</a>
+                    <a href="${prefix}pages/calendar.html" class="hover:text-blue transition-colors">Disponibilités</a>
+                    <a href="${prefix}pages/plumbing.html" class="hover:text-blue transition-colors">Plomberie</a>
                 </div>
             </div>
         </footer>`;

@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="../assets/styles/fonts.css">
     <link rel="stylesheet" href="../assets/styles/style_00.css">
     
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../assets/styles/panda.css">
+    
     <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -41,8 +47,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -216,11 +222,11 @@
                     <a href="../index.html" class="nav-logo flex items-center gap-2 hover:scale-105 transition-transform">
                         <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
                     </a>
-                    <a href="prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-deboucheurGreen hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
-                    <a href="tools.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-deboucheurGreen hover:scale-[1.025] transition-all" data-translate="nav_tools">OUTILS</a>
-                    <a href="events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-deboucheurGreen hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
-                    <a href="team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-deboucheurGreen hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
-                    <a href="../index.html#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-deboucheurGreen hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                    <a href="prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                    <a href="tools.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_tools">OUTILS</a>
+                    <a href="events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
+                    <a href="team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
+                    <a href="../index.html#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-2 ml-4 shrink-0">
                     <button onclick="toggleTheme()" class="hover:scale-110 transition-transform" aria-label="Toggle theme">
@@ -232,7 +238,7 @@
                     </button>
                 </div>
                 <div class="md:hidden flex items-center ml-4">
-                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-deboucheurGreen focus:outline-none" aria-label="Toggle mobile menu">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-green focus:outline-none" aria-label="Toggle mobile menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                 </div>
@@ -241,11 +247,11 @@
         <!-- Mobile Menu -->
         <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-deboucheurGreen">TARIFICATION</a>
-                <a href="tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-deboucheurGreen">OUTILS</a>
-                <a href="events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-deboucheurGreen">CALENDRIER</a>
-                <a href="../index.html#contact" class="font-ops text-deboucheurGreen block px-3 py-2 text-lg">CONTACT</a>
-                <a href="team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-deboucheurGreen">ÉQUIPE</a>
+                <a href="prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">TARIFICATION</a>
+                <a href="tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">OUTILS</a>
+                <a href="events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">CALENDRIER</a>
+                <a href="../index.html#contact" class="font-ops text-green block px-3 py-2 text-lg">CONTACT</a>
+                <a href="team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">ÉQUIPE</a>
             </div>
         </div>
     </nav>
@@ -259,14 +265,14 @@
         
         <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
             <h1 class="text-4xl md:text-6xl font-ops text-white mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-                <svg class="inline w-10 h-10 md:w-14 md:h-14 text-deboucheurGreen mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                <svg class="inline w-10 h-10 md:w-14 md:h-14 text-green mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
                 <span data-translate="page_title">GUIDE PLOMBERIE</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-200 max-w-3xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);" data-translate="page_subtitle">
                 Tout ce que vous devez savoir sur votre système de drainage résidentiel
             </p>
             <div class="mt-8">
-                <a href="#debouchage" class="bg-deboucheurGreen hover:bg-green-700 text-white font-ops text-xl px-8 py-4 rounded-full shadow-lg border-2 border-white transform transition-transform hover:scale-110" data-translate="explore_guide">
+                <a href="#debouchage" class="bg-green hover:bg-green-700 text-white font-ops text-xl px-8 py-4 rounded-full shadow-lg border-2 border-white transform transition-transform hover:scale-110" data-translate="explore_guide">
                     EXPLORER LE GUIDE
                 </a>
             </div>
@@ -278,11 +284,11 @@
         <div class="max-w-6xl mx-auto">
             <h3 class="text-center font-ops text-sm text-gray-500 dark:text-gray-400 mb-4">GUIDES DÉTAILLÉS</h3>
             <div class="flex flex-wrap justify-center gap-4 text-sm mb-6">
-                <a href="plumbing/supply.html" class="toc-item px-4 py-2 bg-websiteBlue text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
+                <a href="plumbing/supply.html" class="toc-item px-4 py-2 bg-blue text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
                     Alimentation en eau
                 </a>
-                <a href="plumbing/drainage.html" class="toc-item px-4 py-2 bg-deboucheurGreen text-white rounded-lg hover:bg-green-700 flex items-center gap-2">
+                <a href="plumbing/drainage.html" class="toc-item px-4 py-2 bg-green text-white rounded-lg hover:bg-green-700 flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
                     Système de drainage
                 </a>
@@ -297,23 +303,23 @@
             </div>
             <h4 class="text-center font-ops text-xs text-gray-400 mb-3">SECTIONS RAPIDES</h4>
             <div class="flex flex-wrap justify-center gap-4 text-sm">
-                <a href="#debouchage" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-websiteBlue hover:text-white flex items-center gap-2">
+                <a href="#debouchage" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     Débouchage
                 </a>
-                <a href="#inspection" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-websiteBlue hover:text-white flex items-center gap-2">
+                <a href="#inspection" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/></svg>
                     Inspection
                 </a>
-                <a href="#entretien" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-websiteBlue hover:text-white flex items-center gap-2">
+                <a href="#entretien" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
                     Entretien
                 </a>
-                <a href="#urgences" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-websiteBlue hover:text-white flex items-center gap-2">
+                <a href="#urgences" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                     Urgences
                 </a>
-                <a href="#conseils" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-websiteBlue hover:text-white flex items-center gap-2">
+                <a href="#conseils" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"/></svg>
                     Conseils
                 </a>
@@ -328,7 +334,7 @@
             <!-- Débouchage Section -->
             <section id="debouchage" class="mb-16 scroll-mt-32">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-16 h-16 bg-websiteBlue rounded-2xl flex items-center justify-center">
+                    <div class="w-16 h-16 bg-blue rounded-2xl flex items-center justify-center">
                         <i class="fas fa-toilet text-white text-2xl"></i>
                     </div>
                     <h2 class="text-3xl md:text-4xl font-ops">TECHNIQUES DE DÉBOUCHAGE</h2>
@@ -336,7 +342,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
-                        <h3 class="font-ops text-xl mb-4 text-websiteBlue">
+                        <h3 class="font-ops text-xl mb-4 text-blue">
                             <i class="fas fa-snake mr-2"></i>Câble rotatif (Snake)
                         </h3>
                         <p class="mb-4">
@@ -345,14 +351,14 @@
                             organiques, de savon ou de cheveux qui bloquent l'écoulement.
                         </p>
                         <ul class="space-y-2 text-sm">
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>Diamètres de 1/4" à 3/4" selon la tuyauterie</li>
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>Efficace sur blocages organiques</li>
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>N'endommage pas les canalisations</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Diamètres de 1/4" à 3/4" selon la tuyauterie</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Efficace sur blocages organiques</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>N'endommage pas les canalisations</li>
                         </ul>
                     </div>
                     
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
-                        <h3 class="font-ops text-xl mb-4 text-websiteBlue">
+                        <h3 class="font-ops text-xl mb-4 text-blue">
                             <i class="fas fa-water mr-2"></i>Hydro-curage
                         </h3>
                         <p class="mb-4">
@@ -361,9 +367,9 @@
                             intérieures des tuyaux et éliminant les dépôts tenaces.
                         </p>
                         <ul class="space-y-2 text-sm">
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>Pression jusqu'à 4000 PSI</li>
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>Élimine graisse et tartre</li>
-                            <li><i class="fas fa-check text-deboucheurGreen mr-2"></i>Préventif et curatif</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Pression jusqu'à 4000 PSI</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Élimine graisse et tartre</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Préventif et curatif</li>
                         </ul>
                     </div>
                 </div>
@@ -374,7 +380,7 @@
             <!-- Inspection Section -->
             <section id="inspection" class="mb-16 scroll-mt-32">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-16 h-16 bg-deboucheurGreen rounded-2xl flex items-center justify-center">
+                    <div class="w-16 h-16 bg-green rounded-2xl flex items-center justify-center">
                         <i class="fas fa-video text-white text-2xl"></i>
                     </div>
                     <h2 class="text-3xl md:text-4xl font-ops">INSPECTION PAR CAMÉRA</h2>
@@ -389,12 +395,12 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                            <i class="fas fa-search-plus text-3xl text-websiteBlue mb-2"></i>
+                            <i class="fas fa-search-plus text-3xl text-blue mb-2"></i>
                             <h4 class="font-bold">Diagnostic précis</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Localisation exacte du problème</p>
                         </div>
                         <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                            <i class="fas fa-file-video text-3xl text-deboucheurGreen mb-2"></i>
+                            <i class="fas fa-file-video text-3xl text-green mb-2"></i>
                             <h4 class="font-bold">Enregistrement</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Vidéo fournie au client</p>
                         </div>
@@ -421,7 +427,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
                         <h3 class="font-ops text-xl mb-4">
-                            <i class="fas fa-shower text-websiteBlue mr-2"></i>Drains et siphons
+                            <i class="fas fa-shower text-blue mr-2"></i>Drains et siphons
                         </h3>
                         <p class="mb-4">
                             Le <span class="tech-term">siphon</span> (ou P-trap) forme une barrière d'eau empêchant 
@@ -436,7 +442,7 @@
                     
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
                         <h3 class="font-ops text-xl mb-4">
-                            <i class="fas fa-leaf text-deboucheurGreen mr-2"></i>Drains extérieurs
+                            <i class="fas fa-leaf text-green mr-2"></i>Drains extérieurs
                         </h3>
                         <p class="mb-4">
                             Les <span class="tech-term">drains de fondation</span> et <span class="tech-term">gouttières</span> 
@@ -530,13 +536,13 @@
                     </div>
                     
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800 text-center">
-                        <i class="fas fa-filter text-4xl text-websiteBlue mb-4"></i>
+                        <i class="fas fa-filter text-4xl text-blue mb-4"></i>
                         <h4 class="font-ops mb-2">FILTRES À CHEVEUX</h4>
                         <p class="text-sm">Installez des crépines dans douches et baignoires pour éviter les blocages</p>
                     </div>
                     
                     <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800 text-center">
-                        <i class="fas fa-thermometer-half text-4xl text-deboucheurGreen mb-4"></i>
+                        <i class="fas fa-thermometer-half text-4xl text-green mb-4"></i>
                         <h4 class="font-ops mb-2">PROTECTION HIVERNALE</h4>
                         <p class="text-sm">Isolez les tuyaux exposés au froid pour prévenir le gel</p>
                     </div>
@@ -546,7 +552,7 @@
     </main>
 
     <!-- CTA Section -->
-    <section class="py-16 px-4 bg-websiteBlue">
+    <section class="py-16 px-4 bg-blue">
         <div class="max-w-4xl mx-auto text-center text-white">
             <h2 class="text-4xl font-ops mb-4">
                 <i class="fas fa-question-circle mr-4"></i>
@@ -556,7 +562,7 @@
                 Billy St-Hilaire répond à toutes vos interrogations
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+14385302343" class="bg-white text-websiteBlue font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-gray-100 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
+                <a href="tel:+14385302343" class="bg-white text-blue font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-gray-100 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
                     <i class="fas fa-phone-alt"></i>
                     438-530-2343
                 </a>
@@ -584,9 +590,9 @@
                 </a>
             </div>
             <div class="flex items-center gap-4 flex-wrap justify-center">
-                <a href="politics.html" class="hover:text-deboucheurGreen transition">Confidentialité</a>
-                <a href="conditions.html" class="hover:text-deboucheurGreen transition">Conditions</a>
-                <a href="../index.html" class="hover:text-deboucheurGreen transition">Accueil</a>
+                <a href="politics.html" class="hover:text-green transition">Confidentialité</a>
+                <a href="conditions.html" class="hover:text-green transition">Conditions</a>
+                <a href="../index.html" class="hover:text-green transition">Accueil</a>
             </div>
         </div>
     </footer>
@@ -724,6 +730,16 @@
 <!-- Dynamic Components: Cookie Banner & AI Helper -->
 <div id="banner-container"></div>
 <div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../assets/scripts/time.js" defer></script>
+
 <script src="../assets/scripts/components/loader.js"></script>
 <script src="../assets/scripts/icons.js" defer></script>
 </body>

@@ -1,0 +1,59 @@
+<!--
+    INDEX HERO SECTION (100vh) - Déboucheur Expert
+    This is the main hero section for index.html only
+    Uses slides 00-05 (first 6 slides)
+    Subpages use the hero component with slides 06-11 at 60vh
+-->
+
+<section id="hero" class="sticky-section z-10 relative w-full bg-lightBase dark:bg-darkBase" style="height: 100vh;">
+    <!-- Hero Slideshow with slides 00-05 -->
+    <div id="hero-slideshow" class="absolute inset-0 z-0">
+        <div class="hero-slide active" style="background-image: url('assets/images/slide/slide_00.webp')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/slide/slide_01.webp')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/slide/slide_02.webp')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/slide/slide_03.webp')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/slide/slide_04.webp')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/slide/slide_05.webp')"></div>
+    </div>
+    
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+    <!-- Hero Content with full text (index only) -->
+    <div class="relative z-20 h-full flex flex-col justify-end items-start text-left w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%; padding-bottom: 8vh;">
+        <div class="space-y-2 w-full relative" style="margin: 7px 12px;">
+            <h2 class="text-3xl md:text-4xl font-ops text-white text-outline-black" data-translate="hero_l1">BIENVENU CHEZ</h2>
+            <h2 class="text-3xl md:text-5xl font-ops text-blue text-outline-black">BILLY ST-HILAIRE,</h2>
+            <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
+        </div>
+        
+        <p class="font-playfair text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md w-full" style="margin: 7px 12px;" data-translate="hero_text">
+            Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
+        </p>
+
+        <div class="w-auto" style="margin: 5px;">
+            <a href="#contact" class="flex items-center justify-center bg-blue text-white font-ops text-2xl px-8 py-4 rounded-full shadow-lg border-2 border-black transform hover:scale-110 transition-transform" data-translate="btn_rdv">
+                PRENDRE RENDEZ-VOUS
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+// Index hero slideshow - 6 second interval
+(function initIndexHeroSlideshow() {
+    const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // Change slide every 6 seconds
+    setInterval(nextSlide, 6000);
+})();
+</script>

@@ -1,48 +1,42 @@
 <!--
     HERO SLIDESHOW COMPONENT - Déboucheur Expert
-    This component contains slides 11-16 (last 6 slides) for use in subpages
-    The index.html uses slides 00-05 (first 6 slides) directly in the file
+    This component contains slides 06-11 for use in subpages
+    Height: 60vh (shrinkable from 100vh)
+    Slides change every 6 seconds
     
-    Include this in subpages using: <div id="hero-container"></div>
-    Then load with: loadComponent('hero-container', 'components/hero-slide.html')
+    Include in subpages using: <div id="hero-container"></div>
 -->
 
-<section id="hero" class="sticky-section z-10 relative w-full bg-lightBase dark:bg-darkBase" style="height: 100vh;">
-    <!-- Hero Slideshow with last 6 slides (11-16) -->
+<section id="hero" class="relative w-full bg-lightBase dark:bg-darkBase" style="height: 60vh; min-height: 40vh;">
+    <!-- Hero Slideshow with slides 06-11 -->
     <div id="hero-slideshow" class="absolute inset-0 z-0">
-        <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
-        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_12.webp')"></div>
-        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_13.webp')"></div>
-        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_14.webp')"></div>
-        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_15.webp')"></div>
-        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_16.webp')"></div>
+        <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_09.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_10.webp')"></div>
+        <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
     </div>
     
     <!-- Dark overlay for text readability -->
     <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-    <!-- Hero Content -->
-    <div class="relative z-20 h-full flex flex-col justify-start items-start text-left pt-[14vh] w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%;">
-        <div class="space-y-2 mb-8 mt-10 w-full relative">
-            <h2 class="text-3xl md:text-4xl font-ops text-white text-outline-black" data-translate="hero_l1">BIENVENU CHEZ</h2>
-            <h2 class="text-3xl md:text-5xl font-ops text-blue-600 text-outline-black">BILLY ST-HILAIRE,</h2>
-            <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
-        </div>
+    <!-- Hero Content - Title and Button only (no text on subpages) -->
+    <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+        <!-- Hero Title - font-size in vh for responsive scaling -->
+        <h1 class="font-ops text-white" style="font-size: 8vh; line-height: 1.1; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+            <span data-translate="hero_title_fr">DÉBOUCHEUR EXPERT</span>
+        </h1>
         
-        <p class="font-comic text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
-            Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
-        </p>
-
-        <div class="absolute bottom-[2%] left-[2%] w-auto" style="height: 8%;">
-            <a href="#contact" class="flex items-center justify-center h-full bg-websiteBlue text-white font-ops text-2xl px-8 rounded-full shadow-lg border-2 border-black transform transition-transform hover:scale-110" data-translate="btn_rdv">
-                PRENDRE RENDEZ-VOUS
-            </a>
-        </div>
+        <!-- CTA Button -->
+        <a href="../index.html#contact" class="mt-[4vh] flex items-center justify-center bg-blue text-white font-ops rounded-full shadow-lg border-2 border-black transform transition-transform hover:scale-110" style="font-size: 2.5vh; padding: 1.5vh 4vh;" data-translate="btn_rdv">
+            PRENDRE RENDEZ-VOUS
+        </a>
     </div>
 </section>
 
 <script>
-// Hero slideshow animation for subpages
+// Hero slideshow animation for subpages - 6 second interval
 (function initHeroSlideshow() {
     const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
     if (slides.length === 0) return;
@@ -55,8 +49,17 @@
         slides[currentSlide].classList.add('active');
     }
     
-    // Change slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    // Change slide every 6 seconds
+    setInterval(nextSlide, 6000);
+})();
+
+// Update hero title based on language
+(function updateHeroTitle() {
+    const titleEl = document.querySelector('[data-translate="hero_title_fr"]');
+    if (!titleEl) return;
+    
+    const lang = localStorage.getItem('language') || 'fr';
+    titleEl.textContent = lang === 'en' ? 'UNCLOGGED.ME' : 'DÉBOUCHEUR EXPERT';
 })();
 </script>
 

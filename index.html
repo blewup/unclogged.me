@@ -74,8 +74,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -101,6 +101,12 @@
     
     <!-- Use external stylesheet for main styles -->
     <link rel="stylesheet" href="assets/styles/style_00.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="assets/styles/panda.css">
 
     <!-- Structured data for search engines describing our plumbing business -->
     <script lang="en" type="application/ld+json">
@@ -163,7 +169,7 @@
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 relative font-playfair transition-colors duration-300 overflow-x-hidden">
 
     <!-- Scroll progress bar shows how much of the page has been viewed -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-websiteBlue z-[1000] transition-all ease-linear" style="width:0;"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-blue z-[1000] transition-all ease-linear" style="width:0;"></div>
 
     <!-- NAVIGATION DOTS (Right Center) -->
     <div class="fixed right-[2%] top-1/2 transform -translate-y-1/2 z-[100] flex flex-col items-center">
@@ -185,13 +191,13 @@
     </a>
 
     <!-- L'APPRENTI BUTTON -->
-    <button onclick="toggleChat()" class="fixed bottom-[2%] right-[2%] z-[70] bg-websiteBlue hover:bg-blue-600 text-white rounded-full shadow-2xl p-0 transition-transform hover:scale-110 border-2 border-white animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
+    <button onclick="toggleChat()" class="fixed bottom-[2%] right-[2%] z-[70] bg-blue hover:bg-blue-600 text-white rounded-full shadow-2xl p-0 transition-transform hover:scale-110 border-2 border-white animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
         <img src="assets/images/logo/logo.png" alt="L'Apprenti" class="w-full h-full object-cover">
     </button>
 
     <!-- AI CHAT WIDGET -->
     <div id="ai-chat-widget" class="fixed bottom-[12%] right-[5%] z-[80] w-80 md:w-96 bg-gray-900 border border-gray-700 box-radius shadow-2xl overflow-hidden flex flex-col hidden-widget" style="height: 500px; max-height: 70vh;">
-        <div class="bg-websiteBlue p-4 flex justify-between items-center border-b border-blue-600">
+        <div class="bg-blue p-4 flex justify-between items-center border-b border-blue-600">
             <div class="flex items-center gap-2">
                 <i class="fas fa-robot text-white text-xl"></i>
                 <div>
@@ -206,13 +212,13 @@
         </div>
         <div class="p-3 bg-gray-900 border-t border-gray-700">
             <div class="flex items-center gap-2 mb-2">
-                <label for="image-upload" class="cursor-pointer text-gray-400 hover:text-websiteBlue transition p-2"><i class="fas fa-camera text-xl"></i></label>
+                <label for="image-upload" class="cursor-pointer text-gray-400 hover:text-blue transition p-2"><i class="fas fa-camera text-xl"></i></label>
                 <input type="file" id="image-upload" accept="image/*" class="hidden" onchange="handleImageUpload(this)">
                 <span id="file-name" class="text-xs text-gray-500 truncate max-w-[100px]"></span>
             </div>
             <div class="flex gap-2">
-                <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-websiteBlue outline-none" onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()" class="bg-websiteBlue hover:bg-blue-600 text-white p-2 box-radius transition"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-blue outline-none" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="bg-blue hover:bg-blue-600 text-white p-2 box-radius transition"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -223,53 +229,61 @@
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div class="flex items-center justify-between h-full">
                 <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
-                    <a href="pages/prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
-                    <a href="pages/plumbing.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
-                    <a href="pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
-                    <a href="pages/team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
-                    <a href="#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                    <a href="pages/prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                    <a href="pages/plumbing.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
+                    <a href="pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
+                    <a href="pages/team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
+                    <a href="#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
                     <!-- Dropdown Trigger -->
                     <div class="relative" id="dropdown-container">
-                        <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-websiteBlue hover:scale-[1.025] transition-all flex items-center gap-2">
+                        <button onclick="toggleDropdown()" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all flex items-center gap-2">
                             <span data-translate="nav_more">PLUS</span>
                             <i class="fas fa-chevron-down text-sm dropdown-icon transition-transform"></i>
                         </button>
                         <!-- Dropdown Menu with carpet-unroll animation -->
                         <div id="dropdown-menu" class="absolute top-full right-0 mt-2 w-[20vw] min-w-[200px] bg-lightBase dark:bg-darkAlt border border-white/10 rounded-xl shadow-2xl overflow-hidden dropdown-closed">
                             <div class="dropdown-content py-2">
-                                <a href="pages/team.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">ÉQUIPE</a>
-                                <a href="pages/tools.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">OUTILS</a>
-                                <a href="pages/politics.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONFIDENTIALITÉ</a>
-                                <a href="pages/conditions.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all">CONDITIONS</a>
+                                <a href="pages/team.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">ÉQUIPE</a>
+                                <a href="pages/tools.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">OUTILS</a>
+                                <a href="pages/politics.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">CONFIDENTIALITÉ</a>
+                                <a href="pages/conditions.html" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all">CONDITIONS</a>
                                 <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-                                <a href="#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-websiteBlue/10 hover:text-websiteBlue transition-all"><i class="fas fa-map-marker-alt mr-2"></i>LOCALISATION</a>
+                                <a href="#map-section" class="block px-6 py-3 font-ops text-sm text-gray-700 dark:text-gray-200 hover:bg-blue/10 hover:text-blue transition-all"><i class="fas fa-map-marker-alt mr-2"></i>LOCALISATION</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row items-center justify-center space-x-3 ml-4 shrink-0">
-                    <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center border-2 border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase">
-                        <i class="fas fa-sun text-yellow-400 text-lg hidden dark:block"></i>
-                        <i class="fas fa-moon text-purple-600 text-lg block dark:hidden"></i>
-                    </button>
-                    <button onclick="toggleLanguage()" class="w-10 h-10 flex items-center justify-center border-2 border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase text-gray-600 dark:text-white font-ops text-sm">
-                        <span id="lang-display">EN</span>
-                    </button>
+                <div class="flex flex-col items-center justify-center ml-4 shrink-0 gap-1">
+                    <!-- Time Widget (Montreal) -->
+                    <div id="navbar-time" class="navbar-time-widget text-gray-600 dark:text-gray-300">
+                        <div class="time-display" id="navbar-clock">--:--</div>
+                        <div class="date-display" id="navbar-date">---</div>
+                    </div>
+                    <!-- Theme/Lang Toggles (2x smaller) -->
+                    <div class="flex flex-row items-center justify-center space-x-1">
+                        <button onclick="toggleTheme()" class="navbar-toggle w-5 h-5 flex items-center justify-center border border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase">
+                            <svg class="w-3 h-3 text-yellow-400 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                            <svg class="w-3 h-3 text-purple-600 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                        </button>
+                        <button onclick="toggleLanguage()" class="navbar-toggle w-5 h-5 flex items-center justify-center border border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase text-gray-600 dark:text-white font-ops text-[8px]">
+                            <span id="lang-display">EN</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="md:hidden flex items-center ml-4">
-                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-websiteBlue focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-blue focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
                 </div>
             </div>
         </div>
         <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="pages/prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">TARIFICATION</a>
-                <a href="pages/plumbing.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">GUIDE</a>
-                <a href="pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">CALENDRIER</a>
-                <a href="#contact" class="font-ops text-websiteBlue block px-3 py-2 text-lg">CONTACT</a>
-                <a href="pages/team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">ÉQUIPE</a>
-                <a href="pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">OUTILS</a>
-                <a href="#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-websiteBlue">LOCALISATION</a>
+                <a href="pages/prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">TARIFICATION</a>
+                <a href="pages/plumbing.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">GUIDE</a>
+                <a href="pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">CALENDRIER</a>
+                <a href="#contact" class="font-ops text-blue block px-3 py-2 text-lg">CONTACT</a>
+                <a href="pages/team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">ÉQUIPE</a>
+                <a href="pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">OUTILS</a>
+                <a href="#map-section" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">LOCALISATION</a>
             </div>
         </div>
     </nav>
@@ -287,19 +301,19 @@
         </div>
         <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-        <div class="relative z-20 h-full flex flex-col justify-start items-start text-left pt-[14vh] w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%;">
-            <div class="space-y-2 mb-8 mt-10 w-full relative">
+        <div class="relative z-20 h-full flex flex-col justify-end items-start text-left w-[100vw] m-0" style="padding-left: 2%; padding-right: 18%; padding-bottom: 8vh;">
+            <div class="space-y-2 w-full relative" style="margin: 7px 12px;">
                 <h2 class="text-3xl md:text-4xl font-ops text-white text-outline-black" data-translate="hero_l1">BIENVENU CHEZ</h2>
                 <h2 class="text-3xl md:text-5xl font-ops text-blue-600 text-outline-black">BILLY ST-HILAIRE,</h2>
                 <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
             </div>
             
-            <p class="font-playfair text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
+            <p class="font-playfair text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md w-full" style="margin: 7px 12px;" data-translate="hero_text">
                 Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
             </p>
 
-            <div class="absolute bottom-[2%] left-[2%] w-auto" style="height: 8%;">
-                <a href="#contact" class="flex items-center justify-center h-full bg-websiteBlue text-white font-ops text-2xl px-8 rounded-full shadow-lg border-2 border-black transform hover:scale-110 transition-transform" data-translate="btn_rdv">
+            <div class="w-auto" style="margin: 5px;">
+                <a href="#contact" class="flex items-center justify-center bg-blue text-white font-ops text-2xl px-8 py-4 rounded-full shadow-lg border-2 border-black transform hover:scale-110 transition-transform" data-translate="btn_rdv">
                     PRENDRE RENDEZ-VOUS
                 </a>
             </div>
@@ -311,27 +325,27 @@
         <div class="w-full h-full flex flex-col justify-center px-2 md:px-6 py-4">
             <div class="text-center mb-4 md:mb-6 shrink-0">
                 <h2 class="text-2xl md:text-4xl lg:text-5xl font-ops text-gray-900 dark:text-white mb-0">
-                    <span data-translate="services_title">NOS SERVICES</span> <span class="text-websiteBlue" data-translate="services_sub">DE PLOMBERIE</span>
+                    <span data-translate="services_title">NOS SERVICES</span> <span class="text-blue" data-translate="services_sub">DE PLOMBERIE</span>
                 </h2>
             </div>
             <div class="grid grid-cols-2 gap-2 md:gap-4 w-full flex-grow max-h-[80vh]">
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_00.webp');">
-                    <i class="fas fa-exclamation-triangle text-xl md:text-2xl text-cardinal mb-1 md:mb-2"></i>
+                    <svg class="w-3.5 h-3.5 text-cardinal mb-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_urgence">URGENCE 24/7</h3>
                     <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_urgence_desc">Intervention rapide. Nuit et jour.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_01.webp');">
-                    <i class="fas fa-tools text-xl md:text-2xl text-websiteBlue mb-1 md:mb-2"></i>
+                    <svg class="w-3.5 h-3.5 text-blue mb-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_reno">RÉNOVATION</h3>
                     <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_reno_desc">Salle de bain, cuisine, tuyauterie neuve.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_02.webp');">
-                    <i class="fas fa-search text-xl md:text-2xl text-yellow-500 mb-1 md:mb-2"></i>
+                    <svg class="w-3.5 h-3.5 text-yellow-500 mb-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_insp">INSPECTION</h3>
                     <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_insp_desc">Caméra HD. Rapport précis.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_03.webp');">
-                    <i class="fas fa-toilet text-xl md:text-2xl text-deboucheurGreen mb-1 md:mb-2"></i>
+                    <svg class="w-3.5 h-3.5 text-green mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_debouch">DEBOUCHAGE</h3>
                     <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_debouch_desc">Égouts, lavabos et toilettes.</p>
                 </div>
@@ -349,12 +363,12 @@
                     <h2 class="text-4xl md:text-5xl font-ops text-gray-900 dark:text-white leading-none">
                         <span data-translate="exp_title1">POURQUOI</span><br>
                         <span data-translate="exp_title2">CHOISIR NOTRE</span><br>
-                        <span class="text-websiteBlue" data-translate="exp_title3">EXPERTISE ?</span>
+                        <span class="text-blue" data-translate="exp_title3">EXPERTISE ?</span>
                     </h2>
                     <p class="font-playfair text-lg text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="exp_intro">Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.</p>
                     <div class="grid grid-cols-1 gap-6">
                         <div class="border-l-4 border-cardinal pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_comp_title">COMPÉTENCES VARIÉES</h4><p class="font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="exp_comp_text">Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.</p></div>
-                        <div class="border-l-4 border-websiteBlue pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_ponc_title">PONCTUEL ET ASSIDU</h4><p class="font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="exp_ponc_text">Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.</p></div>
+                        <div class="border-l-4 border-blue pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_ponc_title">PONCTUEL ET ASSIDU</h4><p class="font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="exp_ponc_text">Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.</p></div>
                     </div>
                 </div>
             </div>
@@ -366,11 +380,11 @@
         <div class="max-w-4xl mx-auto px-4 w-full py-6">
             <h3 class="text-2xl md:text-3xl font-ops text-center text-gray-900 dark:text-white mb-4 md:mb-6" data-translate="faq_title">FOIRE AUX QUESTIONS</h3>
             <div class="space-y-2 md:space-y-3 overflow-y-auto max-h-[75vh] scrollbar-thin p-1 md:p-2">
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q1">QUELS SONT VOS TARIFS ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a1">Contactez-nous pour une estimation gratuite.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q2">URGENCE DÉBOUCHAGE ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a2">Ligne d'urgence 24/7 disponible.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q3">DÉPLACEMENT SUR LA RIVE-NORD ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a3">Principalement Rive-Sud et Montréal.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q4">GARANTIE SUR LES TRAVAUX ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a4">Oui, tous nos travaux sont garantis.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q5">ACCEPTEZ-VOUS LES CARTES ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a5">Oui, crédit, débit et virements acceptés.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-ops text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q1">QUELS SONT VOS TARIFS ?</span><svg class="w-2 h-2 text-gray-400 rotate-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300 faq-answer" data-translate="faq_a1">Contactez-nous pour une estimation gratuite.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-ops text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q2">URGENCE DÉBOUCHAGE ?</span><svg class="w-2 h-2 text-gray-400 rotate-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300 faq-answer" data-translate="faq_a2">Ligne d'urgence 24/7 disponible.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-ops text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q3">DÉPLACEMENT SUR LA RIVE-NORD ?</span><svg class="w-2 h-2 text-gray-400 rotate-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300 faq-answer" data-translate="faq_a3">Principalement Rive-Sud et Montréal.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-ops text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q4">GARANTIE SUR LES TRAVAUX ?</span><svg class="w-2 h-2 text-gray-400 rotate-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300 faq-answer" data-translate="faq_a4">Oui, tous nos travaux sont garantis.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-ops text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q5">ACCEPTEZ-VOUS LES CARTES ?</span><svg class="w-2 h-2 text-gray-400 rotate-icon transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300 faq-answer" data-translate="faq_a5">Oui, crédit, débit et virements acceptés.</div></div></div>
             </div>
         </div>
     </section>
@@ -389,7 +403,7 @@
                         <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
                             <!-- bg-white/15 = opacity 0.15 -->
                             <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-4 md:p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
-                                <h3 class="text-3xl md:text-4xl font-ops mb-4 flex items-center gap-3 text-websiteBlue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_send"><i class="fas fa-paper-plane"></i> ENVOYEZ</h3>
+                                <h3 class="text-3xl md:text-4xl font-ops mb-4 flex items-center gap-3 text-blue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_send"><svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> ENVOYEZ</h3>
                                 <form class="space-y-3 flex-grow flex flex-col">
                                     <div class="grid grid-cols-2 gap-3">
                                         <input type="text" id="fname" placeholder="Prénom" oninput="saveCache('fname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
@@ -399,25 +413,25 @@
                                     <input type="tel" id="phone" placeholder="(###)###-####" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); saveCache('phone', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold font-inter">
                                     <textarea id="msg" placeholder="Message" oninput="saveCache('msg', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full flex-grow bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold"></textarea>
                                     <!-- File input for optional attachment -->
-                                    <input type="file" id="attachment" accept=".png,.jpg,.jpeg,.webp,.avif" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold file:mr-2 file:px-4 file:py-2 file:border-0 file:bg-websiteBlue file:text-white file:rounded-full">
-                                    <button id="contact-submit" type="button" class="w-full bg-websiteBlue hover:bg-blue-700 text-white font-ops text-xl py-3 box-radius shadow-lg" data-translate="btn_send" onclick="submitContact()">ENVOYER</button>
+                                    <input type="file" id="attachment" accept=".png,.jpg,.jpeg,.webp,.avif" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold file:mr-2 file:px-4 file:py-2 file:border-0 file:bg-blue file:text-white file:rounded-full">
+                                    <button id="contact-submit" type="button" class="w-full bg-blue hover:bg-blue-700 text-white font-ops text-xl py-3 box-radius shadow-lg" data-translate="btn_send" onclick="submitContact()">ENVOYER</button>
                                     <div id="contact-status" class="hidden text-xs md:text-sm font-bold mt-2"></div>
                                 </form>
                             </div>
-                            <button onclick="slideContact(1)" class="md:hidden absolute top-1/2 right-2 z-50 w-12 h-12 bg-websiteBlue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+                            <button onclick="slideContact(1)" class="md:hidden absolute top-1/2 right-2 z-50 w-12 h-12 bg-blue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
                         </div>
 
                         <!-- Right: Infos -->
                         <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
                             <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-4 md:p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
-                                <h3 class="text-3xl md:text-4xl font-ops mb-4 md:mb-6 flex items-center gap-3 text-websiteBlue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_info"><i class="fas fa-address-card"></i> INFOS</h3>
+                                <h3 class="text-3xl md:text-4xl font-ops mb-4 md:mb-6 flex items-center gap-3 text-blue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_info"><svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg> INFOS</h3>
                                 <div class="space-y-4 md:space-y-6 font-playfair dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
-                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4><p class="text-sm md:text-base">Billy St-Hilaire, 35 ans,</p><p class="text-sm md:text-base">Diplômé de l'École des Métiers,</p><p class="text-sm md:text-base">de la Construction de Montréal,</p></div>
-                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4><p class="text-sm md:text-base">10 ans pour le groupe Centco inc,</p><p class="text-sm md:text-base">Contrats multiples avec le local 144,</p><p class="text-sm md:text-base">Fier supporteur et employé de</p><p class="text-sm md:text-base">Plomberie Martin Boisvert enr.</p></div>
-                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4><p class="text-sm md:text-base">Toujours actif pour répondre aux</p><p class="text-sm md:text-base">diverses appels de services.</p><p class="text-sm md:text-base">Que ce soit pour changer une valve</p><p class="text-sm md:text-base">ou réparer un tuyau qui coule.</p><p class="text-sm md:text-base">Le déboucheur sait s'y prendre.</p><p class="text-xs mt-1 font-inter italic">*Aucune construction neuve</p></div>
+                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4><p class="text-sm md:text-base">Billy St-Hilaire, 35 ans,</p><p class="text-sm md:text-base">Diplômé de l'École des Métiers,</p><p class="text-sm md:text-base">de la Construction de Montréal,</p></div>
+                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4><p class="text-sm md:text-base">10 ans pour le groupe Centco inc,</p><p class="text-sm md:text-base">Contrats multiples avec le local 144,</p><p class="text-sm md:text-base">Fier supporteur et employé de</p><p class="text-sm md:text-base">Plomberie Martin Boisvert enr.</p></div>
+                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4><p class="text-sm md:text-base">Toujours actif pour répondre aux</p><p class="text-sm md:text-base">diverses appels de services.</p><p class="text-sm md:text-base">Que ce soit pour changer une valve</p><p class="text-sm md:text-base">ou réparer un tuyau qui coule.</p><p class="text-sm md:text-base">Le déboucheur sait s'y prendre.</p><p class="text-xs mt-1 font-inter italic">*Aucune construction neuve</p></div>
                                 </div>
                             </div>
-                            <button onclick="slideContact(0)" class="md:hidden absolute top-1/2 left-2 z-50 w-12 h-12 bg-websiteBlue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+                            <button onclick="slideContact(0)" class="md:hidden absolute top-1/2 left-2 z-50 w-12 h-12 bg-blue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
                         </div>
                     </div>
                 </div>
@@ -443,18 +457,37 @@
             <div class="lesson-overlay">
                 <h2 class="text-4xl md:text-6xl font-ops mb-4 text-white [text-shadow:_2px_2px_0_#000,_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000]" data-translate="lessons_title">Leçons&nbsp;Interactives</h2>
                 <p class="font-playfair max-w-xl mb-6 text-lg md:text-xl text-white [text-shadow:_1px_1px_0_#000,_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000]" data-translate="lessons_desc">Découvrez des conseils pratiques de plomberie avec Billy et apprenez à mieux comprendre votre système de drainage. Cette vidéo boucle toutes les 40&nbsp;secondes.</p>
-                <button onclick="scrollToSection(7)" class="bg-websiteBlue px-8 py-3 font-ops text-lg rounded-full border-2 border-black shadow-lg transition-transform hover:scale-110" data-translate="lessons_btn">ENCORE PLUS</button>
+                <button onclick="scrollToSection(7)" class="bg-blue px-8 py-3 font-ops text-lg rounded-full border-2 border-black shadow-lg transition-transform hover:scale-110" data-translate="lessons_btn">ENCORE PLUS</button>
             </div>
         </section>
 
         <!-- 8. MAP SECTION (90vh) -->
         <section id="map-section" class="relative bg-lightBase dark:bg-darkBase py-[2vh]" style="height: 90vh;">
             <div class="w-full h-full relative map-glow-light dark:map-glow-dark transition-shadow duration-300 box-radius overflow-hidden mx-auto max-w-[98%]">
-                <!-- Map iframe covering Montreal & Montérégie with wider zoom -->
-                <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869248.469!2d-75.3!3d45.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full dark:invert-[.85] dark:hue-rotate-180 transition-all duration-500 z-0 box-radius"></iframe>
+                <!-- Map iframe covering Montreal & Montérégie with closer zoom (z=10 for regional view) -->
+                <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d358906.12!2d-73.8!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full dark:invert-[.85] dark:hue-rotate-180 transition-all duration-500 z-0 box-radius"></iframe>
+                <!-- Map Action Buttons -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+                    <a href="https://www.google.com/maps/dir//290+Rue+Lord,+Napierville,+QC+J0J+1L0" target="_blank" class="map-action-btn" data-translate="map_directions">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        <span class="font-ops text-xs">Itinéraire</span>
+                    </a>
+                    <button onclick="saveLocation()" class="map-action-btn" data-translate="map_save">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                        <span class="font-ops text-xs">Sauver</span>
+                    </button>
+                    <a href="tel:+14385302343" class="map-action-btn" data-translate="map_call">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span class="font-ops text-xs">Appeler</span>
+                    </a>
+                    <button onclick="shareLocation()" class="map-action-btn" data-translate="map_share">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                        <span class="font-ops text-xs">Partager</span>
+                    </button>
+                </div>
                 <!-- Satellite Toggle Button -->
                 <button id="satellite-toggle" onclick="toggleMapType()" class="absolute top-3 right-3 z-30 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white px-3 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 flex items-center gap-2 text-sm font-bold transition-all">
-                    <i class="fas fa-satellite"></i>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                     <span id="map-type-label">Satellite</span>
                 </button>
                 <!-- Custom overlay panel replacing the original overlays -->
@@ -486,15 +519,15 @@
                                 <a href="https://unclogged.me" class="hover:underline">unclogged.me</a>
                             </div>
                             <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-phone text-websiteBlue w-5 text-center"></i>
-                                <a href="tel:+14385302343" class="hover:underline text-websiteBlue font-bold">+1 (438) 530‑2343</a>
+                                <i class="fas fa-phone text-blue w-5 text-center"></i>
+                                <a href="tel:+14385302343" class="hover:underline text-blue font-bold">+1 (438) 530‑2343</a>
                             </div>
                             <div class="flex items-center gap-3 mb-3">
                                 <i class="fas fa-phone text-pink-500 w-5 text-center"></i>
                                 <a href="tel:+14387657040" class="hover:underline text-pink-500 font-bold">+1 (438) 765‑7040</a>
                             </div>
                             <div class="flex items-center gap-3 mb-3">
-                                <i class="fas fa-envelope text-websiteBlue w-5 text-center"></i>
+                                <i class="fas fa-envelope text-blue w-5 text-center"></i>
                                 <a href="mailto:info@deboucheur.expert" class="hover:underline">info@deboucheur.expert</a>
                             </div>
                             <div class="flex items-center gap-3">
@@ -521,12 +554,12 @@
                     <a href="#" class="text-red-500 hover:scale-125 transition-transform"><i class="fab fa-google text-xl"></i></a>
                 </div>
                 <div class="md:absolute md:right-[5px] flex items-center gap-4">
-                    <a href="pages/politics.html" class="hover:text-websiteBlue transition-colors">Politique de confidentialité</a>
-                    <a href="pages/conditions.html" class="hover:text-websiteBlue transition-colors">Conditions</a>
-                    <a href="pages/team.html" class="hover:text-websiteBlue transition-colors">Équipe</a>
-                    <a href="pages/tools.html" class="hover:text-websiteBlue transition-colors">Outils</a>
-                    <a href="pages/calendar.html" class="hover:text-websiteBlue transition-colors">Disponibilités</a>
-                    <a href="pages/plumbing.html" class="hover:text-websiteBlue transition-colors">Plomberie</a>
+                    <a href="pages/politics.html" class="hover:text-blue transition-colors">Politique de confidentialité</a>
+                    <a href="pages/conditions.html" class="hover:text-blue transition-colors">Conditions</a>
+                    <a href="pages/team.html" class="hover:text-blue transition-colors">Équipe</a>
+                    <a href="pages/tools.html" class="hover:text-blue transition-colors">Outils</a>
+                    <a href="pages/calendar.html" class="hover:text-blue transition-colors">Disponibilités</a>
+                    <a href="pages/plumbing.html" class="hover:text-blue transition-colors">Plomberie</a>
                 </div>
             </div>
         </footer>
@@ -627,50 +660,50 @@
                 urgence: "EMERGENCY 24/7",
                 hero_l1: "WELCOME TO",
                 hero_l3: "THE UNCLOGGER",
-                hero_text: "With over 15 years experience.",
+                hero_text: "With over 15 years of plumbing experience, 10 years as a journeyman. Billy St-Hilaire is at your service and offers you the best guaranteed service.",
                 btn_rdv: "BOOK APPOINTMENT",
                 services_title: "OUR SERVICES",
                 services_sub: "PLUMBING",
                 srv_urgence: "EMERGENCY 24/7",
-                srv_urgence_desc: "Quick intervention.",
+                srv_urgence_desc: "Fast intervention. Day and night.",
                 srv_reno: "RENOVATION",
-                srv_reno_desc: "Bathroom, kitchen.",
+                srv_reno_desc: "Bathroom, kitchen, new piping.",
                 srv_insp: "INSPECTION",
-                srv_insp_desc: "HD Camera.",
+                srv_insp_desc: "HD Camera. Precise report.",
                 srv_debouch: "UNCLOGGING",
-                srv_debouch_desc: "Sewers, sinks.",
+                srv_debouch_desc: "Sewers, sinks and toilets.",
                 exp_title1: "WHY",
                 exp_title2: "CHOOSE OUR",
-                exp_title3: "EXPERTISE ?",
-                exp_intro: "Traditional know-how meets modern tech.",
-                exp_comp_title: "SKILLS",
-                exp_comp_text: "MIG, TIG, SMAW.",
-                exp_ponc_title: "PUNCTUAL",
-                exp_ponc_text: "Confirmation call 24h prior.",
-                faq_title: "FAQ",
+                exp_title3: "EXPERTISE?",
+                exp_intro: "With Billy St-Hilaire, traditional know-how and modern technologies are combined.",
+                exp_comp_title: "DIVERSE SKILLS",
+                exp_comp_text: "MIG, TIG and SMAW welding. Journeyman Plumber, Heating Technician. Experience to spare.",
+                exp_ponc_title: "PUNCTUAL AND RELIABLE",
+                exp_ponc_text: "A confirmation call is made 24 hours in advance. *Fees for late cancellation.",
+                faq_title: "FREQUENTLY ASKED QUESTIONS",
                 faq_q1: "WHAT ARE YOUR RATES?",
                 faq_a1: "Contact us for a free estimate.",
                 faq_q2: "EMERGENCY UNCLOGGING?",
                 faq_a2: "24/7 emergency line available.",
-                faq_q3: "DO YOU TRAVEL TO NORTH SHORE?",
+                faq_q3: "DO YOU TRAVEL TO THE NORTH SHORE?",
                 faq_a3: "Mainly South Shore and Montreal.",
                 faq_q4: "WARRANTY ON WORK?",
                 faq_a4: "Yes, all our work is guaranteed.",
                 faq_q5: "DO YOU ACCEPT CARDS?",
                 faq_a5: "Yes, credit, debit and transfers accepted.",
                 contact_send: "SEND",
-                contact_info: "INFOS",
+                contact_info: "INFO",
                 btn_send: "SEND",
                 testimonials_title: "TESTIMONIALS",
                 phone_title: "PHONE",
-                cookie_title: "Cookies",
-                cookie_text: "Better experience.",
-                cookie_msg: "By continuing to browse you accept the use of cookies to improve your experience.",
+                cookie_title: "We use cookies",
+                cookie_text: "To improve your experience.",
+                cookie_msg: "By continuing to browse, you accept the use of cookies to improve your experience.",
                 cookie_accept: "Accept",
                 cookie_learn: "Learn more",
-                ped_man: "THE MAN :",
-                ped_exp: "EXPERIENCES :",
-                ped_bio: "BIOGRAPHY :",
+                ped_man: "THE MAN:",
+                ped_exp: "EXPERIENCE:",
+                ped_bio: "BIOGRAPHY:",
                 lessons_title: "Interactive Lessons",
                 lessons_desc: "Discover practical plumbing tips with Billy and learn to better understand your drainage system. This video loops every 40 seconds.",
                 lessons_btn: "EVEN MORE"
@@ -702,15 +735,15 @@
             if(dots[activeIndex]) dots[activeIndex].classList.add('active');
 
             const links = document.querySelectorAll('.nav-link');
-            links.forEach(l => l.classList.remove('text-websiteBlue', 'scale-[1.025]'));
+            links.forEach(l => l.classList.remove('text-blue', 'scale-[1.025]'));
             // Map section is now the 8th sticky section (index 7).  We keep
             // highlighting nav links based on the sticky section positions:
             // index 1 -> Services, index 3 -> FAQ, index 4 -> Contact,
             // index 7 -> Location (map).
-            if(activeIndex === 1) links[0].classList.add('text-websiteBlue', 'scale-[1.025]');
-            else if(activeIndex === 3) links[1].classList.add('text-websiteBlue', 'scale-[1.025]');
-            else if(activeIndex === 4) links[2].classList.add('text-websiteBlue', 'scale-[1.025]');
-            else if(activeIndex === 7) links[3].classList.add('text-websiteBlue', 'scale-[1.025]');
+            if(activeIndex === 1) links[0].classList.add('text-blue', 'scale-[1.025]');
+            else if(activeIndex === 3) links[1].classList.add('text-blue', 'scale-[1.025]');
+            else if(activeIndex === 4) links[2].classList.add('text-blue', 'scale-[1.025]');
+            else if(activeIndex === 7) links[3].classList.add('text-blue', 'scale-[1.025]');
         });
 
         // --- DOT NAVIGATION ---
@@ -807,7 +840,7 @@
             });
             for(let i=0; i<testimonials.length; i++) {
                 const dot = document.createElement('div');
-                dot.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer`;
+                dot.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-blue' : 'bg-gray-400'} cursor-pointer`;
                 dot.onclick = () => { currentSlide = i; updateCarousel(); };
                 dotsContainer.appendChild(dot);
             }
@@ -819,7 +852,7 @@
             const widthPercent = 100 / itemsPerPage;
             track.style.transform = `translateX(-${currentSlide * widthPercent}%)`;
             Array.from(dotsContainer.children).forEach((d, i) => {
-                d.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer`;
+                d.className = `w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-blue' : 'bg-gray-400'} cursor-pointer`;
             });
             updateActiveCard();
         }
@@ -858,7 +891,7 @@
                 return;
             }
             statusDiv.classList.remove('hidden');
-            statusDiv.classList.add('text-websiteBlue');
+            statusDiv.classList.add('text-blue');
             statusDiv.innerText = currentLang === 'fr' ? 'Envoi en cours…' : 'Sending…';
             try {
                 const formData = new FormData();
@@ -879,7 +912,7 @@
                 });
                 const data = await res.json();
                 if (data && data.status === 'ok') {
-                    statusDiv.classList.remove('text-websiteBlue');
+                    statusDiv.classList.remove('text-blue');
                     statusDiv.classList.add('text-green-600');
                     statusDiv.innerText = currentLang === 'fr' ? 'Merci ! Votre message a été envoyé.' : 'Thank you! Your message has been sent.';
                     // Clear fields and localStorage cache
@@ -894,7 +927,7 @@
                     throw new Error('Bad response');
                 }
             } catch (err) {
-                statusDiv.classList.remove('text-websiteBlue');
+                statusDiv.classList.remove('text-blue');
                 statusDiv.classList.add('text-red-600');
                 statusDiv.innerText = currentLang === 'fr' ? 'Erreur : impossible d\'envoyer. Réessayez plus tard.' : 'Error: could not send. Please try again later.';
             }
@@ -933,7 +966,7 @@
             if (!iframe) return;
             isSatelliteView = !isSatelliteView;
             // Toggle between road map and satellite view using Google Maps embed parameters
-            const baseUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869248.469!2d-75.3!3d45.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!';
+            const baseUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d358906.12!2d-73.8!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!';
             if (isSatelliteView) {
                 // Enable satellite view: 5e1 = satellite
                 iframe.src = baseUrl + '5e1!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca';
@@ -942,6 +975,33 @@
                 // Road map: 5e0 = roadmap
                 iframe.src = baseUrl + '5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca';
                 label.innerText = 'Satellite';
+            }
+        }
+        // --- SAVE LOCATION ---
+        function saveLocation() {
+            const address = '290 Rue Lord #01, Napierville, QC J0J 1L0';
+            const mapsUrl = 'https://www.google.com/maps/place/290+Rue+Lord,+Napierville,+QC+J0J+1L0';
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(mapsUrl).then(() => {
+                    alert(currentLang === 'fr' ? 'Adresse copiée!' : 'Address copied!');
+                }).catch(() => {
+                    window.open(mapsUrl, '_blank');
+                });
+            } else {
+                window.open(mapsUrl, '_blank');
+            }
+        }
+        // --- SHARE LOCATION ---
+        function shareLocation() {
+            const shareData = {
+                title: 'Déboucheur Expert',
+                text: currentLang === 'fr' ? 'Services de plomberie à Montréal et Montérégie' : 'Plumbing services in Montreal and Montérégie',
+                url: 'https://www.google.com/maps/place/290+Rue+Lord,+Napierville,+QC+J0J+1L0'
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                saveLocation();
             }
         }
         // Close dropdown when clicking outside
@@ -1045,7 +1105,7 @@
           })();
         </script>
         <!-- Scroll to Top Button -->
-        <button id="scroll-top-btn" class="hidden fixed bottom-20 right-6 z-[90] bg-websiteBlue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-transform" aria-label="Back to Top">
+        <button id="scroll-top-btn" class="hidden fixed bottom-20 right-6 z-[90] bg-blue text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-transform" aria-label="Back to Top">
             <i class="fas fa-arrow-up"></i>
         </button>
         <script>
@@ -1076,6 +1136,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
           });
         </script>
+        <!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+        <script src="assets/scripts/libs.js" defer></script>
+        
+        <!-- Main Application Module -->
+        <script src="assets/scripts/main.js" defer></script>
+        
+        <!-- Montreal Time Widget -->
+        <script src="assets/scripts/time.js" defer></script>
+        
         <!-- Icons Library - FA to SVG auto-conversion -->
         <script src="assets/scripts/icons.js" defer></script>
     </body>

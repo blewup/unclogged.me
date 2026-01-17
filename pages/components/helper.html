@@ -13,13 +13,13 @@
 -->
 
 <!-- L'APPRENTI FLOATING BUTTON -->
-<button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-websiteBlue hover:bg-blue-600 text-white rounded-full shadow-2xl p-0 transition-transform hover:scale-110 border-2 border-white animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
+<button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-blue hover:bg-blue-600 text-white rounded-full shadow-2xl p-0 transition-transform hover:scale-110 border-2 border-white animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
     <img src="" alt="L'Apprenti" class="w-full h-full object-cover" id="helper-logo-img">
 </button>
 
 <!-- AI CHAT WIDGET -->
 <div id="ai-chat-widget" class="fixed bottom-[12%] right-[5%] z-[80] w-80 md:w-96 bg-gray-900 border border-gray-700 box-radius shadow-2xl overflow-hidden flex flex-col hidden-widget" style="height: 500px; max-height: 70vh;">
-    <div class="bg-websiteBlue p-4 flex justify-between items-center border-b border-blue-600">
+    <div class="bg-blue p-4 flex justify-between items-center border-b border-blue-600">
         <div class="flex items-center gap-2">
             <svg class="w-6 h-6 text-white" viewBox="0 0 640 512" fill="currentColor"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg>
             <div>
@@ -36,15 +36,15 @@
     </div>
     <div class="p-3 bg-gray-900 border-t border-gray-700">
         <div class="flex items-center gap-2 mb-2">
-            <label for="helper-image-upload" class="cursor-pointer text-gray-400 hover:text-websiteBlue transition p-2">
+            <label for="helper-image-upload" class="cursor-pointer text-gray-400 hover:text-blue transition p-2">
                 <svg class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor"><path d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg>
             </label>
             <input type="file" id="helper-image-upload" accept="image/*" class="hidden">
             <span id="helper-file-name" class="text-xs text-gray-500 truncate max-w-[100px] font-inter"></span>
         </div>
         <div class="flex gap-2">
-            <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-websiteBlue outline-none font-playfair">
-            <button id="helper-send-btn" class="bg-websiteBlue hover:bg-blue-600 text-white p-2 box-radius transition">
+            <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-blue outline-none font-playfair">
+            <button id="helper-send-btn" class="bg-blue hover:bg-blue-600 text-white p-2 box-radius transition">
                 <svg class="w-4 h-4" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 googl 493.4 256 512c0-12.6-7.4-24-18.9-29.2L48 256 57.5 232.1C63.9 215 80.1 203.6 98.3 201.9L256 224 416 64z"/></svg>
             </button>
         </div>

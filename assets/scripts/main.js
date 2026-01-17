@@ -1,7 +1,8 @@
 /**
  * Déboucheur Expert - Main JavaScript Module
  * Enhanced navigation, tracking, theming, and core functionality
- * @version 2.0.0
+ * Integrated with Alpine.js, Day.js (Montreal timezone), and Panda CSS effects
+ * @version 3.0.0
  * @author Déboucheur Expert Team
  */
 
@@ -438,7 +439,7 @@ const Form = {
         }
         
         statusDiv.classList.remove('hidden');
-        statusDiv.classList.add('text-websiteBlue');
+        statusDiv.classList.add('text-blue');
         statusDiv.innerText = t('form_sending');
         Tracking.event('form_submit', { formId: 'contact' });
         
@@ -455,7 +456,7 @@ const Form = {
             const data = await res.json();
             
             if (data?.status === 'ok') {
-                statusDiv.classList.remove('text-websiteBlue');
+                statusDiv.classList.remove('text-blue');
                 statusDiv.classList.add('text-green-600');
                 statusDiv.innerText = t('form_success');
                 ['fname', 'lname', 'email', 'phone', 'msg'].forEach(key => {
@@ -467,7 +468,7 @@ const Form = {
                 Tracking.event('form_success', { formId: 'contact' });
             } else throw new Error('Bad response');
         } catch (err) {
-            statusDiv.classList.remove('text-websiteBlue');
+            statusDiv.classList.remove('text-blue');
             statusDiv.classList.add('text-red-600');
             statusDiv.innerText = t('form_error');
             Tracking.event('form_error', { formId: 'contact', error: err.message });
@@ -650,6 +651,123 @@ const ServiceWorker = {
 };
 
 // ============================================================================
+// LIBRARIES INTEGRATION (Alpine.js, Day.js, Panda Effects)
+// ============================================================================
+
+const LibsIntegration = {
+    initialized: false,
+    
+    /**
+     * Initialize integration with libs.js modules
+     */
+    init() {
+        if (this.initialized) return;
+        
+        // Wait for libs to be ready, or init immediately if already loaded
+        if (window.Libs?.initialized) {
+            this.connect();
+        } else {
+            document.addEventListener('libs-ready', () => this.connect(), { once: true });
+            // Fallback: also listen for Alpine ready
+            document.addEventListener('alpine:init', () => this.syncAlpineStores());
+        }
+        
+        // Initialize scroll animations for Panda CSS effects
+        this.initScrollAnimations();
+        
+        this.initialized = true;
+    },
+    
+    /**
+     * Connect main.js modules with libs.js
+     */
+    connect() {
+        this.syncAlpineStores();
+        this.initTimeWidget();
+        console.debug('🔗 Libraries integration connected');
+    },
+    
+    /**
+     * Sync Theme and Language modules with Alpine stores
+     */
+    syncAlpineStores() {
+        if (!window.Alpine) return;
+        
+        // Sync theme store
+        const themeStore = Alpine.store('theme');
+        if (themeStore) {
+            themeStore.current = Theme.isDark() ? 'dark' : 'light';
+        }
+        
+        // Sync language store
+        const langStore = Alpine.store('lang');
+        if (langStore) {
+            langStore.current = Language.current;
+            langStore.translations = Language.translations;
+        }
+        
+        // Listen for Alpine theme changes
+        Alpine.effect(() => {
+            const alpineTheme = Alpine.store('theme')?.current;
+            if (alpineTheme && alpineTheme !== Theme.current) {
+                if (alpineTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                Theme.current = alpineTheme;
+            }
+        });
+    },
+    
+    /**
+     * Initialize Montreal time widget if TimeWidget is available
+     */
+    initTimeWidget() {
+        if (!window.TimeWidget) return;
+        
+        // Check if there's a container for the time widget
+        const timeContainer = Utils.$('#montreal-time-widget');
+        if (timeContainer) {
+            TimeWidget.init('#montreal-time-widget');
+        }
+        
+        // Expose time info for other modules
+        window.DeboucheurApp.getMontrealTime = () => window.MontrealTime?.now?.() || new Date();
+        window.DeboucheurApp.isBusinessOpen = () => window.MontrealTime?.isBusinessOpen?.() || false;
+    },
+    
+    /**
+     * Initialize scroll animations for elements with data-animate attribute
+     */
+    initScrollAnimations() {
+        if (Utils.prefersReducedMotion()) return;
+        
+        const animatedElements = Utils.$$('[data-animate]');
+        if (animatedElements.length === 0) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Apply stagger delay for children if present
+                    const staggerChildren = entry.target.querySelectorAll('[data-stagger]');
+                    staggerChildren.forEach((child, index) => {
+                        child.style.animationDelay = `${index * 0.1}s`;
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animatedElements.forEach(el => observer.observe(el));
+    }
+};
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -663,7 +781,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Tracking.trackClicks();
     Tracking.pageView();
     ServiceWorker.register();
-    console.info('🔧 Déboucheur Expert loaded | v2.0.0');
+    LibsIntegration.init();
+    console.info('🔧 Déboucheur Expert loaded | v3.0.0 | Alpine.js + Day.js + Panda');
 });
 
 // ============================================================================

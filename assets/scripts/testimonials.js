@@ -99,7 +99,7 @@ const TestimonialsModule = (() => {
 
         // Create navigation dots
         dotsContainer.innerHTML = testimonials.map((_, i) => `
-            <div class="w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-websiteBlue' : 'bg-gray-400'} cursor-pointer transition-colors duration-300" 
+            <div class="w-2 h-2 rounded-full ${i === currentSlide % testimonials.length ? 'bg-blue' : 'bg-gray-400'} cursor-pointer transition-colors duration-300" 
                  data-slide="${i}" role="button" aria-label="Témoignage ${i + 1}"></div>
         `).join('');
 
@@ -128,7 +128,7 @@ const TestimonialsModule = (() => {
         // Update dots
         if (dotsContainer) {
             dotsContainer.querySelectorAll('[data-slide]').forEach((dot, i) => {
-                dot.classList.toggle('bg-websiteBlue', i === currentSlide % testimonials.length);
+                dot.classList.toggle('bg-blue', i === currentSlide % testimonials.length);
                 dot.classList.toggle('bg-gray-400', i !== currentSlide % testimonials.length);
             });
         }
