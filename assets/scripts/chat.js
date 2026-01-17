@@ -17,7 +17,9 @@ const ChatModule = (() => {
         maxImageSize: 5 * 1024 * 1024 // 5MB
     });
 
-    const SYSTEM_PROMPT = `Tu es 'L'Apprenti de Billy', un assistant virtuel expert en plomberie résidentielle pour Billy St-Hilaire, Déboucheur Expert basé à Montréal et Montérégie.
+    // Language-specific system prompts
+    const SYSTEM_PROMPTS = {
+        fr: `Tu es 'L'Apprenti de Billy', un assistant virtuel expert en plomberie résidentielle pour Billy St-Hilaire, Déboucheur Expert basé à Montréal et Montérégie.
 
 SERVICES ET TARIFS:
 - Débouchage: 200-640$/h selon complexité
@@ -38,16 +40,65 @@ DÉLAIS DE RÉPONSE:
 
 COMPORTEMENT:
 - Sois amical et professionnel
-- Réponds en français par défaut, en anglais si demandé
+- Réponds TOUJOURS en français
 - Pour les urgences, incite à appeler (438) 530-2343
-- Dirige vers unclogged.me ou deboucheur.expert pour plus d'infos
+- Dirige vers deboucheur.expert pour plus d'infos
 - Si une photo est envoyée, analyse le problème de plomberie visible
-- Ne donne pas de conseils dangereux (électricité, gaz)`;
+- Ne donne pas de conseils dangereux (électricité, gaz)`,
+
+        en: `You are 'Billy's Apprentice', a virtual assistant expert in residential plumbing for Billy St-Hilaire, Déboucheur Expert based in Montreal and Montérégie, Quebec, Canada.
+
+SERVICES AND RATES:
+- Drain unclogging: $200-640/h depending on complexity
+- Plumbing renovation (bathroom, kitchen)
+- HD camera inspection with detailed report
+- 24/7 emergency service available
+
+PROFESSIONAL TOOLS:
+- Professional electric drain snake
+- High-pressure hydro jetter
+- HD inspection camera
+- Welding equipment (MIG, TIG, SMAW)
+
+RESPONSE TIMES:
+- SMS: 0-12 hours
+- Voicemail: 12-24 hours
+- Email: 24-48 hours
+
+BEHAVIOR:
+- Be friendly and professional
+- ALWAYS respond in English
+- For emergencies, encourage calling (438) 530-2343
+- Direct to unclogged.me for more info
+- If a photo is sent, analyze the visible plumbing problem
+- Do not give dangerous advice (electricity, gas)`
+    };
+
+    // Language-specific intro messages
+    const INTRO_MESSAGES = {
+        fr: "Bonjour! Je suis l'assistant virtuel de Billy. Je peux répondre à vos questions sur la plomberie ou analyser une photo de votre problème! 🛠️📸",
+        en: "Hello! I'm Billy's virtual assistant. I can answer your plumbing questions or analyze a photo of your problem! 🛠️📸"
+    };
+
+    // Get current language from document or localStorage
+    const getCurrentLang = () => {
+        // Check localStorage first
+        const storedLang = localStorage.getItem('language');
+        if (storedLang && ['fr', 'en'].includes(storedLang)) return storedLang;
+        
+        // Check document lang attribute
+        const docLang = document.documentElement.lang?.toLowerCase();
+        if (docLang && docLang.startsWith('en')) return 'en';
+        
+        // Default to French
+        return 'fr';
+    };
 
     // State
     let uploadedImageBase64 = null;
     let isProcessing = false;
     let messageHistory = [];
+    let currentLang = getCurrentLang();
 
     // DOM helpers
     const $ = (selector) => document.querySelector(selector);
@@ -181,6 +232,7 @@ COMPORTEMENT:
     // API call with retry
     const callGeminiAPI = async (parts, retries = 0) => {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent?key=${CONFIG.apiKey}`;
+        const systemPrompt = SYSTEM_PROMPTS[currentLang] || SYSTEM_PROMPTS.fr;
         
         try {
             const response = await fetch(url, {
@@ -188,7 +240,7 @@ COMPORTEMENT:
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents: [{ parts }],
-                    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
                     generationConfig: {
                         temperature: 0.7,
                         topP: 0.9,
@@ -267,6 +319,16 @@ COMPORTEMENT:
 
     // Initialize
     const init = () => {
+        // Update language on init
+        currentLang = getCurrentLang();
+        
+        // Set language-appropriate intro message in chat
+        const messagesDiv = $('#chat-messages');
+        if (messagesDiv) {
+            const introMsg = INTRO_MESSAGES[currentLang] || INTRO_MESSAGES.fr;
+            messagesDiv.innerHTML = `<div class="ai-msg">${introMsg}</div>`;
+        }
+        
         const input = $('#chat-input');
         if (input) {
             input.addEventListener('keypress', (e) => {
@@ -275,6 +337,8 @@ COMPORTEMENT:
                     sendMessage();
                 }
             });
+            // Update placeholder based on language
+            input.placeholder = currentLang === 'en' ? 'Ask a question...' : 'Posez une question...';
         }
 
         const imageInput = $('#image-upload');
@@ -283,8 +347,20 @@ COMPORTEMENT:
                 handleImageUpload(this);
             });
         }
+        
+        // Listen for language changes
+        window.addEventListener('languageChange', () => {
+            currentLang = getCurrentLang();
+            const introMsg = INTRO_MESSAGES[currentLang] || INTRO_MESSAGES.fr;
+            if (messagesDiv && messageHistory.length === 0) {
+                messagesDiv.innerHTML = `<div class="ai-msg">${introMsg}</div>`;
+            }
+            if (input) {
+                input.placeholder = currentLang === 'en' ? 'Ask a question...' : 'Posez une question...';
+            }
+        });
 
-        console.debug('ChatModule initialized');
+        console.debug('ChatModule initialized, lang:', currentLang);
     };
 
     // Auto-initialize on DOM ready

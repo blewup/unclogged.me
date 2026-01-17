@@ -12,10 +12,12 @@ require_once __DIR__ . '/credentials.php';
 
 class EmailService {
     private array $config;
+    private string $lang;
     private $smtpConnection = null;
     
-    public function __construct() {
-        $this->config = SecureCredentials::getEmailConfig();
+    public function __construct(string $lang = 'fr') {
+        $this->lang = $lang;
+        $this->config = SecureCredentials::getEmailConfig($lang);
     }
     
     /**

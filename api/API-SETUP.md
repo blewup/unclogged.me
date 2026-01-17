@@ -29,30 +29,37 @@ api/
 
 ## 1. Email Configuration
 
-### Server Settings (Namecheap Private Email)
+### Server Settings (Namecheap Shared Hosting)
 
 | Setting | Value |
 |---------|-------|
-| **IMAP Server** | mail.privateemail.com |
+| **Mail Server** | server385.web-hosting.com |
 | **IMAP Port** | 993 (SSL/TLS) |
-| **SMTP Server** | mail.privateemail.com |
+| **POP3 Port** | 995 (SSL/TLS) |
 | **SMTP Port** | 465 (SSL/TLS) |
-| **Username** | info@deboucheur.expert |
+| **Username** | deboucheur@deboucheur.expert |
 | **Password** | (encrypted in credentials.php) |
+
+### Language-Specific Email Addresses
+
+| Language | From/Reply Address | Display Name |
+|----------|-------------------|--------------|
+| **French** | info@deboucheur.expert | Déboucheur Expert |
+| **English** | info@unclogged.me | Unclogged by Déboucheur Expert |
 
 ### How Email Works
 
 1. **Outgoing (Notifications):**
    - Uses SMTP with SSL on port 465
-   - Sends to `info@deboucheur.expert` and `info@unclogged.me`
-   - Subject includes `REPLY:{sessionId}` for easy response
+   - From address adapts to user's language preference
+   - Subject includes `[Session: {sessionId}]` for easy response
 
 2. **Incoming (Replies):**
    - Cron job polls IMAP every 5 minutes
    - Looks for unread emails with `REPLY:` in subject
    - Extracts session ID and stores reply in database
 
-### Option A: Email Piping (Recommended)
+### Email Piping
 
 Email piping is faster and more reliable than IMAP polling. The email is processed instantly when it arrives.
 
@@ -71,18 +78,6 @@ Email piping is faster and more reliable than IMAP polling. The email is process
    ```bash
    chmod +x /home/YOUR_USER/public_html/api/email-pipe.php
    ```
-
-### Option B: IMAP Polling (Fallback)
-
-If piping is not available, use the cron job approach:
-
-Add this to cPanel → Cron Jobs:
-
-```bash
-*/5 * * * * php /home/YOUR_USER/public_html/api/cron-email-replies.php >> /home/YOUR_USER/public_html/api/logs/email-cron.log 2>&1
-```
-
----
 
 ## 2. SMS Configuration (Twilio)
 

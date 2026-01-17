@@ -150,20 +150,30 @@ class SecureCredentials {
     
     /**
      * Email configuration
+     * Server: server385.web-hosting.com (Namecheap Shared Hosting)
      */
-    public static function getEmailConfig(): array {
+    public static function getEmailConfig(string $lang = 'fr'): array {
+        // Language-specific email addresses
+        $fromEmail = ($lang === 'en') ? 'info@unclogged.me' : 'info@deboucheur.expert';
+        $fromName = ($lang === 'en') ? 'Unclogged by Déboucheur Expert' : 'Déboucheur Expert';
+        
         return [
-            'smtp_host' => 'mail.privateemail.com',
+            'smtp_host' => 'server385.web-hosting.com',
             'smtp_port' => 465,
-            'smtp_secure' => 'ssl', // or 'tls' for port 587
-            'imap_host' => 'mail.privateemail.com',
+            'smtp_secure' => 'ssl',
+            'imap_host' => 'server385.web-hosting.com',
             'imap_port' => 993,
             'imap_secure' => 'ssl',
-            'username' => 'info@deboucheur.expert',
+            'pop3_host' => 'server385.web-hosting.com',
+            'pop3_port' => 995,
+            'username' => 'deboucheur@deboucheur.expert',
             'password' => self::get('email_password'),
-            'from_email' => 'info@deboucheur.expert',
-            'from_name' => 'Déboucheur Expert',
-            'reply_email' => 'info@deboucheur.expert',
+            'from_email' => $fromEmail,
+            'from_name' => $fromName,
+            'reply_email' => $fromEmail,
+            // Both notification addresses
+            'notify_fr' => 'info@deboucheur.expert',
+            'notify_en' => 'info@unclogged.me',
         ];
     }
     

@@ -1,10 +1,13 @@
 -- ============================================================================
 -- Déboucheur Expert Database Setup Script
--- For Namecheap cPanel MySQL (Compatible with phpMyAdmin)
+-- For Namecheap cPanel MariaDB (Compatible with phpMyAdmin)
 -- ============================================================================
 -- Run this script to create all required tables in your databases:
 -- deboucheur_prod, deboucheur_test, deboucheur_dev
 -- User: deboucheur_shurukn | Password: Christina4032
+-- ============================================================================
+-- MariaDB Version: 10.6+ (Namecheap shared hosting)
+-- Collation: utf8mb4_unicode_ci
 -- ============================================================================
 
 -- Create databases (if running with root privileges on cPanel)
