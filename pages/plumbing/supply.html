@@ -32,6 +32,12 @@
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../../assets/styles/fonts.css">
     <link rel="stylesheet" href="../../assets/styles/style_00.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../../assets/styles/panda.css">
 
     <script>
         tailwind.config = {
@@ -44,8 +50,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -155,14 +161,14 @@
                 <div class="flex items-center gap-4">
                     <a href="../../index.html" class="flex items-center gap-2">
                         <img src="../../assets/images/logo/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
-                        <span class="font-ops text-lg text-websiteBlue hidden sm:block">Déboucheur Expert</span>
+                        <span class="font-ops text-lg text-blue hidden sm:block">Déboucheur Expert</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="../prices.html" class="font-ops text-sm hover:text-websiteBlue transition">TARIFS</a>
-                    <a href="../plumbing.html" class="font-ops text-sm text-websiteBlue">GUIDE</a>
-                    <a href="../events.html" class="font-ops text-sm hover:text-websiteBlue transition">CALENDRIER</a>
-                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-websiteBlue transition">CONTACT</a>
+                    <a href="../prices.html" class="font-ops text-sm hover:text-blue transition">TARIFS</a>
+                    <a href="../plumbing.html" class="font-ops text-sm text-blue">GUIDE</a>
+                    <a href="../events.html" class="font-ops text-sm hover:text-blue transition">CALENDRIER</a>
+                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-blue transition">CONTACT</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
@@ -191,10 +197,10 @@
                 <span class="mx-2">/</span>
                 <a href="../plumbing.html" class="hover:text-white">Guide Plomberie</a>
                 <span class="mx-2">/</span>
-                <span class="text-websiteBlue">Alimentation en Eau</span>
+                <span class="text-blue">Alimentation en Eau</span>
             </nav>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-ops text-white mb-4">
-                <span class="text-websiteBlue">ALIMENTATION</span> EN EAU
+                <span class="text-blue">ALIMENTATION</span> EN EAU
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl">
                 Guide complet pour installer et comprendre votre réseau d'alimentation en eau : collecteurs, tuyaux, raccords et normes à respecter.
@@ -209,27 +215,27 @@
             <!-- TABLE OF CONTENTS - Sidebar -->
             <aside class="lg:col-span-1">
                 <div class="sticky top-24 bg-lightAlt dark:bg-darkAlt rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <h3 class="font-ops text-lg mb-4 text-websiteBlue">TABLE DES MATIÈRES</h3>
+                    <h3 class="font-ops text-lg mb-4 text-blue">TABLE DES MATIÈRES</h3>
                     <nav class="space-y-2 text-sm">
-                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Introduction</a>
-                        <a href="#reseau" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Le réseau d'alimentation</a>
-                        <a href="#collecteur" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Pose du collecteur</a>
-                        <a href="#precautions" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Précautions de pose</a>
-                        <a href="#raccords" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Choix des raccords</a>
-                        <a href="#tuyaux" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Types de tuyaux</a>
-                        <a href="#cuivre" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue ml-4">→ Cuivre</a>
-                        <a href="#per" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue ml-4">→ PER</a>
-                        <a href="#multicouche" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue ml-4">→ Multicouche</a>
-                        <a href="#diametres" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Diamètres à respecter</a>
-                        <a href="#pression" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Régulation de pression</a>
+                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Introduction</a>
+                        <a href="#reseau" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Le réseau d'alimentation</a>
+                        <a href="#collecteur" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Pose du collecteur</a>
+                        <a href="#precautions" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Précautions de pose</a>
+                        <a href="#raccords" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Choix des raccords</a>
+                        <a href="#tuyaux" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Types de tuyaux</a>
+                        <a href="#cuivre" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue ml-4">→ Cuivre</a>
+                        <a href="#per" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue ml-4">→ PER</a>
+                        <a href="#multicouche" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue ml-4">→ Multicouche</a>
+                        <a href="#diametres" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Diamètres à respecter</a>
+                        <a href="#pression" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Régulation de pression</a>
                     </nav>
                     
                     <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                         <h4 class="font-ops text-sm mb-3">AUTRES SECTIONS</h4>
                         <nav class="space-y-2 text-sm">
-                            <a href="drainage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Système de drainage</a>
-                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Débouchage</a>
-                            <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Normes plomberie</a>
+                            <a href="drainage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Système de drainage</a>
+                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Débouchage</a>
+                            <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Normes plomberie</a>
                         </nav>
                     </div>
                 </div>
@@ -241,7 +247,7 @@
                 <!-- Introduction -->
                 <section id="introduction" class="scroll-mt-24">
                     <div class="info-box rounded-xl p-6 mb-6">
-                        <h4 class="font-ops text-websiteBlue mb-2">À SAVOIR AVANT DE COMMENCER</h4>
+                        <h4 class="font-ops text-blue mb-2">À SAVOIR AVANT DE COMMENCER</h4>
                         <p>Pour alimenter le foyer et les équipements en eau courante, il faut installer un réseau d'alimentation d'eau. Ce guide vous accompagne pas à pas dans la compréhension et l'installation de votre système.</p>
                     </div>
                     <p class="text-lg leading-relaxed">
@@ -252,7 +258,7 @@
                 <!-- Le réseau d'alimentation -->
                 <section id="reseau" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">1</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">1</span>
                         LE RÉSEAU D'ALIMENTATION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -260,22 +266,22 @@
                         
                         <div class="grid md:grid-cols-3 gap-4 mt-6">
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="w-12 h-12 bg-websiteBlue/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <svg class="w-6 h-6 text-websiteBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                                <div class="w-12 h-12 bg-blue/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                                 </div>
                                 <h4 class="font-ops text-sm">TUYAUX</h4>
                                 <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Transport de l'eau</p>
                             </div>
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="w-12 h-12 bg-websiteBlue/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <svg class="w-6 h-6 text-websiteBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <div class="w-12 h-12 bg-blue/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                                 </div>
                                 <h4 class="font-ops text-sm">RACCORDS</h4>
                                 <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Connexions</p>
                             </div>
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="w-12 h-12 bg-websiteBlue/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <svg class="w-6 h-6 text-websiteBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                <div class="w-12 h-12 bg-blue/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                                 </div>
                                 <h4 class="font-ops text-sm">COLLECTEURS</h4>
                                 <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Distribution</p>
@@ -289,7 +295,7 @@
                 <!-- Pose du collecteur -->
                 <section id="collecteur" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">2</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">2</span>
                         POSE DU COLLECTEUR
                     </h2>
                     <div class="grid md:grid-cols-2 gap-6">
@@ -297,40 +303,40 @@
                             <h3 class="font-ops text-xl mb-4 text-cardinal">POSE ENCASTRÉE</h3>
                             <ul class="space-y-2 text-sm">
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Nécessite deux collecteurs (eau froide + eau chaude)</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Raccordement au chauffe-eau pour l'eau chaude</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Tuyaux multicouches ou PER recommandés</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Pose sous fourreau pour dalle ou plaque de plâtre</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-ops text-xl mb-4 text-websiteBlue">POSE APPARENTE</h3>
+                            <h3 class="font-ops text-xl mb-4 text-blue">POSE APPARENTE</h3>
                             <ul class="space-y-2 text-sm">
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Tuyaux en cuivre ou multicouches recommandés</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Solides et résistants aux UV</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Fixation à ~15 cm du sol</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Raccordement parfait pour éviter les fuites</span>
                                 </li>
                             </ul>
@@ -369,7 +375,7 @@
                 <!-- Types de tuyaux -->
                 <section id="tuyaux" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">3</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">3</span>
                         TYPES DE TUYAUX
                     </h2>
                     
@@ -463,7 +469,7 @@
                 <!-- Diamètres à respecter -->
                 <section id="diametres" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">4</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">4</span>
                         DIAMÈTRES À RESPECTER
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -472,7 +478,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead>
-                                    <tr class="bg-websiteBlue text-white">
+                                    <tr class="bg-blue text-white">
                                         <th class="px-4 py-3 text-left rounded-tl-lg">Débit souhaité</th>
                                         <th class="px-4 py-3 text-left rounded-tr-lg">Diamètre recommandé</th>
                                     </tr>
@@ -503,13 +509,13 @@
                 <!-- Régulation de pression -->
                 <section id="pression" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">5</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">5</span>
                         RÉGULATION DE LA PRESSION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
                         <div class="grid md:grid-cols-3 gap-4 mb-6">
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="text-3xl font-ops text-websiteBlue">3 bars</div>
+                                <div class="text-3xl font-ops text-blue">3 bars</div>
                                 <p class="text-sm mt-1">Pression standard du réseau public</p>
                             </div>
                             <div class="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
@@ -530,11 +536,11 @@
                 </section>
 
                 <!-- CTA -->
-                <section class="bg-gradient-to-r from-websiteBlue to-blue-700 rounded-2xl p-8 text-white text-center">
+                <section class="bg-gradient-to-r from-blue to-blue-700 rounded-2xl p-8 text-white text-center">
                     <h3 class="font-ops text-2xl mb-4">BESOIN D'UN PROFESSIONNEL ?</h3>
                     <p class="mb-6 max-w-2xl mx-auto">Vu la complexité du réseau d'alimentation en eau courante, il est conseillé de faire appel à un professionnel de la plomberie qui maîtrise ce domaine.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-websiteBlue font-ops rounded-lg hover:bg-gray-100 transition">
+                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-blue font-ops rounded-lg hover:bg-gray-100 transition">
                             📞 +1 (514) 972-2078
                         </a>
                         <a href="../../index.html#contact" class="px-8 py-3 bg-cardinal text-white font-ops rounded-lg hover:bg-red-700 transition">
@@ -558,25 +564,25 @@
                 <div>
                     <h4 class="font-ops text-white mb-4">GUIDE PLOMBERIE</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="supply.html" class="block hover:text-websiteBlue">Alimentation en eau</a>
-                        <a href="drainage.html" class="block hover:text-websiteBlue">Système de drainage</a>
-                        <a href="debouchage.html" class="block hover:text-websiteBlue">Débouchage</a>
-                        <a href="normes.html" class="block hover:text-websiteBlue">Normes plomberie</a>
+                        <a href="supply.html" class="block hover:text-blue">Alimentation en eau</a>
+                        <a href="drainage.html" class="block hover:text-blue">Système de drainage</a>
+                        <a href="debouchage.html" class="block hover:text-blue">Débouchage</a>
+                        <a href="normes.html" class="block hover:text-blue">Normes plomberie</a>
                     </nav>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">CONTACT</h4>
                     <div class="space-y-2 text-sm">
-                        <a href="tel:+14385302343" class="block text-websiteBlue hover:underline">+1 (514) 972-2078</a>
+                        <a href="tel:+14385302343" class="block text-blue hover:underline">+1 (514) 972-2078</a>
                         <a href="tel:+14387657040" class="block text-pink-500 hover:underline">+1 (438) 765-7040</a>
-                        <a href="mailto:info@deboucheur.expert" class="block hover:text-websiteBlue">info@deboucheur.expert</a>
+                        <a href="mailto:info@deboucheur.expert" class="block hover:text-blue">info@deboucheur.expert</a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">LÉGAL</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="../politics.html" class="block hover:text-websiteBlue">Confidentialité</a>
-                        <a href="../conditions.html" class="block hover:text-websiteBlue">Conditions</a>
+                        <a href="../politics.html" class="block hover:text-blue">Confidentialité</a>
+                        <a href="../conditions.html" class="block hover:text-blue">Conditions</a>
                     </nav>
                 </div>
             </div>
@@ -632,6 +638,16 @@
 <!-- Dynamic Components: Cookie Banner & AI Helper -->
 <div id="banner-container"></div>
 <div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../../assets/scripts/time.js" defer></script>
+
 <script src="../../assets/scripts/components/loader.js"></script>
 <script src="../../assets/scripts/icons.js" defer></script>
 </body>

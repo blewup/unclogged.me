@@ -10,8 +10,8 @@
     --lightBase: #FFFFFF;
     --lightAlt: #F2F2F2;
     --cardinal: #C41E3A;
-    --deboucheurGreen: #22c55e;
-    --websiteBlue: #2563EB;
+    --green: #22c55e;
+    --blue: #2563EB;
     
     /* Font stacks */
     --font-ops: 'Black Ops One', Impact, 'Arial Black', sans-serif;
@@ -76,7 +76,7 @@ html.dark body {
     font-weight: 400;
     line-height: 1;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--cardinal) 0%, var(--websiteBlue) 100%);
+    background: linear-gradient(135deg, var(--cardinal) 0%, var(--blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -162,9 +162,9 @@ html.dark body {
 }
 
 .error-btn-primary {
-    background-color: var(--websiteBlue);
+    background-color: var(--blue);
     color: white;
-    border-color: var(--websiteBlue);
+    border-color: var(--blue);
 }
 
 .error-btn-primary:hover {
@@ -175,12 +175,12 @@ html.dark body {
 
 .error-btn-secondary {
     background-color: transparent;
-    color: var(--websiteBlue);
-    border-color: var(--websiteBlue);
+    color: var(--blue);
+    border-color: var(--blue);
 }
 
 .error-btn-secondary:hover {
-    background-color: var(--websiteBlue);
+    background-color: var(--blue);
     color: white;
     transform: scale(1.05);
 }
@@ -244,7 +244,7 @@ html.dark body {
 .error-logo-text {
     font-family: var(--font-ops);
     font-size: 1.25rem;
-    color: var(--websiteBlue);
+    color: var(--blue);
 }
 
 /* ===== FOOTER ===== */
@@ -264,7 +264,7 @@ html.dark body {
 }
 
 .error-footer a {
-    color: var(--websiteBlue);
+    color: var(--blue);
     text-decoration: none;
 }
 
@@ -290,7 +290,7 @@ html.dark body {
 }
 
 .theme-toggle:hover {
-    border-color: var(--websiteBlue);
+    border-color: var(--blue);
     transform: scale(1.1);
 }
 
@@ -340,8 +340,8 @@ html.dark body {
 }
 
 .lang-toggle:hover {
-    border-color: var(--websiteBlue);
-    color: var(--websiteBlue);
+    border-color: var(--blue);
+    color: var(--blue);
     transform: scale(1.1);
 }
 
@@ -436,8 +436,8 @@ html.dark body {
 
 /* ===== UTILITY CLASSES ===== */
 .text-cardinal { color: var(--cardinal); }
-.text-blue { color: var(--websiteBlue); }
-.text-green { color: var(--deboucheurGreen); }
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
 
 .font-ops { font-family: var(--font-ops); }
 .font-impact { font-family: var(--font-impact); }
@@ -461,11 +461,11 @@ html.dark body {
 
 /* 404 Not Found */
 .error-404 .error-code {
-    background: linear-gradient(135deg, var(--websiteBlue) 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, var(--blue) 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
 }
-.error-404 .error-icon { color: var(--websiteBlue); }
+.error-404 .error-icon { color: var(--blue); }
 
 /* 500 Server Error */
 .error-500 .error-code {

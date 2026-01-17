@@ -2,34 +2,69 @@
  * Déboucheur Expert - Components Loader
  * Loads reusable HTML components (navbar, footer, hero, banner, helper) into pages
  * 
+ * Supported page types:
+ *   - index.html (root)
+ *   - pages/*.html (subpages)
+ *   - pages/plumbing/*.html (plumbing guides)
+ *   - pages/errors/*.html (error pages)
+ *   - pages/errors/codes/*.html (specific error codes)
+ * 
  * Usage:
  *   <div id="navbar-container"></div>
  *   <div id="footer-container"></div>
+ *   <div id="hero-container"></div>
  *   <div id="banner-container"></div>
  *   <div id="helper-container"></div>
- *   <script src="../assets/scripts/components/loader.js"></script>
- *   
- * For index.html:
- *   <script src="assets/scripts/components/loader.js"></script>
+ *   <script src="[path]/assets/scripts/components/loader.js"></script>
  */
 
-// Determine if we're on index.html or a subpage
-const isIndexPage = window.location.pathname.endsWith('index.html') || 
-                    window.location.pathname.endsWith('/') ||
-                    window.location.pathname === '';
+// Determine page type and set correct paths
+const pathname = window.location.pathname;
 
-// Determine if we're in errors folder
-const isErrorPage = window.location.pathname.includes('/errors/');
+// Detect page context
+const isIndexPage = pathname.endsWith('index.html') || 
+                    pathname.endsWith('/') ||
+                    pathname === '' ||
+                    pathname === '/';
 
-// Base path for components based on current location
+const isErrorCodesPage = pathname.includes('/errors/codes/');
+const isErrorPage = pathname.includes('/errors/') && !isErrorCodesPage;
+const isPlumbingPage = pathname.includes('/plumbing/');
+const isSubpage = pathname.includes('/pages/') && !isErrorPage && !isErrorCodesPage && !isPlumbingPage;
+
+// Calculate base paths based on page context
 let componentsBasePath;
+let assetsBasePath;
+
 if (isIndexPage) {
     componentsBasePath = 'pages/components/';
+    assetsBasePath = '';
+} else if (isErrorCodesPage) {
+    // pages/errors/codes/*.html → go up 3 levels
+    componentsBasePath = '../../components/';
+    assetsBasePath = '../../../';
 } else if (isErrorPage) {
-    componentsBasePath = '../pages/components/';
+    // pages/errors/*.html → go up 2 levels
+    componentsBasePath = '../components/';
+    assetsBasePath = '../../';
+} else if (isPlumbingPage) {
+    // pages/plumbing/*.html → go up 1 level to pages/
+    componentsBasePath = '../components/';
+    assetsBasePath = '../../';
 } else {
+    // pages/*.html → same level as components/
     componentsBasePath = 'components/';
+    assetsBasePath = '../';
 }
+
+// Store paths globally for use by components
+window.componentPaths = {
+    components: componentsBasePath,
+    assets: assetsBasePath,
+    isIndex: isIndexPage,
+    isError: isErrorPage || isErrorCodesPage,
+    isPlumbing: isPlumbingPage
+};
 
 /**
  * Load an HTML component into a container
@@ -74,40 +109,52 @@ async function loadComponent(containerId, componentPath) {
             });
         }
         
+        // Dispatch event when component is loaded
+        container.dispatchEvent(new CustomEvent('componentLoaded', { 
+            detail: { containerId, componentPath } 
+        }));
+        
     } catch (error) {
         console.error(`Error loading component ${componentPath}:`, error);
     }
 }
 
 /**
- * Load all standard components (navbar, footer, banner, helper)
+ * Load all standard components (navbar, footer, hero, banner, helper)
  * Call this on DOMContentLoaded
  */
 function loadStandardComponents() {
-    // Load navbar if container exists
-    if (document.getElementById('navbar-container')) {
-        loadComponent('navbar-container', componentsBasePath + 'navbar.html');
-    }
+    const components = [
+        { id: 'navbar-container', file: 'navbar.html' },
+        { id: 'footer-container', file: 'footer.html' },
+        { id: 'hero-container', file: 'hero.html' },
+        { id: 'banner-container', file: 'banner.html' },
+        { id: 'helper-container', file: 'helper.html' }
+    ];
     
-    // Load footer if container exists
-    if (document.getElementById('footer-container')) {
-        loadComponent('footer-container', componentsBasePath + 'footer.html');
-    }
-    
-    // Load hero slideshow if container exists (uses hero.html now)
-    if (document.getElementById('hero-container')) {
-        loadComponent('hero-container', componentsBasePath + 'hero.html');
-    }
-    
-    // Load cookie banner if container exists
-    if (document.getElementById('banner-container')) {
-        loadComponent('banner-container', componentsBasePath + 'banner.html');
-    }
-    
-    // Load AI helper chat widget if container exists
-    if (document.getElementById('helper-container')) {
-        loadComponent('helper-container', componentsBasePath + 'helper.html');
-    }
+    components.forEach(({ id, file }) => {
+        if (document.getElementById(id)) {
+            loadComponent(id, componentsBasePath + file);
+        }
+    });
+}
+
+/**
+ * Load a section component for index page
+ * @param {string} sectionId - Section container ID
+ * @param {string} sectionFile - Section filename (e.g., 'section_00.html')
+ */
+async function loadSection(sectionId, sectionFile) {
+    const basePath = isIndexPage ? 'pages/index/' : 'index/';
+    await loadComponent(sectionId, basePath + sectionFile);
+}
+
+/**
+ * Load multiple sections at once
+ * @param {Array} sections - Array of {id, file} objects
+ */
+async function loadSections(sections) {
+    await Promise.all(sections.map(({ id, file }) => loadSection(id, file)));
 }
 
 // Auto-load components when DOM is ready
@@ -120,4 +167,6 @@ if (document.readyState === 'loading') {
 // Export for manual use
 window.loadComponent = loadComponent;
 window.loadStandardComponents = loadStandardComponents;
+window.loadSection = loadSection;
+window.loadSections = loadSections;
 

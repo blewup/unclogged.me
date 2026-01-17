@@ -1,0 +1,518 @@
+/**
+ * Déboucheur Expert - Tailwind CSS v4.1 Configuration
+ * CSS-first configuration approach for Tailwind v4
+ * @version 4.1.0
+ * @see https://tailwindcss.com/docs/v4-beta
+ * 
+ * Note: This file provides CSS custom properties and @layer definitions
+ * that extend Tailwind's default theme in a v4-compatible way.
+ * 
+ * For CDN usage, we continue using the play CDN with inline config.
+ * This file provides additional CSS-based customizations.
+ */
+
+/* ============================================
+   TAILWIND v4 THEME LAYER
+   Using @theme directive for custom tokens
+   ============================================ */
+
+@layer theme {
+    :root {
+        /* ========== COLORS ========== */
+        /* Primary Brand Colors */
+        --color-primary: #2563EB;
+        --color-primary-hover: #1d4ed8;
+        --color-primary-light: #3b82f6;
+        --color-primary-dark: #1e40af;
+        
+        /* Secondary Colors */
+        --color-cardinal: #C41E3A;
+        --color-cardinal-hover: #a11830;
+        --color-cardinal-light: #dc2626;
+        
+        --color-success: #22c55e;
+        --color-success-hover: #16a34a;
+        
+        /* Base Colors */
+        --color-dark-base: #000000;
+        --color-dark-alt: #131313;
+        --color-dark-elevated: #1a1a1a;
+        --color-dark-surface: #262626;
+        
+        --color-light-base: #FFFFFF;
+        --color-light-alt: #F2F2F2;
+        --color-light-elevated: #FAFAFA;
+        --color-light-surface: #E5E5E5;
+        
+        /* ========== TYPOGRAPHY ========== */
+        /* Font Families */
+        --font-ops: "Black Ops One", swap;
+        --font-impact: Impact, sans-serif;
+        --font-comic: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+        --font-playfair: "Playfair Display", serif;
+        --font-merriweather: "Merriweather", serif;
+        --font-inter: Inter, system-ui, -apple-system, sans-serif;
+        --font-mono: "JetBrains Mono", "SF Mono", Monaco, monospace;
+        --font-jakarta: "Plus Jakarta Sans", Inter, sans-serif;
+        
+        /* Font Sizes (using clamp for fluid typography) */
+        --text-xs: clamp(0.65rem, 0.6rem + 0.25vw, 0.75rem);
+        --text-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        --text-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+        --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+        --text-xl: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+        --text-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+        --text-3xl: clamp(1.5rem, 1.25rem + 1.25vw, 1.875rem);
+        --text-4xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
+        --text-5xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+        --text-6xl: clamp(3rem, 2rem + 5vw, 4rem);
+        
+        /* ========== SPACING ========== */
+        --space-px: 1px;
+        --space-0: 0;
+        --space-0-5: 0.125rem;
+        --space-1: 0.25rem;
+        --space-1-5: 0.375rem;
+        --space-2: 0.5rem;
+        --space-2-5: 0.625rem;
+        --space-3: 0.75rem;
+        --space-3-5: 0.875rem;
+        --space-4: 1rem;
+        --space-5: 1.25rem;
+        --space-6: 1.5rem;
+        --space-7: 1.75rem;
+        --space-8: 2rem;
+        --space-9: 2.25rem;
+        --space-10: 2.5rem;
+        --space-12: 3rem;
+        --space-14: 3.5rem;
+        --space-16: 4rem;
+        --space-20: 5rem;
+        --space-24: 6rem;
+        --space-28: 7rem;
+        --space-32: 8rem;
+        --space-36: 9rem;
+        --space-40: 10rem;
+        
+        /* ========== BORDER RADIUS ========== */
+        --radius-none: 0;
+        --radius-sm: 4px;
+        --radius-base: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-2xl: 32px;
+        --radius-3xl: 48px;
+        --radius-full: 9999px;
+        
+        /* ========== SHADOWS ========== */
+        --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+        
+        /* Glow Shadows */
+        --shadow-glow-blue: 0 0 20px rgb(37 99 235 / 0.4);
+        --shadow-glow-red: 0 0 20px rgb(196 30 58 / 0.4);
+        --shadow-glow-green: 0 0 20px rgb(34 197 94 / 0.4);
+        
+        /* ========== TRANSITIONS ========== */
+        --transition-fast: 150ms;
+        --transition-base: 300ms;
+        --transition-slow: 500ms;
+        --transition-slower: 700ms;
+        
+        /* Easing Functions */
+        --ease-linear: linear;
+        --ease-in: cubic-bezier(0.4, 0, 1, 1);
+        --ease-out: cubic-bezier(0, 0, 0.2, 1);
+        --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+        --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        
+        /* ========== Z-INDEX SCALE ========== */
+        --z-base: 1;
+        --z-dropdown: 10;
+        --z-sticky: 20;
+        --z-fixed: 30;
+        --z-backdrop: 40;
+        --z-navbar: 50;
+        --z-urgency: 60;
+        --z-chat-btn: 70;
+        --z-chat: 80;
+        --z-modal: 90;
+        --z-tooltip: 100;
+        --z-progress: 1000;
+        
+        /* ========== BREAKPOINTS (for reference) ========== */
+        --screen-sm: 640px;
+        --screen-md: 768px;
+        --screen-lg: 1024px;
+        --screen-xl: 1280px;
+        --screen-2xl: 1536px;
+        
+        /* ========== CONTAINER ========== */
+        --container-padding: 1rem;
+        --container-max-width: 1280px;
+    }
+    
+    /* Dark mode overrides */
+    .dark {
+        --color-text-primary: #f9fafb;
+        --color-text-secondary: #d1d5db;
+        --color-text-muted: #9ca3af;
+        --color-bg-primary: var(--color-dark-base);
+        --color-bg-secondary: var(--color-dark-alt);
+        --color-bg-elevated: var(--color-dark-elevated);
+        --color-border: rgb(255 255 255 / 0.1);
+    }
+    
+    /* Light mode defaults */
+    :root:not(.dark) {
+        --color-text-primary: #111827;
+        --color-text-secondary: #374151;
+        --color-text-muted: #6b7280;
+        --color-bg-primary: var(--color-light-base);
+        --color-bg-secondary: var(--color-light-alt);
+        --color-bg-elevated: var(--color-light-elevated);
+        --color-border: rgb(0 0 0 / 0.1);
+    }
+}
+
+/* ============================================
+   TAILWIND v4 BASE LAYER EXTENSIONS
+   ============================================ */
+
+@layer base {
+    /* Smooth scroll with reduced motion respect */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+    }
+    
+    /* Better text rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+    
+    /* Focus visible styling */
+    :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+    
+    /* Selection styling */
+    ::selection {
+        background: var(--color-primary);
+        color: white;
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgb(155 155 155 / 0.5);
+        border-radius: var(--radius-full);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(155 155 155 / 0.7);
+    }
+    
+    .dark ::-webkit-scrollbar-thumb {
+        background: rgb(100 100 100 / 0.5);
+    }
+    
+    /* Form elements reset */
+    input, textarea, select {
+        font-family: inherit;
+    }
+    
+    /* Button reset */
+    button {
+        cursor: pointer;
+        font-family: inherit;
+    }
+    
+    /* Link defaults */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    /* Image defaults */
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ============================================
+   TAILWIND v4 UTILITY EXTENSIONS
+   ============================================ */
+
+@layer utilities {
+    /* Fluid typography utilities */
+    .text-fluid-xs { font-size: var(--text-xs); }
+    .text-fluid-sm { font-size: var(--text-sm); }
+    .text-fluid-base { font-size: var(--text-base); }
+    .text-fluid-lg { font-size: var(--text-lg); }
+    .text-fluid-xl { font-size: var(--text-xl); }
+    .text-fluid-2xl { font-size: var(--text-2xl); }
+    .text-fluid-3xl { font-size: var(--text-3xl); }
+    .text-fluid-4xl { font-size: var(--text-4xl); }
+    .text-fluid-5xl { font-size: var(--text-5xl); }
+    .text-fluid-6xl { font-size: var(--text-6xl); }
+    
+    /* Font family utilities */
+    .font-display { font-family: var(--font-ops); }
+    .font-heading { font-family: var(--font-impact); }
+    .font-body { font-family: var(--font-playfair); }
+    .font-ui { font-family: var(--font-inter); }
+    .font-code { font-family: var(--font-mono); }
+    
+    /* Container utilities */
+    .container-narrow {
+        max-width: 768px;
+        margin-inline: auto;
+        padding-inline: var(--container-padding);
+    }
+    
+    .container-wide {
+        max-width: 1536px;
+        margin-inline: auto;
+        padding-inline: var(--container-padding);
+    }
+    
+    /* Aspect ratio utilities */
+    .aspect-golden { aspect-ratio: 1.618 / 1; }
+    .aspect-portrait { aspect-ratio: 3 / 4; }
+    .aspect-landscape { aspect-ratio: 4 / 3; }
+    .aspect-ultrawide { aspect-ratio: 21 / 9; }
+    
+    /* Glow utilities */
+    .shadow-glow-blue { box-shadow: var(--shadow-glow-blue); }
+    .shadow-glow-red { box-shadow: var(--shadow-glow-red); }
+    .shadow-glow-green { box-shadow: var(--shadow-glow-green); }
+    
+    /* Text balance for headings */
+    .text-balance {
+        text-wrap: balance;
+    }
+    
+    .text-pretty {
+        text-wrap: pretty;
+    }
+    
+    /* Hide scrollbar */
+    .scrollbar-none {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Thin scrollbar */
+    .scrollbar-thin {
+        scrollbar-width: thin;
+    }
+    
+    /* Safe area insets */
+    .pt-safe { padding-top: env(safe-area-inset-top); }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    .pl-safe { padding-left: env(safe-area-inset-left); }
+    .pr-safe { padding-right: env(safe-area-inset-right); }
+    
+    /* Touch action utilities */
+    .touch-pan-x { touch-action: pan-x; }
+    .touch-pan-y { touch-action: pan-y; }
+    .touch-pinch-zoom { touch-action: pinch-zoom; }
+    
+    /* Content visibility */
+    .content-auto { content-visibility: auto; }
+    .content-hidden { content-visibility: hidden; }
+    .content-visible { content-visibility: visible; }
+    
+    /* Contain utilities */
+    .contain-strict { contain: strict; }
+    .contain-content { contain: content; }
+    .contain-paint { contain: paint; }
+    .contain-layout { contain: layout; }
+    
+    /* Interaction utilities */
+    .interaction-none { pointer-events: none; user-select: none; }
+    
+    /* View transition utilities */
+    .view-transition-name-hero { view-transition-name: hero; }
+    .view-transition-name-card { view-transition-name: card; }
+    .view-transition-name-nav { view-transition-name: nav; }
+}
+
+/* ============================================
+   TAILWIND v4 COMPONENT EXTENSIONS
+   ============================================ */
+
+@layer components {
+    /* Card component */
+    .card {
+        background: var(--color-bg-elevated);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        transition: box-shadow var(--transition-base) var(--ease-out),
+                    transform var(--transition-base) var(--ease-out);
+    }
+    
+    .card:hover {
+        box-shadow: var(--shadow-lg);
+    }
+    
+    /* Button components */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        padding: var(--space-3) var(--space-6);
+        font-family: var(--font-ops);
+        font-weight: 500;
+        border-radius: var(--radius-base);
+        transition: all var(--transition-fast) var(--ease-out);
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .btn-primary {
+        background: var(--color-primary);
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background: var(--color-primary-hover);
+        box-shadow: var(--shadow-glow-blue);
+    }
+    
+    .btn-danger {
+        background: var(--color-cardinal);
+        color: white;
+    }
+    
+    .btn-danger:hover {
+        background: var(--color-cardinal-hover);
+        box-shadow: var(--shadow-glow-red);
+    }
+    
+    .btn-success {
+        background: var(--color-success);
+        color: white;
+    }
+    
+    .btn-success:hover {
+        background: var(--color-success-hover);
+        box-shadow: var(--shadow-glow-green);
+    }
+    
+    .btn-ghost {
+        background: transparent;
+        color: var(--color-text-primary);
+    }
+    
+    .btn-ghost:hover {
+        background: var(--color-bg-secondary);
+    }
+    
+    /* Input components */
+    .input {
+        width: 100%;
+        padding: var(--space-3) var(--space-4);
+        background: var(--color-bg-elevated);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-base);
+        font-family: inherit;
+        transition: border-color var(--transition-fast),
+                    box-shadow var(--transition-fast);
+    }
+    
+    .input:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgb(37 99 235 / 0.2);
+        outline: none;
+    }
+    
+    .input-error {
+        border-color: var(--color-cardinal);
+    }
+    
+    .input-success {
+        border-color: var(--color-success);
+    }
+    
+    /* Badge component */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
+        padding: var(--space-1) var(--space-3);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+    }
+    
+    .badge-blue {
+        background: rgb(37 99 235 / 0.1);
+        color: var(--color-primary);
+    }
+    
+    .badge-red {
+        background: rgb(196 30 58 / 0.1);
+        color: var(--color-cardinal);
+    }
+    
+    .badge-green {
+        background: rgb(34 197 94 / 0.1);
+        color: var(--color-success);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-break-before {
+        break-before: page;
+    }
+    
+    .print-break-after {
+        break-after: page;
+    }
+    
+    .print-break-avoid {
+        break-inside: avoid;
+    }
+}

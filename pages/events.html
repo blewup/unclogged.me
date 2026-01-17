@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <title>Calendrier & Événements | Déboucheur Expert</title>
-    <meta lang="fr" name="description" content="Calendrier des disponibilités et événements - Déboucheur Expert. Consultez les jours fériés et planifiez votre rendez-vous de plomberie.">
-    <meta lang="en" name="description" content="Availability calendar and events - Déboucheur Expert. Check holidays and schedule your plumbing appointment.">
+    <title>Calendrier & Disponibilités | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Calendrier des disponibilités et tarification selon l'horaire - Déboucheur Expert. Consultez les multiplicateurs de prix et planifiez votre rendez-vous.">
+    <meta lang="en" name="description" content="Availability calendar and time-based pricing - Déboucheur Expert. Check price multipliers and schedule your plumbing appointment.">
     
-    <!-- Preload hero slides for faster paint -->
+    <!-- Preload hero slides -->
+    <link rel="preload" as="image" href="../assets/images/slide/slide_06.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_07.webp">
     <link rel="preload" as="image" href="../assets/images/slide/slide_08.webp">
     <link rel="preload" as="image" href="../assets/images/slide/slide_09.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_10.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_11.webp">
     
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
@@ -29,6 +33,8 @@
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
     <link rel="stylesheet" href="../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../assets/styles/tailwind.css">
+    <link rel="stylesheet" href="../assets/styles/panda.css">
     
     <!-- Tailwind Configuration -->
     <script>
@@ -42,8 +48,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -60,229 +66,308 @@
         }
     </script>
     
-    <!-- Structured Data (English) -->
-    <script lang="en" type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Unclogged by Déboucheur Expert",
-      "alternateName": "unclogged.me",
-      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
-      "url": "https://unclogged.me",
-      "logo": "https://unclogged.me/assets/images/logo/logo.png",
-      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
-      "telephone": "+1-438-530-2343",
-      "priceRange": "200$ - 640$/h CAD +tx",
-      "areaServed": ["Montreal", "Montérégie"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "290 Rue Lord #01",
-        "addressLocality": "Napierville",
-        "addressRegion": "QC",
-        "postalCode": "J0J 1L0",
-        "addressCountry": "CA"
-      },
-      "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
-      ]
-    }
-    </script>
-    
-    <!-- Structured Data (French) -->
-    <script lang="fr" type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Déboucheur Expert (unclogged.me)",
-      "alternateName": "Déboucheur",
-      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
-      "url": "https://deboucheur.expert",
-      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
-      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
-      "telephone": "+1-438-530-2343",
-      "priceRange": "200$ - 640$/h CAD +tx",
-      "areaServed": ["Montreal", "Montérégie"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "290 Rue Lord #01",
-        "addressLocality": "Napierville",
-        "addressRegion": "QC",
-        "postalCode": "J0J 1L0",
-        "addressCountry": "CA"
-      },
-      "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
-      ]
-    }
-    </script>
-    <link rel="stylesheet" href="../assets/styles/style_00.css">
     <style>
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        body { width: 100vw; overflow-x: hidden; }
+        
+        /* Calendar Grid */
+        .calendar-grid { 
+            display: grid; 
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 2px; 
+        }
+        
         .calendar-day {
             aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-            border-radius: 0.5rem;
+            font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+            border-radius: 0.375rem;
             transition: all 0.2s;
+            cursor: pointer;
             position: relative;
         }
-        .calendar-day:hover { transform: scale(1.05); }
-        .calendar-day.weekend { background: rgba(37, 99, 235, 0.1); }
-        .calendar-day.holiday { background: rgba(196, 30, 58, 0.2); border: 2px solid #C41E3A; }
-        .calendar-day.christian { background: rgba(147, 51, 234, 0.2); border: 2px solid #9333EA; }
-        .calendar-day.jewish { background: rgba(59, 130, 246, 0.2); border: 2px solid #3B82F6; }
-        .calendar-day.muslim { background: rgba(34, 197, 94, 0.2); border: 2px solid #22C55E; }
-        .calendar-day.today { box-shadow: 0 0 0 3px #2563EB; font-weight: bold; }
-        .calendar-header { font-weight: bold; text-align: center; padding: 0.5rem; font-size: 0.7rem; }
-        .holiday-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            position: absolute;
-            bottom: 2px;
+        
+        .calendar-day:hover { 
+            transform: scale(1.08); 
+            z-index: 10;
         }
+        
+        .calendar-day.today { 
+            box-shadow: 0 0 0 3px #2563EB; 
+            font-weight: bold; 
+            z-index: 5;
+        }
+        
+        /* Pricing multiplier colors */
+        .calendar-day.x1 { 
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.25) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+        
+        .calendar-day.x15 { 
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.25) 100%);
+            border: 1px solid rgba(234, 179, 8, 0.4);
+        }
+        
+        .calendar-day.x2 { 
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.25) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+        
+        .calendar-day.x3 { 
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.15) 0%, rgba(196, 30, 58, 0.25) 100%);
+            border: 1px solid rgba(196, 30, 58, 0.5);
+        }
+        
+        .calendar-header { 
+            font-weight: bold; 
+            text-align: center; 
+            padding: 0.5rem; 
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+        
         .month-card {
-            background: rgba(255,255,255,0.05);
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.08) 100%);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 1rem;
             padding: 1rem;
+            backdrop-filter: blur(10px);
         }
+        
+        .dark .month-card {
+            background: linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .legend-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 100%);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .legend-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
             font-size: 0.75rem;
         }
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
+        
+        /* Hero slideshow */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        /* Tooltip */
+        .day-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 100;
+        }
+        
+        .calendar-day:hover .day-tooltip {
+            opacity: 1;
         }
     </style>
 </head>
-<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic min-h-screen">
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
 
-    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
+    <!-- Dynamic Component Containers -->
+    <div id="navbar-container"></div>
+    
+    <!-- URGENCY BUTTON -->
     <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
-        <i class="fas fa-phone-alt animate-pulse"></i>
+        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
         <span data-translate="urgence">URGENCE 24/7</span>
     </a>
 
-    <!-- Hero Section -->
-    <section class="relative h-[40vh] min-h-[300px] bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1920&q=80');">
-        <div class="absolute inset-0 bg-black/60"></div>
-        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
-            <h1 class="text-4xl md:text-6xl font-ops text-white mb-4">
-                <i class="fas fa-calendar-alt mr-4"></i>CALENDRIER
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-200 max-w-2xl">
-                Consultez nos disponibilités et les jours fériés
-            </p>
+    <!-- Hero Section with Slideshow -->
+    <section id="hero" class="relative w-full overflow-hidden" style="height: 60vh;">
+        <div id="hero-slideshow" class="absolute inset-0 z-0">
+            <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_09.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_10.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
         </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
         
-        <!-- Navbar -->
-        <nav class="absolute top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md h-16">
-            <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-                <a href="../index.html" class="flex items-center gap-2">
-                    <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
-                    <span class="font-ops text-lg text-white">Déboucheur Expert</span>
-                </a>
-                <div class="flex items-center gap-4">
-                    <a href="../index.html" class="font-ops text-sm text-white/80 hover:text-white transition hidden md:block">ACCUEIL</a>
-                    <a href="tarification.html" class="font-ops text-sm text-white/80 hover:text-white transition hidden md:block">TARIFS</a>
-                    <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops text-sm flex items-center gap-2">
-                        <i class="fas fa-phone-alt animate-pulse"></i>
-                        <span class="hidden sm:inline">URGENCE 24/7</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-4 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
+                DÉBOUCHEUR EXPERT
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 font-playfair mb-8 max-w-2xl" data-translate="events_subtitle">
+                Calendrier des disponibilités & tarification horaire
+            </p>
+            <a href="#calendar" class="bg-blue text-white font-ops text-lg md:text-xl px-8 py-4 rounded-full shadow-lg border-2 border-black hover:scale-110 transition-transform">
+                <span data-translate="view_calendar">VOIR LE CALENDRIER</span>
+            </a>
+        </div>
     </section>
 
-    <!-- Legend -->
-    <section class="py-6 px-4 bg-lightAlt dark:bg-darkAlt">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
-                <div class="legend-item">
-                    <div class="legend-color bg-blue-500/30 border-2 border-blue-500"></div>
-                    <span>Fin de semaine</span>
+    <!-- Pricing Legend Section -->
+    <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt" style="margin-top: 6vh;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-ops text-center mb-8 text-gray-900 dark:text-white">
+                <svg class="w-8 h-8 inline-block mr-2 text-blue" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                <span data-translate="pricing_legend_title">LÉGENDE DES TARIFS</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- X1 - Standard -->
+                <div class="legend-card">
+                    <div class="legend-item">
+                        <div class="legend-color bg-green/30 border-2 border-green text-green">X1</div>
+                        <div>
+                            <h3 class="font-ops text-lg text-green" data-translate="rate_standard">STANDARD</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-translate="rate_standard_desc">Lun-Ven 8h-16h</p>
+                            <p class="text-xs text-gray-500 mt-1" data-translate="rate_standard_hours">Heures régulières</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color bg-cardinal/30 border-2 border-cardinal"></div>
-                    <span>Jour férié (QC)</span>
+                
+                <!-- X1.5 - Extended -->
+                <div class="legend-card">
+                    <div class="legend-item">
+                        <div class="legend-color bg-yellow-500/30 border-2 border-yellow-500 text-yellow-500">X1.5</div>
+                        <div>
+                            <h3 class="font-ops text-lg text-yellow-500" data-translate="rate_extended">PROLONGÉ</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-translate="rate_extended_desc">4h-8h & 16h-20h</p>
+                            <p class="text-xs text-gray-500 mt-1" data-translate="rate_extended_hours">Heures étendues</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color bg-purple-500/30 border-2 border-purple-500"></div>
-                    <span>Fête chrétienne</span>
+                
+                <!-- X2 - Premium -->
+                <div class="legend-card">
+                    <div class="legend-item">
+                        <div class="legend-color bg-orange-500/30 border-2 border-orange-500 text-orange-500">X2</div>
+                        <div>
+                            <h3 class="font-ops text-lg text-orange-500" data-translate="rate_premium">PREMIUM</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-translate="rate_premium_desc">Soirs & Fins de semaine</p>
+                            <p class="text-xs text-gray-500 mt-1" data-translate="rate_premium_hours">20h-4h & Sam-Dim</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color bg-blue-400/30 border-2 border-blue-400"></div>
-                    <span>Fête juive</span>
+                
+                <!-- X3 - Emergency -->
+                <div class="legend-card">
+                    <div class="legend-item">
+                        <div class="legend-color bg-cardinal/30 border-2 border-cardinal text-cardinal">X3</div>
+                        <div>
+                            <h3 class="font-ops text-lg text-cardinal" data-translate="rate_emergency">URGENCE</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-translate="rate_emergency_desc">Jours fériés</p>
+                            <p class="text-xs text-gray-500 mt-1" data-translate="rate_emergency_hours">Fêtes officielles QC</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color bg-green-500/30 border-2 border-green-500"></div>
-                    <span>Fête musulmane</span>
-                </div>
+            </div>
+            
+            <!-- Base rate info -->
+            <div class="mt-6 text-center p-4 bg-blue/10 border border-blue/30 rounded-xl">
+                <p class="font-ops text-blue text-lg" data-translate="base_rate_info">
+                    TARIF DE BASE: 200$ - 640$/h CAD + taxes
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2" data-translate="base_rate_note">
+                    Les multiplicateurs s'appliquent selon l'heure et le jour du service
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Calendar Grid -->
-    <section class="py-8 px-4">
+    <!-- 6-Month Calendar Grid -->
+    <section id="calendar" class="py-12 px-4 bg-lightBase dark:bg-darkBase">
         <div class="max-w-7xl mx-auto">
-            <div id="calendar-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Calendars will be injected here -->
+            <h2 class="text-2xl md:text-3xl font-ops text-center mb-8 text-gray-900 dark:text-white">
+                <svg class="w-8 h-8 inline-block mr-2 text-blue" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                <span data-translate="calendar_title">CALENDRIER DES 6 PROCHAINS MOIS</span>
+            </h2>
+            
+            <div id="calendar-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Calendars injected by JS -->
             </div>
         </div>
     </section>
 
     <!-- Holiday List -->
-    <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt">
+    <section class="py-12 px-4 bg-lightAlt dark:bg-darkAlt">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-ops text-center mb-6">
-                <i class="fas fa-star text-yellow-500 mr-2"></i>
-                JOURS FÉRIÉS 2025-2026
+            <h2 class="text-2xl md:text-3xl font-ops text-center mb-8 text-gray-900 dark:text-white">
+                <svg class="w-8 h-8 inline-block mr-2 text-cardinal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span data-translate="holidays_title">JOURS FÉRIÉS (X3)</span>
             </h2>
+            
             <div id="holiday-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Holiday list will be injected here -->
+                <!-- Holiday list injected by JS -->
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="py-12 px-4 bg-websiteBlue">
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue to-blue/80">
         <div class="max-w-4xl mx-auto text-center text-white">
-            <h2 class="text-3xl font-ops mb-4">BESOIN D'UN RENDEZ-VOUS?</h2>
-            <p class="text-xl mb-6">Appelez-nous pour planifier une intervention</p>
+            <h2 class="text-3xl md:text-4xl font-ops mb-4" data-translate="cta_title">BESOIN D'UN RENDEZ-VOUS?</h2>
+            <p class="text-xl mb-8 opacity-90" data-translate="cta_desc">Appelez-nous pour planifier une intervention</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+14385302343" class="bg-white text-websiteBlue font-ops px-8 py-4 rounded-xl text-xl hover:bg-gray-100 transition flex items-center justify-center gap-3">
-                    <i class="fas fa-phone-alt"></i>
-                    438-530-2343
+                <a href="tel:+14385302343" class="bg-white text-blue font-ops px-8 py-4 rounded-xl text-xl hover:bg-gray-100 transition flex items-center justify-center gap-3 shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                    (438) 530-2343
                 </a>
-                <a href="../index.html#contact" class="bg-cardinal text-white font-ops px-8 py-4 rounded-xl text-xl hover:bg-red-700 transition flex items-center justify-center gap-3">
-                    <i class="fas fa-envelope"></i>
-                    Formulaire
+                <a href="../index.html#contact" class="bg-cardinal text-white font-ops px-8 py-4 rounded-xl text-xl hover:bg-red-700 transition flex items-center justify-center gap-3 shadow-lg border-2 border-white/30">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    <span data-translate="cta_form">Formulaire</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-6">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
-            <div class="flex gap-4 mt-2 md:mt-0">
-                <a href="politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a>
-                <a href="conditions.html" class="hover:text-websiteBlue transition">Conditions</a>
-                <a href="../index.html" class="hover:text-websiteBlue transition">Accueil</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Dynamic Components -->
+    <div id="banner-container"></div>
+    <div id="helper-container"></div>
 
     <script>
         // Theme detection
@@ -292,58 +377,36 @@
             document.documentElement.classList.add('dark');
         }
 
-        // Holiday data for 2025-2026
+        // Hero slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 6000);
+
+        // Quebec statutory holidays (X3 rate)
         const holidays = {
-            // 2025 Quebec statutory holidays
             '2025-01-01': { name: 'Jour de l\'An', type: 'holiday' },
             '2025-04-18': { name: 'Vendredi saint', type: 'holiday' },
-            '2025-04-21': { name: 'Lundi de Pâques', type: 'christian' },
             '2025-05-19': { name: 'Journée nationale des patriotes', type: 'holiday' },
             '2025-06-24': { name: 'Fête nationale du Québec', type: 'holiday' },
             '2025-07-01': { name: 'Fête du Canada', type: 'holiday' },
             '2025-09-01': { name: 'Fête du Travail', type: 'holiday' },
             '2025-10-13': { name: 'Action de grâce', type: 'holiday' },
             '2025-12-25': { name: 'Noël', type: 'holiday' },
-            '2025-12-26': { name: 'Lendemain de Noël', type: 'christian' },
-
-            // 2025 Christian holidays
-            '2025-04-20': { name: 'Pâques', type: 'christian' },
-            '2025-05-29': { name: 'Ascension', type: 'christian' },
-            '2025-06-08': { name: 'Pentecôte', type: 'christian' },
-            '2025-11-01': { name: 'Toussaint', type: 'christian' },
-            '2025-12-24': { name: 'Veille de Noël', type: 'christian' },
-            '2025-12-31': { name: 'Veille du Jour de l\'An', type: 'christian' },
-
-            // 2025 Jewish holidays (approximate dates)
-            '2025-04-13': { name: 'Pessa\'h (début)', type: 'jewish' },
-            '2025-04-20': { name: 'Pessa\'h (fin)', type: 'jewish' },
-            '2025-06-02': { name: 'Chavouot', type: 'jewish' },
-            '2025-09-23': { name: 'Rosh Hashana', type: 'jewish' },
-            '2025-10-02': { name: 'Yom Kippour', type: 'jewish' },
-            '2025-10-07': { name: 'Souccot', type: 'jewish' },
-            '2025-12-15': { name: 'Hanouka (début)', type: 'jewish' },
-
-            // 2025 Muslim holidays (approximate dates)
-            '2025-03-01': { name: 'Ramadan (début)', type: 'muslim' },
-            '2025-03-30': { name: 'Aïd el-Fitr', type: 'muslim' },
-            '2025-06-07': { name: 'Aïd el-Adha', type: 'muslim' },
-            '2025-06-27': { name: 'Nouvel An islamique', type: 'muslim' },
-
-            // 2026 Quebec statutory holidays
             '2026-01-01': { name: 'Jour de l\'An', type: 'holiday' },
             '2026-04-03': { name: 'Vendredi saint', type: 'holiday' },
-            '2026-04-06': { name: 'Lundi de Pâques', type: 'christian' },
             '2026-05-18': { name: 'Journée nationale des patriotes', type: 'holiday' },
             '2026-06-24': { name: 'Fête nationale du Québec', type: 'holiday' },
             '2026-07-01': { name: 'Fête du Canada', type: 'holiday' },
             '2026-09-07': { name: 'Fête du Travail', type: 'holiday' },
             '2026-10-12': { name: 'Action de grâce', type: 'holiday' },
             '2026-12-25': { name: 'Noël', type: 'holiday' },
-
-            // 2026 Christian
-            '2026-04-05': { name: 'Pâques', type: 'christian' },
-            '2026-05-14': { name: 'Ascension', type: 'christian' },
-            '2026-05-24': { name: 'Pentecôte', type: 'christian' },
         };
 
         const monthNames = [
@@ -357,6 +420,15 @@
             return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         }
 
+        function getPriceClass(dayOfWeek, dateKey) {
+            // X3 - Holidays
+            if (holidays[dateKey]) return 'x3';
+            // X2 - Weekends
+            if (dayOfWeek === 0 || dayOfWeek === 6) return 'x2';
+            // X1 - Weekdays (standard hours shown as green)
+            return 'x1';
+        }
+
         function generateCalendar(year, month) {
             const firstDay = new Date(year, month, 1);
             const lastDay = new Date(year, month + 1, 0);
@@ -366,13 +438,13 @@
 
             let html = `
                 <div class="month-card">
-                    <h3 class="text-center font-ops text-lg mb-3">${monthNames[month]} ${year}</h3>
+                    <h3 class="text-center font-ops text-xl mb-4 text-gray-900 dark:text-white">${monthNames[month]} ${year}</h3>
                     <div class="calendar-grid">
             `;
 
             // Day headers
             dayNames.forEach(day => {
-                html += `<div class="calendar-header text-gray-500 dark:text-gray-400">${day}</div>`;
+                html += `<div class="calendar-header">${day}</div>`;
             });
 
             // Empty cells before first day
@@ -384,21 +456,24 @@
             for (let day = 1; day <= daysInMonth; day++) {
                 const dateKey = formatDateKey(year, month, day);
                 const dayOfWeek = new Date(year, month, day).getDay();
-                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-                const holiday = holidays[dateKey];
                 const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+                const priceClass = getPriceClass(dayOfWeek, dateKey);
+                const holiday = holidays[dateKey];
 
-                let classes = 'calendar-day bg-white dark:bg-gray-800';
-                if (isWeekend) classes += ' weekend';
-                if (holiday) classes += ` ${holiday.type}`;
+                let classes = `calendar-day ${priceClass}`;
                 if (isToday) classes += ' today';
 
-                let tooltip = holiday ? `title="${holiday.name}"` : '';
+                const tooltip = holiday 
+                    ? `<span class="day-tooltip">${holiday.name} (X3)</span>`
+                    : priceClass === 'x2' 
+                        ? `<span class="day-tooltip">Fin de semaine (X2)</span>`
+                        : `<span class="day-tooltip">Standard (X1)</span>`;
 
                 html += `
-                    <div class="${classes}" ${tooltip}>
-                        <span>${day}</span>
-                        ${holiday ? `<span class="text-[8px] truncate max-w-full px-1">${holiday.name.split(' ')[0]}</span>` : ''}
+                    <div class="${classes}">
+                        <span class="font-bold">${day}</span>
+                        ${holiday ? `<span class="text-[7px] text-cardinal font-bold">X3</span>` : ''}
+                        ${tooltip}
                     </div>
                 `;
             }
@@ -408,57 +483,61 @@
         }
 
         function generateHolidayList() {
-            const sortedHolidays = Object.entries(holidays)
+            const now = new Date();
+            const sixMonthsLater = new Date(now.getFullYear(), now.getMonth() + 6, 0);
+            
+            const upcomingHolidays = Object.entries(holidays)
+                .filter(([date]) => {
+                    const d = new Date(date);
+                    return d >= now && d <= sixMonthsLater;
+                })
                 .sort(([a], [b]) => new Date(a) - new Date(b));
 
             let html = '';
-            sortedHolidays.forEach(([date, info]) => {
+            upcomingHolidays.forEach(([date, info]) => {
                 const d = new Date(date);
-                const typeColors = {
-                    holiday: 'bg-cardinal/20 border-cardinal',
-                    christian: 'bg-purple-500/20 border-purple-500',
-                    jewish: 'bg-blue-400/20 border-blue-400',
-                    muslim: 'bg-green-500/20 border-green-500'
-                };
-
                 html += `
-                    <div class="flex items-center gap-3 p-3 rounded-lg ${typeColors[info.type]} border-l-4">
-                        <div class="text-center">
-                            <div class="font-bold text-lg">${d.getDate()}</div>
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-cardinal/10 border border-cardinal/30 hover:bg-cardinal/20 transition">
+                        <div class="text-center bg-cardinal text-white p-3 rounded-lg min-w-[60px]">
+                            <div class="font-ops text-2xl">${d.getDate()}</div>
                             <div class="text-xs uppercase">${monthNames[d.getMonth()].slice(0, 3)}</div>
-                            <div class="text-xs">${d.getFullYear()}</div>
                         </div>
                         <div>
-                            <div class="font-bold">${info.name}</div>
-                            <div class="text-xs text-gray-500 capitalize">${info.type === 'holiday' ? 'Férié QC' : info.type}</div>
+                            <div class="font-ops text-lg text-gray-900 dark:text-white">${info.name}</div>
+                            <div class="text-sm text-cardinal font-bold">Tarif X3</div>
                         </div>
                     </div>
                 `;
             });
+            
+            if (upcomingHolidays.length === 0) {
+                html = '<p class="text-center text-gray-500 col-span-2">Aucun jour férié dans les 6 prochains mois</p>';
+            }
+            
             return html;
         }
 
-        // Generate calendars for next 12 months
+        // Generate calendars for next 6 months
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('calendar-container');
             const today = new Date();
             let html = '';
 
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 6; i++) {
                 const date = new Date(today.getFullYear(), today.getMonth() + i, 1);
                 html += generateCalendar(date.getFullYear(), date.getMonth());
             }
 
             container.innerHTML = html;
-
-            // Generate holiday list
             document.getElementById('holiday-list').innerHTML = generateHolidayList();
         });
     </script>
-<!-- Dynamic Components: Cookie Banner & AI Helper -->
-<div id="banner-container"></div>
-<div id="helper-container"></div>
-<script src="../assets/scripts/components/loader.js"></script>
-<script src="../assets/scripts/icons.js" defer></script>
+
+    <!-- Core Libraries -->
+    <script src="../assets/scripts/libs.js" defer></script>
+    <script src="../assets/scripts/main.js" defer></script>
+    <script src="../assets/scripts/time.js" defer></script>
+    <script src="../assets/scripts/components/loader.js"></script>
+    <script src="../assets/scripts/icons.js" defer></script>
 </body>
 </html>

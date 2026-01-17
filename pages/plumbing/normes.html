@@ -30,6 +30,12 @@
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../../assets/styles/fonts.css">
     <link rel="stylesheet" href="../../assets/styles/style_00.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../../assets/styles/panda.css">
 
     <script>
         tailwind.config = {
@@ -42,8 +48,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -155,14 +161,14 @@
                 <div class="flex items-center gap-4">
                     <a href="../../index.html" class="flex items-center gap-2">
                         <img src="../../assets/images/logo/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
-                        <span class="font-ops text-lg text-websiteBlue hidden sm:block">Déboucheur Expert</span>
+                        <span class="font-ops text-lg text-blue hidden sm:block">Déboucheur Expert</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="../prices.html" class="font-ops text-sm hover:text-websiteBlue transition">TARIFS</a>
-                    <a href="../plumbing.html" class="font-ops text-sm text-websiteBlue">GUIDE</a>
-                    <a href="../events.html" class="font-ops text-sm hover:text-websiteBlue transition">CALENDRIER</a>
-                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-websiteBlue transition">CONTACT</a>
+                    <a href="../prices.html" class="font-ops text-sm hover:text-blue transition">TARIFS</a>
+                    <a href="../plumbing.html" class="font-ops text-sm text-blue">GUIDE</a>
+                    <a href="../events.html" class="font-ops text-sm hover:text-blue transition">CALENDRIER</a>
+                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-blue transition">CONTACT</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
@@ -191,10 +197,10 @@
                 <span class="mx-2">/</span>
                 <a href="../plumbing.html" class="hover:text-white">Guide Plomberie</a>
                 <span class="mx-2">/</span>
-                <span class="text-websiteBlue">Normes</span>
+                <span class="text-blue">Normes</span>
             </nav>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-ops text-white mb-4">
-                <span class="text-websiteBlue">NORMES</span> DE PLOMBERIE
+                <span class="text-blue">NORMES</span> DE PLOMBERIE
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl">
                 Diamètres, débits d'évacuation, pentes et conformité au code du bâtiment pour une plomberie aux normes.
@@ -209,23 +215,23 @@
             <!-- TABLE OF CONTENTS - Sidebar -->
             <aside class="lg:col-span-1">
                 <div class="sticky top-24 bg-lightAlt dark:bg-darkAlt rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <h3 class="font-ops text-lg mb-4 text-websiteBlue">TABLE DES MATIÈRES</h3>
+                    <h3 class="font-ops text-lg mb-4 text-blue">TABLE DES MATIÈRES</h3>
                     <nav class="space-y-2 text-sm">
-                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Introduction</a>
-                        <a href="#diametre" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Diamètre nominal (DN)</a>
-                        <a href="#tableau-dn" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Tableau des DN</a>
-                        <a href="#debits" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Débits d'évacuation</a>
-                        <a href="#pentes" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Pentes recommandées</a>
-                        <a href="#gouttieres" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Gouttières</a>
-                        <a href="#conformite" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Conformité</a>
+                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Introduction</a>
+                        <a href="#diametre" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Diamètre nominal (DN)</a>
+                        <a href="#tableau-dn" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Tableau des DN</a>
+                        <a href="#debits" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Débits d'évacuation</a>
+                        <a href="#pentes" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Pentes recommandées</a>
+                        <a href="#gouttieres" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Gouttières</a>
+                        <a href="#conformite" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Conformité</a>
                     </nav>
                     
                     <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                         <h4 class="font-ops text-sm mb-3">AUTRES SECTIONS</h4>
                         <nav class="space-y-2 text-sm">
-                            <a href="supply.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Alimentation en eau</a>
-                            <a href="drainage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Système de drainage</a>
-                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Débouchage</a>
+                            <a href="supply.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Alimentation en eau</a>
+                            <a href="drainage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Système de drainage</a>
+                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Débouchage</a>
                         </nav>
                     </div>
                 </div>
@@ -237,7 +243,7 @@
                 <!-- Introduction -->
                 <section id="introduction" class="scroll-mt-24">
                     <div class="info-box rounded-xl p-6">
-                        <h4 class="font-ops text-websiteBlue mb-2">POURQUOI RESPECTER LES NORMES ?</h4>
+                        <h4 class="font-ops text-blue mb-2">POURQUOI RESPECTER LES NORMES ?</h4>
                         <p>Le respect des normes de plomberie garantit le <strong>bon fonctionnement</strong> de votre système d'évacuation, prévient les <strong>engorgements</strong> et assure la <strong>conformité</strong> avec le code du bâtiment du Québec.</p>
                     </div>
                 </section>
@@ -245,7 +251,7 @@
                 <!-- Diamètre nominal -->
                 <section id="diametre" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">Ø</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">Ø</span>
                         DIAMÈTRE NOMINAL (DN)
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -255,11 +261,11 @@
                         
                         <div class="grid md:grid-cols-3 gap-4 my-6">
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="text-2xl font-ops text-websiteBlue mb-2">DN</div>
+                                <div class="text-2xl font-ops text-blue mb-2">DN</div>
                                 <span class="text-sm">Diamètre Nominal</span>
                             </div>
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
-                                <div class="text-2xl font-ops text-deboucheurGreen mb-2">mm</div>
+                                <div class="text-2xl font-ops text-green mb-2">mm</div>
                                 <span class="text-sm">Millimètres</span>
                             </div>
                             <div class="text-center p-4 bg-lightAlt dark:bg-darkAlt rounded-lg">
@@ -277,7 +283,7 @@
                 <!-- Tableau des DN -->
                 <section id="tableau-dn" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">📊</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">📊</span>
                         TABLEAU DES DN PAR APPAREIL
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -288,7 +294,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead>
-                                    <tr class="bg-websiteBlue text-white">
+                                    <tr class="bg-blue text-white">
                                         <th class="px-4 py-3 text-left rounded-tl-lg">Appareil sanitaire</th>
                                         <th class="px-4 py-3 text-center">DN min.</th>
                                         <th class="px-4 py-3 text-center rounded-tr-lg">DN recommandé</th>
@@ -299,49 +305,49 @@
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🚽</span> WC (toilettes)
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 100</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 100</td>
                                         <td class="px-4 py-3 text-center">DN 100-110</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🚿</span> Douche / Baignoire
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 40</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 40</td>
                                         <td class="px-4 py-3 text-center">DN 40-50</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🧼</span> Lavabo
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 32</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 32</td>
                                         <td class="px-4 py-3 text-center">DN 32-40</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🍽️</span> Évier de cuisine
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 40</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 40</td>
                                         <td class="px-4 py-3 text-center">DN 40-50</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🧺</span> Lave-linge
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 40</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 40</td>
                                         <td class="px-4 py-3 text-center">DN 40-50</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🍴</span> Lave-vaisselle
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 32</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 32</td>
                                         <td class="px-4 py-3 text-center">DN 32-40</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                         <td class="px-4 py-3 flex items-center gap-2">
                                             <span class="text-lg">🔧</span> Bidet
                                         </td>
-                                        <td class="px-4 py-3 text-center font-bold text-websiteBlue">DN 32</td>
+                                        <td class="px-4 py-3 text-center font-bold text-blue">DN 32</td>
                                         <td class="px-4 py-3 text-center">DN 32</td>
                                     </tr>
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 bg-gray-100 dark:bg-gray-700/30">
@@ -360,7 +366,7 @@
                 <!-- Débits d'évacuation -->
                 <section id="debits" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-deboucheurGreen rounded-full flex items-center justify-center text-white text-lg">💧</span>
+                        <span class="w-10 h-10 bg-green rounded-full flex items-center justify-center text-white text-lg">💧</span>
                         DÉBITS D'ÉVACUATION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -371,7 +377,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead>
-                                    <tr class="bg-deboucheurGreen text-white">
+                                    <tr class="bg-green text-white">
                                         <th class="px-4 py-3 text-left rounded-tl-lg">Appareil</th>
                                         <th class="px-4 py-3 text-center">Débit (L/s)</th>
                                         <th class="px-4 py-3 text-center rounded-tr-lg">UE*</th>
@@ -426,20 +432,20 @@
                 <!-- Pentes recommandées -->
                 <section id="pentes" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">📐</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">📐</span>
                         PENTES RECOMMANDÉES
                     </h2>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="norm-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-ops text-xl mb-4 text-websiteBlue">CANALISATIONS HORIZONTALES</h3>
+                            <h3 class="font-ops text-xl mb-4 text-blue">CANALISATIONS HORIZONTALES</h3>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center p-3 bg-lightAlt dark:bg-darkAlt rounded-lg">
                                     <span>Longueur &lt; 2m</span>
-                                    <span class="font-bold text-websiteBlue">1-2 cm/m</span>
+                                    <span class="font-bold text-blue">1-2 cm/m</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-lightAlt dark:bg-darkAlt rounded-lg">
                                     <span>Longueur &gt; 2m</span>
-                                    <span class="font-bold text-websiteBlue">2-3 cm/m</span>
+                                    <span class="font-bold text-blue">2-3 cm/m</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-lightAlt dark:bg-darkAlt rounded-lg">
                                     <span>Pente maximale</span>
@@ -449,22 +455,22 @@
                         </div>
                         
                         <div class="norm-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-ops text-xl mb-4 text-deboucheurGreen">RÈGLES IMPORTANTES</h3>
+                            <h3 class="font-ops text-xl mb-4 text-green">RÈGLES IMPORTANTES</h3>
                             <ul class="space-y-3 text-sm">
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Pente minimum : <strong>1 cm par mètre</strong></span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Trop faible = stagnation des déchets</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Trop forte = l'eau coule trop vite, laissant les solides</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-5 h-5 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Pente idéale : <strong>2-3 cm/m</strong></span>
                                 </li>
                             </ul>
@@ -489,12 +495,12 @@
                         </p>
                         
                         <div class="grid md:grid-cols-3 gap-4 my-6">
-                            <div class="text-center p-4 bg-websiteBlue/10 rounded-lg">
-                                <div class="text-2xl font-ops text-websiteBlue mb-2">DN 80</div>
+                            <div class="text-center p-4 bg-blue/10 rounded-lg">
+                                <div class="text-2xl font-ops text-blue mb-2">DN 80</div>
                                 <p class="text-sm">Descente standard</p>
                             </div>
-                            <div class="text-center p-4 bg-deboucheurGreen/10 rounded-lg">
-                                <div class="text-2xl font-ops text-deboucheurGreen mb-2">DN 100</div>
+                            <div class="text-center p-4 bg-green/10 rounded-lg">
+                                <div class="text-2xl font-ops text-green mb-2">DN 100</div>
                                 <p class="text-sm">Grande surface toiture</p>
                             </div>
                             <div class="text-center p-4 bg-cardinal/10 rounded-lg">
@@ -541,46 +547,46 @@
                 <!-- Conformité -->
                 <section id="conformite" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-deboucheurGreen rounded-full flex items-center justify-center text-white text-lg">✓</span>
+                        <span class="w-10 h-10 bg-green rounded-full flex items-center justify-center text-white text-lg">✓</span>
                         CONFORMITÉ ET RÉGLEMENTATION
                     </h2>
                     <div class="space-y-6">
                         <div class="success-box rounded-xl p-6">
-                            <h4 class="font-ops text-deboucheurGreen mb-4">POINTS DE CONFORMITÉ À VÉRIFIER</h4>
+                            <h4 class="font-ops text-green mb-4">POINTS DE CONFORMITÉ À VÉRIFIER</h4>
                             <div class="grid md:grid-cols-2 gap-4">
                                 <ul class="space-y-2 text-sm">
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Diamètres conformes aux normes DN</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Pentes adéquates (1-3 cm/m)</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Ventilation primaire et secondaire</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Siphons aux points requis</span>
                                     </li>
                                 </ul>
                                 <ul class="space-y-2 text-sm">
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Raccords étanches</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Séparation eaux usées / pluviales</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Regard de visite accessible</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                        <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                         <span>Clapet anti-refoulement si requis</span>
                                     </li>
                                 </ul>
@@ -603,11 +609,11 @@
                 </section>
 
                 <!-- CTA -->
-                <section class="bg-gradient-to-r from-websiteBlue to-blue-700 rounded-2xl p-8 text-white text-center">
+                <section class="bg-gradient-to-r from-blue to-blue-700 rounded-2xl p-8 text-white text-center">
                     <h3 class="font-ops text-2xl mb-4">BESOIN D'UNE VÉRIFICATION ?</h3>
                     <p class="mb-6 max-w-2xl mx-auto">Nos experts peuvent inspecter votre système de plomberie et vérifier sa conformité aux normes en vigueur.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-websiteBlue font-ops rounded-lg hover:bg-gray-100 transition">
+                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-blue font-ops rounded-lg hover:bg-gray-100 transition">
                             📞 APPELER MAINTENANT
                         </a>
                         <a href="../../index.html#contact" class="px-8 py-3 bg-cardinal text-white font-ops rounded-lg hover:bg-red-700 transition">
@@ -631,25 +637,25 @@
                 <div>
                     <h4 class="font-ops text-white mb-4">GUIDE PLOMBERIE</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="supply.html" class="block hover:text-websiteBlue">Alimentation en eau</a>
-                        <a href="drainage.html" class="block hover:text-websiteBlue">Système de drainage</a>
-                        <a href="debouchage.html" class="block hover:text-websiteBlue">Débouchage</a>
-                        <a href="normes.html" class="block hover:text-websiteBlue">Normes plomberie</a>
+                        <a href="supply.html" class="block hover:text-blue">Alimentation en eau</a>
+                        <a href="drainage.html" class="block hover:text-blue">Système de drainage</a>
+                        <a href="debouchage.html" class="block hover:text-blue">Débouchage</a>
+                        <a href="normes.html" class="block hover:text-blue">Normes plomberie</a>
                     </nav>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">CONTACT</h4>
                     <div class="space-y-2 text-sm">
-                        <a href="tel:+14385302343" class="block text-websiteBlue hover:underline">+1 (514) 972-2078</a>
+                        <a href="tel:+14385302343" class="block text-blue hover:underline">+1 (514) 972-2078</a>
                         <a href="tel:+14387657040" class="block text-pink-500 hover:underline">+1 (438) 765-7040</a>
-                        <a href="mailto:info@deboucheur.expert" class="block hover:text-websiteBlue">info@deboucheur.expert</a>
+                        <a href="mailto:info@deboucheur.expert" class="block hover:text-blue">info@deboucheur.expert</a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">LÉGAL</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="../politics.html" class="block hover:text-websiteBlue">Confidentialité</a>
-                        <a href="../conditions.html" class="block hover:text-websiteBlue">Conditions</a>
+                        <a href="../politics.html" class="block hover:text-blue">Confidentialité</a>
+                        <a href="../conditions.html" class="block hover:text-blue">Conditions</a>
                     </nav>
                 </div>
             </div>
@@ -701,6 +707,16 @@
 <!-- Dynamic Components: Cookie Banner & AI Helper -->
 <div id="banner-container"></div>
 <div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../../assets/scripts/time.js" defer></script>
+
 <script src="../../assets/scripts/components/loader.js"></script>
 <script src="../../assets/scripts/icons.js" defer></script>
 </body>

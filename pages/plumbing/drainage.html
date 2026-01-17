@@ -31,6 +31,12 @@
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../../assets/styles/fonts.css">
     <link rel="stylesheet" href="../../assets/styles/style_00.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../../assets/styles/panda.css">
 
     <script>
         tailwind.config = {
@@ -43,8 +49,8 @@
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
-                        deboucheurGreen: '#22c55e',
-                        websiteBlue: '#2563EB',
+                        green: '#22c55e',
+                        blue: '#2563EB',
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
@@ -156,14 +162,14 @@
                 <div class="flex items-center gap-4">
                     <a href="../../index.html" class="flex items-center gap-2">
                         <img src="../../assets/images/logo/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
-                        <span class="font-ops text-lg text-websiteBlue hidden sm:block">Déboucheur Expert</span>
+                        <span class="font-ops text-lg text-blue hidden sm:block">Déboucheur Expert</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="../prices.html" class="font-ops text-sm hover:text-websiteBlue transition">TARIFS</a>
-                    <a href="../plumbing.html" class="font-ops text-sm text-websiteBlue">GUIDE</a>
-                    <a href="../events.html" class="font-ops text-sm hover:text-websiteBlue transition">CALENDRIER</a>
-                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-websiteBlue transition">CONTACT</a>
+                    <a href="../prices.html" class="font-ops text-sm hover:text-blue transition">TARIFS</a>
+                    <a href="../plumbing.html" class="font-ops text-sm text-blue">GUIDE</a>
+                    <a href="../events.html" class="font-ops text-sm hover:text-blue transition">CALENDRIER</a>
+                    <a href="../../index.html#contact" class="font-ops text-sm hover:text-blue transition">CONTACT</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <button onclick="toggleTheme()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition">
@@ -192,10 +198,10 @@
                 <span class="mx-2">/</span>
                 <a href="../plumbing.html" class="hover:text-white">Guide Plomberie</a>
                 <span class="mx-2">/</span>
-                <span class="text-websiteBlue">Système de Drainage</span>
+                <span class="text-blue">Système de Drainage</span>
             </nav>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-ops text-white mb-4">
-                SYSTÈME DE <span class="text-websiteBlue">DRAINAGE</span>
+                SYSTÈME DE <span class="text-blue">DRAINAGE</span>
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl">
                 Comprendre les 4 circuits de votre plomberie : eau froide, eau chaude, évacuation et ventilation.
@@ -210,25 +216,25 @@
             <!-- TABLE OF CONTENTS - Sidebar -->
             <aside class="lg:col-span-1">
                 <div class="sticky top-24 bg-lightAlt dark:bg-darkAlt rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <h3 class="font-ops text-lg mb-4 text-websiteBlue">TABLE DES MATIÈRES</h3>
+                    <h3 class="font-ops text-lg mb-4 text-blue">TABLE DES MATIÈRES</h3>
                     <nav class="space-y-2 text-sm">
-                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Introduction</a>
-                        <a href="#circuits" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Les 4 circuits</a>
-                        <a href="#alimentation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Système d'alimentation</a>
-                        <a href="#vanne" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Compteur et vanne</a>
-                        <a href="#evacuation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Évacuation</a>
-                        <a href="#siphons" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Rôle des siphons</a>
-                        <a href="#pente" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Pente d'évacuation</a>
-                        <a href="#ventilation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Ventilation</a>
-                        <a href="#reperer" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-websiteBlue">Repérer vos circuits</a>
+                        <a href="#introduction" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Introduction</a>
+                        <a href="#circuits" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Les 4 circuits</a>
+                        <a href="#alimentation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Système d'alimentation</a>
+                        <a href="#vanne" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Compteur et vanne</a>
+                        <a href="#evacuation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Évacuation</a>
+                        <a href="#siphons" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Rôle des siphons</a>
+                        <a href="#pente" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Pente d'évacuation</a>
+                        <a href="#ventilation" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Ventilation</a>
+                        <a href="#reperer" class="toc-link block py-1 border-l-2 border-transparent pl-3 hover:border-blue">Repérer vos circuits</a>
                     </nav>
                     
                     <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                         <h4 class="font-ops text-sm mb-3">AUTRES SECTIONS</h4>
                         <nav class="space-y-2 text-sm">
-                            <a href="supply.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Alimentation en eau</a>
-                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Débouchage</a>
-                            <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-websiteBlue">→ Normes plomberie</a>
+                            <a href="supply.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Alimentation en eau</a>
+                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Débouchage</a>
+                            <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Normes plomberie</a>
                         </nav>
                     </div>
                 </div>
@@ -239,22 +245,22 @@
                 
                 <!-- À retenir -->
                 <div class="success-box rounded-xl p-6">
-                    <h4 class="font-ops text-deboucheurGreen mb-4">À RETENIR</h4>
+                    <h4 class="font-ops text-green mb-4">À RETENIR</h4>
                     <ul class="grid md:grid-cols-2 gap-3 text-sm">
                         <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                             <span>Votre plomberie comprend <strong>4 circuits distincts</strong> : eau froide, eau chaude, évacuation et ventilation.</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                             <span>La <strong>vanne d'arrêt générale</strong> coupe toute l'eau de la maison en cas d'urgence.</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                             <span>La <strong>ventilation primaire</strong> débouchant sur le toit évite les remontées d'odeurs.</span>
                         </li>
                         <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-deboucheurGreen flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                             <span>Savoir <strong>localiser vos circuits</strong> facilite les interventions.</span>
                         </li>
                     </ul>
@@ -311,7 +317,7 @@
                 <!-- Système d'alimentation -->
                 <section id="alimentation" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">1</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">1</span>
                         SYSTÈME D'ALIMENTATION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -359,7 +365,7 @@
                 <!-- Système d'évacuation -->
                 <section id="evacuation" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">2</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">2</span>
                         SYSTÈME D'ÉVACUATION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -376,7 +382,7 @@
                         <div class="flex flex-col md:flex-row gap-6">
                             <div class="md:w-1/3 flex justify-center">
                                 <div class="w-32 h-48 bg-lightAlt dark:bg-darkAlt rounded-lg flex items-center justify-center">
-                                    <svg class="w-20 h-20 text-websiteBlue" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="3">
+                                    <svg class="w-20 h-20 text-blue" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="3">
                                         <!-- Pipe shape forming a U -->
                                         <path d="M30 10 L30 50 Q30 80 50 80 Q70 80 70 50 L70 10" stroke-linecap="round"/>
                                         <!-- Water level -->
@@ -409,8 +415,8 @@
                         </p>
                         
                         <div class="grid md:grid-cols-3 gap-4 my-6">
-                            <div class="text-center p-4 bg-deboucheurGreen/10 rounded-lg border border-deboucheurGreen/30">
-                                <div class="text-2xl font-ops text-deboucheurGreen">1-3 cm/m</div>
+                            <div class="text-center p-4 bg-green/10 rounded-lg border border-green/30">
+                                <div class="text-2xl font-ops text-green">1-3 cm/m</div>
                                 <p class="text-sm mt-1">Pente idéale</p>
                             </div>
                             <div class="text-center p-4 bg-cardinal/10 rounded-lg border border-cardinal/30">
@@ -432,7 +438,7 @@
                 <!-- Système de ventilation -->
                 <section id="ventilation" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">3</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">3</span>
                         SYSTÈME DE VENTILATION
                     </h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -466,7 +472,7 @@
                 <!-- Repérer vos circuits -->
                 <section id="reperer" class="scroll-mt-24">
                     <h2 class="text-3xl font-ops mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-websiteBlue rounded-full flex items-center justify-center text-white text-lg">4</span>
+                        <span class="w-10 h-10 bg-blue rounded-full flex items-center justify-center text-white text-lg">4</span>
                         REPÉRER VOS CIRCUITS
                     </h2>
                     
@@ -504,15 +510,15 @@
                             </p>
                             <ul class="space-y-2 text-sm">
                                 <li class="flex items-start gap-2">
-                                    <span class="text-websiteBlue">→</span>
+                                    <span class="text-blue">→</span>
                                     Dans les gaines techniques (souvent dans la salle de bain ou la cuisine)
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-websiteBlue">→</span>
+                                    <span class="text-blue">→</span>
                                     Le long des murs dans les caves ou sous-sols
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <span class="text-websiteBlue">→</span>
+                                    <span class="text-blue">→</span>
                                     Par le bruit de l'eau qui circule quand vous ouvrez un robinet à l'étage
                                 </li>
                             </ul>
@@ -545,11 +551,11 @@
                 </section>
 
                 <!-- CTA -->
-                <section class="bg-gradient-to-r from-websiteBlue to-blue-700 rounded-2xl p-8 text-white text-center">
+                <section class="bg-gradient-to-r from-blue to-blue-700 rounded-2xl p-8 text-white text-center">
                     <h3 class="font-ops text-2xl mb-4">BESOIN D'UN PROFESSIONNEL ?</h3>
                     <p class="mb-6 max-w-2xl mx-auto">Pour plus de sérénité lors de vos travaux, contactez un artisan plombier qualifié.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-websiteBlue font-ops rounded-lg hover:bg-gray-100 transition">
+                        <a href="tel:+14385302343" class="px-8 py-3 bg-white text-blue font-ops rounded-lg hover:bg-gray-100 transition">
                             📞 +1 (514) 972-2078
                         </a>
                         <a href="../../index.html#contact" class="px-8 py-3 bg-cardinal text-white font-ops rounded-lg hover:bg-red-700 transition">
@@ -573,25 +579,25 @@
                 <div>
                     <h4 class="font-ops text-white mb-4">GUIDE PLOMBERIE</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="supply.html" class="block hover:text-websiteBlue">Alimentation en eau</a>
-                        <a href="drainage.html" class="block hover:text-websiteBlue">Système de drainage</a>
-                        <a href="debouchage.html" class="block hover:text-websiteBlue">Débouchage</a>
-                        <a href="normes.html" class="block hover:text-websiteBlue">Normes plomberie</a>
+                        <a href="supply.html" class="block hover:text-blue">Alimentation en eau</a>
+                        <a href="drainage.html" class="block hover:text-blue">Système de drainage</a>
+                        <a href="debouchage.html" class="block hover:text-blue">Débouchage</a>
+                        <a href="normes.html" class="block hover:text-blue">Normes plomberie</a>
                     </nav>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">CONTACT</h4>
                     <div class="space-y-2 text-sm">
-                        <a href="tel:+14385302343" class="block text-websiteBlue hover:underline">+1 (514) 972-2078</a>
+                        <a href="tel:+14385302343" class="block text-blue hover:underline">+1 (514) 972-2078</a>
                         <a href="tel:+14387657040" class="block text-pink-500 hover:underline">+1 (438) 765-7040</a>
-                        <a href="mailto:info@deboucheur.expert" class="block hover:text-websiteBlue">info@deboucheur.expert</a>
+                        <a href="mailto:info@deboucheur.expert" class="block hover:text-blue">info@deboucheur.expert</a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-ops text-white mb-4">LÉGAL</h4>
                     <nav class="space-y-2 text-sm">
-                        <a href="../politics.html" class="block hover:text-websiteBlue">Confidentialité</a>
-                        <a href="../conditions.html" class="block hover:text-websiteBlue">Conditions</a>
+                        <a href="../politics.html" class="block hover:text-blue">Confidentialité</a>
+                        <a href="../conditions.html" class="block hover:text-blue">Conditions</a>
                     </nav>
                 </div>
             </div>
@@ -647,6 +653,16 @@
 <!-- Dynamic Components: Cookie Banner & AI Helper -->
 <div id="banner-container"></div>
 <div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../../assets/scripts/time.js" defer></script>
+
 <script src="../../assets/scripts/components/loader.js"></script>
 <script src="../../assets/scripts/icons.js" defer></script>
 </body>
