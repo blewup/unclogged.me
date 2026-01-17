@@ -188,7 +188,7 @@
   ],
   "related_applications": [],
   "serviceworker": {
-    "src": "service-worker.js",
+    "src": "assets/scripts/service.js",
     "scope": "/",
     "type": "classic",
     "update_via_cache": "none"

@@ -161,7 +161,7 @@
     </div>
     
     <script>
-        // Error code definitions
+        // Error code definitions - matches pages/errors/codes/*.html files
         const errorData = {
             '400': {
                 title: { fr: 'Requête Invalide', en: 'Bad Request' },
@@ -179,13 +179,33 @@
                 title: { fr: 'Page Non Trouvée', en: 'Page Not Found' },
                 message: { fr: 'Oups ! La page que vous cherchez semble avoir fui... comme un tuyau mal joint.', en: 'Oops! The page you\'re looking for seems to have leaked away... like a poorly sealed pipe.' }
             },
+            '408': {
+                title: { fr: 'Délai Dépassé', en: 'Request Timeout' },
+                message: { fr: 'La requête a pris trop de temps. Veuillez réessayer.', en: 'The request took too long. Please try again.' }
+            },
+            '410': {
+                title: { fr: 'Ressource Supprimée', en: 'Gone' },
+                message: { fr: 'Cette ressource n\'existe plus et ne sera plus disponible.', en: 'This resource no longer exists and will not be available again.' }
+            },
+            '429': {
+                title: { fr: 'Trop de Requêtes', en: 'Too Many Requests' },
+                message: { fr: 'Vous avez effectué trop de requêtes. Veuillez patienter.', en: 'You have made too many requests. Please wait a moment.' }
+            },
             '500': {
                 title: { fr: 'Erreur Serveur', en: 'Server Error' },
                 message: { fr: 'Notre serveur a rencontré un problème. Nos plombiers numériques travaillent dessus !', en: 'Our server encountered a problem. Our digital plumbers are working on it!' }
             },
+            '502': {
+                title: { fr: 'Mauvaise Passerelle', en: 'Bad Gateway' },
+                message: { fr: 'Le serveur a reçu une réponse invalide. Veuillez réessayer.', en: 'The server received an invalid response. Please try again.' }
+            },
             '503': {
                 title: { fr: 'Service Indisponible', en: 'Service Unavailable' },
                 message: { fr: 'Le service est temporairement indisponible. Veuillez réessayer dans quelques minutes.', en: 'The service is temporarily unavailable. Please try again in a few minutes.' }
+            },
+            '504': {
+                title: { fr: 'Délai Passerelle', en: 'Gateway Timeout' },
+                message: { fr: 'Le serveur n\'a pas répondu à temps. Veuillez réessayer.', en: 'The server did not respond in time. Please try again.' }
             }
         };
         

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORS LIGNE | Déboucheur Expert</title>
+    
+    <link href="../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link rel="manifest" href="../../manifest.json">
+    <link rel="stylesheet" href="../../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../../assets/styles/style_08.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        deboucheurGreen: '#22c55e',
+                        websiteBlue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'Impact', 'sans-serif'],
+                        impact: ['Impact', 'Haettenschweiler', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        merriweather: ['Merriweather', 'serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair error-offline">
+    <a href="../../index.html" class="error-logo">
+        <img src="../../assets/images/logo/logo.png" alt="Logo">
+        <span class="error-logo-text hidden md:inline">Déboucheur Expert</span>
+    </a>
+    <button onclick="toggleTheme()" class="theme-toggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <button onclick="toggleLanguage()" class="lang-toggle" id="lang-display">EN</button>
+    <div class="error-container">
+        <div class="error-icon">📡</div>
+        <h1 class="error-code">OFFLINE</h1>
+        <h2 class="error-title" data-translate="err_title">HORS LIGNE</h2>
+        <p class="error-message" data-translate="err_msg">Vous n'êtes pas connecté à Internet. Le site fonctionne en mode hors ligne.</p>
+        <div class="error-actions">
+            <a href="../../index.html" class="error-btn error-btn-primary">🏠 <span data-translate="err_home">Retour à l'accueil</span></a>
+            <a href="tel:+14385302343" class="error-btn error-btn-emergency">📞 <span data-translate="err_call">Appelez Billy!</span></a>
+        </div>
+        <div class="error-details">
+            <p><strong data-translate="err_help">Besoin d'aide?</strong></p>
+            <p><a href="tel:+14385302343" class="text-websiteBlue font-ops text-xl">📞 (438) 530-2343</a></p>
+        </div>
+    </div>
+    <div class="error-footer"><p>&copy; 2024 Déboucheur Expert</p></div>
+    <script>
+        let currentLang = 'fr';
+        const translations = {
+            fr: { err_title: 'HORS LIGNE', err_msg: 'Vous n\'êtes pas connecté à Internet. Le site fonctionne en mode hors ligne.', err_home: 'Retour à l\'accueil', err_call: 'Appelez Billy!', err_help: 'Besoin d\'aide?' },
+            en: { err_title: 'OFFLINE', err_msg: 'You are not connected to the Internet. The site is running in offline mode.', err_home: 'Back to Home', err_call: 'Call Billy!', err_help: 'Need help?' }
+        };
+        function toggleTheme() { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); }
+        function toggleLanguage() { currentLang = currentLang === 'fr' ? 'en' : 'fr'; document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR'; document.querySelectorAll('[data-translate]').forEach(el => { const k = el.getAttribute('data-translate'); if (translations[currentLang][k]) el.innerHTML = translations[currentLang][k]; }); localStorage.setItem('language', currentLang); }
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark');
+        if (localStorage.getItem('language') === 'en') { currentLang = 'fr'; toggleLanguage(); }
+    </script>
+    <script src="../../assets/scripts/icons.js" defer></script>
+</body>
+</html>

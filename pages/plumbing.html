@@ -595,7 +595,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('../service-worker.js').catch(err => console.warn('SW reg failed', err));
+                navigator.serviceWorker.register('../assets/scripts/service.js').catch(err => console.warn('SW reg failed', err));
             });
         }
     </script>
@@ -725,6 +725,6 @@
 <div id="banner-container"></div>
 <div id="helper-container"></div>
 <script src="../assets/scripts/components/loader.js"></script>
-<script src="../assets/scripts/icons/icons.js" defer></script>
+<script src="../assets/scripts/icons.js" defer></script>
 </body>
 </html>

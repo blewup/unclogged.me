@@ -1,21 +1,21 @@
 # Apache Error Document Configuration
 # Add to .htaccess file in root directory
 
-# 4xx Client Errors
-ErrorDocument 400 /errors/error.php?code=400
-ErrorDocument 401 /errors/401.html
-ErrorDocument 403 /errors/403.html
-ErrorDocument 404 /errors/404.html
-ErrorDocument 405 /errors/error.php?code=405
-ErrorDocument 408 /errors/error.php?code=408
-ErrorDocument 410 /errors/error.php?code=410
-ErrorDocument 429 /errors/error.php?code=429
+# 4xx Client Errors - Using pages/errors/codes/ structure
+ErrorDocument 400 /pages/errors/codes/400.html
+ErrorDocument 401 /pages/errors/codes/401.html
+ErrorDocument 403 /pages/errors/codes/403.html
+ErrorDocument 404 /pages/errors/codes/404.html
+ErrorDocument 405 /errors.html?code=405
+ErrorDocument 408 /pages/errors/codes/408.html
+ErrorDocument 410 /pages/errors/codes/410.html
+ErrorDocument 429 /pages/errors/codes/429.html
 
 # 5xx Server Errors
-ErrorDocument 500 /errors/500.html
-ErrorDocument 502 /errors/error.php?code=502
-ErrorDocument 503 /errors/503.html
-ErrorDocument 504 /errors/error.php?code=504
+ErrorDocument 500 /pages/errors/codes/500.html
+ErrorDocument 502 /pages/errors/codes/502.html
+ErrorDocument 503 /pages/errors/codes/503.html
+ErrorDocument 504 /pages/errors/codes/504.html
 
 # Enable mod_rewrite
 RewriteEngine On
