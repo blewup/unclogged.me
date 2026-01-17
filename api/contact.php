@@ -1,46 +1,20 @@
 <?php
 /**
- * Advanced contact form handler for Déboucheur.
- *
- * This endpoint accepts multipart/form-data submissions containing
- * user details (fname, lname, email, phone, msg), the preferred
- * language (lang) and an optional file attachment.  On receipt it
- * performs the following actions:
- *
- * 1. Saves the uploaded file (if any) to the uploads directory and
- *    records its relative path.  Only images of certain types are
- *    accepted (PNG, JPEG, JPG, WEBP, AVIF).  If the file is not
- *    provided or is of an unsupported type, it is ignored.
- *
- * 2. Inserts a record into the contacts table of the appropriate
- *    database (prod/test/dev) using credentials defined in db.php.  The
- *    database is selected via the `env` POST parameter (defaults to
- *    prod).  You must create the contacts table with the following
- *    schema:
- *      CREATE TABLE contacts (
- *        id INT AUTO_INCREMENT PRIMARY KEY,
- *        fname VARCHAR(100),
- *        lname VARCHAR(100),
- *        email VARCHAR(255),
- *        phone VARCHAR(50),
- *        message TEXT,
- *        attachment_path VARCHAR(255),
- *        lang VARCHAR(10),
- *        ip VARCHAR(45),
- *        user_agent VARCHAR(255),
- *        created_at DATETIME
- *      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
- *
- * 3. Sends an email notification to the appropriate support address
- *    depending on the selected language: `info@deboucheur.expert` for
- *    French (lang=fr) and `info@unclogged.me` for English (lang=en).
- *    The email includes the message body and, if present, attaches
- *    the uploaded file.  Adjust the sender address below as needed.
- *
- * On success, returns JSON {status: 'ok'}.  On failure, returns
- * JSON {error: '...'}.  This script uses the PHP mail() function; in
- * production, consider using a more robust library (e.g. PHPMailer)
- * configured with SMTP credentials.
+ * Déboucheur Expert - Contact Form Handler
+ * 
+ * Accepts multipart/form-data submissions with user details (fname, lname, 
+ * email, phone, msg), preferred language (lang) and optional file attachment.
+ * 
+ * Required PHP modules: json, mysqli, fileinfo, mbstring
+ * 
+ * Actions performed:
+ * 1. Saves uploaded file (if any) to uploads directory (PNG, JPEG, WEBP, AVIF)
+ * 2. Inserts record into contacts table via MariaDB
+ * 3. Sends email notification via EmailService (SMTP)
+ *    - French: info@deboucheur.expert
+ *    - English: info@unclogged.me
+ * 
+ * Returns JSON {status: 'ok'} on success, {error: '...'} on failure.
  */
 
 header('Content-Type: application/json');
@@ -53,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/email-service.php';
 
 // Determine environment (prod/test/dev) from POST; default prod
 $env = $_POST['env'] ?? 'prod';
@@ -83,6 +58,7 @@ $allowedMime = [
     'image/avif'
 ];
 $attachmentPath = null;
+$attachmentFullPath = null;
 if (!empty($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
     $tmpPath = $_FILES['attachment']['tmp_name'];
     $mimeType = mime_content_type($tmpPath);
@@ -95,6 +71,7 @@ if (!empty($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_E
         $destination = $uploadsDir . '/' . $filename;
         if (move_uploaded_file($tmpPath, $destination)) {
             $attachmentPath = 'api/uploads/' . $filename;
+            $attachmentFullPath = $destination;
         }
     }
 }
@@ -109,39 +86,57 @@ if ($stmt) {
 }
 $mysqli->close();
 
-// Compose email
-$to = ($lang === 'en') ? 'info@unclogged.me' : 'info@deboucheur.expert';
-$subject = 'Nouvelle demande de contact de ' . $fname . ' ' . $lname;
-$boundary = md5(uniqid(time()));
-$headers = "From: " . $email . "\r\n";
-$headers .= "Reply-To: " . $email . "\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
-
-$body = "--$boundary\r\n";
-$body .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-$body .= "Nom: $fname $lname\n";
-$body .= "Courriel: $email\n";
-$body .= "Téléphone: $phone\n";
-$body .= "Langue: $lang\n";
-$body .= "Message:\n$msg\n\n";
-
-// Attach file if available
-if ($attachmentPath) {
-    $fileContent = file_get_contents(__DIR__ . '/' . $attachmentPath);
-    $fileContentEncoded = chunk_split(base64_encode($fileContent));
-    $fileName = basename($attachmentPath);
-    $body .= "--$boundary\r\n";
-    $body .= "Content-Type: application/octet-stream; name=\"$fileName\"\r\n";
-    $body .= "Content-Transfer-Encoding: base64\r\n";
-    $body .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n\r\n";
-    $body .= $fileContentEncoded . "\r\n\r\n";
+// Send email via EmailService
+try {
+    $emailService = new EmailService();
+    
+    // Select recipient based on language
+    $to = ($lang === 'en') ? 'info@unclogged.me' : 'info@deboucheur.expert';
+    
+    // Build subject
+    $subject = ($lang === 'en') 
+        ? 'New contact request from ' . $fname . ' ' . $lname
+        : 'Nouvelle demande de contact de ' . $fname . ' ' . $lname;
+    
+    // Build HTML body
+    $htmlBody = "<html><body>";
+    $htmlBody .= "<h2>" . ($lang === 'en' ? 'New Contact Request' : 'Nouvelle Demande de Contact') . "</h2>";
+    $htmlBody .= "<table style='border-collapse:collapse;width:100%;max-width:600px;'>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;font-weight:bold;'>" . ($lang === 'en' ? 'Name' : 'Nom') . "</td><td style='padding:8px;border:1px solid #ddd;'>" . htmlspecialchars($fname . ' ' . $lname) . "</td></tr>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;font-weight:bold;'>" . ($lang === 'en' ? 'Email' : 'Courriel') . "</td><td style='padding:8px;border:1px solid #ddd;'><a href='mailto:" . htmlspecialchars($email) . "'>" . htmlspecialchars($email) . "</a></td></tr>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;font-weight:bold;'>" . ($lang === 'en' ? 'Phone' : 'Téléphone') . "</td><td style='padding:8px;border:1px solid #ddd;'><a href='tel:" . htmlspecialchars($phone) . "'>" . htmlspecialchars($phone) . "</a></td></tr>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;font-weight:bold;'>" . ($lang === 'en' ? 'Language' : 'Langue') . "</td><td style='padding:8px;border:1px solid #ddd;'>" . strtoupper($lang) . "</td></tr>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;font-weight:bold;' colspan='2'>" . ($lang === 'en' ? 'Message' : 'Message') . "</td></tr>";
+    $htmlBody .= "<tr><td style='padding:8px;border:1px solid #ddd;' colspan='2'>" . nl2br(htmlspecialchars($msg)) . "</td></tr>";
+    $htmlBody .= "</table>";
+    
+    if ($attachmentPath) {
+        $htmlBody .= "<p style='margin-top:15px;'><strong>" . ($lang === 'en' ? 'Attachment included' : 'Pièce jointe incluse') . "</strong></p>";
+    }
+    
+    $htmlBody .= "<hr style='margin-top:20px;'>";
+    $htmlBody .= "<p style='font-size:12px;color:#666;'>IP: " . htmlspecialchars($ip) . "<br>User Agent: " . htmlspecialchars(substr($userAgent, 0, 100)) . "</p>";
+    $htmlBody .= "</body></html>";
+    
+    // Plain text version
+    $textBody = ($lang === 'en' ? 'Name: ' : 'Nom: ') . $fname . ' ' . $lname . "\n";
+    $textBody .= ($lang === 'en' ? 'Email: ' : 'Courriel: ') . $email . "\n";
+    $textBody .= ($lang === 'en' ? 'Phone: ' : 'Téléphone: ') . $phone . "\n";
+    $textBody .= ($lang === 'en' ? 'Language: ' : 'Langue: ') . strtoupper($lang) . "\n\n";
+    $textBody .= ($lang === 'en' ? 'Message:' : 'Message:') . "\n" . $msg;
+    
+    // Send with attachment if present
+    $attachments = [];
+    if ($attachmentFullPath && file_exists($attachmentFullPath)) {
+        $attachments[] = $attachmentFullPath;
+    }
+    
+    $emailService->send($to, $subject, $htmlBody, $textBody, $email, $attachments);
+    
+} catch (Exception $e) {
+    // Log error but don't fail the request - DB insert was successful
+    error_log("Contact form email failed: " . $e->getMessage());
 }
-$body .= "--$boundary--";
-
-// Attempt to send email (silently ignore failure)
-@mail($to, $subject, $body, $headers);
 
 // Respond with success
 echo json_encode(['status' => 'ok']);
