@@ -1,0 +1,21 @@
+<!-- Video Hero Component for Plumbing Page -->
+<!-- Uses video_00.mp4 as background with title and CTA button -->
+<section id="hero" class="video-hero relative w-full overflow-hidden" style="height: 60vh;">
+    <!-- Background Video -->
+    <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="auto">
+        <source src="../../assets/videos/video_00.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
+    
+    <!-- Hero Content: Title + Button Only -->
+    <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-8 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
+            DÉBOUCHEUR EXPERT
+        </h1>
+        <a href="../../index.html#contact" class="flex items-center justify-center bg-blue text-white font-ops text-lg md:text-2xl px-6 md:px-8 py-3 md:py-4 rounded-full shadow-lg border-2 border-black transform hover:scale-110 transition-transform" data-translate="btn_rdv">
+            PRENDRE RENDEZ-VOUS
+        </a>
+    </div>
+</section>
