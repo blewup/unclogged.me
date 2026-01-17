@@ -195,9 +195,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment:
-      name: production
-      url: https://unclogged.me
+    # Environment configuration (optional - requires setup in repo settings)
+    # environment:
+    #   name: production
+    #   url: https://unclogged.me
     
     steps:
       - name: 📥 Download build artifact
@@ -219,26 +220,7 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./
           destination_dir: ./
-          cname: unclogged.me
-          
-      # Alternative: Direct FTP deployment (if GitHub Pages not used)
-      - name: 🚀 Deploy via FTP (fallback)
-        if: ${{ secrets.FTP_SERVER != '' }}
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/backup/**
-            **/*.bak
-            **/README.md
-            **/LICENSE
-            **/dist/**
+          cname: https://blewup.github.io/unclogged.me
 
       - name: ✅ Deployment complete
         run: |
