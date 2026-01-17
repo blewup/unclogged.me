@@ -160,7 +160,7 @@
     }
     </script>
 </head>
-<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 relative font-comic transition-colors duration-300 overflow-x-hidden">
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 relative font-playfair transition-colors duration-300 overflow-x-hidden">
 
     <!-- Scroll progress bar shows how much of the page has been viewed -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-websiteBlue z-[1000] transition-all ease-linear" style="width:0;"></div>
@@ -196,7 +196,7 @@
                 <i class="fas fa-robot text-white text-xl"></i>
                 <div>
                     <h4 class="font-ops text-white text-sm">Apprenti Deboucheur</h4>
-                    <p class="text-xs text-blue-100">Assistant IA & Diagnostic</p>
+                    <p class="text-xs text-blue-100 font-playfair">Assistant IA & Diagnostic</p>
                 </div>
             </div>
             <button onclick="toggleChat()" class="text-white hover:text-gray-200"><i class="fas fa-times"></i></button>
@@ -247,12 +247,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col items-center justify-center space-y-2 ml-4 shrink-0">
-                    <button onclick="toggleTheme()" class="hover:scale-110 transition-transform">
+                <div class="flex flex-row items-center justify-center space-x-3 ml-4 shrink-0">
+                    <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center border-2 border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase">
                         <i class="fas fa-sun text-yellow-400 text-lg hidden dark:block"></i>
                         <i class="fas fa-moon text-purple-600 text-lg block dark:hidden"></i>
                     </button>
-                    <button onclick="toggleLanguage()" class="text-gray-600 dark:text-white font-ops text-xs hover:scale-110 transition-transform">
+                    <button onclick="toggleLanguage()" class="w-10 h-10 flex items-center justify-center border-2 border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase text-gray-600 dark:text-white font-ops text-sm">
                         <span id="lang-display">EN</span>
                     </button>
                 </div>
@@ -294,7 +294,7 @@
                 <h2 class="text-3xl md:text-5xl font-ops text-red-600 text-outline-black" data-translate="hero_l3">LE DEBOUCHEUR</h2>
             </div>
             
-            <p class="font-comic text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
+            <p class="font-playfair text-white text-xl md:text-2xl max-w-4xl leading-relaxed drop-shadow-md mb-[10%] w-full" data-translate="hero_text">
                 Avec plus de 15 ans d'expérience en plomberie, 10 ans, comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.
             </p>
 
@@ -318,22 +318,22 @@
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_00.webp');">
                     <i class="fas fa-exclamation-triangle text-xl md:text-2xl text-cardinal mb-1 md:mb-2"></i>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_urgence">URGENCE 24/7</h3>
-                    <p class="font-comic text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_urgence_desc">Intervention rapide. Nuit et jour.</p>
+                    <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_urgence_desc">Intervention rapide. Nuit et jour.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_01.webp');">
                     <i class="fas fa-tools text-xl md:text-2xl text-websiteBlue mb-1 md:mb-2"></i>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_reno">RÉNOVATION</h3>
-                    <p class="font-comic text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_reno_desc">Salle de bain, cuisine, tuyauterie neuve.</p>
+                    <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_reno_desc">Salle de bain, cuisine, tuyauterie neuve.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_02.webp');">
                     <i class="fas fa-search text-xl md:text-2xl text-yellow-500 mb-1 md:mb-2"></i>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_insp">INSPECTION</h3>
-                    <p class="font-comic text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_insp_desc">Caméra HD. Rapport précis.</p>
+                    <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_insp_desc">Caméra HD. Rapport précis.</p>
                 </div>
                 <div class="service-card p-3 md:p-4 flex flex-col justify-center items-center text-center box-radius shadow-md transition" style="background-image: url('assets/images/services/services_03.webp');">
                     <i class="fas fa-toilet text-xl md:text-2xl text-deboucheurGreen mb-1 md:mb-2"></i>
                     <h3 class="font-ops text-sm md:text-xl lg:text-2xl text-gray-900 dark:text-white mb-1" data-translate="srv_debouch">DEBOUCHAGE</h3>
-                    <p class="font-comic text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_debouch_desc">Égouts, lavabos et toilettes.</p>
+                    <p class="font-playfair text-[10px] md:text-sm text-gray-600 dark:text-gray-300" data-translate="srv_debouch_desc">Égouts, lavabos et toilettes.</p>
                 </div>
             </div>
         </div>
@@ -351,10 +351,10 @@
                         <span data-translate="exp_title2">CHOISIR NOTRE</span><br>
                         <span class="text-websiteBlue" data-translate="exp_title3">EXPERTISE ?</span>
                     </h2>
-                    <p class="font-comic text-lg text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="exp_intro">Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.</p>
+                    <p class="font-playfair text-lg text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="exp_intro">Avec Billy St-Hilaire, le savoir-faire traditionnel et les différentes technologies modernes sont combinées.</p>
                     <div class="grid grid-cols-1 gap-6">
-                        <div class="border-l-4 border-cardinal pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_comp_title">COMPÉTENCES VARIÉES</h4><p class="font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="exp_comp_text">Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.</p></div>
-                        <div class="border-l-4 border-websiteBlue pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_ponc_title">PONCTUEL ET ASSIDU</h4><p class="font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="exp_ponc_text">Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.</p></div>
+                        <div class="border-l-4 border-cardinal pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_comp_title">COMPÉTENCES VARIÉES</h4><p class="font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="exp_comp_text">Soudure MIG, TIG et SMAW. Compagnon Plombier, Chauffagiste. De l'expérience à revendre.</p></div>
+                        <div class="border-l-4 border-websiteBlue pl-4"><h4 class="font-ops text-xl text-gray-900 dark:text-white mb-1" data-translate="exp_ponc_title">PONCTUEL ET ASSIDU</h4><p class="font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="exp_ponc_text">Un appel de confirmation est fait 24h avant. *Frais en cas d'annulation tardive.</p></div>
                     </div>
                 </div>
             </div>
@@ -366,11 +366,11 @@
         <div class="max-w-4xl mx-auto px-4 w-full py-6">
             <h3 class="text-2xl md:text-3xl font-ops text-center text-gray-900 dark:text-white mb-4 md:mb-6" data-translate="faq_title">FOIRE AUX QUESTIONS</h3>
             <div class="space-y-2 md:space-y-3 overflow-y-auto max-h-[75vh] scrollbar-thin p-1 md:p-2">
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q1">QUELS SONT VOS TARIFS ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a1">Contactez-nous pour une estimation gratuite.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q2">URGENCE DÉBOUCHAGE ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a2">Ligne d'urgence 24/7 disponible.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q3">DÉPLACEMENT SUR LA RIVE-NORD ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a3">Principalement Rive-Sud et Montréal.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q4">GARANTIE SUR LES TRAVAUX ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a4">Oui, tous nos travaux sont garantis.</div></div></div>
-                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q5">ACCEPTEZ-VOUS LES CARTES ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-comic text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a5">Oui, crédit, débit et virements acceptés.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q1">QUELS SONT VOS TARIFS ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a1">Contactez-nous pour une estimation gratuite.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q2">URGENCE DÉBOUCHAGE ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a2">Ligne d'urgence 24/7 disponible.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q3">DÉPLACEMENT SUR LA RIVE-NORD ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a3">Principalement Rive-Sud et Montréal.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q4">GARANTIE SUR LES TRAVAUX ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a4">Oui, tous nos travaux sont garantis.</div></div></div>
+                <div class="bg-white dark:bg-gray-800 box-radius shadow-md overflow-hidden"><button class="w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-700/50" onclick="toggleAccordion(this)"><span class="font-impact text-sm md:text-lg text-gray-900 dark:text-white" data-translate="faq_q5">ACCEPTEZ-VOUS LES CARTES ?</span><i class="fas fa-chevron-down text-gray-400 rotate-icon text-xs md:text-base"></i></button><div class="accordion-content bg-white dark:bg-gray-800"><div class="px-4 md:px-6 py-3 md:py-4 font-playfair text-sm text-gray-600 dark:text-gray-300" data-translate="faq_a5">Oui, crédit, débit et virements acceptés.</div></div></div>
             </div>
         </div>
     </section>
@@ -396,7 +396,7 @@
                                         <input type="text" id="lname" placeholder="Nom" oninput="saveCache('lname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
                                     </div>
                                     <input type="email" id="email" placeholder="Email" oninput="saveCache('email', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
-                                    <input type="tel" id="phone" placeholder="(###)###-####" oninput="saveCache('phone', this.value); formatPhone(this); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                    <input type="tel" id="phone" placeholder="(###)###-####" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); saveCache('phone', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold font-inter">
                                     <textarea id="msg" placeholder="Message" oninput="saveCache('msg', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full flex-grow bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold"></textarea>
                                     <!-- File input for optional attachment -->
                                     <input type="file" id="attachment" accept=".png,.jpg,.jpeg,.webp,.avif" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold file:mr-2 file:px-4 file:py-2 file:border-0 file:bg-websiteBlue file:text-white file:rounded-full">
@@ -411,10 +411,10 @@
                         <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
                             <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-4 md:p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
                                 <h3 class="text-3xl md:text-4xl font-ops mb-4 md:mb-6 flex items-center gap-3 text-websiteBlue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_info"><i class="fas fa-address-card"></i> INFOS</h3>
-                                <div class="space-y-4 md:space-y-6 font-comic dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
+                                <div class="space-y-4 md:space-y-6 font-playfair dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
                                     <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4><p class="text-sm md:text-base">Billy St-Hilaire, 35 ans,</p><p class="text-sm md:text-base">Diplômé de l'École des Métiers,</p><p class="text-sm md:text-base">de la Construction de Montréal,</p></div>
                                     <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4><p class="text-sm md:text-base">10 ans pour le groupe Centco inc,</p><p class="text-sm md:text-base">Contrats multiples avec le local 144,</p><p class="text-sm md:text-base">Fier supporteur et employé de</p><p class="text-sm md:text-base">Plomberie Martin Boisvert enr.</p></div>
-                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4><p class="text-sm md:text-base">Toujours actif pour répondre aux</p><p class="text-sm md:text-base">diverses appels de services.</p><p class="text-sm md:text-base">Que ce soit pour changer une valve</p><p class="text-sm md:text-base">ou réparer un tuyau qui coule.</p><p class="text-sm md:text-base">Le déboucheur sait s'y prendre.</p><p class="text-xs mt-1 font-bold italic">*Aucune construction neuve</p></div>
+                                    <div><h4 class="font-ops text-base md:text-lg uppercase border-b border-websiteBlue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4><p class="text-sm md:text-base">Toujours actif pour répondre aux</p><p class="text-sm md:text-base">diverses appels de services.</p><p class="text-sm md:text-base">Que ce soit pour changer une valve</p><p class="text-sm md:text-base">ou réparer un tuyau qui coule.</p><p class="text-sm md:text-base">Le déboucheur sait s'y prendre.</p><p class="text-xs mt-1 font-inter italic">*Aucune construction neuve</p></div>
                                 </div>
                             </div>
                             <button onclick="slideContact(0)" class="md:hidden absolute top-1/2 left-2 z-50 w-12 h-12 bg-websiteBlue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
@@ -442,7 +442,7 @@
             <!-- Semi-transparent overlay with call‑to‑action -->
             <div class="lesson-overlay">
                 <h2 class="text-4xl md:text-6xl font-ops mb-4 text-white [text-shadow:_2px_2px_0_#000,_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000]" data-translate="lessons_title">Leçons&nbsp;Interactives</h2>
-                <p class="max-w-xl mb-6 text-lg md:text-xl text-white [text-shadow:_1px_1px_0_#000,_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000]" data-translate="lessons_desc">Découvrez des conseils pratiques de plomberie avec Billy et apprenez à mieux comprendre votre système de drainage. Cette vidéo boucle toutes les 40&nbsp;secondes.</p>
+                <p class="font-playfair max-w-xl mb-6 text-lg md:text-xl text-white [text-shadow:_1px_1px_0_#000,_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000]" data-translate="lessons_desc">Découvrez des conseils pratiques de plomberie avec Billy et apprenez à mieux comprendre votre système de drainage. Cette vidéo boucle toutes les 40&nbsp;secondes.</p>
                 <button onclick="scrollToSection(7)" class="bg-websiteBlue px-8 py-3 font-ops text-lg rounded-full border-2 border-black shadow-lg transition-transform hover:scale-110" data-translate="lessons_btn">ENCORE PLUS</button>
             </div>
         </section>
@@ -513,7 +513,7 @@
                 <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
                     <!-- Footer name at 90% of normal 2.4rem = ~2.16rem -->
                     <h4 class="font-impact text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
-                    <p class="mt-1 text-[10px]">&copy; 2024 Billy le deboucheur</p>
+                    <p class="mt-1 text-[10px] font-inter italic">&copy; 2024 Billy le deboucheur</p>
                 </div>
                 <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
                     <a href="#" class="text-blue-600 hover:scale-125 transition-transform"><i class="fab fa-facebook text-xl"></i></a>
@@ -535,6 +535,9 @@
 
     <!-- SCRIPTS -->
     <script>
+        // --- LANGUAGE STATE ---
+        let currentLang = 'fr';
+        
         // --- DATA COLLECTION ---
         function collectUserInfo() { return { userAgent: navigator.userAgent, language: navigator.language, theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light', screen: { width: window.innerWidth, height: window.innerHeight }, inputs: { fname: localStorage.getItem('fname'), lname: localStorage.getItem('lname'), email: localStorage.getItem('email'), phone: localStorage.getItem('phone'), msg: localStorage.getItem('msg') } }; }
         async function logToConscent(data) { try { console.log("Logging to conscent.php:", data); } catch(e) { console.error(e); } }
@@ -588,6 +591,12 @@
                 faq_a1: "Contactez-nous pour une estimation gratuite.",
                 faq_q2: "URGENCE DÉBOUCHAGE ?",
                 faq_a2: "Ligne d'urgence 24/7 disponible.",
+                faq_q3: "DÉPLACEMENT SUR LA RIVE-NORD ?",
+                faq_a3: "Principalement Rive-Sud et Montréal.",
+                faq_q4: "GARANTIE SUR LES TRAVAUX ?",
+                faq_a4: "Oui, tous nos travaux sont garantis.",
+                faq_q5: "ACCEPTEZ-VOUS LES CARTES ?",
+                faq_a5: "Oui, crédit, débit et virements acceptés.",
                 contact_send: "ENVOYEZ",
                 contact_info: "INFOS",
                 btn_send: "ENVOYER",
@@ -639,10 +648,16 @@
                 exp_ponc_title: "PUNCTUAL",
                 exp_ponc_text: "Confirmation call 24h prior.",
                 faq_title: "FAQ",
-                faq_q1: "RATES?",
-                faq_a1: "Free estimate.",
-                faq_q2: "EMERGENCY?",
-                faq_a2: "24/7 Line.",
+                faq_q1: "WHAT ARE YOUR RATES?",
+                faq_a1: "Contact us for a free estimate.",
+                faq_q2: "EMERGENCY UNCLOGGING?",
+                faq_a2: "24/7 emergency line available.",
+                faq_q3: "DO YOU TRAVEL TO NORTH SHORE?",
+                faq_a3: "Mainly South Shore and Montreal.",
+                faq_q4: "WARRANTY ON WORK?",
+                faq_a4: "Yes, all our work is guaranteed.",
+                faq_q5: "DO YOU ACCEPT CARDS?",
+                faq_a5: "Yes, credit, debit and transfers accepted.",
                 contact_send: "SEND",
                 contact_info: "INFOS",
                 btn_send: "SEND",
@@ -973,11 +988,11 @@
         };
     </script>
         <!-- Consent banner and privacy logic -->
-        <div id="cookie-banner" class="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 p-3 text-sm shadow-lg rounded-lg z-50 flex flex-col gap-2 max-w-xs">
-          <p data-translate="cookie_msg">En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.</p>
+        <div id="cookie-banner" class="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 p-3 text-sm shadow-lg box-radius z-50 flex flex-col gap-2 max-w-xs">
+          <p class="font-playfair" data-translate="cookie_msg">En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.</p>
           <div class="flex items-center gap-2">
-            <button id="accept-cookies" class="px-3 py-1 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 transition-colors" data-translate="cookie_accept">Accepter</button>
-            <a href="pages/politics.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap" data-translate="cookie_learn">En savoir plus</a>
+            <button id="accept-cookies" class="px-3 py-1 bg-blue-600 text-white box-radius font-ops hover:bg-blue-700 transition-colors" data-translate="cookie_accept">Accepter</button>
+            <a href="pages/politics.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap font-playfair" data-translate="cookie_learn">En savoir plus</a>
           </div>
         </div>
         <script>
