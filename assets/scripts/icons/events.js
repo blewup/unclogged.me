@@ -1,6 +1,6 @@
 /**
  * Déboucheur Expert - Events/Calendar Page Icons
- * SVG icons specific to events.html and calendar.html
+ * SVG icons specific to events.html and events.html
  */
 const EVENTS_ICONS = {
     // Calendar
