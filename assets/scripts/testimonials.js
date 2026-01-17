@@ -50,9 +50,9 @@ const TestimonialsModule = (() => {
 
     // SVG star icons for ratings (inline to avoid FA dependency)
     const STAR_ICONS = Object.freeze({
-        full: '<svg class="w-3 h-3 inline-block" viewBox="0 0 576 512" fill="currentColor"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329l104.2-103.1c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L380.9 150.3 316.9 18z"/></svg>',
-        half: '<svg class="w-3 h-3 inline-block" viewBox="0 0 576 512" fill="currentColor"><path d="M288 376.4l.1-.1 26.4 14.1 85.2 45.5-16.5-97.6-4.8-28.7 20.7-20.5 70.1-69.3-96.1-14.2-29.3-4.3-12.9-26.6L288.1 86.9l-.1 .3V376.4zm175.1 98.3c2 12-3 24.2-12.9 31.3s-23 8-33.8 2.3L288.1 439.8 159.8 508.3C149 514 136 513.1 126 506s-14.9-19.3-12.9-31.3L137.8 329 33.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L195 150.3 259.4 18c5.4-11 16.5-18 28.8-18s23.4 7 28.8 18l64.3 132.3 143.6 21.2c12 1.8 22 10.2 25.7 21.7s.7 24.2-7.9 32.7L438.5 329l24.6 145.7z"/></svg>',
-        empty: '<svg class="w-3 h-3 inline-block opacity-30" viewBox="0 0 576 512" fill="currentColor"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329l104.2-103.1c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L380.9 150.3 316.9 18z"/></svg>'
+        full: '<svg class="w-4 h-4 md:w-5 md:h-5 inline-block" viewBox="0 0 576 512" fill="currentColor"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329l104.2-103.1c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L380.9 150.3 316.9 18z"/></svg>',
+        half: '<svg class="w-4 h-4 md:w-5 md:h-5 inline-block" viewBox="0 0 576 512" fill="currentColor"><path d="M288 376.4l.1-.1 26.4 14.1 85.2 45.5-16.5-97.6-4.8-28.7 20.7-20.5 70.1-69.3-96.1-14.2-29.3-4.3-12.9-26.6L288.1 86.9l-.1 .3V376.4zm175.1 98.3c2 12-3 24.2-12.9 31.3s-23 8-33.8 2.3L288.1 439.8 159.8 508.3C149 514 136 513.1 126 506s-14.9-19.3-12.9-31.3L137.8 329 33.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L195 150.3 259.4 18c5.4-11 16.5-18 28.8-18s23.4 7 28.8 18l64.3 132.3 143.6 21.2c12 1.8 22 10.2 25.7 21.7s.7 24.2-7.9 32.7L438.5 329l24.6 145.7z"/></svg>',
+        empty: '<svg class="w-4 h-4 md:w-5 md:h-5 inline-block opacity-30" viewBox="0 0 576 512" fill="currentColor"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329l104.2-103.1c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L380.9 150.3 316.9 18z"/></svg>'
     });
 
     // Render star ratings with inline SVG
@@ -75,9 +75,9 @@ const TestimonialsModule = (() => {
                          class="w-20 h-20 box-radius object-cover mb-2 testimonial-img-shadow aspect-square" 
                          alt="Photo de ${t.name}" loading="lazy">
                     <div class="flex-grow flex flex-col justify-center">
-                        <h4 class="font-impact text-sm text-gray-900 dark:text-white truncate w-full">${t.name}</h4>
-                        <div class="text-yellow-400 text-[10px] mb-1">${renderStars(t.stars)}</div>
-                        <p class="font-comic text-[10px] md:text-xs text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[30vh] scrollbar-thin">"${t.text}"</p>
+                        <h4 class="font-impact text-base md:text-lg text-gray-900 dark:text-white truncate w-full">${t.name}</h4>
+                        <div class="text-yellow-400 text-sm md:text-base mb-1">${renderStars(t.stars)}</div>
+                        <p class="font-comic text-sm md:text-base text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[30vh] scrollbar-thin">"${t.text}"</p>
                     </div>
                 </div>
             </div>
