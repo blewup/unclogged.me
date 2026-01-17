@@ -476,10 +476,10 @@ body {
 
 .map-overlay-panel {
     position: absolute;
-    top: 10%;
-    left: 2%;
-    width: clamp(280px, 25vw, 380px);
-    max-height: 80%;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    width: clamp(200px, 22vw, 320px);
     background: var(--color-light-base);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
@@ -487,10 +487,19 @@ body {
     z-index: 20;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .dark .map-overlay-panel {
     background: var(--color-dark-alt);
+}
+
+/* Hide Google Maps default overlays */
+.gm-style .place-card,
+.gm-style .place-card-large,
+.gm-style .gm-inset-map,
+.gm-style .gm-bundled-control {
+    display: none !important;
 }
 
 /* ============================================
@@ -631,10 +640,20 @@ body {
     }
     
     .map-overlay-panel {
-        width: 90%;
-        left: 5%;
-        top: 5%;
-        max-height: 40%;
+        width: calc(100% - 10px);
+        left: 5px;
+        right: 5px;
+        top: auto;
+        bottom: 5px;
+        height: auto;
+        max-height: 35vh;
+    }
+    
+    /* Ensure sections fit in viewport */
+    .sticky-section {
+        min-height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
     }
 }
 
@@ -642,5 +661,18 @@ body {
     :root {
         --radius-base: 6px;
         --radius-lg: 12px;
+    }
+    
+    .map-overlay-panel {
+        max-height: 30vh;
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .map-overlay-panel {
+        width: clamp(180px, 20vw, 250px);
+        height: calc(100% - 10px);
+        max-height: none;
     }
 }
