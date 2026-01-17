@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="robots" content="noindex, nofollow">
     <title>400 - REQUÊTE INVALIDE | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Erreur 400 - Déboucheur Expert, services de plomberie résidentielle à Montréal et Montérégie.">
+    <meta lang="en" name="description" content="Error 400 - Déboucheur Expert, residential plumbing services in Montreal and Montérégie.">
     
-    <link href="../../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link href="../../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#000000">
     <link rel="manifest" href="../../../manifest.json">
-    <link rel="stylesheet" href="../../../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../../../assets/styles/style_08.css">
+    <meta name="theme-color" content="#2563EB">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local Fonts (NO external CDN) -->
+    <link rel="stylesheet" href="../../../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../../../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../../../assets/styles/style_08.css">
+    <link rel="stylesheet" href="../../../assets/styles/tailwind.css">
+    <link rel="stylesheet" href="../../../assets/styles/panda.css">
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -26,53 +46,118 @@
                         blue: '#2563EB',
                     },
                     fontFamily: {
-                        ops: ['"Black Ops One"', 'Impact', 'sans-serif'],
-                        impact: ['Impact', 'Haettenschweiler', 'sans-serif'],
-                        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+                        ops: ['"Black Ops One"', 'cursive'],
                         comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
-                        inter: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
+                        inter: ['Inter', 'sans-serif'],
+                        impact: ['Impact', 'Haettenschweiler', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
                         merriweather: ['Merriweather', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    
+    <style>
+        body { width: 100vw; height: 100vh; overflow-x: hidden; }
+    </style>
 </head>
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair error-400">
-    <a href="../../../index.html" class="error-logo">
-        <img src="../../../assets/images/logo/logo.png" alt="Logo">
-        <span class="error-logo-text hidden md:inline">Déboucheur Expert</span>
+
+    <!-- Dynamic Component Containers -->
+    <div id="navbar-container"></div>
+    
+    <!-- URGENCY BUTTON -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        <span data-translate="urgence">URGENCE 24/7</span>
     </a>
-    <button onclick="toggleTheme()" class="theme-toggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
-    <button onclick="toggleLanguage()" class="lang-toggle" id="lang-display">EN</button>
-    <div class="error-container">
-        <div class="error-icon">❓</div>
-        <h1 class="error-code">400</h1>
-        <h2 class="error-title" data-translate="err_title">REQUÊTE INVALIDE</h2>
-        <p class="error-message" data-translate="err_msg">La requête envoyée au serveur est invalide ou malformée.</p>
-        <div class="error-actions">
-            <a href="../../../index.html" class="error-btn error-btn-primary">🏠 <span data-translate="err_home">Retour à l'accueil</span></a>
-            <a href="tel:+14385302343" class="error-btn error-btn-emergency">📞 <span data-translate="err_call">Appelez Billy!</span></a>
+
+    <!-- Error Content Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 pt-[14vh]">
+        <div class="text-center max-w-2xl mx-auto">
+            <div class="text-8xl mb-6">❓</div>
+            <h1 class="text-[10rem] md:text-[14rem] font-ops text-blue leading-none mb-4" style="text-shadow: 4px 4px 0 rgba(0,0,0,0.3);">400</h1>
+            <h2 class="text-3xl md:text-4xl font-ops text-gray-900 dark:text-white mb-4" data-translate="err_title">REQUÊTE INVALIDE</h2>
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 font-playfair" data-translate="err_msg">La requête envoyée au serveur est invalide ou malformée.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="../../../index.html" class="px-8 py-3 bg-blue hover:bg-blue-700 text-white font-ops rounded-lg shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+                    <span data-translate="err_home">Retour à l'accueil</span>
+                </a>
+                <a href="tel:+14385302343" class="px-8 py-3 bg-cardinal hover:bg-red-700 text-white font-ops rounded-lg shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                    <span data-translate="err_call">Appelez Billy!</span>
+                </a>
+            </div>
+            
+            <div class="bg-lightAlt dark:bg-darkAlt rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                <p class="font-ops text-lg mb-3 text-blue" data-translate="err_help">Besoin d'aide?</p>
+                <a href="tel:+14385302343" class="text-2xl font-ops text-cardinal hover:text-red-600 transition-colors">
+                    📞 (438) 530-2343
+                </a>
+            </div>
         </div>
-        <div class="error-details">
-            <p><strong data-translate="err_help">Besoin d'aide?</strong></p>
-            <p><a href="tel:+14385302343" class="text-blue font-ops text-xl">📞 (438) 530-2343</a></p>
-        </div>
-    </div>
-    <div class="error-footer"><p>&copy; 2024 Déboucheur Expert</p></div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Dynamic Components -->
+    <div id="banner-container"></div>
+    <div id="helper-container"></div>
+
     <script>
-        let currentLang = 'fr';
+        // Theme detection
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Language detection
+        let currentLang = localStorage.getItem('language') || 'fr';
         const translations = {
-            fr: { err_title: 'REQUÊTE INVALIDE', err_msg: 'La requête envoyée au serveur est invalide ou malformée.', err_home: 'Retour à l\'accueil', err_call: 'Appelez Billy!', err_help: 'Besoin d\'aide?' },
-            en: { err_title: 'BAD REQUEST', err_msg: 'The request sent to the server is invalid or malformed.', err_home: 'Back to Home', err_call: 'Call Billy!', err_help: 'Need help?' }
+            fr: { 
+                err_title: 'REQUÊTE INVALIDE', 
+                err_msg: 'La requête envoyée au serveur est invalide ou malformée.', 
+                err_home: 'Retour à l\'accueil', 
+                err_call: 'Appelez Billy!', 
+                err_help: 'Besoin d\'aide?',
+                urgence: 'URGENCE 24/7'
+            },
+            en: { 
+                err_title: 'BAD REQUEST', 
+                err_msg: 'The request sent to the server is invalid or malformed.', 
+                err_home: 'Back to Home', 
+                err_call: 'Call Billy!', 
+                err_help: 'Need help?',
+                urgence: 'EMERGENCY 24/7'
+            }
         };
-        function toggleTheme() { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); }
-        function toggleLanguage() { currentLang = currentLang === 'fr' ? 'en' : 'fr'; document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR'; document.querySelectorAll('[data-translate]').forEach(el => { const k = el.getAttribute('data-translate'); if (translations[currentLang][k]) el.innerHTML = translations[currentLang][k]; }); localStorage.setItem('language', currentLang); }
-        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark');
-        if (localStorage.getItem('language') === 'en') { currentLang = 'fr'; toggleLanguage(); }
+        
+        function applyTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+        
+        if (currentLang === 'en') {
+            applyTranslations();
+        }
     </script>
+    
+    <!-- Core Libraries -->
+    <script src="../../../assets/scripts/libs.js" defer></script>
+    <script src="../../../assets/scripts/main.js" defer></script>
+    <script src="../../../assets/scripts/time.js" defer></script>
+    <script src="../../../assets/scripts/components/loader.js"></script>
     <script src="../../../assets/scripts/icons.js" defer></script>
 </body>
 </html>

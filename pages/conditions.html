@@ -8,8 +8,13 @@
     <meta lang="fr" name="description" content="Conditions d'utilisation de Déboucheur Expert. Termes et conditions pour nos services de plomberie résidentielle à Montréal et Montérégie.">
     <meta lang="en" name="description" content="Terms and conditions of Déboucheur Expert. Terms of service for our residential plumbing services in Montreal and Montérégie.">
     
-    <!-- Preload header image for faster paint -->
-    <link rel="preload" as="image" href="../assets/images/header/header_00.webp">
+    <!-- Preload hero slides -->
+    <link rel="preload" as="image" href="../assets/images/slide/slide_06.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_07.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_08.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_09.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_10.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_11.webp">
     
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
@@ -27,12 +32,8 @@
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../assets/styles/style_02.css">
-    
-    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../assets/styles/style_00.css">
     <link rel="stylesheet" href="../assets/styles/tailwind.css">
-    
-    <!-- Panda CSS Visual Effects -->
     <link rel="stylesheet" href="../assets/styles/panda.css">
     
     <!-- Tailwind Configuration -->
@@ -44,7 +45,6 @@
                     colors: {
                         darkBase: '#000000',
                         darkAlt: '#131313',
-                        ony: '#0F0F10',
                         lightBase: '#FFFFFF',
                         lightAlt: '#F2F2F2',
                         cardinal: '#C41E3A',
@@ -53,145 +53,110 @@
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
-                        header: ['"Black Ops One"', 'system-ui'],
-                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        comic: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
                         playfair: ['"Playfair Display"', 'serif'],
                         merriweather: ['Merriweather', 'serif'],
                         inter: ['Inter', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    borderRadius: { 'custom': '15px' }
+                    }
                 }
             }
         }
     </script>
     
-    <!-- Structured Data (English) -->
-    <script lang="en" type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Unclogged by Déboucheur Expert",
-      "alternateName": "unclogged.me",
-      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
-      "url": "https://unclogged.me",
-      "logo": "https://unclogged.me/assets/images/logo/logo.png",
-      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
-      "telephone": "+1-438-530-2343",
-      "priceRange": "200$ - 640$/h CAD +tx",
-      "areaServed": ["Montreal", "Montérégie"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "290 Rue Lord #01",
-        "addressLocality": "Napierville",
-        "addressRegion": "QC",
-        "postalCode": "J0J 1L0",
-        "addressCountry": "CA"
-      },
-      "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
-      ]
-    }
-    </script>
-    
-    <!-- Structured Data (French) -->
-    <script lang="fr" type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Déboucheur Expert (unclogged.me)",
-      "alternateName": "Déboucheur",
-      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
-      "url": "https://deboucheur.expert",
-      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
-      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
-      "telephone": "+1-438-530-2343",
-      "priceRange": "200$ - 640$/h CAD +tx",
-      "areaServed": ["Montreal", "Montérégie"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "290 Rue Lord #01",
-        "addressLocality": "Napierville",
-        "addressRegion": "QC",
-        "postalCode": "J0J 1L0",
-        "addressCountry": "CA"
-      },
-      "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
-      ]
-    }
-    </script>
+    <style>
+        body { width: 100vw; overflow-x: hidden; }
+        
+        /* Hero slideshow */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-slide.active { opacity: 1; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair">
 
-    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
-    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-[#C41E3A] hover:bg-red-700 text-white px-4 py-2 rounded-lg font-header shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2" style="border-radius:8px;">
-        <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        <span>URGENCE 24/7</span>
+    <!-- Dynamic Navbar Container -->
+    <div id="navbar-container"></div>
+    
+    <!-- URGENCY BUTTON -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        <span data-translate="urgence">URGENCE 24/7</span>
     </a>
 
-    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
-        <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <a href="../index.html" class="flex flex-col leading-none hover-scale">
-                <span class="text-sm font-header dark:text-white">DÉBOUCHEUR</span>
-                <span class="text-base font-extrabold text-blue-600 dark:text-blue-500">EXPERT</span>
-            </a>
-            <div class="flex gap-4">
-                <button id="theme-toggle" class="p-2 radius-override hover:bg-gray-200 dark:hover:bg-white/10 transition hover-scale">
-                    <span class="text-xs font-bold uppercase">Thème</span>
-                </button>
-                <button id="lang-toggle" class="p-2 radius-override bg-gray-200 dark:bg-white/10 font-bold hover-scale w-10 h-10 flex items-center justify-center">
-                    <span id="current-lang">EN</span>
-                </button>
-            </div>
+    <!-- Hero Section with Slideshow -->
+    <section id="hero" class="relative w-full overflow-hidden" style="height: 60vh;">
+        <div id="hero-slideshow" class="absolute inset-0 z-0">
+            <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_09.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_10.webp')"></div>
+            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
         </div>
-    </nav>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-4 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
+                DÉBOUCHEUR EXPERT
+            </h1>
+        </div>
+    </section>
 
-    <header class="relative h-[32vh] min-h-[200px] flex items-center overflow-hidden bg-gray-900">
-        <div class="absolute inset-0 z-0">
-            <!-- Header image with object-position: top -->
-            <img src="../assets/images/header/header_00.webp" class="w-full h-full object-cover object-top opacity-60 dark:opacity-40" alt="Conditions">
-        </div>
-        <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
-            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Conditions d'Utilisation</h1>
-            <p class="text-gray-300 mt-4 text-lg italic" data-translate="page_subtitle">Règles et Engagements contractuels</p>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12" style="margin-top: 6vh;">
+        <!-- Sidebar Index -->
         <aside class="md:w-1/4">
-            <div class="sticky top-24 bg-white dark:bg-white/5 p-6 radius-override border border-gray-200 dark:border-white/10 shadow-lg">
-                <h3 class="font-header text-xl mb-4 text-blue-600 dark:text-blue-500" data-translate="index_title">Index</h3>
+            <div class="sticky top-24 bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-lg">
+                <h3 class="font-ops text-xl mb-4 text-blue" data-translate="index_title">Index</h3>
                 <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300" id="index-list">
                     <!-- JS Generated -->
                 </ul>
             </div>
         </aside>
 
+        <!-- Terms Content -->
         <article class="md:w-3/4 space-y-8 text-justify leading-relaxed" id="terms-content">
             <!-- Content via JS -->
         </article>
     </main>
 
-    <footer class="py-8 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500 bg-white dark:bg-[#0F0F10] transition-colors duration-300">
-        <p class="mb-2">&copy; 2025 Plomberie Martin Boisvert. Tous droits réservés.</p>
-        <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 radius-override transition hover-scale">Retour à l'accueil</a>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
+    <!-- Content Script -->
     <script>
+        // Hero slideshow - 6 second interval
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        if (slides.length > 1) {
+            setInterval(nextSlide, 6000);
+        }
+
         const content = {
             fr: [
                 { id: "1", title: "Objet du contrat", text: "Le présent contrat a pour objet la réalisation des travaux de plomberie décrits au devis signé par les parties. Nous nous engageons à fournir une main-d'œuvre qualifiée et conforme aux normes en vigueur au Québec (Code de construction du Québec, Chapitre III, Plomberie)." },
                 { id: "2", title: "Prix et modalités de paiement", text: "Le prix est indiqué au devis. Un acompte peut être demandé à la signature pour couvrir l'achat de matériaux spécifiques. Le solde est payable à la fin des travaux, sur réception de la facture. Tout retard de paiement pourra entraîner des frais d'intérêt au taux légal en vigueur." },
                 { id: "3", title: "Frais de déplacement", text: "Des frais de déplacement fixes ou kilométriques peuvent être appliqués pour les interventions en dehors de la zone desservie habituelle (Grand Montréal / Rive-Sud). Ces frais seront clairement indiqués avant le début des travaux." },
-                { id: "4", title: "Délais d’exécution", text: "Les travaux seront réalisés dans les délais convenus, sous réserve des aléas techniques (découverte de vices cachés, structures non conformes) ou des approvisionnements (rupture de stock fournisseur). Nous nous engageons à informer le client de tout retard significatif." },
-                { id: "5", title: "Garantie", text: "Les travaux sont garantis contre tout défaut de main‑d’œuvre pendant la période légale applicable. Les pièces fournies sont couvertes par la garantie du fabricant. Cette garantie ne couvre pas les dommages causés par une mauvaise utilisation, le gel, ou l'usure normale." },
+                { id: "4", title: "Délais d'exécution", text: "Les travaux seront réalisés dans les délais convenus, sous réserve des aléas techniques (découverte de vices cachés, structures non conformes) ou des approvisionnements (rupture de stock fournisseur). Nous nous engageons à informer le client de tout retard significatif." },
+                { id: "5", title: "Garantie", text: "Les travaux sont garantis contre tout défaut de main‑d'œuvre pendant la période légale applicable. Les pièces fournies sont couvertes par la garantie du fabricant. Cette garantie ne couvre pas les dommages causés par une mauvaise utilisation, le gel, ou l'usure normale." },
                 { id: "6", title: "Responsabilité et limites", text: "La responsabilité du plombier est limitée au montant du contrat pour les dommages directs, sauf en cas de faute lourde ou intentionnelle. Nous ne sommes pas responsables des dommages préexistants ou des conséquences de l'état vétuste des installations du client." },
-                { id: "7", title: "Annulation", text: "Conformément aux règles de l’Office de la protection du consommateur (OPC) du Québec, le client peut annuler le contrat sans frais dans les délais prévus par la Loi sur la protection du consommateur, notamment en cas de démarchage ou de vente itinérante." },
+                { id: "7", title: "Annulation", text: "Conformément aux règles de l'Office de la protection du consommateur (OPC) du Québec, le client peut annuler le contrat sans frais dans les délais prévus par la Loi sur la protection du consommateur, notamment en cas de démarchage ou de vente itinérante." },
                 { id: "8", title: "Protection des données", text: "Les données personnelles collectées dans le cadre du contrat (nom, adresse, informations de paiement) sont traitées strictement pour l'exécution des travaux et la facturation, conformément à notre politique de confidentialité." },
                 { id: "9", title: "Loi applicable", text: "Le présent contrat est régi par les lois du Québec. Tout litige relatif à son interprétation ou son exécution relève de la compétence exclusive des tribunaux du district judiciaire de Longueuil." }
             ],
@@ -201,15 +166,27 @@
                 { id: "3", title: "Travel Charges", text: "Fixed or mileage-based travel charges may apply for service calls outside the designated service area (Greater Montreal / South Shore). These charges will be clearly indicated prior to commencement." },
                 { id: "4", title: "Timeframe", text: "Work will be completed within the agreed timeframe, subject to technical contingencies (hidden defects, non-compliant structures) or supply delays. We commit to informing the client of any significant delay." },
                 { id: "5", title: "Warranty", text: "Workmanship is warranted against defects for the applicable legal period. Supplied parts are covered by the manufacturer's warranty. This warranty does not cover damages caused by misuse, freezing, or normal wear and tear." },
-                { id: "6", title: "Liability and Limitations", text: "The plumber’s liability is limited to the contract amount for direct damages, except in cases of gross negligence or wilful misconduct. We are not liable for pre-existing damages or consequences of the client's aging installations." },
+                { id: "6", title: "Liability and Limitations", text: "The plumber's liability is limited to the contract amount for direct damages, except in cases of gross negligence or wilful misconduct. We are not liable for pre-existing damages or consequences of the client's aging installations." },
                 { id: "7", title: "Cancellation", text: "The client may cancel the contract without charge within the timeframes provided by the Consumer Protection Act (OPC), particularly in cases of itinerant sales." },
                 { id: "8", title: "Privacy Protection", text: "Personal data collected (name, address, payment info) is processed strictly for work execution and billing, in accordance with our privacy policy." },
                 { id: "9", title: "Governing Law", text: "This contract is governed by the laws of Quebec. Any dispute regarding its interpretation or execution falls under the exclusive jurisdiction of the courts of the judicial district of Longueuil." }
             ]
         };
 
-        let currentLang = 'fr';
-        const pageSubtitles = { fr: "Règles et Engagements contractuels", en: "Rules and Contractual Commitments" };
+        const translations = {
+            fr: {
+                hero_title: "DÉBOUCHEUR EXPERT",
+                urgence: "URGENCE 24/7",
+                index_title: "Index"
+            },
+            en: {
+                hero_title: "UNCLOGGED.ME",
+                urgence: "EMERGENCY 24/7",
+                index_title: "Index"
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'fr';
         
         function render() {
             const list = document.getElementById('index-list');
@@ -218,60 +195,51 @@
             
             list.innerHTML = '';
             article.innerHTML = '';
-            
-            document.querySelector('[data-translate="page_title"]').textContent = currentLang === 'fr' ? "Conditions d'Utilisation" : "Terms of Use";
-            document.querySelector('[data-translate="page_subtitle"]').textContent = pageSubtitles[currentLang];
-            document.querySelector('[data-translate="index_title"]').textContent = currentLang === 'fr' ? "Index" : "Index";
-            document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
 
             data.forEach(item => {
-                // Index with badges matching colors
-                list.innerHTML += `<li><a href="#term${item.id}" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">${item.id}</span> ${item.title}</a></li>`;
+                list.innerHTML += `<li><a href="#term${item.id}" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">${item.id}</span> ${item.title}</a></li>`;
                 
-                // Content sections styled like Privacy Policy
                 article.innerHTML += `
-                    <section id="term${item.id}" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
-                        <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-3">
+                    <section id="term${item.id}" class="p-8 bg-white dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-blue mb-4 flex items-center gap-3">
                             <span class="text-4xl opacity-20">${item.id.padStart(2, '0')}</span> ${item.title}
                         </h2>
-                        <p>${item.text}</p>
+                        <p class="text-gray-700 dark:text-gray-300">${item.text}</p>
                     </section>
                 `;
             });
         }
 
-        document.getElementById('lang-toggle').onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; render(); };
-        
-        if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
-        document.getElementById('theme-toggle').onclick = () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-        };
+        function applyTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
 
-        render();
-    </script>
-    <!-- Register service worker for offline support -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('../assets/scripts/service.js').catch(err => console.warn('SW reg failed', err));
+        window.addEventListener('DOMContentLoaded', () => {
+            applyTranslations();
+            render();
         });
-      }
+
+        window.addEventListener('languageChanged', () => {
+            currentLang = localStorage.getItem('language') || 'fr';
+            applyTranslations();
+            render();
+        });
     </script>
-<!-- Dynamic Components: Cookie Banner & AI Helper -->
-<div id="banner-container"></div>
-<div id="helper-container"></div>
 
-<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
-<script src="../assets/scripts/libs.js" defer></script>
+    <!-- Dynamic Components: Cookie Banner & AI Helper -->
+    <div id="banner-container"></div>
+    <div id="helper-container"></div>
 
-<!-- Main Application Module -->
-<script src="../assets/scripts/main.js" defer></script>
-
-<!-- Montreal Time Widget -->
-<script src="../assets/scripts/time.js" defer></script>
-
-<script src="../assets/scripts/components/loader.js"></script>
-<script src="../assets/scripts/icons.js" defer></script>
+    <!-- Core Libraries -->
+    <script src="../assets/scripts/libs.js" defer></script>
+    <script src="../assets/scripts/main.js" defer></script>
+    <script src="../assets/scripts/time.js" defer></script>
+    <script src="../assets/scripts/components/loader.js"></script>
+    <script src="../assets/scripts/icons.js" defer></script>
 </body>
 </html>

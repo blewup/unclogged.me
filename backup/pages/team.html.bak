@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <title>Conditions d'Utilisation | Déboucheur Expert</title>
-    <meta lang="fr" name="description" content="Conditions d'utilisation de Déboucheur Expert. Termes et conditions pour nos services de plomberie résidentielle à Montréal et Montérégie.">
-    <meta lang="en" name="description" content="Terms and conditions of Déboucheur Expert. Terms of service for our residential plumbing services in Montreal and Montérégie.">
+    <title>Notre Équipe | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Rencontrez l'équipe de Déboucheur Expert. Billy St-Hilaire, plombier compagnon avec 15+ ans d'expérience en plomberie résidentielle à Montréal et Montérégie.">
+    <meta lang="en" name="description" content="Meet the Déboucheur Expert team. Billy St-Hilaire, journeyman plumber with 15+ years of residential plumbing experience in Montreal and Montérégie.">
     
     <!-- Preload header image for faster paint -->
     <link rel="preload" as="image" href="../assets/images/header/header_00.webp">
@@ -27,7 +27,7 @@
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../assets/styles/style_02.css">
+    <link rel="stylesheet" href="../assets/styles/style_01.css">
     
     <!-- Tailwind v4 Extended Theme -->
     <link rel="stylesheet" href="../assets/styles/tailwind.css">
@@ -154,101 +154,80 @@
     <header class="relative h-[32vh] min-h-[200px] flex items-center overflow-hidden bg-gray-900">
         <div class="absolute inset-0 z-0">
             <!-- Header image with object-position: top -->
-            <img src="../assets/images/header/header_00.webp" class="w-full h-full object-cover object-top opacity-60 dark:opacity-40" alt="Conditions">
+            <img src="../assets/images/header/header_00.webp" class="w-full h-full object-cover object-top opacity-60 dark:opacity-40" alt="Equipe">
         </div>
         <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
-            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Conditions d'Utilisation</h1>
-            <p class="text-gray-300 mt-4 text-lg italic" data-translate="page_subtitle">Règles et Engagements contractuels</p>
+            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Notre Équipe</h1>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
-        <aside class="md:w-1/4">
-            <div class="sticky top-24 bg-white dark:bg-white/5 p-6 radius-override border border-gray-200 dark:border-white/10 shadow-lg">
-                <h3 class="font-header text-xl mb-4 text-blue-600 dark:text-blue-500" data-translate="index_title">Index</h3>
-                <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300" id="index-list">
-                    <!-- JS Generated -->
-                </ul>
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Billy -->
+            <div class="bg-white dark:bg-white/5 p-8 radius-override border border-gray-200 dark:border-white/10 shadow-2xl flex flex-col items-center text-center hover-scale transition duration-300">
+                <img src="../assets/images/equipe/equipe_00.webp" alt="Billy St-Hilaire" class="w-48 h-48 radius-override object-cover mb-6 border-4 border-blue-600 shadow-lg">
+                <h2 class="text-2xl font-header text-blue-600 dark:text-blue-500 uppercase mb-2">Billy&nbsp;St‑Hilaire</h2>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6" data-translate="martin_role">Plombier&nbsp;retraité&nbsp;&amp;&nbsp;Propriétaire</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="martin_bio">
+                    Billy&nbsp;St‑Hilaire est un ancien plombier possédant plus de quinze années d’expérience. Après une carrière bien remplie, il se consacre désormais à offrir son expertise comme propriétaire de Déboucheur&nbsp;Expert. Passionné par les nouvelles technologies et la mécanique, il veille à ce que chaque intervention soit réalisée avec la même précision et la même rigueur que celles de sa carrière de plombier.
+                </p>
             </div>
-        </aside>
 
-        <article class="md:w-3/4 space-y-8 text-justify leading-relaxed" id="terms-content">
-            <!-- Content via JS -->
-        </article>
+            <!-- Nancy -->
+            <div class="bg-white dark:bg-white/5 p-8 radius-override border border-gray-200 dark:border-white/10 shadow-2xl flex flex-col items-center text-center hover-scale transition duration-300">
+                <img src="../assets/images/equipe/equipe_01.webp" alt="Nancy Boulianne" class="w-48 h-48 radius-override object-cover mb-6 border-4 border-blue-600 shadow-lg">
+                <h2 class="text-2xl font-header text-blue-600 dark:text-blue-500 uppercase mb-2">Nancy&nbsp;Boulianne</h2>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6" data-translate="cedrick_role">Conductrice&nbsp;&amp;&nbsp;Associée</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-translate="cedrick_bio">
+                    Nancy&nbsp;Boulianne est conductrice et associée au sein de l’entreprise. Elle accompagne Billy lors des interventions et s’assure que l’équipe arrive à destination rapidement et en toute sécurité. Fortement organisée et chaleureuse, elle joue un rôle clé pour offrir un service incomparable.
+                </p>
+            </div>
+
+        </div>
     </main>
 
-    <footer class="py-8 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500 bg-white dark:bg-[#0F0F10] transition-colors duration-300">
-        <p class="mb-2">&copy; 2025 Plomberie Martin Boisvert. Tous droits réservés.</p>
-        <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 radius-override transition hover-scale">Retour à l'accueil</a>
+    <footer class="py-4 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500">
+        <p>&copy; 2026 Déboucheur Expert (unclogged.me). <a href="../index.html" class="underline">Retour à l'accueil</a></p>
     </footer>
 
     <script>
-        const content = {
-            fr: [
-                { id: "1", title: "Objet du contrat", text: "Le présent contrat a pour objet la réalisation des travaux de plomberie décrits au devis signé par les parties. Nous nous engageons à fournir une main-d'œuvre qualifiée et conforme aux normes en vigueur au Québec (Code de construction du Québec, Chapitre III, Plomberie)." },
-                { id: "2", title: "Prix et modalités de paiement", text: "Le prix est indiqué au devis. Un acompte peut être demandé à la signature pour couvrir l'achat de matériaux spécifiques. Le solde est payable à la fin des travaux, sur réception de la facture. Tout retard de paiement pourra entraîner des frais d'intérêt au taux légal en vigueur." },
-                { id: "3", title: "Frais de déplacement", text: "Des frais de déplacement fixes ou kilométriques peuvent être appliqués pour les interventions en dehors de la zone desservie habituelle (Grand Montréal / Rive-Sud). Ces frais seront clairement indiqués avant le début des travaux." },
-                { id: "4", title: "Délais d’exécution", text: "Les travaux seront réalisés dans les délais convenus, sous réserve des aléas techniques (découverte de vices cachés, structures non conformes) ou des approvisionnements (rupture de stock fournisseur). Nous nous engageons à informer le client de tout retard significatif." },
-                { id: "5", title: "Garantie", text: "Les travaux sont garantis contre tout défaut de main‑d’œuvre pendant la période légale applicable. Les pièces fournies sont couvertes par la garantie du fabricant. Cette garantie ne couvre pas les dommages causés par une mauvaise utilisation, le gel, ou l'usure normale." },
-                { id: "6", title: "Responsabilité et limites", text: "La responsabilité du plombier est limitée au montant du contrat pour les dommages directs, sauf en cas de faute lourde ou intentionnelle. Nous ne sommes pas responsables des dommages préexistants ou des conséquences de l'état vétuste des installations du client." },
-                { id: "7", title: "Annulation", text: "Conformément aux règles de l’Office de la protection du consommateur (OPC) du Québec, le client peut annuler le contrat sans frais dans les délais prévus par la Loi sur la protection du consommateur, notamment en cas de démarchage ou de vente itinérante." },
-                { id: "8", title: "Protection des données", text: "Les données personnelles collectées dans le cadre du contrat (nom, adresse, informations de paiement) sont traitées strictement pour l'exécution des travaux et la facturation, conformément à notre politique de confidentialité." },
-                { id: "9", title: "Loi applicable", text: "Le présent contrat est régi par les lois du Québec. Tout litige relatif à son interprétation ou son exécution relève de la compétence exclusive des tribunaux du district judiciaire de Longueuil." }
-            ],
-            en: [
-                { id: "1", title: "Scope of Work", text: "This contract pertains to the plumbing work described in the estimate signed by both parties. We commit to providing qualified labor compliant with current Quebec standards (Construction Code of Quebec, Chapter III, Plumbing)." },
-                { id: "2", title: "Pricing and Payment Terms", text: "The price is specified in the estimate. A deposit may be required upon signing to cover specific materials. The balance is due upon completion of the work, upon receipt of invoice. Late payments may incur interest charges at the legal rate." },
-                { id: "3", title: "Travel Charges", text: "Fixed or mileage-based travel charges may apply for service calls outside the designated service area (Greater Montreal / South Shore). These charges will be clearly indicated prior to commencement." },
-                { id: "4", title: "Timeframe", text: "Work will be completed within the agreed timeframe, subject to technical contingencies (hidden defects, non-compliant structures) or supply delays. We commit to informing the client of any significant delay." },
-                { id: "5", title: "Warranty", text: "Workmanship is warranted against defects for the applicable legal period. Supplied parts are covered by the manufacturer's warranty. This warranty does not cover damages caused by misuse, freezing, or normal wear and tear." },
-                { id: "6", title: "Liability and Limitations", text: "The plumber’s liability is limited to the contract amount for direct damages, except in cases of gross negligence or wilful misconduct. We are not liable for pre-existing damages or consequences of the client's aging installations." },
-                { id: "7", title: "Cancellation", text: "The client may cancel the contract without charge within the timeframes provided by the Consumer Protection Act (OPC), particularly in cases of itinerant sales." },
-                { id: "8", title: "Privacy Protection", text: "Personal data collected (name, address, payment info) is processed strictly for work execution and billing, in accordance with our privacy policy." },
-                { id: "9", title: "Governing Law", text: "This contract is governed by the laws of Quebec. Any dispute regarding its interpretation or execution falls under the exclusive jurisdiction of the courts of the judicial district of Longueuil." }
-            ]
+        const translations = {
+            fr: {
+                page_title: "Notre Équipe",
+                martin_role: "Plombier retraité & Propriétaire",
+                martin_bio: "Billy St‑Hilaire est un ancien plombier possédant plus de quinze années d’expérience. Après une carrière bien remplie, il se consacre désormais à offrir son expertise comme propriétaire de Déboucheur&nbsp;Expert. Passionné par les nouvelles technologies et la mécanique, il veille à ce que chaque intervention soit réalisée avec la même précision et la même rigueur que celles de sa carrière de plombier.",
+                cedrick_role: "Conductrice & Associée",
+                cedrick_bio: "Nancy Boulianne est conductrice et associée au sein de l’entreprise. Elle accompagne Billy lors des interventions et s’assure que l’équipe arrive à destination rapidement et en toute sécurité. Fortement organisée et chaleureuse, elle joue un rôle clé pour offrir un service incomparable."
+            },
+            en: {
+                page_title: "Our Team",
+                martin_role: "Retired Plumber & Owner",
+                martin_bio: "Billy St‑Hilaire is a retired plumber with more than fifteen years of experience. After a successful career he now dedicates himself to offering his expertise as the owner of Déboucheur Expert. Passionate about new technologies and mechanics, he ensures that every intervention is carried out with the same precision and rigour as during his plumbing career.",
+                cedrick_role: "Driver & Partner",
+                cedrick_bio: "Nancy Boulianne is the driver and partner in the business. She accompanies Billy on service calls and makes sure the team arrives quickly and safely. Well organised and friendly, she plays a key role in delivering an exceptional service."
+            }
         };
 
         let currentLang = 'fr';
-        const pageSubtitles = { fr: "Règles et Engagements contractuels", en: "Rules and Contractual Commitments" };
         
-        function render() {
-            const list = document.getElementById('index-list');
-            const article = document.getElementById('terms-content');
-            const data = content[currentLang];
-            
-            list.innerHTML = '';
-            article.innerHTML = '';
-            
-            document.querySelector('[data-translate="page_title"]').textContent = currentLang === 'fr' ? "Conditions d'Utilisation" : "Terms of Use";
-            document.querySelector('[data-translate="page_subtitle"]').textContent = pageSubtitles[currentLang];
-            document.querySelector('[data-translate="index_title"]').textContent = currentLang === 'fr' ? "Index" : "Index";
+        function updateContent() {
+            document.querySelector('[data-translate="page_title"]').textContent = translations[currentLang].page_title;
+            document.querySelector('[data-translate="martin_role"]').textContent = translations[currentLang].martin_role;
+            document.querySelector('[data-translate="martin_bio"]').textContent = translations[currentLang].martin_bio;
+            document.querySelector('[data-translate="cedrick_role"]').textContent = translations[currentLang].cedrick_role;
+            document.querySelector('[data-translate="cedrick_bio"]').textContent = translations[currentLang].cedrick_bio;
             document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
-
-            data.forEach(item => {
-                // Index with badges matching colors
-                list.innerHTML += `<li><a href="#term${item.id}" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">${item.id}</span> ${item.title}</a></li>`;
-                
-                // Content sections styled like Privacy Policy
-                article.innerHTML += `
-                    <section id="term${item.id}" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
-                        <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-3">
-                            <span class="text-4xl opacity-20">${item.id.padStart(2, '0')}</span> ${item.title}
-                        </h2>
-                        <p>${item.text}</p>
-                    </section>
-                `;
-            });
         }
 
-        document.getElementById('lang-toggle').onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; render(); };
+        document.getElementById('lang-toggle').onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; updateContent(); };
         
+        // Theme
         if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
         document.getElementById('theme-toggle').onclick = () => {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         };
-
-        render();
     </script>
     <!-- Register service worker for offline support -->
     <script>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Guide de Plomberie Résidentielle | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Guide complet de plomberie résidentielle: débouchage, inspection par caméra, entretien des drains, remplacement de valves et plus. Conseils d'expert par Billy St-Hilaire.">
+    <meta lang="en" name="description" content="Complete residential plumbing guide: unclogging, camera inspection, drain maintenance, valve replacement and more. Expert advice by Billy St-Hilaire.">
+    
+    <!-- Preload hero video for faster paint -->
+    <link rel="preload" as="video" href="../assets/videos/video_00.mp4">
+    
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local Fonts (NO external CDN) -->
+    <link rel="stylesheet" href="../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../assets/styles/style_00.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../assets/styles/panda.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        green: '#22c55e',
+                        blue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        comic: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <style>
+        body { min-height: 100vh; width: 100vw; overflow-x: hidden; }
+        
+        /* Video hero styles */
+        .video-hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
+            z-index: 10;
+        }
+        
+        /* Navigation dots */
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .nav-dot:hover, .nav-dot.active {
+            background-color: #22c55e;
+            border-color: white;
+            transform: scale(1.2);
+        }
+        
+        .guide-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: rgba(37, 99, 235, 0.5);
+        }
+        
+        .tech-term {
+            background: rgba(37, 99, 235, 0.2);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+        }
+        
+        .toc-item {
+            transition: all 0.2s;
+        }
+        .toc-item:hover {
+            transform: translateX(10px);
+            color: #22c55e;
+        }
+    </style>
+</head>
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+
+    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+        <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span data-translate="urgence">URGENCE 24/7</span>
+    </a>
+
+    <!-- NAVIGATION DOTS (Right Center) -->
+    <div class="fixed right-[2%] top-1/2 transform -translate-y-1/2 z-[100] flex flex-col items-center">
+        <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2)"></div>
+        <div class="nav-dot" onclick="scrollToSection(3)"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed z-50 rounded-l-xl border-l border-b border-white/10 shadow-2xl nav-glass bg-lightBase/90 dark:bg-darkBase/90 transition-transform duration-300"
+         style="height: 12vh; left: 6vw; top: 2vh; right: 0;">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div class="flex items-center justify-between h-full">
+                <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
+                    <a href="../index.html" class="nav-logo flex items-center gap-2 hover:scale-105 transition-transform">
+                        <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+                    </a>
+                    <a href="prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                    <a href="tools.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_tools">OUTILS</a>
+                    <a href="events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_calendar">CALENDRIER</a>
+                    <a href="team.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_team">ÉQUIPE</a>
+                    <a href="../index.html#contact" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-green hover:scale-[1.025] transition-all" data-translate="nav_contact">CONTACT</a>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2 ml-4 shrink-0">
+                    <button onclick="toggleTheme()" class="hover:scale-110 transition-transform" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 text-yellow-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>
+                        <svg class="w-5 h-5 text-purple-600 block dark:hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                    </button>
+                    <button onclick="toggleLanguage()" class="text-gray-600 dark:text-white font-ops text-xs hover:scale-110 transition-transform">
+                        <span id="lang-display">EN</span>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center ml-4">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-green focus:outline-none" aria-label="Toggle mobile menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">TARIFICATION</a>
+                <a href="tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">OUTILS</a>
+                <a href="events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">CALENDRIER</a>
+                <a href="../index.html#contact" class="font-ops text-green block px-3 py-2 text-lg">CONTACT</a>
+                <a href="team.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-green">ÉQUIPE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: VIDEO HERO with video_00.mp4 -->
+    <section id="hero" class="video-hero">
+        <video id="hero-video" autoplay muted loop playsinline preload="metadata">
+            <source src="../assets/videos/video_00.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-ops text-white mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                <svg class="inline w-10 h-10 md:w-14 md:h-14 text-green mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                <span data-translate="page_title">GUIDE PLOMBERIE</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);" data-translate="page_subtitle">
+                Tout ce que vous devez savoir sur votre système de drainage résidentiel
+            </p>
+            <div class="mt-8">
+                <a href="#debouchage" class="bg-green hover:bg-green-700 text-white font-ops text-xl px-8 py-4 rounded-full shadow-lg border-2 border-white transform transition-transform hover:scale-110" data-translate="explore_guide">
+                    EXPLORER LE GUIDE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt sticky top-0 z-40 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-center font-ops text-sm text-gray-500 dark:text-gray-400 mb-4">GUIDES DÉTAILLÉS</h3>
+            <div class="flex flex-wrap justify-center gap-4 text-sm mb-6">
+                <a href="plumbing/supply.html" class="toc-item px-4 py-2 bg-blue text-white rounded-lg hover:bg-blue-700 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                    Alimentation en eau
+                </a>
+                <a href="plumbing/drainage.html" class="toc-item px-4 py-2 bg-green text-white rounded-lg hover:bg-green-700 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+                    Système de drainage
+                </a>
+                <a href="plumbing/debouchage.html" class="toc-item px-4 py-2 bg-cardinal text-white rounded-lg hover:bg-red-700 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                    Débouchage
+                </a>
+                <a href="plumbing/normes.html" class="toc-item px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+                    Normes plomberie
+                </a>
+            </div>
+            <h4 class="text-center font-ops text-xs text-gray-400 mb-3">SECTIONS RAPIDES</h4>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <a href="#debouchage" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    Débouchage
+                </a>
+                <a href="#inspection" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/></svg>
+                    Inspection
+                </a>
+                <a href="#entretien" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+                    Entretien
+                </a>
+                <a href="#urgences" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                    Urgences
+                </a>
+                <a href="#conseils" class="toc-item px-4 py-2 bg-white dark:bg-gray-800 rounded-lg hover:bg-blue hover:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"/></svg>
+                    Conseils
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-12 px-4">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Débouchage Section -->
+            <section id="debouchage" class="mb-16 scroll-mt-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-blue rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-toilet text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-ops">TECHNIQUES DE DÉBOUCHAGE</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
+                        <h3 class="font-ops text-xl mb-4 text-blue">
+                            <i class="fas fa-snake mr-2"></i>Câble rotatif (Snake)
+                        </h3>
+                        <p class="mb-4">
+                            Le <span class="tech-term">câble rotatif</span> demeure l'outil principal pour éliminer les obstructions. 
+                            Cet instrument flexible s'introduit dans la canalisation et décompose les accumulations de matières 
+                            organiques, de savon ou de cheveux qui bloquent l'écoulement.
+                        </p>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green mr-2"></i>Diamètres de 1/4" à 3/4" selon la tuyauterie</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Efficace sur blocages organiques</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>N'endommage pas les canalisations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
+                        <h3 class="font-ops text-xl mb-4 text-blue">
+                            <i class="fas fa-water mr-2"></i>Hydro-curage
+                        </h3>
+                        <p class="mb-4">
+                            L'<span class="tech-term">hydro-curage</span> utilise un jet d'eau à haute pression pour nettoyer 
+                            les conduites. Cette méthode propulse l'eau à travers une buse spécialisée, décapant les parois 
+                            intérieures des tuyaux et éliminant les dépôts tenaces.
+                        </p>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-check text-green mr-2"></i>Pression jusqu'à 4000 PSI</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Élimine graisse et tartre</li>
+                            <li><i class="fas fa-check text-green mr-2"></i>Préventif et curatif</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider mb-16"></div>
+
+            <!-- Inspection Section -->
+            <section id="inspection" class="mb-16 scroll-mt-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-green rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-ops">INSPECTION PAR CAMÉRA</h2>
+                </div>
+                
+                <div class="guide-card p-8 rounded-2xl bg-white dark:bg-gray-800 mb-6">
+                    <p class="text-lg mb-6">
+                        L'<span class="tech-term">inspection vidéo</span> permet d'examiner l'intérieur des canalisations 
+                        sans travaux destructifs. Une caméra miniature fixée à l'extrémité d'un câble flexible transmet 
+                        des images en temps réel, révélant fissures, racines intrusives, affaissements ou obstructions.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
+                            <i class="fas fa-search-plus text-3xl text-blue mb-2"></i>
+                            <h4 class="font-bold">Diagnostic précis</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Localisation exacte du problème</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
+                            <i class="fas fa-file-video text-3xl text-green mb-2"></i>
+                            <h4 class="font-bold">Enregistrement</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Vidéo fournie au client</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
+                            <i class="fas fa-ruler text-3xl text-cardinal mb-2"></i>
+                            <h4 class="font-bold">Mesure de distance</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Compteur métrique intégré</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider mb-16"></div>
+
+            <!-- Entretien Section -->
+            <section id="entretien" class="mb-16 scroll-mt-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-ops">ENTRETIEN PRÉVENTIF</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
+                        <h3 class="font-ops text-xl mb-4">
+                            <i class="fas fa-shower text-blue mr-2"></i>Drains et siphons
+                        </h3>
+                        <p class="mb-4">
+                            Le <span class="tech-term">siphon</span> (ou P-trap) forme une barrière d'eau empêchant 
+                            les gaz d'égout de remonter. Un nettoyage régulier prévient les accumulations. 
+                            Versez de l'eau bouillante hebdomadairement pour dissoudre les graisses légères.
+                        </p>
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="text-sm"><strong>Astuce:</strong> Évitez les produits chimiques agressifs 
+                            qui peuvent endommager les joints et la tuyauterie.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
+                        <h3 class="font-ops text-xl mb-4">
+                            <i class="fas fa-leaf text-green mr-2"></i>Drains extérieurs
+                        </h3>
+                        <p class="mb-4">
+                            Les <span class="tech-term">drains de fondation</span> et <span class="tech-term">gouttières</span> 
+                            nécessitent une attention particulière avant l'hiver. Les feuilles mortes et débris 
+                            peuvent créer des blocages causant des infiltrations d'eau.
+                        </p>
+                        <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                            <p class="text-sm"><strong>Recommandation:</strong> Inspection et nettoyage 
+                            au printemps et à l'automne.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider mb-16"></div>
+
+            <!-- Urgences Section -->
+            <section id="urgences" class="mb-16 scroll-mt-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-cardinal rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-ops">SITUATIONS D'URGENCE</h2>
+                </div>
+                
+                <div class="bg-cardinal/10 border-2 border-cardinal rounded-2xl p-6 mb-6">
+                    <h3 class="font-ops text-xl mb-4 text-cardinal">
+                        <i class="fas fa-phone-alt animate-pulse mr-2"></i>QUAND APPELER EN URGENCE?
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Refoulement d'égout dans la maison</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Fuite d'eau majeure impossible à arrêter</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Absence totale d'eau dans la maison</span>
+                            </li>
+                        </ul>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Odeur de gaz près des canalisations</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Toilette unique bouchée (sans alternative)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-cardinal mt-1"></i>
+                                <span>Tuyau gelé menaçant d'éclater</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800">
+                    <h3 class="font-ops text-xl mb-4">
+                        <i class="fas fa-hand-paper text-yellow-500 mr-2"></i>En attendant le plombier
+                    </h3>
+                    <ol class="space-y-3 list-decimal list-inside">
+                        <li>Fermez l'alimentation d'eau à la <span class="tech-term">valve d'arrêt principale</span></li>
+                        <li>Coupez l'électricité si l'eau atteint des appareils électriques</li>
+                        <li>Protégez vos biens en les éloignant de la zone affectée</li>
+                        <li>Documentez les dégâts avec photos pour votre assurance</li>
+                    </ol>
+                </div>
+            </section>
+
+            <div class="section-divider mb-16"></div>
+
+            <!-- Conseils Section -->
+            <section id="conseils" class="mb-16 scroll-mt-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-ops">CONSEILS D'EXPERT</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800 text-center">
+                        <i class="fas fa-ban text-4xl text-cardinal mb-4"></i>
+                        <h4 class="font-ops mb-2">NE JAMAIS JETER</h4>
+                        <p class="text-sm">Graisses, lingettes, cotons-tiges, produits d'hygiène féminine dans les toilettes</p>
+                    </div>
+                    
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800 text-center">
+                        <i class="fas fa-filter text-4xl text-blue mb-4"></i>
+                        <h4 class="font-ops mb-2">FILTRES À CHEVEUX</h4>
+                        <p class="text-sm">Installez des crépines dans douches et baignoires pour éviter les blocages</p>
+                    </div>
+                    
+                    <div class="guide-card p-6 rounded-2xl bg-white dark:bg-gray-800 text-center">
+                        <i class="fas fa-thermometer-half text-4xl text-green mb-4"></i>
+                        <h4 class="font-ops mb-2">PROTECTION HIVERNALE</h4>
+                        <p class="text-sm">Isolez les tuyaux exposés au froid pour prévenir le gel</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-blue">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h2 class="text-4xl font-ops mb-4">
+                <i class="fas fa-question-circle mr-4"></i>
+                DES QUESTIONS?
+            </h2>
+            <p class="text-xl mb-8 text-blue-100">
+                Billy St-Hilaire répond à toutes vos interrogations
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+14385302343" class="bg-white text-blue font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-gray-100 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
+                    <i class="fas fa-phone-alt"></i>
+                    438-530-2343
+                </a>
+                <a href="../index.html#contact" class="bg-cardinal text-white font-ops px-10 py-5 rounded-2xl text-2xl hover:bg-red-700 transition-transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg">
+                    <i class="fas fa-envelope"></i>
+                    Contactez-nous
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-8">
+        <div class="max-w-full mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-xs md:text-sm text-gray-500">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <h4 class="font-impact text-gray-900 dark:text-white text-2xl">BILLY ST-HILAIRE</h4>
+                <p class="mt-1 text-[10px]">&copy; 2024 Billy le deboucheur</p>
+            </div>
+            <div class="flex gap-6 mb-4 md:mb-0">
+                <a href="https://facebook.com" target="_blank" class="text-blue-600 hover:scale-125 transition-transform" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="text-blue-400 hover:scale-125 transition-transform" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+            <div class="flex items-center gap-4 flex-wrap justify-center">
+                <a href="politics.html" class="hover:text-green transition">Confidentialité</a>
+                <a href="conditions.html" class="hover:text-green transition">Conditions</a>
+                <a href="../index.html" class="hover:text-green transition">Accueil</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../assets/scripts/service.js').catch(err => console.warn('SW reg failed', err));
+            });
+        }
+    </script>
+
+    <script>
+        const translations = {
+            fr: {
+                urgence: "URGENCE 24/7",
+                nav_tarifs: "TARIFICATION",
+                nav_tools: "OUTILS",
+                nav_calendar: "CALENDRIER",
+                nav_team: "ÉQUIPE",
+                nav_contact: "CONTACT",
+                page_title: "GUIDE PLOMBERIE",
+                page_subtitle: "Tout ce que vous devez savoir sur votre système de drainage résidentiel",
+                explore_guide: "EXPLORER LE GUIDE"
+            },
+            en: {
+                urgence: "EMERGENCY 24/7",
+                nav_tarifs: "PRICING",
+                nav_tools: "TOOLS",
+                nav_calendar: "CALENDAR",
+                nav_team: "TEAM",
+                nav_contact: "CONTACT",
+                page_title: "PLUMBING GUIDE",
+                page_subtitle: "Everything you need to know about your residential drainage system",
+                explore_guide: "EXPLORE THE GUIDE"
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'fr';
+
+        // Apply translations
+        function applyTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+            document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Toggle language
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('language', currentLang);
+            applyTranslations();
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        // Scroll to section
+        function scrollToSection(index) {
+            const sections = ['hero', 'debouchage', 'inspection', 'footer'];
+            const section = document.getElementById(sections[index]);
+            if (section) section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navbar hide/show on scroll
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const navbar = document.getElementById('navbar');
+            
+            if (navbar) {
+                if (scrollPos > lastScrollY && scrollPos > 100) {
+                    navbar.style.transform = 'translateY(-40vh)';
+                } else if (scrollPos < lastScrollY - 15 || scrollPos < 50) {
+                    navbar.style.transform = 'translateY(0)';
+                }
+            }
+            
+            // Update nav dots based on scroll position
+            const dots = document.querySelectorAll('.nav-dot');
+            const h = window.innerHeight;
+            dots.forEach(d => d.classList.remove('active'));
+            
+            if (scrollPos < h * 0.8) {
+                dots[0]?.classList.add('active');
+            } else if (scrollPos < h * 1.8) {
+                dots[1]?.classList.add('active');
+            } else if (scrollPos < h * 2.8) {
+                dots[2]?.classList.add('active');
+            } else {
+                dots[3]?.classList.add('active');
+            }
+            
+            lastScrollY = scrollPos;
+        });
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            // Apply saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+            
+            applyTranslations();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+<!-- Dynamic Components: Cookie Banner & AI Helper -->
+<div id="banner-container"></div>
+<div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../assets/scripts/time.js" defer></script>
+
+<script src="../assets/scripts/components/loader.js"></script>
+<script src="../assets/scripts/icons.js" defer></script>
+</body>
+</html>

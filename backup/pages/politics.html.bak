@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Politique de Confidentialité | Déboucheur Expert</title>
+    <meta lang="fr" name="description" content="Politique de confidentialité de Déboucheur Expert. Comment nous collectons, utilisons et protégeons vos données personnelles.">
+    <meta lang="en" name="description" content="Privacy policy of Déboucheur Expert. How we collect, use and protect your personal data.">
+    
+    <!-- Preload header image for faster paint -->
+    <link rel="preload" as="image" href="../assets/images/header/header_00.webp">
+    
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Local Fonts (NO external CDN) -->
+    <link rel="stylesheet" href="../assets/styles/fonts.css">
+    <link rel="stylesheet" href="../assets/styles/style_03.css">
+    
+    <!-- Tailwind v4 Extended Theme -->
+    <link rel="stylesheet" href="../assets/styles/tailwind.css">
+    
+    <!-- Panda CSS Visual Effects -->
+    <link rel="stylesheet" href="../assets/styles/panda.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#000000',
+                        darkAlt: '#131313',
+                        ony: '#0F0F10',
+                        lightBase: '#FFFFFF',
+                        lightAlt: '#F2F2F2',
+                        cardinal: '#C41E3A',
+                        green: '#22c55e',
+                        blue: '#2563EB',
+                    },
+                    fontFamily: {
+                        ops: ['"Black Ops One"', 'cursive'],
+                        header: ['"Black Ops One"', 'system-ui'],
+                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: { 'custom': '15px' }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0F0F10] dark:text-[#E5E5E5] transition-colors duration-300">
+
+    <!-- URGENCY BUTTON - Always visible (z-200, never hidden) -->
+    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-[#C41E3A] hover:bg-red-700 text-white px-4 py-2 rounded-lg font-header shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2" style="border-radius:8px;">
+        <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>URGENCE 24/7</span>
+    </a>
+
+    <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200 dark:border-white/5 h-16 flex items-center bg-white/90 dark:bg-[#0F0F10]/90">
+        <div class="w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="../index.html" class="flex flex-col leading-none hover-scale">
+                <span class="text-sm font-header dark:text-white">DÉBOUCHEUR</span>
+                <span class="text-base font-extrabold text-blue-600 dark:text-blue-500">EXPERT</span>
+            </a>
+            <div class="flex gap-4">
+                <button id="theme-toggle" class="p-2 radius-override hover:bg-gray-200 dark:hover:bg-white/10 transition hover-scale">
+                    <span class="text-xs font-bold uppercase">Thème</span>
+                </button>
+                <button id="lang-toggle" class="p-2 radius-override bg-gray-200 dark:bg-white/10 font-bold hover-scale w-10 h-10 flex items-center justify-center">
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[32vh] min-h-[200px] flex items-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 z-0">
+            <!-- Header image with object-position: top -->
+            <img src="../assets/images/header/header_00.webp" class="w-full h-full object-cover object-top opacity-60 dark:opacity-40" alt="Confidentialité">
+        </div>
+        <div class="relative z-10 w-full max-w-7xl px-6 mx-auto">
+            <h1 class="text-4xl md:text-6xl font-header text-white drop-shadow-xl" data-translate="page_title">Politique de confidentialité</h1>
+            <p class="text-gray-300 mt-4 text-lg italic" data-translate="page_subtitle">Transparence, Sécurité et Conformité (Loi 25)</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
+        <aside class="md:w-1/4">
+            <div class="sticky top-24 bg-white dark:bg-white/5 p-6 radius-override border border-gray-200 dark:border-white/10 shadow-lg">
+                <h3 class="font-header text-xl mb-4 text-blue-600 dark:text-blue-500" data-translate="index_title">Index</h3>
+                <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <li><a href="#section1" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">1</span> Introduction</a></li>
+                    <li><a href="#section2" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">2</span> Renseignements</a></li>
+                    <li><a href="#section3" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">3</span> Finalités</a></li>
+                    <li><a href="#section4" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">4</span> Communication</a></li>
+                    <li><a href="#section5" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">5</span> Sécurité</a></li>
+                    <li><a href="#section6" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">6</span> Vos droits</a></li>
+                    <li><a href="#section7" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">7</span> Cookies</a></li>
+                    <li><a href="#section8" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">8</span> Modifications</a></li>
+                    <li><a href="#section9" class="hover:text-blue-500 transition flex items-center gap-2"><span class="text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded-full text-blue-700 dark:text-blue-300">9</span> Contact</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <article class="md:w-3/4 space-y-8 text-justify leading-relaxed" id="policy-content">
+            <!-- Content Injected via JS based on language -->
+        </article>
+    </main>
+
+    <footer class="py-8 border-t border-gray-200 dark:border-white/5 text-center text-xs text-gray-500 bg-white dark:bg-[#0F0F10] transition-colors duration-300">
+        <p class="mb-2">&copy; 2026 Déboucheur&nbsp;Expert (unclogged.me). Tous droits réservés.</p>
+        <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 radius-override transition hover-scale">Retour à l'accueil</a>
+    </footer>
+
+    <script>
+        // Content Data
+        const content = {
+            fr: `
+                <div class="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/50 radius-override text-center">
+                    <p class="text-sm font-bold text-blue-800 dark:text-blue-300">Date de la dernière mise à jour : 15 octobre 2023</p>
+                </div>
+                
+                <section id="section1" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">01</span> Introduction et engagement
+                    </h2>
+                    <p class="mb-4">Plomberie Martin Boisvert enr. (« nous », « notre », « l’Entreprise ») accorde une importance capitale à la protection de la confidentialité, de l'intégrité et de la sécurité des renseignements personnels de ses clients et visiteurs (« vous », « vos »).</p>
+                    <p class="mb-4">Cette politique détaille rigoureusement nos pratiques de collecte, d'utilisation, de communication et de sécurisation de vos données lorsque vous utilisez nos services ou visitez <span class="text-blue-500">www.plomberiemartinboisvert.com</span>. Elle est établie en stricte conformité avec la <strong>Loi 25 du Québec</strong> (Loi modernisant des dispositions législatives en matière de protection des renseignements personnels) et les lois fédérales applicables.</p>
+                </section>
+
+                <section id="section2" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">02</span> Renseignements personnels collectés
+                    </h2>
+                    <p class="mb-4">Nous limitons la collecte aux données strictement nécessaires aux fins déterminées ci-après :</p>
+                    <ul class="list-none space-y-4 pl-2">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                            <div><strong>Identification et contact :</strong> Votre nom complet, adresse postale de service, numéro de téléphone et adresse courriel valide.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            <div><strong>Données relatives aux services :</strong> Historique des interventions, diagnostics techniques, photos des lieux et détails des problèmes de plomberie signalés.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            <div><strong>Informations de paiement :</strong> Données nécessaires à la facturation (les numéros de cartes de crédit sont traités via des passerelles sécurisées et non stockés sur nos serveurs locaux).</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                            <div><strong>Communications :</strong> Contenu des échanges (courriels, SMS, appels) pour assurer le suivi qualité et la formation.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <div><strong>Données techniques :</strong> Adresse IP, type de navigateur, système d'exploitation et données de navigation via cookies (voir section 7).</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="section3" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">03</span> Finalités du traitement
+                    </h2>
+                    <p class="mb-4">Vos renseignements sont utilisés exclusivement pour des fins légitimes et transparentes :</p>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
+                        <li><strong>Prestation de service :</strong> Planifier, exécuter et garantir les travaux de plomberie.</li>
+                        <li><strong>Gestion administrative :</strong> Facturation, comptabilité et gestion de la relation client.</li>
+                        <li><strong>Amélioration continue :</strong> Analyser la qualité de nos services et optimiser l'expérience utilisateur sur notre site.</li>
+                        <li><strong>Conformité légale :</strong> Respecter nos obligations fiscales et réglementaires (ex: conservation des factures).</li>
+                        <li><strong>Marketing (sur consentement) :</strong> Vous informer de promotions ou rappels d'entretien saisonniers.</li>
+                    </ul>
+                </section>
+
+                <section id="section4" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">04</span> Communication à des tiers
+                    </h2>
+                    <p class="mb-4 font-bold text-gray-700 dark:text-gray-200">Nous ne vendons jamais vos données personnelles.</p>
+                    <p class="mb-4">Le partage d'informations est limité aux partenaires de confiance essentiels à nos opérations :</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Fournisseurs Techniques</h4>
+                            <p class="text-sm">Hébergement web (GoDaddy) et infrastructure TI sécurisée.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Processeurs de Paiement</h4>
+                            <p class="text-sm">Institutions bancaires et passerelles (Stripe, Square) pour les transactions.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Sous-traitants</h4>
+                            <p class="text-sm">Services spécialisés (ex: CRM) sous entente de confidentialité.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Autorités Légales</h4>
+                            <p class="text-sm">Lorsque requis par la loi ou pour protéger nos droits légitimes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section5" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">05</span> Sécurité et conservation
+                    </h2>
+                    <p class="mb-4">Nous déployons des mesures de sécurité <strong>physiques</strong> (accès restreint aux locaux), <strong>techniques</strong> (pare-feu, cryptage) et <strong>administratives</strong> (formation du personnel) pour protéger vos données contre tout accès non autorisé.</p>
+                    <p>Vos données sont conservées uniquement pour la durée nécessaire à la réalisation des fins prévues ou pour satisfaire aux exigences légales (ex: conservation fiscale de 6 à 7 ans). Au-delà, elles sont détruites ou anonymisées de manière sécuritaire.</p>
+                </section>
+
+                <section id="section6" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">06</span> Vos droits (Loi 25)
+                    </h2>
+                    <p class="mb-4">Conformément à la Loi 25, vous disposez des droits suivants :</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Accès et portabilité :</strong> Obtenir une copie de vos données dans un format structuré.</li>
+                        <li><strong>Rectification :</strong> Corriger des informations inexactes ou incomplètes.</li>
+                        <li><strong>Oubli :</strong> Demander l'effacement de vos données (sous réserve d'obligations légales).</li>
+                        <li><strong>Opposition :</strong> Refuser un traitement spécifique pour des motifs valables.</li>
+                        <li><strong>Retrait du consentement :</strong> Cesser de recevoir nos communications marketing à tout moment.</li>
+                    </ul>
+                    <p class="text-sm italic">Nous nous engageons à traiter toute demande d'exercice de droits dans un délai de <strong>30 jours</strong> suivant sa réception.</p>
+                </section>
+
+                <section id="section7" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">07</span> Politique sur les cookies
+                    </h2>
+                    <p>Notre site utilise des témoins (cookies) pour assurer son fonctionnement, analyser le trafic et personnaliser votre expérience. Vous pouvez gérer vos préférences via les paramètres de votre navigateur. Pour plus de détails, consultez notre <a href="#" class="text-blue-500 hover:underline">Politique sur les cookies</a>.</p>
+                </section>
+
+                <section id="section8" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">08</span> Modifications
+                    </h2>
+                    <p>Nous nous réservons le droit d'actualiser cette politique pour refléter les évolutions législatives ou technologiques. Toute modification sera publiée sur cette page avec la date de révision mise à jour. Nous vous encourageons à la consulter régulièrement.</p>
+                </section>
+
+                <section id="section9" class="p-8 bg-blue-50 dark:bg-blue-900/20 radius-override border border-blue-200 dark:border-blue-900/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-800 dark:text-blue-300 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">09</span> Nous contacter
+                    </h2>
+                    <p class="mb-6">Pour toute question, demande d'accès ou plainte concernant vos renseignements personnels, veuillez contacter notre Responsable de la protection des renseignements personnels :</p>
+                    
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <p class="font-bold text-lg mb-2">Plomberie Martin Boisvert enr.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Attn. : Responsable de la protection des renseignements personnels</p>
+                            <p class="mt-2">5360 rue Lemieux</p>
+                            <p>Sainte-Catherine, Québec J5C 1J5</p>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-center gap-2">
+                            <a href="mailto:plomberiemartinboisvert@gmail.com" class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                plomberiemartinboisvert@gmail.com
+                            </a>
+                            <a href="tel:+15147552107" class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                +1 (514) 755-2107
+                            </a>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-xs text-gray-500 italic">Si vous n'êtes pas satisfait de notre réponse, vous avez le droit de déposer une plainte auprès de la Commission d'accès à l'information du Québec (CAI).</p>
+                </section>
+            `,
+            en: `
+                <div class="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/50 radius-override text-center">
+                    <p class="text-sm font-bold text-blue-800 dark:text-blue-300">Last updated: October 15, 2023</p>
+                </div>
+                
+                <section id="section1" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">01</span> Introduction and Commitment
+                    </h2>
+                    <p class="mb-4">Plomberie Martin Boisvert enr. ("we", "our", "the Company") is committed to protecting the privacy, integrity, and security of the personal information of its clients and visitors ("you", "your").</p>
+                    <p class="mb-4">This policy details our practices regarding the collection, use, disclosure, and protection of your data when you use our services or visit <span class="text-blue-500">www.plomberiemartinboisvert.com</span>. It is designed to comply with <strong>Quebec Law 25</strong> and applicable Canadian laws.</p>
+                </section>
+
+                <section id="section2" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">02</span> Personal Information Collected
+                    </h2>
+                    <p class="mb-4">We limit collection to data strictly necessary for the following purposes:</p>
+                    <ul class="list-none space-y-4 pl-2">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                            <div><strong>ID and Contact:</strong> Full name, service address, phone number, and valid email.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            <div><strong>Service Data:</strong> Service history, technical diagnostics, site photos, and details of reported plumbing issues.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            <div><strong>Payment Information:</strong> Data for billing (credit card numbers are processed via secure gateways and not stored locally).</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                            <div><strong>Communications:</strong> Content of exchanges (email, SMS, calls) for quality assurance and training.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <div><strong>Technical Data:</strong> IP address, browser type, OS, and navigation data via cookies (see section 7).</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="section3" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">03</span> Purposes of Processing
+                    </h2>
+                    <p class="mb-4">Your information is used exclusively for legitimate and transparent purposes:</p>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
+                        <li><strong>Service Delivery:</strong> Planning, executing, and guaranteeing plumbing work.</li>
+                        <li><strong>Administration:</strong> Billing, accounting, and client relationship management.</li>
+                        <li><strong>Continuous Improvement:</strong> Analyzing service quality and website user experience.</li>
+                        <li><strong>Legal Compliance:</strong> Meeting fiscal and regulatory obligations (e.g., invoice retention).</li>
+                        <li><strong>Marketing (with consent):</strong> Informing you of promotions or seasonal maintenance reminders.</li>
+                    </ul>
+                </section>
+
+                <section id="section4" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">04</span> Sharing with Third Parties
+                    </h2>
+                    <p class="mb-4 font-bold text-gray-700 dark:text-gray-200">We never sell your personal data.</p>
+                    <p class="mb-4">Data sharing is limited to trusted partners essential to our operations:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Technical Providers</h4>
+                            <p class="text-sm">Web hosting (GoDaddy) and secure IT infrastructure.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Payment Processors</h4>
+                            <p class="text-sm">Banks and gateways (Stripe, Square) for transactions.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Subcontractors</h4>
+                            <p class="text-sm">Specialized services (e.g., CRM) under confidentiality agreements.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-white/5 radius-override">
+                            <h4 class="font-bold text-blue-500">Legal Authorities</h4>
+                            <p class="text-sm">When required by law or to protect our legitimate rights.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section5" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">05</span> Security and Retention
+                    </h2>
+                    <p class="mb-4">We deploy <strong>physical</strong> (restricted premises access), <strong>technical</strong> (firewalls, encryption), and <strong>administrative</strong> (staff training) measures to protect your data against unauthorized access.</p>
+                    <p>Your data is retained only as long as necessary for the intended purposes or to meet legal requirements (e.g., 6-7 year fiscal retention). Afterwards, it is securely destroyed or anonymized.</p>
+                </section>
+
+                <section id="section6" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">06</span> Your Rights (Law 25)
+                    </h2>
+                    <p class="mb-4">Under Law 25, you have the following rights:</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Access & Portability:</strong> Obtain a copy of your data in a structured format.</li>
+                        <li><strong>Rectification:</strong> Correct inaccurate or incomplete information.</li>
+                        <li><strong>Erasure:</strong> Request deletion of your data (subject to legal obligations).</li>
+                        <li><strong>Opposition:</strong> Refuse specific processing for valid reasons.</li>
+                        <li><strong>Withdrawal of Consent:</strong> Stop receiving marketing communications at any time.</li>
+                    </ul>
+                    <p class="text-sm italic">We commit to processing any rights request within <strong>30 days</strong> of receipt.</p>
+                </section>
+
+                <section id="section7" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">07</span> Cookies Policy
+                    </h2>
+                    <p>Our site uses cookies to ensure functionality, analyze traffic, and personalize your experience. You can manage preferences via your browser settings. For details, see our <a href="#" class="text-blue-500 hover:underline">Cookies Policy</a>.</p>
+                </section>
+
+                <section id="section8" class="p-8 bg-white dark:bg-white/5 radius-override border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">08</span> Changes
+                    </h2>
+                    <p>We reserve the right to update this policy to reflect legislative or technological changes. Any modification will be published on this page with the updated revision date. We encourage you to review it regularly.</p>
+                </section>
+
+                <section id="section9" class="p-8 bg-blue-50 dark:bg-blue-900/20 radius-override border border-blue-200 dark:border-blue-900/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h2 class="text-2xl font-bold text-blue-800 dark:text-blue-300 mb-6 flex items-center gap-3">
+                        <span class="text-4xl opacity-20">09</span> Contact Us
+                    </h2>
+                    <p class="mb-6">For any questions, access requests, or complaints regarding your personal information, please contact our Privacy Officer:</p>
+                    
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <p class="font-bold text-lg mb-2">Plomberie Martin Boisvert enr.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Attn: Privacy Officer</p>
+                            <p class="mt-2">5360 rue Lemieux</p>
+                            <p>Sainte-Catherine, Quebec J5C 1J5</p>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-center gap-2">
+                            <a href="mailto:plomberiemartinboisvert@gmail.com" class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                plomberiemartinboisvert@gmail.com
+                            </a>
+                            <a href="tel:+15147552107" class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                +1 (514) 755-2107
+                            </a>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-xs text-gray-500 italic">If unsatisfied with our response, you have the right to file a complaint with the Commission d'accès à l'information du Québec (CAI).</p>
+                </section>
+            `
+        };
+
+        const titles = { fr: "Politique de confidentialité", en: "Privacy Policy" };
+        const indexTitles = { fr: "Index", en: "Index" };
+        const pageSubtitles = { fr: "Transparence, Sécurité et Conformité (Loi 25)", en: "Transparency, Security, and Compliance (Law 25)" };
+
+        // Toggle Logic
+        let currentLang = 'fr';
+        const langBtn = document.getElementById('lang-toggle');
+        const themeBtn = document.getElementById('theme-toggle');
+        
+        function render() {
+            document.getElementById('policy-content').innerHTML = content[currentLang];
+            document.querySelector('[data-translate="page_title"]').textContent = titles[currentLang];
+            document.querySelector('[data-translate="page_subtitle"]').textContent = pageSubtitles[currentLang];
+            document.querySelector('[data-translate="index_title"]').textContent = indexTitles[currentLang];
+            document.getElementById('current-lang').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+        }
+
+        langBtn.onclick = () => { currentLang = currentLang === 'fr' ? 'en' : 'fr'; render(); };
+        
+        // Theme Logic
+        if (localStorage.getItem('color-theme') === 'dark') document.documentElement.classList.add('dark');
+        themeBtn.onclick = () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+
+        render();
+    </script>
+    <!-- Register service worker for offline support -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../assets/scripts/service.js').catch(err => console.warn('SW reg failed', err));
+        });
+      }
+    </script>
+<!-- Dynamic Components: Cookie Banner & AI Helper -->
+<div id="banner-container"></div>
+<div id="helper-container"></div>
+
+<!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
+<script src="../assets/scripts/libs.js" defer></script>
+
+<!-- Main Application Module -->
+<script src="../assets/scripts/main.js" defer></script>
+
+<!-- Montreal Time Widget -->
+<script src="../assets/scripts/time.js" defer></script>
+
+<script src="../assets/scripts/components/loader.js"></script>
+<script src="../assets/scripts/icons.js" defer></script>
+</body>
+</html>
