@@ -1,10 +1,14 @@
 <?php
 /**
  * Déboucheur Expert - Chat Forwarding API
- * Forwards AI chat conversations to owner via SMS and email
+ * Forwards AI chat conversations to owner via SMS and Email
  * 
  * Receives: sessionId, userMessage, aiResponse, conversationHistory, timestamp, pageUrl
- * Actions: Store conversation, send SMS via Twilio, send email notification
+ * Actions: Store conversation, send SMS via Twilio, send email via SMTP
+ * 
+ * Owner can reply via:
+ * - Email: Reply with subject containing REPLY:{sessionId}
+ * - SMS: Send "REPLY:{sessionId} Your message" to Twilio number
  */
 
 header('Content-Type: application/json');
@@ -24,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/credentials.php';
+require_once __DIR__ . '/email-service.php';
 
 // Parse input
 $input = file_get_contents('php://input');
@@ -44,10 +50,8 @@ $pageUrl = $data['pageUrl'] ?? '';
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 
-// Owner contact info
-$ownerPhone = '+14385302343';
-$ownerEmail = 'info@deboucheur.expert';
-$secondaryEmail = 'info@unclogged.me';
+// Get configuration from secure credentials
+$twilioConfig = SecureCredentials::getTwilioConfig();
 
 try {
     $db = get_db_connection('prod');
@@ -86,77 +90,112 @@ try {
     }
     
     // Count messages in session to avoid spamming
-    $countResult = $db->query("SELECT COUNT(*) as cnt FROM chat_conversations WHERE session_id = '$sessionId' AND role = 'user'");
+    $sessionIdEscaped = $db->real_escape_string($sessionId);
+    $countResult = $db->query("SELECT COUNT(*) as cnt FROM chat_conversations WHERE session_id = '$sessionIdEscaped' AND role = 'user'");
     $messageCount = $countResult->fetch_assoc()['cnt'];
+    
+    $emailSent = false;
+    $smsSent = false;
     
     // Send notification on first message or every 5th message
     if ($messageCount == 1 || $messageCount % 5 == 0) {
-        // Prepare notification content
-        $smsContent = "💬 Nouveau message Déboucheur\n";
-        $smsContent .= "📅 " . date('H:i d/m') . "\n";
-        $smsContent .= "👤 Client: " . substr($userMessage, 0, 100) . "\n";
-        $smsContent .= "🤖 IA: " . substr($aiResponse, 0, 100) . "...\n";
-        $smsContent .= "📱 Répondre: " . $sessionId;
         
-        // Email content
-        $emailSubject = "💬 Nouveau chat client - Déboucheur Expert";
-        $emailBody = "<html><body style='font-family: Arial, sans-serif;'>";
-        $emailBody .= "<h2 style='color: #2563EB;'>Nouveau message de chat</h2>";
-        $emailBody .= "<p><strong>Session:</strong> {$sessionId}</p>";
-        $emailBody .= "<p><strong>Date:</strong> {$timestamp}</p>";
-        $emailBody .= "<p><strong>Page:</strong> {$pageUrl}</p>";
-        $emailBody .= "<hr>";
-        $emailBody .= "<h3>Message du client:</h3>";
-        $emailBody .= "<p style='background: #f3f4f6; padding: 10px; border-radius: 8px;'>" . htmlspecialchars($userMessage) . "</p>";
-        $emailBody .= "<h3>Réponse IA:</h3>";
-        $emailBody .= "<p style='background: #e0f2fe; padding: 10px; border-radius: 8px;'>" . htmlspecialchars($aiResponse) . "</p>";
-        $emailBody .= "<hr>";
-        $emailBody .= "<p><strong>Pour répondre:</strong> Envoyez un email à <a href='mailto:chat-reply@deboucheur.expert?subject=REPLY:{$sessionId}'>chat-reply@deboucheur.expert</a> avec le sujet <code>REPLY:{$sessionId}</code></p>";
-        $emailBody .= "<p style='color: #666;'>Délai de réponse: 0-12 heures</p>";
-        $emailBody .= "</body></html>";
+        // ========== EMAIL NOTIFICATION (via SMTP) ==========
+        try {
+            $emailService = new EmailService();
+            $emailResult = $emailService->sendChatNotification(
+                $sessionId,
+                htmlspecialchars($userMessage),
+                htmlspecialchars($aiResponse),
+                $pageUrl,
+                $timestamp
+            );
+            
+            if ($emailResult['primary']['success'] || $emailResult['secondary']['success']) {
+                $emailSent = true;
+                $db->query("UPDATE chat_conversations SET forwarded_email = 1 WHERE session_id = '$sessionIdEscaped'");
+            }
+        } catch (Exception $emailError) {
+            error_log("Email notification error: " . $emailError->getMessage());
+        }
         
-        // Send email
-        $headers = "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-        $headers .= "From: Apprenti Déboucheur <noreply@deboucheur.expert>\r\n";
-        $headers .= "Reply-To: chat-reply@deboucheur.expert\r\n";
-        
-        @mail($ownerEmail, $emailSubject, $emailBody, $headers);
-        @mail($secondaryEmail, $emailSubject, $emailBody, $headers);
-        
-        // Update forwarded status
-        $db->query("UPDATE chat_conversations SET forwarded_email = 1 WHERE session_id = '$sessionId'");
-        
-        // SMS via Twilio (if configured)
-        $twilioSid = getenv('TWILIO_SID') ?: '';
-        $twilioToken = getenv('TWILIO_TOKEN') ?: '';
-        $twilioFrom = getenv('TWILIO_FROM') ?: '';
+        // ========== SMS NOTIFICATION (via Twilio) ==========
+        $twilioSid = $twilioConfig['account_sid'];
+        $twilioToken = $twilioConfig['auth_token'];
+        $twilioFrom = $twilioConfig['from_number'];
+        $ownerPhone = $twilioConfig['owner_phone'];
         
         if (!empty($twilioSid) && !empty($twilioToken) && !empty($twilioFrom)) {
-            $twilioUrl = "https://api.twilio.com/2010-04-01/Accounts/{$twilioSid}/Messages.json";
+            // Prepare SMS content with reply instructions
+            $smsContent = "💬 Nouveau chat Déboucheur\n";
+            $smsContent .= "📅 " . date('H:i d/m') . "\n";
+            $smsContent .= "👤 " . mb_substr($userMessage, 0, 80) . "...\n";
+            $smsContent .= "🤖 " . mb_substr($aiResponse, 0, 60) . "...\n";
+            $smsContent .= "📱 Pour répondre:\n";
+            $smsContent .= "REPLY:" . $sessionId . " Votre message";
             
-            $smsData = [
-                'To' => $ownerPhone,
-                'From' => $twilioFrom,
-                'Body' => $smsContent
-            ];
-            
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $twilioUrl);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($smsData));
-            curl_setopt($ch, CURLOPT_USERPWD, "$twilioSid:$twilioToken");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_exec($ch);
-            curl_close($ch);
-            
-            $db->query("UPDATE chat_conversations SET forwarded_sms = 1 WHERE session_id = '$sessionId'");
+            try {
+                $twilioUrl = "https://api.twilio.com/2010-04-01/Accounts/{$twilioSid}/Messages.json";
+                
+                $smsData = [
+                    'To' => $ownerPhone,
+                    'From' => $twilioFrom,
+                    'Body' => $smsContent,
+                    'StatusCallback' => 'https://deboucheur.expert/api/sms-status.php' // Optional status webhook
+                ];
+                
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $twilioUrl);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($smsData));
+                curl_setopt($ch, CURLOPT_USERPWD, "$twilioSid:$twilioToken");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+                
+                $twilioResponse = curl_exec($ch);
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode >= 200 && $httpCode < 300) {
+                    $smsSent = true;
+                    $db->query("UPDATE chat_conversations SET forwarded_sms = 1 WHERE session_id = '$sessionIdEscaped'");
+                    error_log("SMS sent successfully for session: $sessionId");
+                } else {
+                    error_log("Twilio SMS failed: HTTP $httpCode - $twilioResponse");
+                }
+                
+                // Also send to secondary phone if configured
+                $secondaryPhone = $twilioConfig['secondary_phone'];
+                if (!empty($secondaryPhone) && $secondaryPhone !== $ownerPhone) {
+                    $smsData['To'] = $secondaryPhone;
+                    
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $twilioUrl);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($smsData));
+                    curl_setopt($ch, CURLOPT_USERPWD, "$twilioSid:$twilioToken");
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+                    curl_exec($ch);
+                    curl_close($ch);
+                }
+                
+            } catch (Exception $smsError) {
+                error_log("SMS notification error: " . $smsError->getMessage());
+            }
         }
     }
     
     db_close($db);
     
-    echo json_encode(['status' => 'ok', 'sessionId' => $sessionId]);
+    echo json_encode([
+        'status' => 'ok',
+        'sessionId' => $sessionId,
+        'notifications' => [
+            'email' => $emailSent,
+            'sms' => $smsSent
+        ]
+    ]);
     
 } catch (Exception $e) {
     error_log("Chat forward error: " . $e->getMessage());

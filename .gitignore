@@ -1,0 +1,46 @@
+# Déboucheur Expert - Git Ignore
+
+# Dependencies
+node_modules/
+vendor/
+
+# Logs
+*.log
+api/logs/*.log
+
+# Environment & Credentials (keep encrypted credentials.php, ignore plain-text env)
+.env
+.env.local
+.env.production
+api/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+
+# Backups (optional - uncomment to ignore)
+# backup/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Upload directories (but keep structure)
+api/uploads/*
+!api/uploads/.gitkeep
+
+# PHP errors
+php_errors.log
+error_log

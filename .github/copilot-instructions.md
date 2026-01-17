@@ -50,7 +50,7 @@ A bilingual (French/English) PWA for **Déboucheur Expert** (unclogged.me) - a r
 - **Main entry**: [index.html](../index.html) - Single-page app with 8 sticky sections (hero, services, expertise, FAQ, contact, testimonials, lessons, map)
 - **Subpages**: [pages/](../pages/) - prices, calendar, conditions, politics, team, tools, plumbing, events
 - **Plumbing Guides**: [pages/plumbing/](../pages/plumbing/) - supply, drainage, debouchage, normes
-- **Error Pages**: [errors/](../errors/) - 401, 403, 404, 500, 503
+- **Error Pages**: [errors/](../pages/errors/) - 401, 403, 404, 500, 503
 - **Styling**: Tailwind via CDN + custom CSS in [assets/styles/](../assets/styles/) (style_00.css through style_07.css)
 - **Fonts**: Local fonts only via [assets/styles/fonts.css](../assets/styles/fonts.css) - NO external font CDNs
 
