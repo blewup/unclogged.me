@@ -20,11 +20,14 @@ class SecureCredentials {
     private static string $key = 'Z4EHd01ACF3Oj3ivOJtxSqtnn_f_o9Fg4AY4c_We73M=';
     
     // Encrypted tokens (generated using Python Fernet)
+    // To generate new tokens, use: python3 -c "from cryptography.fernet import Fernet; f=Fernet(b'Z4EHd01ACF3Oj3ivOJtxSqtnn_f_o9Fg4AY4c_We73M='); print(f.encrypt(b'YOUR_SECRET').decode())"
     private static array $encryptedTokens = [
         'email_password' => 'gAAAAABpa0fK_5U0zQmk6CCwlPfbvD8WbvIbmD4les3ykgcIL2Anr-507Sg8zXYZvsKbxYlxNzY1MUwbUxn_ct7nhHYO84nPrQ==',
         'twilio_auth_token' => 'gAAAAABpa1F4uvWD1ktHYMgUPgNNobGbdZg9nPjsKWoCe44BO_AKVjSTEUPa4wZScwmTrWaw58s5DNo8qJ0z5CUERNW51eQicEPxBQ0fMiJneybP0ffVjSmBgoBbrQek5jNl0i3mjbjx',
-        // Add more encrypted tokens as needed:
-        // 'gemini_api_key' => 'encrypted_token_here',
+        // Database password: encrypted
+        'db_password' => 'gAAAAABpa2Ibi0RQO2EGS3eswzST3I8Uj4WTKboZaSK9mUycYyqz0FBLQabuBbVOaWdR2ylvhHEXfmYH06Y9wZRnzy2zV62qhg==',
+        // Gemini API key: encrypted
+        'gemini_api_key' => 'gAAAAABpa2IbodNpj1Yz3KB2ijBLenr7ZhalEr1OJ4SocfQ0xUHy00CUEc4v-7wiABQ4hHJ1eYr71Q71gOEgU4kxC-ocNBLtyz1y4_CVtGwka86OnmeNOD_mJ1llMXsaVmTghozu-zOd',
     ];
     
     /**
@@ -193,11 +196,36 @@ class SecureCredentials {
     }
     
     /**
+     * Database configuration
+     */
+    public static function getDbConfig(): array {
+        return [
+            'host' => 'localhost',
+            'user' => 'deboucheur_shurukn',
+            'password' => self::get('db_password') ?: 'Christina4032', // Fallback for dev
+            'charset' => 'utf8mb4',
+            'databases' => [
+                'prod' => 'deboucheur_prod',
+                'test' => 'deboucheur_test',
+                'dev'  => 'deboucheur_dev'
+            ]
+        ];
+    }
+    
+    /**
      * Gemini AI configuration
      */
     public static function getGeminiConfig(): array {
+        // Decrypt the API key from encrypted storage
+        $apiKey = self::get('gemini_api_key');
+        
+        if (empty($apiKey)) {
+            error_log("Gemini API key decryption failed - check encrypted token");
+            $apiKey = null;
+        }
+        
         return [
-            'api_key' => getenv('GEMINI_API_KEY') ?: '', // Or use: self::get('gemini_api_key')
+            'api_key' => $apiKey,
             'model' => 'gemini-2.5-flash-preview-09-2025',
         ];
     }

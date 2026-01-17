@@ -2,24 +2,28 @@
 /**
  * Déboucheur Expert - Enhanced Database Connection Helper
  * Supports: deboucheur_prod, deboucheur_test, deboucheur_dev
- * Host: Namecheap cPanel MariaDB
+ * Host: Namecheap cPanel MariaDB 10.6+
+ * 
+ * Required PHP modules: mysqli, mysqlnd, pdo, pdo_mysql
  */
 
 if (!defined('DB_ACCESS')) {
     define('DB_ACCESS', true);
 }
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'deboucheur_shurukn');
-define('DB_PASS', 'Christina4032');
-define('DB_CHARSET', 'utf8mb4');
+require_once __DIR__ . '/credentials.php';
+
+// Get DB config from secure credentials
+$dbConfig = SecureCredentials::getDbConfig();
+
+define('DB_HOST', $dbConfig['host']);
+define('DB_USER', $dbConfig['user']);
+define('DB_PASS', $dbConfig['password']);
+define('DB_CHARSET', $dbConfig['charset']);
+define('DB_DATABASES', serialize($dbConfig['databases']));
 
 function get_db_connection(string $env = 'prod'): mysqli {
-    $databases = [
-        'prod' => 'deboucheur_prod',
-        'test' => 'deboucheur_test',
-        'dev'  => 'deboucheur_dev'
-    ];
+    $databases = unserialize(DB_DATABASES);
     
     $db = $databases[$env] ?? $databases['prod'];
     $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, $db);

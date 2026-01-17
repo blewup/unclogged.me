@@ -3,9 +3,11 @@
  * Déboucheur Expert - Email Service
  * Handles sending and receiving emails using SMTP/IMAP
  * 
- * Server: mail.privateemail.com (Namecheap Private Email)
+ * Server: server385.web-hosting.com (Namecheap Shared Hosting)
  * IMAP: Port 993 (SSL/TLS)
  * SMTP: Port 465 (SSL/TLS)
+ * 
+ * Required PHP modules: imap, openssl, mbstring, filter
  */
 
 require_once __DIR__ . '/credentials.php';

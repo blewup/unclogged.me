@@ -1,21 +1,62 @@
 /**
  * Déboucheur Expert - AI Chat Module
  * Enhanced chatbot with Gemini AI integration
- * @version 2.0.0
+ * @version 2.1.0
  * @author Déboucheur Expert Team
  */
 
 const ChatModule = (() => {
-    // Configuration
-    const CONFIG = Object.freeze({
-        apiKey: 'AIzaSyCShzljUGrqSmhLDisfdliIitd9cXFRQZ0',
+    // Configuration - API key loaded dynamically from backend
+    const CONFIG = {
+        apiKey: null, // Will be fetched from api/config.php
         model: 'gemini-2.5-flash-preview-09-2025',
         maxRetries: 3,
         retryDelay: 1000,
         maxMessageLength: 2000,
-        acceptedImageTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
-        maxImageSize: 5 * 1024 * 1024 // 5MB
-    });
+        acceptedImageTypes: ['image/jpeg', 'image/png'],
+        maxImageSize: 5 * 1024 * 1024, // 5MB
+        configEndpoint: 'api/config.php' // Backend config endpoint
+    };
+    
+    // Fetch API configuration from backend
+    let configLoaded = false;
+    const loadConfig = async () => {
+        if (configLoaded && CONFIG.apiKey) return true;
+        
+        try {
+            // Determine base path (works from index.html or subpages)
+            const isSubpage = window.location.pathname.includes('/pages/');
+            const basePath = isSubpage ? '../' : '';
+            
+            const response = await fetch(`${basePath}${CONFIG.configEndpoint}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Config fetch failed: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            if (data.gemini?.apiKey) {
+                CONFIG.apiKey = data.gemini.apiKey;
+                CONFIG.model = data.gemini.model || CONFIG.model;
+                configLoaded = true;
+                console.log('Chat config loaded successfully');
+                return true;
+            }
+            throw new Error('Invalid config response');
+        } catch (error) {
+            console.error('Failed to load chat config:', error);
+            // Fallback for development only
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.warn('Using fallback config for development');
+                CONFIG.apiKey = 'AIzaSyCShzljUGrqSmhLDisfdliIitd9cXFRQZ0';
+                return true;
+            }
+            return false;
+        }
+    };
 
     // Language-specific system prompts
     const SYSTEM_PROMPTS = {
@@ -231,6 +272,14 @@ BEHAVIOR:
 
     // API call with retry
     const callGeminiAPI = async (parts, retries = 0) => {
+        // Ensure config is loaded
+        if (!CONFIG.apiKey) {
+            const loaded = await loadConfig();
+            if (!loaded) {
+                throw new Error('Configuration not available');
+            }
+        }
+        
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.model}:generateContent?key=${CONFIG.apiKey}`;
         const systemPrompt = SYSTEM_PROMPTS[currentLang] || SYSTEM_PROMPTS.fr;
         
@@ -321,6 +370,15 @@ BEHAVIOR:
     const init = () => {
         // Update language on init
         currentLang = getCurrentLang();
+        
+        // Preload API configuration
+        loadConfig().then(success => {
+            if (success) {
+                console.debug('Chat API config preloaded');
+            } else {
+                console.warn('Chat API config failed to preload - will retry on first message');
+            }
+        });
         
         // Set language-appropriate intro message in chat
         const messagesDiv = $('#chat-messages');
