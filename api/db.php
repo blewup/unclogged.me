@@ -2,7 +2,7 @@
 /**
  * Déboucheur Expert - Enhanced Database Connection Helper
  * Supports: deboucheur_prod, deboucheur_test, deboucheur_dev
- * Host: Namecheap cPanel MySQL
+ * Host: Namecheap cPanel MariaDB
  */
 
 if (!defined('DB_ACCESS')) {
@@ -30,8 +30,14 @@ function get_db_connection(string $env = 'prod'): mysqli {
         die(json_encode(['error' => 'Database connection failed', 'code' => 'DB_CONN_ERROR']));
     }
     
+    // MariaDB-compatible charset and collation
     $mysqli->set_charset(DB_CHARSET);
+    $mysqli->query("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'");
     $mysqli->query("SET time_zone = '-05:00'");
+    
+    // MariaDB-specific SQL mode for compatibility
+    $mysqli->query("SET sql_mode = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
+    
     return $mysqli;
 }
 
