@@ -46,7 +46,7 @@ Billy St-Hilaire offers professional residential plumbing services including:
 ```
 ├── index.html              # Main landing page (8 sticky sections)
 ├── manifest.json           # PWA manifest
-├── service-worker.js       # Offline caching
+├── errors.html             # Dynamic error router
 ├── api/
 │   ├── contact.php         # Form handler with file uploads
 │   ├── backend.php         # Consent logging
@@ -56,8 +56,14 @@ Billy St-Hilaire offers professional residential plumbing services including:
 ├── assets/
 │   ├── fonts/              # Local font files
 │   ├── images/             # Slides, logos, services, clients
-│   ├── scripts/            # JavaScript modules
-│   ├── styles/             # CSS files
+│   ├── scripts/
+│   │   ├── service.js      # Service Worker for offline caching
+│   │   ├── icons.js        # FA to SVG icon conversion
+│   │   ├── data.js         # Structured data definitions
+│   │   ├── chat.js         # AI chat widget
+│   │   ├── main.js         # Main scripts
+│   │   └── icons/          # Icon definitions by category
+│   ├── styles/             # CSS files (style_00.css - style_08.css)
 │   └── videos/             # Tutorial videos
 ├── pages/
 │   ├── prices.html         # Pricing page
@@ -67,12 +73,17 @@ Billy St-Hilaire offers professional residential plumbing services including:
 │   ├── tools.html          # Tools and equipment
 │   ├── conditions.html     # Terms and conditions
 │   ├── politics.html       # Privacy policy
-│   └── plumbing/           # Detailed guides
-│       ├── supply.html
-│       ├── drainage.html
-│       ├── debouchage.html
-│       └── normes.html
-└── errors/                 # HTTP error pages (401, 403, 404, 500, 503)
+│   ├── plumbing/           # Detailed guides
+│   │   ├── supply.html
+│   │   ├── drainage.html
+│   │   ├── debouchage.html
+│   │   └── normes.html
+│   └── errors/             # Error pages
+│       ├── offline.html    # Offline fallback page
+│       └── codes/          # HTTP error pages
+│           ├── 400.html, 401.html, 403.html, 404.html
+│           ├── 408.html, 410.html, 429.html
+│           └── 500.html, 502.html, 503.html, 504.html
 ```
 
 ## 🚀 Deployment (Namecheap cPanel)

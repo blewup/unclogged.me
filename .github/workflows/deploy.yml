@@ -198,7 +198,7 @@ jobs:
     # Environment configuration (optional - requires setup in repo settings)
     # environment:
     #   name: production
-    #   url: https://unclogged.me
+    #   url: https://blewup.github.io/unclogged.me
     
     steps:
       - name: 📥 Download build artifact
@@ -211,7 +211,7 @@ jobs:
         run: |
           echo "🔧 Preparing for deployment..."
           # Update cache version in service worker
-          sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date +%s)/" dist/service-worker.js || true
+          sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date +%s)/" dist/assets/scripts/service.js || true
           echo "✅ Deployment prepared"
 
       - name: 🚀 Deploy via GitHub Token
@@ -225,8 +225,7 @@ jobs:
       - name: ✅ Deployment complete
         run: |
           echo "🎉 Deployment successful!"
-          echo "🌐 Website: https://unclogged.me"
-          echo "🌐 Alt URL: https://deboucheur.expert"
+          echo "🌐 Website: https://blewup.github.io/unclogged.me"
           echo "📅 Deployed: $(date)"
 
   # ===========================================================================
@@ -244,25 +243,17 @@ jobs:
           echo "🔍 Verifying deployment..."
           
           # Check main site
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://unclogged.me || echo "000")
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://blewup.github.io/unclogged.me || echo "000")
           if [ "$HTTP_STATUS" = "200" ]; then
-            echo "✅ unclogged.me is online (HTTP $HTTP_STATUS)"
+            echo "✅ https://blewup.github.io/unclogged.me is online (HTTP $HTTP_STATUS)"
           else
-            echo "⚠️ unclogged.me returned HTTP $HTTP_STATUS"
-          fi
-          
-          # Check alternate domain
-          HTTP_STATUS_FR=$(curl -s -o /dev/null -w "%{http_code}" https://deboucheur.expert || echo "000")
-          if [ "$HTTP_STATUS_FR" = "200" ]; then
-            echo "✅ deboucheur.expert is online (HTTP $HTTP_STATUS_FR)"
-          else
-            echo "⚠️ deboucheur.expert returned HTTP $HTTP_STATUS_FR"
+            echo "⚠️ https://blewup.github.io/unclogged.me returned HTTP $HTTP_STATUS"
           fi
 
       - name: 📱 Check PWA manifest
         run: |
           echo "🔍 Verifying PWA manifest..."
-          curl -s https://unclogged.me/manifest.json | python3 -m json.tool > /dev/null && \
+          curl -s https://blewup.github.io/unclogged.me/manifest.json | python3 -m json.tool > /dev/null && \
             echo "✅ PWA manifest is valid" || echo "⚠️ PWA manifest check failed"
 
       - name: 🔔 Notify completion
@@ -274,8 +265,7 @@ jobs:
           echo "🔗 Commit: ${{ github.sha }}"
           echo "👤 Author: ${{ github.actor }}"
           echo "🌐 Sites:"
-          echo "   - https://unclogged.me (EN)"
-          echo "   - https://deboucheur.expert (FR)"
+          echo "   - https://blewup.github.io/unclogged.me (EN)"
           echo "================================================"
 
   # ===========================================================================

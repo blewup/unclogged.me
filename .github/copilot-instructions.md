@@ -62,10 +62,11 @@ A bilingual (French/English) PWA for **Déboucheur Expert** (unclogged.me) - a r
 - [api/setup.sql](../api/setup.sql) - Database schema
 
 ### PWA
-- [service-worker.js](../service-worker.js) - Network-first caching, precaches slides/logos/styles
+- [assets/scripts/service.js](../assets/scripts/service.js) - Service worker with network-first caching
 - [manifest.json](../manifest.json) - App metadata for installability with bilingual content
 - [site.manifest](../site.manifest) - Extended manifest with shortcuts
-- [offline.html](../offline.html) - Fallback page when offline
+- [pages/errors/offline.html](../pages/errors/offline.html) - Fallback page when offline
+- [errors.html](../errors.html) - Dynamic error router
 
 ## Key Patterns
 
@@ -135,7 +136,7 @@ Key custom classes in `style_00.css`:
 Posts multipart/form-data to `api/contact.php`. Accepted file types: PNG, JPEG, WEBP, AVIF.
 
 ### Service Worker Cache
-Update `CACHE_NAME` version in service-worker.js when deploying asset changes. Add new critical assets to `PRECACHE_URLS` array.
+Update `CACHE_NAME` version in assets/scripts/service.js when deploying asset changes. Add new critical assets to `PRECACHE_URLS` array.
 
 ### Phone Number Format
 - Always use (438) 530-2343 format for display

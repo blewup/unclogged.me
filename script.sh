@@ -14,8 +14,8 @@ set -e  # Exit on any error
 GITHUB_REPO="https://github.com/blewup/unclogged.me.git"
 DEPLOY_DIR="/home/deboucheur/public_html"
 BACKUP_DIR="/home/deboucheur/backups"
-TEMP_DIR="/home/deboucheur/temp_deploy"
-LOG_FILE="/home/deboucheur/deploy.log"
+TEMP_DIR="/home/deboucheur/tmp"
+LOG_FILE="/home/deboucheur/logs/deploy.log"
 BRANCH="main"
 
 # Colors for output
@@ -62,7 +62,6 @@ fi
 
 # Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
-mkdir -p "$TEMP_DIR"
 
 # =============================================================================
 # STEP 1: Create backup of current deployment
@@ -111,9 +110,9 @@ log "🔧 Preparing files for deployment..."
 rm -rf .git .github backup *.bak README.md LICENSE .gitignore
 
 # Update service worker cache version
-if [ -f "service-worker.js" ]; then
+if [ -f "assets/scripts/service.js" ]; then
     CACHE_VERSION="deboucheur-cache-v$(date '+%s')"
-    sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date '+%s')/" service-worker.js
+    sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date '+%s')/" assets/scripts/service.js
     log "Updated service worker cache to: $CACHE_VERSION"
 fi
 
@@ -189,7 +188,7 @@ log "   PHP:  $PHP_COUNT files"
 CRITICAL_FILES=(
     "index.html"
     "manifest.json"
-    "service-worker.js"
+    "assets/scripts/service.js"
     "api/contact.php"
     "api/db.php"
 )
