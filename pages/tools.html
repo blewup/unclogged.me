@@ -46,9 +46,13 @@
                     },
                     fontFamily: {
                         ops: ['"Black Ops One"', 'cursive'],
-                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
                         impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        comic: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
                     }
                 }
             }
@@ -524,6 +528,10 @@
             }
         });
     </script>
-<script src="../assets/scripts/icons.js" defer></script>
+<!-- Dynamic Components: Cookie Banner & AI Helper -->
+<div id="banner-container"></div>
+<div id="helper-container"></div>
+<script src="../assets/scripts/components/loader.js"></script>
+<script src="../assets/scripts/icons/icons.js" defer></script>
 </body>
 </html>

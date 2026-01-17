@@ -7,10 +7,15 @@
     
     <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="../assets/images/logo/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+    <link rel="manifest" href="../manifest.json">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Local Fonts -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
+    <!-- Error Page Styles -->
+    <link rel="stylesheet" href="../assets/styles/style_08.css">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -26,102 +31,139 @@
                         websiteBlue: '#2563EB',
                     },
                     fontFamily: {
-                        ops: ['"Black Ops One"', 'cursive'],
-                        comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
+                        ops: ['"Black Ops One"', 'Impact', 'Arial Black', 'sans-serif'],
+                        impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+                        comic: ['"Comic Sans MS"', 'Comic Sans', 'cursive', 'sans-serif'],
+                        inter: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'SF Mono', 'Monaco', 'monospace'],
+                        merriweather: ['Merriweather', 'Georgia', 'serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <style>
-        body { min-height: 100vh; width: 100vw; display: flex; flex-direction: column; overflow-x: hidden; }
-        .error-section { flex: 1; display: flex; align-items: center; justify-content: center; }
-        .error-code { font-size: clamp(8rem, 25vw, 14rem); line-height: 1; }
-        .key-turn { animation: keyTurn 2s ease-in-out infinite; transform-origin: right center; }
-        @keyframes keyTurn {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-30deg); }
-            50% { transform: rotate(0deg); }
-            75% { transform: rotate(30deg); }
-        }
-    </style>
 </head>
-<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair error-401">
     
-    <!-- Navbar -->
-    <nav class="bg-lightBase/90 dark:bg-darkBase/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 h-16">
-        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-2">
-                <img src="../assets/images/logo/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
-                <span class="font-ops text-lg md:text-xl text-gray-900 dark:text-white">Déboucheur Expert</span>
-            </a>
-            <div class="flex items-center gap-2 md:gap-4">
-                <a href="../index.html" class="font-ops text-xs md:text-sm text-gray-600 dark:text-gray-300 hover:text-websiteBlue transition hidden sm:block">ACCUEIL</a>
-                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white px-3 md:px-4 py-2 rounded-lg font-ops text-xs md:text-sm flex items-center gap-2">
-                    <i class="fas fa-phone-alt"></i>
-                    <span class="hidden sm:inline">URGENCE 24/7</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <!-- Logo -->
+    <a href="../index.html" class="error-logo">
+        <img src="../assets/images/logo/logo.png" alt="Logo Déboucheur Expert">
+        <span class="error-logo-text hidden md:inline">Déboucheur Expert</span>
+    </a>
+    
+    <!-- Theme Toggle -->
+    <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+    </button>
+    
+    <!-- Language Toggle -->
+    <button onclick="toggleLanguage()" class="lang-toggle" id="lang-display">EN</button>
 
     <!-- Error Content -->
-    <section class="error-section px-4">
-        <div class="text-center max-w-3xl mx-auto">
-            
-            <!-- Key Icon -->
-            <div class="mb-8 flex justify-center">
-                <i class="fas fa-key text-8xl md:text-9xl text-yellow-500 key-turn"></i>
-            </div>
-            
-            <h1 class="error-code font-ops text-gray-900 dark:text-white">401</h1>
-            
-            <h2 class="text-2xl md:text-4xl font-ops text-cardinal mb-4">NON AUTORISÉ</h2>
-            
-            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4">
-                Une authentification est requise pour accéder à cette page.
-            </p>
-            <p class="text-base text-gray-500 dark:text-gray-400 mb-8">
-                Veuillez vous connecter ou contacter l'administrateur si vous pensez avoir accès.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="../index.html" class="bg-websiteBlue hover:bg-blue-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
-                    <i class="fas fa-home"></i> Retour à l'accueil
-                </a>
-                <a href="tel:+14385302343" class="bg-cardinal hover:bg-red-700 text-white font-ops px-8 py-4 rounded-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
-                    <i class="fas fa-phone-alt"></i> Contactez-nous
-                </a>
-            </div>
-            
-            <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 max-w-md mx-auto">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Besoin d'aide?</p>
-                <a href="tel:+14385302343" class="text-2xl font-ops text-websiteBlue hover:text-blue-700">
-                    <i class="fas fa-phone-alt mr-2"></i>438-530-2343
-                </a>
-            </div>
+    <div class="error-container">
+        <div class="error-icon">🔑</div>
+        
+        <h1 class="error-code">401</h1>
+        
+        <h2 class="error-title" data-translate="err401_title">NON AUTORISÉ</h2>
+        
+        <p class="error-message" data-translate="err401_msg">
+            Une authentification est requise pour accéder à cette page. Veuillez vous connecter ou contacter l'administrateur.
+        </p>
+        
+        <div class="error-actions">
+            <a href="../index.html" class="error-btn error-btn-primary">
+                🏠 <span data-translate="err_home">Retour à l'accueil</span>
+            </a>
+            <a href="tel:+14385302343" class="error-btn error-btn-emergency">
+                📞 <span data-translate="err_call">Appelez Billy!</span>
+            </a>
         </div>
-    </section>
+        
+        <div class="error-details">
+            <p><strong data-translate="err_need_help">Besoin d'aide urgente?</strong></p>
+            <p><a href="tel:+14385302343" class="text-websiteBlue font-ops text-xl">📞 (438) 530-2343</a></p>
+            <p><code data-translate="err_247">Service disponible 24h/24, 7j/7</code></p>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-200 dark:border-gray-800 py-4">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-            <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
-            <div class="flex gap-4 mt-2 md:mt-0">
-                <a href="../pages/politiques.html" class="hover:text-websiteBlue transition">Confidentialité</a>
-                <a href="../pages/conditions.html" class="hover:text-websiteBlue transition">Conditions</a>
-            </div>
-        </div>
-    </footer>
+    <div class="error-footer">
+        <p>&copy; 2024 Déboucheur Expert - Billy St-Hilaire</p>
+        <p>
+            <a href="../pages/politics.html" data-translate="err_privacy">Confidentialité</a> | 
+            <a href="../pages/conditions.html" data-translate="err_terms">Conditions</a>
+        </p>
+    </div>
 
+    <!-- Translations & Theme Logic -->
     <script>
+        let currentLang = 'fr';
+        
+        const translations = {
+            fr: {
+                err401_title: 'NON AUTORISÉ',
+                err401_msg: 'Une authentification est requise pour accéder à cette page. Veuillez vous connecter ou contacter l\'administrateur.',
+                err_home: 'Retour à l\'accueil',
+                err_call: 'Appelez Billy!',
+                err_need_help: 'Besoin d\'aide urgente?',
+                err_247: 'Service disponible 24h/24, 7j/7',
+                err_privacy: 'Confidentialité',
+                err_terms: 'Conditions'
+            },
+            en: {
+                err401_title: 'UNAUTHORIZED',
+                err401_msg: 'Authentication is required to access this page. Please log in or contact the administrator.',
+                err_home: 'Back to Home',
+                err_call: 'Call Billy!',
+                err_need_help: 'Need urgent help?',
+                err_247: 'Service available 24/7',
+                err_privacy: 'Privacy',
+                err_terms: 'Terms'
+            }
+        };
+        
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[currentLang][key];
+                    } else {
+                        el.innerHTML = translations[currentLang][key];
+                    }
+                }
+            });
+            localStorage.setItem('language', currentLang);
+        }
+        
+        // Initialize theme
         if (localStorage.getItem('theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else if (localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
+        
+        // Initialize language
+        const savedLang = localStorage.getItem('language');
+        if (savedLang && savedLang !== currentLang) {
+            currentLang = savedLang === 'en' ? 'fr' : 'en';
+            toggleLanguage();
+        }
     </script>
-<script src="../assets/scripts/icons.js" defer></script>
+    
+    <!-- Icons Script -->
+    <script src="../assets/scripts/icons/icons.js" defer></script>
 </body>
 </html>

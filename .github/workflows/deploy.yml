@@ -213,22 +213,32 @@ jobs:
           sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date +%s)/" dist/service-worker.js || true
           echo "✅ Deployment prepared"
 
-      - name: 🚀 Deploy via FTP
+      - name: 🚀 Deploy via GitHub Token
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./
+          destination_dir: ./
+          cname: unclogged.me
+          
+      # Alternative: Direct FTP deployment (if GitHub Pages not used)
+      - name: 🚀 Deploy via FTP (fallback)
+        if: ${{ secrets.FTP_SERVER != '' }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./
+          server-dir: /public_html/
           exclude: |
             **/.git*
             **/.git*/**
             **/backup/**
             **/*.bak
-            **/*.txt
             **/README.md
             **/LICENSE
+            **/dist/**
 
       - name: ✅ Deployment complete
         run: |
