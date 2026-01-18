@@ -122,32 +122,32 @@
 
     <!-- Tools Script -->
     <script>
-        // Tool data
+        // Tool data - images in order from tools_00.png to tools_23.png
         const toolsData = [
-            { key: 'pipe_cutter', img: '../assets/images/tools/tool_00.webp' },
-            { key: 'internal_pvc_cutter', img: '../assets/images/tools/tool_01.webp' },
-            { key: 'hacksaw', img: '../assets/images/tools/tool_02.webp' },
-            { key: 'junior_hacksaw', img: '../assets/images/tools/tool_03.webp' },
-            { key: 'ratcheting_cutter', img: '../assets/images/tools/tool_04.webp' },
-            { key: 'press_fitting_system', img: '../assets/images/tools/tool_05.webp' },
-            { key: 'plumbing_brush', img: '../assets/images/tools/tool_06.webp' },
-            { key: 'basin_wrench', img: '../assets/images/tools/tool_07.webp' },
-            { key: 'pipe_wrench', img: '../assets/images/tools/tool_08.webp' },
-            { key: 'faucet_key', img: '../assets/images/tools/tool_09.webp' },
-            { key: 'ratchet_wrench', img: '../assets/images/tools/tool_10.webp' },
-            { key: 'adjustable_wrench', img: '../assets/images/tools/tool_11.webp' },
-            { key: 'strap_wrench', img: '../assets/images/tools/tool_12.webp' },
-            { key: 'needle_nose_pliers', img: '../assets/images/tools/tool_13.webp' },
-            { key: 'tongue_groove_pliers', img: '../assets/images/tools/tool_14.webp' },
-            { key: 'screwdriver_set', img: '../assets/images/tools/tool_15.webp' },
-            { key: 'stubby_screwdriver', img: '../assets/images/tools/tool_16.webp' },
-            { key: 'cartridge_puller', img: '../assets/images/tools/tool_17.webp' },
-            { key: 'nipple_extractor', img: '../assets/images/tools/tool_18.webp' },
-            { key: 'pex_tool_kit', img: '../assets/images/tools/tool_19.webp' },
-            { key: 'inspection_camera', img: '../assets/images/tools/tool_20.webp' },
-            { key: 'plunger', img: '../assets/images/tools/tool_21.webp' },
-            { key: 'drain_auger', img: '../assets/images/tools/tool_22.webp' },
-            { key: 'pipe_cleaning_brush', img: '../assets/images/tools/tool_23.webp' }
+            { key: 'pipe_cutter', img: '../assets/images/tools/tool_00.png' },
+            { key: 'internal_pvc_cutter', img: '../assets/images/tools/tool_01.png' },
+            { key: 'hacksaw', img: '../assets/images/tools/tool_02.png' },
+            { key: 'junior_hacksaw', img: '../assets/images/tools/tool_03.png' },
+            { key: 'ratcheting_cutter', img: '../assets/images/tools/tool_04.png' },
+            { key: 'press_fitting_system', img: '../assets/images/tools/tool_05.png' },
+            { key: 'plumbing_brush', img: '../assets/images/tools/tool_06.png' },
+            { key: 'basin_wrench', img: '../assets/images/tools/tool_07.png' },
+            { key: 'pipe_wrench', img: '../assets/images/tools/tool_08.png' },
+            { key: 'faucet_key', img: '../assets/images/tools/tool_09.png' },
+            { key: 'ratchet_wrench', img: '../assets/images/tools/tool_10.png' },
+            { key: 'adjustable_wrench', img: '../assets/images/tools/tool_11.png' },
+            { key: 'strap_wrench', img: '../assets/images/tools/tool_12.png' },
+            { key: 'needle_nose_pliers', img: '../assets/images/tools/tool_13.png' },
+            { key: 'tongue_groove_pliers', img: '../assets/images/tools/tool_14.png' },
+            { key: 'screwdriver_set', img: '../assets/images/tools/tool_15.png' },
+            { key: 'stubby_screwdriver', img: '../assets/images/tools/tool_16.png' },
+            { key: 'cartridge_puller', img: '../assets/images/tools/tool_17.png' },
+            { key: 'nipple_extractor', img: '../assets/images/tools/tool_18.png' },
+            { key: 'pex_tool_kit', img: '../assets/images/tools/tool_19.png' },
+            { key: 'inspection_camera', img: '../assets/images/tools/tool_20.png' },
+            { key: 'plunger', img: '../assets/images/tools/tool_21.png' },
+            { key: 'drain_auger', img: '../assets/images/tools/tool_22.png' },
+            { key: 'pipe_cleaning_brush', img: '../assets/images/tools/tool_23.png' }
         ];
 
         const translations = {
@@ -213,7 +213,7 @@
 
         let currentLang = localStorage.getItem('language') || 'fr';
 
-        // Build tool cards
+        // Build tool cards with Google Shopping links
         function buildToolCards(filter = '') {
             const container = document.getElementById('tools-grid');
             if (!container) return;
@@ -228,8 +228,15 @@
                 const descMatch = data.desc.toLowerCase().includes(lowerFilter);
                 if (filter && !(nameMatch || descMatch)) return;
                 
-                const card = document.createElement('div');
-                card.className = 'tool-card bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col';
+                // Generate Google Shopping URL with tool name
+                const searchQuery = data.name.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '').replace(/\s+/g, '+');
+                const googleShoppingUrl = `https://www.google.com/search?udm=28&q=${searchQuery}`;
+                
+                const card = document.createElement('a');
+                card.href = googleShoppingUrl;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                card.className = 'tool-card bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all';
                 
                 card.innerHTML = `
                     <img src="${tool.img}" alt="${data.name}" class="w-full h-40 object-cover mb-4 rounded-lg" onerror="this.src='../assets/images/logo/logo.png'">
