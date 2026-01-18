@@ -58,11 +58,10 @@
     font-display: swap;
 }
 
-/* Black Ops One - Display/Header Font (loaded from system or fallback) */
+/* Black Ops One - Display/Header Font */
 @font-face {
     font-family: 'Black Ops One';
-    src: local('Black Ops One'),
-         url('../fonts/blackops/BlackOpsOne-Regular.woff2') format('woff2');
+    src: url('../fonts/BlackOps.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -78,36 +77,32 @@
 /* Merriweather - Serif Font for body text */
 @font-face {
     font-family: 'Merriweather';
-    src: local('Merriweather'),
-         url('../fonts/merriweather/Merriweather-Regular.woff2') format('woff2');
+    src: url('../fonts/Merriweather.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Merriweather';
-    src: local('Merriweather Bold'),
-         url('../fonts/merriweather/Merriweather-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+    src: url('../fonts/Merriweather-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
     font-display: swap;
 }
 
 /* Plus Jakarta Sans - Modern Sans-Serif */
 @font-face {
     font-family: 'Plus Jakarta Sans';
-    src: local('Plus Jakarta Sans'),
-         url('../fonts/jakarta/PlusJakartaSans-Regular.woff2') format('woff2');
+    src: url('../fonts/PlusJakartaSans.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Plus Jakarta Sans';
-    src: local('Plus Jakarta Sans Bold'),
-         url('../fonts/jakarta/PlusJakartaSans-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+    src: url('../fonts/PlusJakartaSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
     font-display: swap;
 }
 
