@@ -122,7 +122,7 @@
 
     <!-- Tools Script -->
     <script>
-        // Tool data - images in order from tools_00.png to tools_23.png
+        // Tool data
         const toolsData = [
             { key: 'pipe_cutter', img: '../assets/images/tools/tool_00.png' },
             { key: 'internal_pvc_cutter', img: '../assets/images/tools/tool_01.png' },
@@ -213,7 +213,13 @@
 
         let currentLang = localStorage.getItem('language') || 'fr';
 
-        // Build tool cards with Google Shopping links
+        // Generate Google Shopping URL from tool name
+        function getGoogleShoppingUrl(toolName) {
+            const query = toolName.replace(/[^\w\s]/g, '').replace(/\s+/g, '+');
+            return `https://www.google.com/search?udm=28&q=${query}`;
+        }
+
+        // Build tool cards
         function buildToolCards(filter = '') {
             const container = document.getElementById('tools-grid');
             if (!container) return;
@@ -228,15 +234,13 @@
                 const descMatch = data.desc.toLowerCase().includes(lowerFilter);
                 if (filter && !(nameMatch || descMatch)) return;
                 
-                // Generate Google Shopping URL with tool name
-                const searchQuery = data.name.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '').replace(/\s+/g, '+');
-                const googleShoppingUrl = `https://www.google.com/search?udm=28&q=${searchQuery}`;
+                const shoppingUrl = getGoogleShoppingUrl(data.name);
                 
                 const card = document.createElement('a');
-                card.href = googleShoppingUrl;
+                card.href = shoppingUrl;
                 card.target = '_blank';
                 card.rel = 'noopener noreferrer';
-                card.className = 'tool-card bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all';
+                card.className = 'tool-card bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col cursor-pointer hover:scale-105 hover:shadow-lg transition-all';
                 
                 card.innerHTML = `
                     <img src="${tool.img}" alt="${data.name}" class="w-full h-40 object-cover mb-4 rounded-lg" onerror="this.src='../assets/images/logo/logo.png'">

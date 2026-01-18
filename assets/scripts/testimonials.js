@@ -75,8 +75,8 @@ const TestimonialsModule = (() => {
                          class="w-32 h-32 md:w-40 md:h-40 box-radius object-cover mb-4 testimonial-img-shadow aspect-square" 
                          alt="Photo de ${t.name}" loading="lazy">
                     <div class="flex-grow flex flex-col justify-center">
-                        <h4 class="font-impact text-base md:text-lg text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
-                        <div class="text-yellow-400 text-sm md:text-base mb-2">${renderStars(t.stars)}</div>
+                        <h4 class="font-impact text-sm md:text-base text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
+                        <div class="text-yellow-400 text-xs md:text-sm mb-2">${renderStars(t.stars)}</div>
                         <p class="font-comic text-[10px] md:text-xs text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[25vh] scrollbar-thin">"${t.text}"</p>
                     </div>
                 </div>
