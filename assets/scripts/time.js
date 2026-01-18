@@ -284,38 +284,56 @@ if (document.body?.hasAttribute('data-time-widget') ||
     document.addEventListener('DOMContentLoaded', () => TimeWidget.inject());
 }
 
-// Also update navbar clock elements if they exist
-document.addEventListener('DOMContentLoaded', () => {
-    const clockEl = document.getElementById('navbar-clock');
-    const dateEl = document.getElementById('navbar-date');
+// Update navbar clock elements - retry until found (for dynamic loading)
+(function initNavbarClock() {
+    let intervalId = null;
+    let retryCount = 0;
+    const maxRetries = 50; // Try for 5 seconds
     
-    if (clockEl || dateEl) {
-        const updateNavbarTime = () => {
-            try {
-                const now = TimeWidget.getMontrealTime();
-                if (clockEl) {
-                    clockEl.textContent = now.format('HH:mm');
-                }
-                if (dateEl) {
-                    const lang = localStorage.getItem('language') || 'fr';
-                    const options = { timeZone: 'America/Montreal', weekday: 'short', day: 'numeric', month: 'short' };
-                    dateEl.textContent = new Date().toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', options);
-                }
-            } catch (e) {
-                // Fallback if TimeWidget not ready
-                const now = new Date();
-                const options = { timeZone: 'America/Montreal' };
-                if (clockEl) {
-                    clockEl.textContent = now.toLocaleTimeString('en-US', { ...options, hour: '2-digit', minute: '2-digit', hour12: false });
-                }
-                if (dateEl) {
-                    const lang = localStorage.getItem('language') || 'fr';
-                    dateEl.textContent = now.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', { ...options, weekday: 'short', day: 'numeric', month: 'short' });
-                }
-            }
-        };
+    const updateNavbarTime = () => {
+        const clockEl = document.getElementById('navbar-clock');
+        const dateEl = document.getElementById('navbar-date');
         
-        updateNavbarTime();
-        setInterval(updateNavbarTime, 1000);
-    }
-});
+        if (!clockEl && !dateEl) {
+            // Elements not found yet, keep retrying
+            retryCount++;
+            if (retryCount > maxRetries && intervalId) {
+                clearInterval(intervalId);
+                console.debug('Navbar clock elements not found after retries');
+            }
+            return;
+        }
+        
+        try {
+            const now = TimeWidget.getMontrealTime();
+            if (clockEl) {
+                clockEl.textContent = now.format('HH:mm');
+            }
+            if (dateEl) {
+                const lang = localStorage.getItem('language') || 'fr';
+                const options = { timeZone: 'America/Montreal', weekday: 'short', day: 'numeric', month: 'short' };
+                dateEl.textContent = new Date().toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', options);
+            }
+        } catch (e) {
+            // Fallback if TimeWidget not ready
+            const now = new Date();
+            const options = { timeZone: 'America/Montreal' };
+            if (clockEl) {
+                clockEl.textContent = now.toLocaleTimeString('en-US', { ...options, hour: '2-digit', minute: '2-digit', hour12: false });
+            }
+            if (dateEl) {
+                const lang = localStorage.getItem('language') || 'fr';
+                dateEl.textContent = now.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', { ...options, weekday: 'short', day: 'numeric', month: 'short' });
+            }
+        }
+    };
+    
+    // Start immediately and retry every 100ms until elements found, then every 1s
+    intervalId = setInterval(updateNavbarTime, 100);
+    
+    // After 2 seconds, switch to 1-second interval
+    setTimeout(() => {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(updateNavbarTime, 1000);
+    }, 2000);
+})();

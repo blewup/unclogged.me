@@ -213,19 +213,26 @@ const TestimonialsModule = (() => {
         update();
     };
 
-    // Initialize
+    // Initialize with retry for dynamic loading
     const init = () => {
+        const track = document.getElementById('testimonial-track');
+        if (!track) {
+            // Element not found, retry after delay
+            console.debug('TestimonialsModule: track not found, retrying...');
+            setTimeout(init, 200);
+            return;
+        }
         render();
         setupVisibilityObserver();
         window.addEventListener('resize', handleResize);
         console.debug('TestimonialsModule initialized');
     };
 
-    // Auto-initialize
+    // Auto-initialize with retry mechanism
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', () => setTimeout(init, 500));
     } else {
-        init();
+        setTimeout(init, 500);
     }
 
     // Public API
