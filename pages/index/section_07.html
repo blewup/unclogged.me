@@ -2,8 +2,8 @@
 <!-- Component: pages/index/section_07.html -->
 <section id="map-section" class="relative bg-lightBase dark:bg-darkBase py-[2vh]" style="height: 90vh;">
     <div class="w-full h-full relative map-glow-light dark:map-glow-dark transition-shadow duration-300 box-radius overflow-hidden mx-auto max-w-[98%]">
-        <!-- Map iframe covering Montreal & Montérégie with closer zoom (z=10 for regional view) -->
-        <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d358906.12!2d-73.8!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full dark:invert-[.85] dark:hue-rotate-180 transition-all duration-500 z-0 box-radius"></iframe>
+        <!-- Map iframe covering Montreal & Montérégie with regional view -->
+        <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500000!2d-73.55!3d45.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc96a4129d39221%3A0x6e0648c7a246ee37!2sMontr%C3%A9al%2C%20QC!5e0!3m2!1sfr!2sca!4v1625684000000!5m2!1sfr!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full dark:invert-[.85] dark:hue-rotate-180 transition-all duration-500 z-0 box-radius"></iframe>
         
         <!-- Map Action Buttons -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
@@ -33,18 +33,32 @@
         
         <!-- Custom overlay panel replacing the original overlays -->
         <div class="map-overlay-panel" id="custom-map-overlay">
-            <!-- Image Header -->
+            <!-- Image Carousel Header -->
             <div class="w-full h-24 md:h-32 relative overflow-hidden shrink-0">
-                <img id="overlay-image" src="assets/images/location/lord_logo.webp" class="absolute w-full h-full object-cover" alt="Logo service">
+                <img id="overlay-image-1" src="assets/images/location/lord_logo.webp" class="absolute w-full h-full object-cover transition-opacity duration-500 opacity-100" alt="Lord Logo">
+                <img id="overlay-image-2" src="assets/images/location/apt_logo.webp" class="absolute w-full h-full object-cover transition-opacity duration-500 opacity-0" alt="Apt Logo">
+                <!-- Left Arrow -->
+                <button onclick="prevOverlayImage()" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all z-10" aria-label="Previous image">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <!-- Right Arrow -->
+                <button onclick="nextOverlayImage()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all z-10" aria-label="Next image">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <!-- Dots Indicator -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                    <span id="overlay-dot-1" class="w-2 h-2 rounded-full bg-white transition-all"></span>
+                    <span id="overlay-dot-2" class="w-2 h-2 rounded-full bg-white/50 transition-all"></span>
+                </div>
             </div>
             <!-- Content -->
-            <div class="py-3 px-5 bg-white dark:bg-darkAlt text-black dark:text-gray-200 flex flex-col gap-2 flex-grow overflow-y-auto scrollbar-hide">
+            <div class="py-3 px-5 bg-white dark:bg-darkAlt text-black dark:text-gray-200 flex flex-col gap-2 flex-grow overflow-y-auto scrollbar-hide font-inter font-normal">
                 <div>
-                    <h1 class="font-bold text-lg md:text-xl">Déboucheur&nbsp;Expert</h1>
+                    <h1 class="font-ops font-bold text-lg md:text-xl">Déboucheur&nbsp;Expert</h1>
                     <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Plombier&nbsp;·&nbsp;Montréal &amp; Montérégie</div>
                 </div>
                 <div class="flex items-center gap-2 -mt-1">
-                    <span class="text-black dark:text-white font-bold text-lg">4.6</span>
+                    <span class="text-black dark:text-white font-medium text-lg">4.6</span>
                     <div class="flex text-yellow-400 text-base gap-0.5">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -111,3 +125,63 @@
         </div>
     </div>
 </section>
+
+<!-- Map Overlay Image Carousel Script -->
+<script>
+(function() {
+    let currentOverlayImage = 0;
+    const overlayImages = ['overlay-image-1', 'overlay-image-2'];
+    const overlayDots = ['overlay-dot-1', 'overlay-dot-2'];
+    let overlayAutoInterval = null;
+    
+    function updateOverlayImage() {
+        try {
+            overlayImages.forEach((id, index) => {
+                const img = document.getElementById(id);
+                const dot = document.getElementById(overlayDots[index]);
+                if (img) {
+                    img.classList.toggle('opacity-100', index === currentOverlayImage);
+                    img.classList.toggle('opacity-0', index !== currentOverlayImage);
+                }
+                if (dot) {
+                    dot.classList.toggle('bg-white', index === currentOverlayImage);
+                    dot.classList.toggle('bg-white/50', index !== currentOverlayImage);
+                }
+            });
+        } catch (e) {
+            console.error('Overlay image update error:', e);
+        }
+    }
+    
+    function resetAutoInterval() {
+        if (overlayAutoInterval) clearInterval(overlayAutoInterval);
+        overlayAutoInterval = setInterval(() => {
+            currentOverlayImage = (currentOverlayImage + 1) % overlayImages.length;
+            updateOverlayImage();
+        }, 60000); // 60 seconds
+    }
+    
+    window.nextOverlayImage = function() {
+        try {
+            currentOverlayImage = (currentOverlayImage + 1) % overlayImages.length;
+            updateOverlayImage();
+            resetAutoInterval();
+        } catch (e) {
+            console.error('Next overlay image error:', e);
+        }
+    };
+    
+    window.prevOverlayImage = function() {
+        try {
+            currentOverlayImage = (currentOverlayImage - 1 + overlayImages.length) % overlayImages.length;
+            updateOverlayImage();
+            resetAutoInterval();
+        } catch (e) {
+            console.error('Prev overlay image error:', e);
+        }
+    };
+    
+    // Start auto-rotation on page load
+    resetAutoInterval();
+})();
+</script>

@@ -658,18 +658,17 @@
 
 /* Service icons inherit their inline Tailwind sizing - no !important overrides */
 
-/* --- FAQ Caret Icons (10x smaller) --- */
+/* --- FAQ Caret Icons - Let Tailwind classes control sizing --- */
 .faq-caret-sm {
-    font-size: 0.5rem !important;
+    font-size: 0.5rem;
     width: 8px;
     height: 8px;
 }
 
-#faq .rotate-icon,
-#faq .fa-chevron-down {
-    font-size: 0.5rem !important;
-    width: 8px;
-    height: 8px;
+/* Rotate icon is controlled by inline Tailwind classes (w-14 h-14) */
+/* Only add rotation behavior, not size overrides */
+#faq .rotate-icon.active {
+    transform: rotate(180deg);
 }
 
 /* --- Testimonials Enlargements --- */
@@ -832,12 +831,12 @@ button.font-comic,
 }
 
 .navbar-time-widget .time-display {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
 .navbar-time-widget .date-display {
-    font-size: 0.55rem;
+    font-size: 0.66rem;
     opacity: 0.8;
 }
 /* ============================================

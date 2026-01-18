@@ -102,7 +102,7 @@
     <!-- Global Icons Library -->
     <script src="assets/scripts/icons.js" defer></script>
 </head>
-<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair overflow-x-hidden">
+<body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-inter font-normal overflow-x-hidden">
     
     <!-- ===== NAVBAR COMPONENT ===== -->
     <div id="index-navbar-container"></div>
@@ -239,36 +239,55 @@
         }
         
         /**
-         * Toggle between light and dark theme
+         * Toggle between light and dark theme with error handling
          */
         function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            try {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) {
+                console.error('Theme toggle error:', e);
+                document.documentElement.classList.toggle('dark');
+            }
         }
         
         /**
          * Initialize language based on localStorage
          */
         function initLanguage() {
-            const savedLang = localStorage.getItem('language') || 'fr';
-            if (savedLang === 'en') {
-                applyTranslations('en');
+            try {
+                const savedLang = localStorage.getItem('language') || 'fr';
+                if (savedLang === 'en') {
+                    applyTranslations('en');
+                }
+            } catch (e) {
+                console.error('Language init error:', e);
             }
         }
         
         /**
-         * Toggle between French and English
+         * Toggle between French and English with error handling
          */
         function toggleLanguage() {
-            const currentLang = localStorage.getItem('language') || 'fr';
-            const newLang = currentLang === 'fr' ? 'en' : 'fr';
-            localStorage.setItem('language', newLang);
-            applyTranslations(newLang);
-            
-            // Update language display
-            const langDisplay = document.getElementById('lang-display');
-            if (langDisplay) {
-                langDisplay.textContent = newLang === 'fr' ? 'EN' : 'FR';
+            try {
+                const currentLang = localStorage.getItem('language') || 'fr';
+                const newLang = currentLang === 'fr' ? 'en' : 'fr';
+                localStorage.setItem('language', newLang);
+                applyTranslations(newLang);
+                
+                // Update language display
+                const langDisplay = document.getElementById('lang-display');
+                if (langDisplay) {
+                    langDisplay.textContent = newLang === 'fr' ? 'EN' : 'FR';
+                }
+                
+                // Update mobile lang display if exists
+                const mobileLangDisplay = document.getElementById('mobile-lang-display');
+                if (mobileLangDisplay) {
+                    mobileLangDisplay.textContent = newLang === 'fr' ? 'EN' : 'FR';
+                }
+            } catch (e) {
+                console.error('Language toggle error:', e);
             }
         }
         
@@ -276,24 +295,32 @@
          * Apply translations to all elements with data-translate attribute
          */
         function applyTranslations(lang) {
-            // Translations object would be loaded from data.js
-            if (typeof translations !== 'undefined') {
-                document.querySelectorAll('[data-translate]').forEach(el => {
-                    const key = el.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.innerHTML = translations[lang][key];
-                    }
-                });
+            try {
+                // Translations object would be loaded from data.js
+                if (typeof translations !== 'undefined') {
+                    document.querySelectorAll('[data-translate]').forEach(el => {
+                        const key = el.getAttribute('data-translate');
+                        if (translations[lang] && translations[lang][key]) {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error('Translation apply error:', e);
             }
         }
         
         /**
-         * Scroll to a specific section
+         * Scroll to a specific section with error handling
          */
         function scrollToSection(index) {
-            const section = document.getElementById(`section-${index}`);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+            try {
+                const section = document.getElementById(`section-${index}`);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            } catch (e) {
+                console.error('Scroll error:', e);
             }
         }
         
@@ -301,51 +328,68 @@
          * Initialize dot navigation highlighting
          */
         function initDotNavigation() {
-            const mainContent = document.getElementById('main-content');
-            const dots = document.querySelectorAll('.dot-btn');
-            
-            if (!mainContent || dots.length === 0) return;
-            
-            mainContent.addEventListener('scroll', () => {
-                const sections = mainContent.querySelectorAll('[id^="section-"]');
-                const scrollPos = mainContent.scrollTop + mainContent.clientHeight / 2;
+            try {
+                const mainContent = document.getElementById('main-content');
+                const dots = document.querySelectorAll('.dot-btn');
                 
-                sections.forEach((section, index) => {
-                    if (index >= dots.length) return;
-                    
-                    const sectionTop = section.offsetTop;
-                    const sectionBottom = sectionTop + section.offsetHeight;
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                        dots.forEach(dot => dot.classList.remove('active'));
-                        dots[index].classList.add('active');
+                if (!mainContent || dots.length === 0) return;
+                
+                mainContent.addEventListener('scroll', () => {
+                    try {
+                        const sections = mainContent.querySelectorAll('[id^="section-"]');
+                        const scrollPos = mainContent.scrollTop + mainContent.clientHeight / 2;
+                        
+                        sections.forEach((section, index) => {
+                            if (index >= dots.length) return;
+                            
+                            const sectionTop = section.offsetTop;
+                            const sectionBottom = sectionTop + section.offsetHeight;
+                            
+                            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                                dots.forEach(dot => dot.classList.remove('active'));
+                                dots[index].classList.add('active');
+                            }
+                        });
+                    } catch (scrollErr) {
+                        console.error('Dot nav scroll error:', scrollErr);
                     }
                 });
-            });
+            } catch (e) {
+                console.error('Dot nav init error:', e);
+            }
         }
         
         /**
-         * Toggle mobile menu
+         * Toggle mobile menu with error handling
          */
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu) {
-                menu.classList.toggle('hidden');
+            try {
+                const menu = document.getElementById('mobile-menu');
+                if (menu) {
+                    menu.classList.toggle('hidden');
+                }
+            } catch (e) {
+                console.error('Mobile menu error:', e);
             }
         }
         
         /**
-         * Toggle FAQ accordion
+         * Toggle FAQ accordion with error handling
          */
         function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('.rotate-icon');
-            
-            if (content) {
-                content.classList.toggle('open');
-            }
-            if (icon) {
-                icon.classList.toggle('rotate-180');
+            try {
+                if (!button) return;
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.rotate-icon');
+                
+                if (content) {
+                    content.classList.toggle('open');
+                }
+                if (icon) {
+                    icon.classList.toggle('rotate-180');
+                }
+            } catch (e) {
+                console.error('Accordion toggle error:', e);
             }
         }
         
