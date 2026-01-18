@@ -1,56 +1,38 @@
 <!--
     FOOTER COMPONENT - Déboucheur Expert
-    Include this in all pages using: <div id="footer-container"></div>
-    Then load with: loadComponent('footer-container', 'components/footer.html')
-    
-    For index.html use: loadComponent('footer-container', 'pages/components/footer.html')
+    Level: pages/components/ → For pages/*.html files
+    Include: <div id="footer-container"></div>
+    Load with: loadComponent('footer-container', 'components/footer.html')
 -->
 
-<footer class="bg-lightBase dark:bg-darkBase border-t border-gray-800 text-gray-600 dark:text-gray-400 relative" style="height: 10vh;">
-    <div class="max-w-full mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between text-xs md:text-sm relative">
-        <!-- Company Name - Left Side (Desktop) -->
-        <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
-            <!-- Footer name at 90% of normal 2.4rem = ~2.16rem -->
-            <h4 class="font-impact text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
-            <p class="mt-1 text-[10px]">&copy; 2024 Billy le deboucheur</p>
-        </div>
-        
-        <!-- Social Media Icons - Center -->
-        <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
-            <a href="https://facebook.com/deboucheurexpert" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:scale-125 transition-transform" aria-label="Facebook">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="https://linkedin.com/company/deboucheurexpert" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:scale-125 transition-transform" aria-label="LinkedIn">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://g.page/deboucheurexpert" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:scale-125 transition-transform" aria-label="Google Business">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
-            </a>
-        </div>
-        
-        <!-- Navigation Links - Right Side -->
-        <div class="md:absolute md:right-[5px] flex items-center gap-4 flex-wrap justify-center md:justify-end">
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/politics.html" data-href-page="politics.html" data-translate="footer_privacy">Politique de confidentialité</a>
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/conditions.html" data-href-page="conditions.html" data-translate="footer_terms">Conditions</a>
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/team.html" data-href-page="team.html" data-translate="footer_team">Équipe</a>
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/tools.html" data-href-page="tools.html" data-translate="footer_tools">Outils</a>
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/events.html" data-href-page="events.html" data-translate="footer_availability">Disponibilités</a>
-            <a href="#" class="hover:text-blue transition-colors" data-href-index="pages/plumbing.html" data-href-page="plumbing.html" data-translate="footer_plumbing">Plomberie</a>
-        </div>
-    </div>
-</footer>
+        <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-800 text-gray-600 dark:text-gray-400 relative" style="height: 10vh;">
+            <div class="max-w-full mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between text-xs md:text-sm relative">
+                <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
+                    <!-- Footer name at 90% of normal 2.4rem = ~2.16rem -->
+                    <h4 class="font-impact text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
+                    <p class="mt-1 text-[10px] font-inter italic">&copy; 2025 deboucheur expert</p>
+                </div>
+                <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
+                    <a href="#" class="text-blue-600 hover:scale-125 transition-transform"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-blue-400 hover:scale-125 transition-transform"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-red-500 hover:scale-125 transition-transform"><i class="fab fa-google text-xl"></i></a>
+                </div>
+                <div class="md:absolute md:right-[5px] flex items-center gap-4">
+                    <a href="politics.html" class="hover:text-blue transition-colors">Politique de confidentialité</a>
+                    <a href="conditions.html" class="hover:text-blue transition-colors">Conditions d'utilisation</a>
+                    <a href="team.html" class="hover:text-blue transition-colors">Équipe</a>
+                </div>
+            </div>
+        </footer>
 
 <script>
 // Initialize footer links based on context (index vs subpage)
 (function initFooterLinks() {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    
     const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
     const prefix = isIndex ? 'data-href-index' : 'data-href-page';
     
-    // Update all footer links
-    footer.querySelectorAll('[data-href-index]').forEach(link => {
+    // Update footer navigation links
+    document.querySelectorAll('#footer-container [data-href-index]').forEach(link => {
         const href = link.getAttribute(prefix);
         if (href) link.href = href;
     });

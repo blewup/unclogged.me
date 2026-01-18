@@ -9,32 +9,48 @@
     <meta lang="en" name="description" content="Terms and conditions of Déboucheur Expert. Terms of service for our residential plumbing services in Montreal and Montérégie.">
     
     <!-- Preload hero slides -->
-    <link rel="preload" as="image" href="../assets/images/slide/slide_06.webp">
-    <link rel="preload" as="image" href="../assets/images/slide/slide_07.webp">
-    <link rel="preload" as="image" href="../assets/images/slide/slide_08.webp">
-    <link rel="preload" as="image" href="../assets/images/slide/slide_09.webp">
-    <link rel="preload" as="image" href="../assets/images/slide/slide_10.webp">
-    <link rel="preload" as="image" href="../assets/images/slide/slide_11.webp">
+    <link rel="preload" as="image" href="../assets/images/slide/slide_01.webp">
     
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/logo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-128.png" sizes="128x128">
     <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta lang="fr" name="application-name" content="Déboucheur Expert">
+    <meta lang="en" name="application-name" content="Unclogged Me">
     <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="../assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../assets/styles/idex.css">
     <link rel="stylesheet" href="../assets/styles/tailwind.css">
     <link rel="stylesheet" href="../assets/styles/panda.css">
+    <link rel="stylesheet" href="../assets/styles/conditions.css">
     
     <!-- Tailwind Configuration -->
     <script>
@@ -60,56 +76,84 @@
                         inter: ['Inter', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
         }
     </script>
     
-    <style>
-        body { width: 100vw; overflow-x: hidden; }
-        
-        /* Hero slideshow */
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .hero-slide.active { opacity: 1; }
-    </style>
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
 </head>
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair">
 
     <!-- Dynamic Navbar Container -->
-    <div id="navbar-container"></div>
-    
-    <!-- URGENCY BUTTON -->
-    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
-        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-        <span data-translate="urgence">URGENCE 24/7</span>
-    </a>
+    <div id="pages-navbar-container"></div>
 
     <!-- Hero Section with Slideshow -->
-    <section id="hero" class="relative w-full overflow-hidden" style="height: 60vh;">
-        <div id="hero-slideshow" class="absolute inset-0 z-0">
-            <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_09.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_10.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
-        
-        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-4 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
-                DÉBOUCHEUR EXPERT
-            </h1>
-        </div>
-    </section>
+    <div id="template-hero-container"></div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-12" style="margin-top: 6vh;">
@@ -130,7 +174,7 @@
     </main>
 
     <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <div id="pages-footer-container"></div>
 
     <!-- Content Script -->
     <script>
@@ -232,8 +276,8 @@
     </script>
 
     <!-- Dynamic Components: Cookie Banner & AI Helper -->
-    <div id="banner-container"></div>
-    <div id="helper-container"></div>
+    <div id="pages-banner-container"></div>
+    <div id="pages-helper-container"></div>
 
     <!-- Core Libraries -->
     <script src="../assets/scripts/libs.js" defer></script>

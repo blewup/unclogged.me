@@ -1,0 +1,188 @@
+<!-- Index Components: navbar.html -->
+<!-- Loaded into root index.html via JavaScript -->
+<!-- Paths: assets/, pages/, index.html -->
+
+<!-- URGENCY BUTTON - Always visible, never hidden with navbar -->
+<a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
+    <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span data-translate="urgence">URGENCE 24/7</span>
+</a>
+
+<!-- NAVBAR -->
+    <nav id="navbar" class="fixed z-50 rounded-l-xl border-l border-b border-white/10 shadow-2xl nav-glass bg-lightBase/90 dark:bg-darkBase/90 transition-transform duration-300"
+         style="height: 12vh; left: 6vw; top: 2vh; right: 0;">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div class="flex items-center justify-between h-full">
+                <div class="hidden md:flex items-center justify-start space-x-8 w-full pl-4">
+                    <a href="index.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_home">ACCUEIL</a>
+                    <a href="pages/prices.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_tarifs">TARIFICATION</a>
+                    <a href="pages/plumbing.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_guide">GUIDE</a>
+                    <a href="pages/events.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_calendar">EVENEMENTS</a>
+                    <a href="pages/tools.html" class="nav-link font-ops text-xl text-gray-600 dark:text-gray-300 hover:text-blue hover:scale-[1.025] transition-all" data-translate="nav_contact">OUTILS</a>
+                </div>
+                <div class="flex flex-col items-center justify-center ml-4 shrink-0 gap-1">
+                    <!-- Time Widget (Montreal) -->
+                    <div id="navbar-time" class="navbar-time-widget text-gray-600 dark:text-gray-300">
+                        <div class="time-display" id="navbar-clock">--:--</div>
+                        <div class="date-display" id="navbar-date">---</div>
+                    </div>
+                    <!-- Theme/Lang Toggles (2x smaller) -->
+                    <div class="flex flex-row items-center justify-center space-x-1">
+                        <button onclick="toggleTheme()" class="navbar-toggle w-5 h-5 flex items-center justify-center border border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase">
+                            <svg class="w-3 h-3 text-yellow-400 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                            <svg class="w-3 h-3 text-purple-600 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                        </button>
+                        <button onclick="toggleLanguage()" class="navbar-toggle w-5 h-5 flex items-center justify-center border border-gray-400 dark:border-gray-600 box-radius hover:scale-110 transition-transform bg-lightBase dark:bg-darkBase text-gray-600 dark:text-white font-ops text-[8px]">
+                            <span id="lang-display">EN</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center ml-4">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-white hover:text-blue focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden bg-lightBase dark:bg-darkBase border-t border-gray-700 absolute right-0 top-[12vh] box-radius shadow-lg w-auto min-w-[200px]" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">ACCUEIL</a>
+                <a href="pages/prices.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">TARIFICATION</a>
+                <a href="pages/plumbing.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">GUIDE</a>
+                <a href="pages/events.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">EVENEMENTS</a>
+                <a href="pages/tools.html" class="font-ops text-gray-700 dark:text-gray-200 block px-3 py-2 text-lg hover:text-blue">OUTILS</a>
+            </div>
+        </div>
+    </nav>
+
+<script>
+// Initialize navbar links based on context (index vs subpage)
+(function initNavbarLinks() {
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const prefix = isIndex ? 'data-href-index' : 'data-href-page';
+    const imgPrefix = isIndex ? 'data-src-index' : 'data-src-page';
+    
+    // Update all navigation links
+    document.querySelectorAll('[data-href-index]').forEach(link => {
+        const href = link.getAttribute(prefix);
+        if (href) link.href = href;
+    });
+    
+    // Update logo image
+    document.querySelectorAll('[data-src-index]').forEach(img => {
+        const src = img.getAttribute(imgPrefix);
+        if (src) img.src = src;
+    });
+})();
+
+// Navigate home
+function goHome(e) {
+    e.preventDefault();
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    window.location.href = isIndex ? 'index.html' : '../index.html';
+}
+
+// Dropdown toggle
+function toggleDropdown() {
+    const menu = document.getElementById('dropdown-menu');
+    const icon = document.querySelector('.dropdown-icon');
+    if (menu) {
+        menu.classList.toggle('dropdown-closed');
+        menu.classList.toggle('dropdown-open');
+    }
+    if (icon) icon.classList.toggle('rotate-180');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    const container = document.getElementById('dropdown-container');
+    const menu = document.getElementById('dropdown-menu');
+    if (container && menu && !container.contains(e.target)) {
+        menu.classList.add('dropdown-closed');
+        menu.classList.remove('dropdown-open');
+        document.querySelector('.dropdown-icon')?.classList.remove('rotate-180');
+    }
+});
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) menu.classList.toggle('hidden');
+}
+
+// Theme toggle
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+}
+
+// Language toggle
+let currentLang = localStorage.getItem('language') || 'fr';
+function toggleLanguage() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    // Apply translations if translations object exists
+    if (typeof translations !== 'undefined') {
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                el.innerText = translations[currentLang][key];
+            }
+        });
+    }
+    localStorage.setItem('language', currentLang);
+}
+
+// Initialize theme and language from localStorage
+(function initThemeAndLang() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+    }
+    
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+        currentLang = savedLang;
+        const langDisplay = document.getElementById('lang-display');
+        if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    }
+})();
+
+// Navbar hide/show on scroll with smooth transition
+// Hides on scroll down (-20vh), shows on scroll up (0) with 1.5s minimum effect
+let lastScrollY = window.scrollY;
+let navbarHidden = false;
+let scrollTimeout = null;
+
+window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY;
+    const navbar = document.getElementById('navbar');
+    
+    if (!navbar) return;
+    
+    // Ensure smooth transition is set
+    if (!navbar.style.transition.includes('1.5s')) {
+        navbar.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+    
+    // Clear any pending timeout
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    
+    // Hide navbar on scroll down after 100px threshold
+    if (scrollPos > lastScrollY && scrollPos > 100 && !navbarHidden) {
+        navbar.style.transform = 'translateY(-20vh)';
+        navbarHidden = true;
+    } 
+    // Show navbar on scroll up (with at least 15px movement) or near top
+    else if ((scrollPos < lastScrollY - 15 || scrollPos < 50) && navbarHidden) {
+        navbar.style.transform = 'translateY(0)';
+        navbarHidden = false;
+    }
+    
+    // Update last scroll position after a small delay for smoother tracking
+    scrollTimeout = setTimeout(() => {
+        lastScrollY = scrollPos;
+    }, 50);
+});
+</script>

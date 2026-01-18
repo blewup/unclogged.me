@@ -2,20 +2,25 @@
  * Déboucheur Expert - Components Loader
  * Loads reusable HTML components (navbar, footer, hero, banner, helper) into pages
  * 
- * Supported page types:
- *   - index.html (root)
- *   - pages/*.html (subpages)
- *   - pages/plumbing/*.html (plumbing guides)
- *   - pages/errors/*.html (error pages)
- *   - pages/errors/codes/*.html (specific error codes)
+ * Component Directory Structure:
+ *   - pages/index/components/ → For root index.html (prefix: index-)
+ *   - pages/components/ → For pages/*.html files (prefix: pages-)
+ *   - pages/plumbing/components/ → For pages/plumbing/*.html files (prefix: plumbing-)
+ *   - pages/errors/components/ → For pages/errors/*.html files (prefix: errors-)
+ *   - pages/errors/codes/components/ → For pages/errors/codes/*.html files (prefix: codes-)
  * 
- * Usage:
- *   <div id="navbar-container"></div>
- *   <div id="footer-container"></div>
- *   <div id="hero-container"></div>
- *   <div id="banner-container"></div>
- *   <div id="helper-container"></div>
+ * Each component directory contains versions with correct relative paths for its level.
+ * Unique container IDs prevent mixing when multiple component contexts exist.
+ * 
+ * Container ID Schema:
+ *   <div id="[prefix]-navbar-container"></div>
+ *   <div id="[prefix]-footer-container"></div>
+ *   <div id="[prefix]-hero-container"></div>
+ *   <div id="[prefix]-banner-container"></div>
+ *   <div id="[prefix]-helper-container"></div>
  *   <script src="[path]/assets/scripts/components/loader.js"></script>
+ * 
+ * Legacy Support: Also checks for non-prefixed containers for backward compatibility.
  */
 
 // Determine page type and set correct paths
@@ -32,27 +37,43 @@ const isErrorPage = pathname.includes('/errors/') && !isErrorCodesPage;
 const isPlumbingPage = pathname.includes('/plumbing/');
 const isSubpage = pathname.includes('/pages/') && !isErrorPage && !isErrorCodesPage && !isPlumbingPage;
 
+// Determine page context prefix for unique IDs
+let pagePrefix;
+if (isIndexPage) {
+    pagePrefix = 'index';
+} else if (isErrorCodesPage) {
+    pagePrefix = 'codes';
+} else if (isErrorPage) {
+    pagePrefix = 'errors';
+} else if (isPlumbingPage) {
+    pagePrefix = 'plumbing';
+} else {
+    pagePrefix = 'pages';
+}
+
 // Calculate base paths based on page context
+// Each level loads from its own components/ folder with pre-configured paths
 let componentsBasePath;
 let assetsBasePath;
 
 if (isIndexPage) {
-    componentsBasePath = 'pages/components/';
+    // index.html uses pages/index/components/ for root-level paths
+    componentsBasePath = 'pages/index/components/';
     assetsBasePath = '';
 } else if (isErrorCodesPage) {
-    // pages/errors/codes/*.html → go up 3 levels
-    componentsBasePath = '../../components/';
+    // pages/errors/codes/*.html → uses components/ in same dir
+    componentsBasePath = 'components/';
     assetsBasePath = '../../../';
 } else if (isErrorPage) {
-    // pages/errors/*.html → go up 2 levels
-    componentsBasePath = '../components/';
+    // pages/errors/*.html → uses components/ in same dir
+    componentsBasePath = 'components/';
     assetsBasePath = '../../';
 } else if (isPlumbingPage) {
-    // pages/plumbing/*.html → go up 1 level to pages/
-    componentsBasePath = '../components/';
+    // pages/plumbing/*.html → uses components/ in same dir
+    componentsBasePath = 'components/';
     assetsBasePath = '../../';
 } else {
-    // pages/*.html → same level as components/
+    // pages/*.html → uses components/ in same dir
     componentsBasePath = 'components/';
     assetsBasePath = '../';
 }
@@ -61,6 +82,7 @@ if (isIndexPage) {
 window.componentPaths = {
     components: componentsBasePath,
     assets: assetsBasePath,
+    prefix: pagePrefix,
     isIndex: isIndexPage,
     isError: isErrorPage || isErrorCodesPage,
     isPlumbing: isPlumbingPage
@@ -120,21 +142,38 @@ async function loadComponent(containerId, componentPath) {
 }
 
 /**
+ * Get the container ID with proper prefix
+ * @param {string} baseId - Base container name (e.g., 'navbar', 'footer')
+ * @returns {string} - Prefixed container ID
+ */
+function getContainerId(baseId) {
+    const prefixedId = `${pagePrefix}-${baseId}-container`;
+    const legacyId = `${baseId}-container`;
+    
+    // Check for prefixed ID first, then fall back to legacy
+    if (document.getElementById(prefixedId)) {
+        return prefixedId;
+    }
+    if (document.getElementById(legacyId)) {
+        return legacyId;
+    }
+    return prefixedId; // Default to prefixed
+}
+
+/**
  * Load all standard components (navbar, footer, hero, banner, helper)
  * Call this on DOMContentLoaded
+ * Supports both prefixed IDs (e.g., index-navbar-container) and legacy IDs (navbar-container)
  */
 function loadStandardComponents() {
-    const components = [
-        { id: 'navbar-container', file: 'navbar.html' },
-        { id: 'footer-container', file: 'footer.html' },
-        { id: 'hero-container', file: 'hero.html' },
-        { id: 'banner-container', file: 'banner.html' },
-        { id: 'helper-container', file: 'helper.html' }
-    ];
+    const componentTypes = ['navbar', 'footer', 'hero', 'banner', 'helper'];
     
-    components.forEach(({ id, file }) => {
-        if (document.getElementById(id)) {
-            loadComponent(id, componentsBasePath + file);
+    componentTypes.forEach(type => {
+        const containerId = getContainerId(type);
+        const container = document.getElementById(containerId);
+        
+        if (container) {
+            loadComponent(containerId, componentsBasePath + type + '.html');
         }
     });
 }

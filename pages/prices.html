@@ -16,25 +16,46 @@
     <link rel="preload" as="image" href="../assets/images/slide/slide_10.webp">
     <link rel="preload" as="image" href="../assets/images/slide/slide_11.webp">
     
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/logo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-128.png" sizes="128x128">
     <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta lang="fr" name="application-name" content="Déboucheur Expert">
+    <meta lang="en" name="application-name" content="Unclogged Me">
     <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="../assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../assets/styles/idex.css">
     <link rel="stylesheet" href="../assets/styles/tailwind.css">
     <link rel="stylesheet" href="../assets/styles/panda.css">
+    <link rel="stylesheet" href="../assets/styles/prices.css">
     
     <!-- Tailwind Configuration -->
     <script>
@@ -60,240 +81,83 @@
                         merriweather: ['Merriweather', 'serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
         }
     </script>
     
-    <style>
-        body { width: 100vw; overflow-x: hidden; }
-        
-        /* Hero slideshow */
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        .hero-slide.active {
-            opacity: 1;
-        }
-        
-        /* Price Cards */
-        .price-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .price-card:hover::before {
-            left: 100%;
-        }
-        
-        .price-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            border-color: rgba(37, 99, 235, 0.5);
-        }
-        
-        .price-card.featured {
-            background: linear-gradient(145deg, #2563EB 0%, #1d4ed8 100%);
-            border: 2px solid rgba(255,255,255,0.3);
-            transform: scale(1.05);
-        }
-        
-        .price-card.featured:hover {
-            transform: translateY(-10px) scale(1.08);
-        }
-        
-        .price-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(135deg, #C41E3A 0%, #a01830 100%);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .cable-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin: 0 auto 1rem;
-            transition: all 0.3s;
-        }
-        
-        .price-card:hover .cable-icon {
-            transform: rotateY(180deg);
-        }
-        
-        /* Pricing Table */
-        .pricing-table-container {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .pricing-table th {
-            background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
-            color: white;
-            padding: 1.25rem 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-        }
-        
-        .pricing-table td {
-            padding: 1.25rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.2s;
-        }
-        
-        .pricing-table tbody tr:hover td {
-            background: rgba(37, 99, 235, 0.1);
-        }
-        
-        .multiplier-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: white;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-left: 0.5rem;
-        }
-        
-        /* Service Cards */
-        .service-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        /* Info Cards */
-        .info-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            transition: all 0.3s;
-        }
-        
-        .info-card:hover {
-            border-color: rgba(37, 99, 235, 0.3);
-        }
-    </style>
+    <!-- Structured Data (English) -->
+    <script lang="en" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Unclogged by Déboucheur Expert",
+      "alternateName": "unclogged.me",
+      "description": "Anything related to residential plumbing service calls: unclogging drains, fixing leaks, troubleshooting water loss. Certain tasks require the city and a certified master plumber. No new construction; our service focuses on maintenance and emergency repairs.",
+      "url": "https://unclogged.me",
+      "logo": "https://unclogged.me/assets/images/logo/logo.png",
+      "image": "https://unclogged.me/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (French) -->
+    <script lang="fr" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Déboucheur Expert (unclogged.me)",
+      "alternateName": "Déboucheur",
+      "description": "Tout ce qui concerne les appels de service de plomberie résidentielle : débouchage des drains, réparation des fuites, dépannage des pertes d'eau. Certaines tâches nécessitent la ville et un maître plombier certifié. Pas de nouvelle construction ; notre service se concentre sur l'entretien et les réparations d'urgence.",
+      "url": "https://deboucheur.expert",
+      "logo": "https://deboucheur.expert/assets/images/logo/logo.png",
+      "image": "https://deboucheur.expert/assets/images/slide/slide_01.webp",
+      "telephone": "+1-438-530-2343",
+      "priceRange": "200$ - 640$/h CAD +tx",
+      "areaServed": ["Montreal", "Montérégie"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "290 Rue Lord #01",
+        "addressLocality": "Napierville",
+        "addressRegion": "QC",
+        "postalCode": "J0J 1L0",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "17:00"}
+      ]
+    }
+    </script>
 </head>
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
 
     <!-- Dynamic Component Containers -->
-    <div id="navbar-container"></div>
-    
-    <!-- URGENCY BUTTON -->
-    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
-        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-        <span data-translate="urgence">URGENCE 24/7</span>
-    </a>
+    <div id="pages-navbar-container"></div>
 
-    <!-- Hero Section with Slideshow -->
-    <section id="hero" class="relative w-full overflow-hidden" style="height: 60vh;">
-        <div id="hero-slideshow" class="absolute inset-0 z-0">
-            <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_09.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_10.webp')"></div>
-            <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
-        
-        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-4 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
-                DÉBOUCHEUR EXPERT
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-200 font-playfair mb-8 max-w-2xl" data-translate="prices_subtitle">
-                Des prix transparents pour un service de qualité
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-xl border border-white/20">
-                    <span class="text-3xl font-ops text-green">200$</span>
-                    <span class="text-white ml-2" data-translate="starting_from">à partir de</span>
-                </div>
-                <div class="bg-cardinal/80 px-6 py-3 rounded-xl flex items-center gap-2">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-                    <span class="text-white font-bold" data-translate="emergency_available">24/7 Urgence disponible</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div id="pages-hero-container"></div>
 
     <!-- Quick Price Cards -->
     <section class="py-16 px-4 relative z-20" style="margin-top: 6vh;">
@@ -568,11 +432,11 @@
     </section>
 
     <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <div id="pages-footer-container"></div>
 
     <!-- Dynamic Components -->
-    <div id="banner-container"></div>
-    <div id="helper-container"></div>
+    <div id="pages-banner-container"></div>
+    <div id="pages-helper-container"></div>
 
     <script>
         // Theme detection

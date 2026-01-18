@@ -1,24 +1,28 @@
-const CACHE_NAME = 'deboucheur-cache-v3';
+const CACHE_NAME = 'deboucheur-cache-v7';
 const PRECACHE_URLS = [
   './index.html',
   './manifest.json',
+  './errors.html',
   // Core Stylesheets
-  './assets/styles/style_00.css',
-  './assets/styles/style_01.css',
-  './assets/styles/style_02.css',
-  './assets/styles/style_03.css',
-  './assets/styles/style_04.css',
-  './assets/styles/style_05.css',
-  './assets/styles/style_06.css',
-  './assets/styles/style_07.css',
+  './assets/styles/index.css',
+  './assets/styles/errors.css',
   './assets/styles/fonts.css',
   './assets/styles/tailwind.css',
   './assets/styles/panda.css',
+  // Page-specific Stylesheets
+  './assets/styles/tools.css',
+  './assets/styles/conditions.css',
+  './assets/styles/politics.css',
+  './assets/styles/team.css',
+  './assets/styles/plumbing.css',
+  './assets/styles/events.css',
+  './assets/styles/prices.css',
   // Core Scripts
   './assets/scripts/libs.js',
   './assets/scripts/main.js',
   './assets/scripts/time.js',
   './assets/scripts/icons.js',
+  './assets/scripts/components/loader.js',
   // Slides
   './assets/images/slide/slide_00.webp',
   './assets/images/slide/slide_01.webp',
@@ -32,11 +36,6 @@ const PRECACHE_URLS = [
   './assets/images/slide/slide_09.webp',
   './assets/images/slide/slide_10.webp',
   './assets/images/slide/slide_11.webp',
-  './assets/images/slide/slide_12.webp',
-  './assets/images/slide/slide_13.webp',
-  './assets/images/slide/slide_14.webp',
-  './assets/images/slide/slide_15.webp',
-  './assets/images/slide/slide_16.webp',
   // Logos
   './assets/images/logo/logo.png',
   './assets/images/logo/favicon-16x16.png',
@@ -47,8 +46,57 @@ const PRECACHE_URLS = [
   // Overlay logos
   './assets/images/location/lord_logo.webp',
   './assets/images/location/apt_logo.webp',
-  './offline.html',
-  './pages/prices.html'
+  // Shared Components (pages/ level)
+  './pages/components/navbar.html',
+  './pages/components/footer.html',
+  './pages/components/banner.html',
+  './pages/components/helper.html',
+  './pages/components/hero.html',
+  // Index Components
+  './pages/index/components/navbar.html',
+  './pages/index/components/footer.html',
+  './pages/index/components/banner.html',
+  './pages/index/components/helper.html',
+  './pages/index/components/hero.html',
+  // Index Sections
+  './pages/index/section_00.html',
+  './pages/index/section_01.html',
+  './pages/index/section_02.html',
+  './pages/index/section_03.html',
+  './pages/index/section_04.html',
+  './pages/index/section_05.html',
+  './pages/index/section_06.html',
+  './pages/index/section_07.html',
+  './pages/index/section_08.html',
+  // Plumbing Components
+  './pages/plumbing/components/navbar.html',
+  './pages/plumbing/components/footer.html',
+  './pages/plumbing/components/banner.html',
+  './pages/plumbing/components/helper.html',
+  // Plumbing Hero Components
+  './pages/plumbing/drainage/hero.html',
+  './pages/plumbing/normes/hero.html',
+  './pages/plumbing/supply/hero.html',
+  './pages/plumbing/unclog/hero.html',
+  // Error Components
+  './pages/errors/components/navbar.html',
+  // Pages
+  './pages/errors/offline.html',
+  './pages/prices.html',
+  './pages/plumbing.html',
+  './pages/plumbing/unclog.html',
+  './pages/events.html',
+  './pages/tools.html',
+  './pages/team.html',
+  './pages/politics.html',
+  './pages/conditions.html',
+  // Videos
+  './assets/videos/video_00.mp4',
+  './assets/videos/video_01.mp4',
+  './assets/videos/video_02.mp4',
+  './assets/videos/video_03.mp4',
+  './assets/videos/video_04.mp4',
+  './assets/videos/video_05.mp4'
 ];
 
 self.addEventListener('install', event => {

@@ -64,7 +64,6 @@ A bilingual (French/English) PWA for **Déboucheur Expert** (unclogged.me) - a r
 ### PWA
 - [assets/scripts/service.js](../assets/scripts/service.js) - Service worker with network-first caching
 - [manifest.json](../manifest.json) - App metadata for installability with bilingual content
-- [site.manifest](../site.manifest) - Extended manifest with shortcuts
 - [pages/errors/offline.html](../pages/errors/offline.html) - Fallback page when offline
 - [errors.html](../errors.html) - Dynamic error router
 

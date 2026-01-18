@@ -5,33 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
-    <title>Alimentation en Eau | Guide Plomberie | Déboucheur Expert</title>
+    <title lang="fr">Alimentation d'Eau | Guide Pratique de Plomberie | Déboucheur Expert</title>
+    <title lang="en">Water Supply | Practical Plumbing Guide | Unclogged Me</title>
     <meta lang="fr" name="description" content="Guide complet sur l'alimentation en eau : collecteurs, tuyaux PER, cuivre, multicouche, raccords et normes de pression. Déboucheur Expert.">
     <meta lang="en" name="description" content="Complete guide to water supply: manifolds, PEX pipes, copper, multilayer, fittings and pressure standards. Déboucheur Expert.">
 
     <!-- Preload hero slides -->
-    <link rel="preload" as="image" href="../../assets/images/slide/slide_10.webp">
-    <link rel="preload" as="image" href="../../assets/images/slide/slide_11.webp">
+    <link rel="preload" as="video" href="../../assets/videos/video_04.mp4">
+
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../assets/images/logo/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/images/logo/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/images/logo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../../assets/images/logo/favicon-128.png" sizes="128x128">
     <link href="../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta lang="fr" name="application-name" content="Déboucheur Expert">
+    <meta lang="en" name="application-name" content="Unclogged Me">
     <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="../../assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../../assets/styles/idex.css">
     
     <!-- Tailwind v4 Extended Theme -->
     <link rel="stylesheet" href="../../assets/styles/tailwind.css">
@@ -62,6 +80,13 @@
                         inter: ['Inter', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
@@ -149,35 +174,10 @@
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
 
     <!-- Dynamic Navbar Container -->
-    <div id="navbar-container"></div>
-    
-    <!-- URGENCY BUTTON -->
-    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
-        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-        <span data-translate="urgence">URGENCE 24/7</span>
-    </a>
+    <div id="plumbing-navbar-container"></div>
 
     <!-- HERO SECTION -->
-    <section class="hero-gradient relative pt-24 pb-16 min-h-[40vh] flex items-center">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute inset-0 bg-[url('../../assets/images/slide/slide_03.webp')] bg-cover bg-center"></div>
-        </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="text-sm mb-4 text-gray-300">
-                <a href="../../index.html" class="hover:text-white">Accueil</a>
-                <span class="mx-2">/</span>
-                <a href="../plumbing.html" class="hover:text-white">Guide Plomberie</a>
-                <span class="mx-2">/</span>
-                <span class="text-blue">Alimentation en Eau</span>
-            </nav>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-ops text-white mb-4">
-                <span class="text-blue">ALIMENTATION</span> EN EAU
-            </h1>
-            <p class="text-xl text-gray-300 max-w-3xl">
-                Guide complet pour installer et comprendre votre réseau d'alimentation en eau : collecteurs, tuyaux, raccords et normes à respecter.
-            </p>
-        </div>
-    </section>
+    <div id="supply-hero-container"></div>
 
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -205,7 +205,7 @@
                         <h4 class="font-ops text-sm mb-3">AUTRES SECTIONS</h4>
                         <nav class="space-y-2 text-sm">
                             <a href="drainage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Système de drainage</a>
-                            <a href="debouchage.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Débouchage</a>
+                            <a href="unclog.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Débouchage</a>
                             <a href="normes.html" class="block text-gray-600 dark:text-gray-400 hover:text-blue">→ Normes plomberie</a>
                         </nav>
                     </div>
@@ -525,7 +525,7 @@
     </main>
 
     <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <div id="plumbing-footer-container"></div>
 
     <script>
         // Theme toggle
@@ -571,8 +571,8 @@
         });
     </script>
 <!-- Dynamic Components: Cookie Banner & AI Helper -->
-<div id="banner-container"></div>
-<div id="helper-container"></div>
+<div id="plumbing-banner-container"></div>
+<div id="plumbing-helper-container"></div>
 
 <!-- Core Libraries (Alpine.js, Day.js, HTTP utilities) -->
 <script src="../../assets/scripts/libs.js" defer></script>

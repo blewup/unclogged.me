@@ -1,0 +1,67 @@
+<!-- 5. CONTACT SECTION -->
+<!-- Component: pages/index/section_04.html -->
+<section id="contact" class="sticky-section relative w-full overflow-hidden bg-cover bg-fixed bg-center" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); height: 100vh;">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 w-full h-full flex flex-col justify-center py-[2vh]">
+        <div class="w-full md:max-w-7xl md:mx-auto md:px-4 h-[96vh]">
+            <div id="contact-slider-track" class="contact-slider flex w-[200vw] md:w-full md:grid md:grid-cols-2 md:gap-8 items-start h-full pt-10" style="transform: translateY(-4%);">
+                
+                <!-- Left: Form -->
+                <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
+                    <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-4 md:p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-ops mb-4 flex items-center gap-3 text-blue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_send">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> ENVOYEZ
+                        </h3>
+                        <form class="space-y-3 flex-grow flex flex-col">
+                            <div class="grid grid-cols-2 gap-3">
+                                <input type="text" id="fname" placeholder="Prénom" oninput="saveCache('fname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                <input type="text" id="lname" placeholder="Nom" oninput="saveCache('lname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                            </div>
+                            <input type="email" id="email" placeholder="Email" oninput="saveCache('email', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                            <input type="tel" id="phone" placeholder="(###)###-####" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); saveCache('phone', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold font-inter">
+                            <textarea id="msg" placeholder="Message" oninput="saveCache('msg', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full flex-grow bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold"></textarea>
+                            <input type="file" id="attachment" accept=".png,.jpg,.jpeg,.webp,.avif" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold file:mr-2 file:px-4 file:py-2 file:border-0 file:bg-blue file:text-white file:rounded-full">
+                            <button id="contact-submit" type="button" class="w-full bg-blue hover:bg-blue-700 text-white font-ops text-xl py-3 box-radius shadow-lg" data-translate="btn_send" onclick="submitContact()">ENVOYER</button>
+                            <div id="contact-status" class="hidden text-xs md:text-sm font-bold mt-2"></div>
+                        </form>
+                    </div>
+                    <button onclick="slideContact(1)" class="md:hidden absolute top-1/2 right-2 z-50 w-12 h-12 bg-blue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-right"></i></button>
+                </div>
+
+                <!-- Right: Infos -->
+                <div class="w-[100vw] px-6 md:w-full md:px-0 relative h-full">
+                    <div class="bg-white/15 dark:bg-black/15 backdrop-blur-md p-4 md:p-6 box-radius shadow-2xl border border-white/10 h-full flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-ops mb-4 md:mb-6 flex items-center gap-3 text-blue theme-text-outline dark:dark-mode-outline light:light-mode-outline" data-translate="contact_info">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg> INFOS
+                        </h3>
+                        <div class="space-y-4 md:space-y-6 font-playfair dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
+                            <div>
+                                <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4>
+                                <p class="text-sm md:text-base">Billy St-Hilaire, 35 ans,</p>
+                                <p class="text-sm md:text-base">Diplômé de l'École des Métiers,</p>
+                                <p class="text-sm md:text-base">de la Construction de Montréal,</p>
+                            </div>
+                            <div>
+                                <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4>
+                                <p class="text-sm md:text-base">10 ans pour le groupe Centco inc,</p>
+                                <p class="text-sm md:text-base">Contrats multiples avec le local 144,</p>
+                                <p class="text-sm md:text-base">Fier supporteur et employé de</p>
+                                <p class="text-sm md:text-base">Plomberie Martin Boisvert enr.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4>
+                                <p class="text-sm md:text-base">Toujours actif pour répondre aux</p>
+                                <p class="text-sm md:text-base">diverses appels de services.</p>
+                                <p class="text-sm md:text-base">Que ce soit pour changer une valve</p>
+                                <p class="text-sm md:text-base">ou réparer un tuyau qui coule.</p>
+                                <p class="text-sm md:text-base">Le déboucheur sait s'y prendre.</p>
+                                <p class="text-xs mt-1 font-inter italic">*Aucune construction neuve</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="slideContact(0)" class="md:hidden absolute top-1/2 left-2 z-50 w-12 h-12 bg-blue/50 rounded-full text-white flex items-center justify-center"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

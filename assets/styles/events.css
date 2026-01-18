@@ -1,0 +1,154 @@
+/**
+ * Déboucheur Expert - Events/Calendar Page Stylesheet
+ * assets/styles/events.css - Dedicated styling for pages/events.html
+ */
+
+/* Base body reset */
+body { 
+    width: 100vw; 
+    overflow-x: hidden; 
+}
+
+/* Calendar Grid */
+.calendar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 2px; 
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.calendar-day:hover { 
+    transform: scale(1.08); 
+    z-index: 10;
+}
+
+.calendar-day.today { 
+    box-shadow: 0 0 0 3px #2563EB; 
+    font-weight: bold; 
+    z-index: 5;
+}
+
+/* Pricing multiplier colors */
+.calendar-day.x1 { 
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.25) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.calendar-day.x15 { 
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.25) 100%);
+    border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.calendar-day.x2 { 
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.25) 100%);
+    border: 1px solid rgba(249, 115, 22, 0.4);
+}
+
+.calendar-day.x3 { 
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.15) 0%, rgba(196, 30, 58, 0.25) 100%);
+    border: 1px solid rgba(196, 30, 58, 0.5);
+}
+
+/* Calendar header */
+.calendar-header { 
+    font-weight: bold; 
+    text-align: center; 
+    padding: 0.5rem; 
+    font-size: 0.7rem;
+    color: #6b7280;
+}
+
+/* Month card */
+.month-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.08) 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1rem;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.dark .month-card {
+    background: linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+/* Legend card */
+.legend-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Legend items */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.legend-item:hover {
+    transform: translateX(5px);
+}
+
+.legend-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+/* Hero slideshow */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Tooltip */
+.day-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2937;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 100;
+}
+
+.calendar-day:hover .day-tooltip {
+    opacity: 1;
+}
