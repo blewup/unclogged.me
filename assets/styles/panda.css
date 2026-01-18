@@ -629,40 +629,34 @@
    UI SIZE ADJUSTMENTS (Déboucheur Expert)
    ============================================ */
 
-/* --- Theme/Language Toggle Buttons (2x smaller, icons 0.8x) --- */
+/* --- Theme/Language Toggle Buttons (consistent with index navbar) --- */
 .navbar-toggle {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px;
-    min-height: 20px;
-    padding: 2px;
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px;
+    min-height: 56px;
+    padding: 4px;
 }
 
 .navbar-toggle i,
 .navbar-toggle svg {
-    font-size: 0.65rem !important;
-    width: 0.65rem;
-    height: 0.65rem;
-    transform: scale(0.8);
+    font-size: 1.5rem !important;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .navbar-toggle span {
-    font-size: 0.55rem !important;
+    font-size: 1.125rem !important;
 }
 
-/* --- Services Icons (8x smaller) --- */
+/* --- Services Icons (use inline Tailwind classes, no override) --- */
 .service-icon-sm {
-    font-size: 0.75rem !important;
+    font-size: 0.75rem;
     width: 0.75rem;
     height: 0.75rem;
 }
 
-#services .service-card i,
-#services .service-card svg {
-    font-size: 0.875rem !important;
-    width: 14px;
-    height: 14px;
-}
+/* Service icons inherit their inline Tailwind sizing - no !important overrides */
 
 /* --- FAQ Caret Icons (10x smaller) --- */
 .faq-caret-sm {

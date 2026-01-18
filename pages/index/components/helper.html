@@ -3,8 +3,8 @@
 <!-- Paths: api/, assets/ (dynamic based on page location) -->
 
 <!-- L'APPRENTI FLOATING BUTTON -->
-<button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-transparent hover:bg-transparent text-white rounded-full p-0 transition-transform hover:scale-110 border-0 animate-bounce-slow flex items-center justify-center overflow-hidden" style="width: 80px; height: 80px;">
-    <img src="" alt="L'Apprenti" class="w-full h-full object-cover" id="helper-logo-img">
+<button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-transparent hover:bg-transparent text-white rounded-none p-0 transition-transform hover:scale-110 border-0 animate-bounce-slow flex items-center justify-center overflow-visible" style="width: 80px; height: 80px;">
+    <img src="" alt="L'Apprenti" class="w-full h-full object-cover rounded-none" id="helper-logo-img">
 </button>
 
 <!-- AI CHAT WIDGET -->
@@ -358,11 +358,11 @@ COMPORTEMENT CONVERSATIONNEL:
 }
 
 .animate-bounce-slow {
-    animation: bounce 3s infinite;
+    animation: bounce 3.53s infinite;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(-10%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    0%, 100% { transform: translateY(-15%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
     50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 }
 </style>
