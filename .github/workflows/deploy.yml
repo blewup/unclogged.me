@@ -1,10 +1,10 @@
-# =============================================================================
+# ============================================================================
 # Déboucheur Expert - GitHub Actions CI/CD Pipeline
 # Static HTML/CSS/JS + PHP Backend Deployment
-# =============================================================================
+# ============================================================================
 # This workflow validates, tests, and deploys the unclogged.me website
 # to Namecheap cPanel hosting via FTP/SFTP
-# =============================================================================
+# ============================================================================
 
 name: Deploy Déboucheur Expert
 
@@ -36,7 +36,7 @@ env:
 jobs:
   # ===========================================================================
   # JOB 1: Validate & Lint
-  # ===========================================================================
+  # ============================================================================
   validate:
     name: 🔍 Validate Code
     runs-on: ubuntu-latest
@@ -70,9 +70,6 @@ jobs:
             exit 1
           fi
           echo "✅ All PHP files passed syntax validation"
-          find . -name "*.php" -not -path "./vendor/*" -not -path "./backup/*" | \
-            xargs -I {} php -l {} | grep -v "No syntax errors"
-          echo "✅ PHP syntax validation complete"
 
       - name: 📋 Validate JSON files
         run: |
@@ -287,4 +284,6 @@ jobs:
           echo "🔗 Commit: ${{ github.sha }}"
           echo "👤 Author: ${{ github.actor }}"
           echo "🔍 Check the Actions log for details"
+          echo "================================================"
+          echo "❌ DEPLOYMENT FAILED"
           echo "================================================"
