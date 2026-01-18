@@ -1,6 +1,6 @@
 /**
  * Déboucheur Expert - Debouchage/Unclogging Page Icons
- * SVG icons specific to debouchage.html - Drain unclogging guide
+ * SVG icons specific to unclog.html - Drain unclogging guide
  */
 const DEBOUCHAGE_ICONS = {
     // Unclogging Tools

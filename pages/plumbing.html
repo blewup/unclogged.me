@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <title>Guide de Plomberie Résidentielle | Déboucheur Expert</title>
+    <title>Guide Pratique de Plomberie Résidentielle | Déboucheur Expert</title>
     <meta lang="fr" name="description" content="Guide complet de plomberie résidentielle: débouchage, inspection par caméra, entretien des drains, remplacement de valves et plus. Conseils d'expert par Billy St-Hilaire.">
     <meta lang="en" name="description" content="Complete residential plumbing guide: unclogging, camera inspection, drain maintenance, valve replacement and more. Expert advice by Billy St-Hilaire.">
     
     <!-- Preload hero video for faster paint -->
     <link rel="preload" as="video" href="../assets/videos/video_00.mp4">
     
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/logo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon-128.png" sizes="128x128">
     <link href="../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta lang="fr" name="application-name" content="Déboucheur Expert">
+    <meta lang="en" name="application-name" content="Unclogged Me">
     <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="../assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../assets/styles/style_00.css">
+    <link rel="stylesheet" href="../assets/styles/idex.css">
     <link rel="stylesheet" href="../assets/styles/tailwind.css">
     <link rel="stylesheet" href="../assets/styles/panda.css">
+    <link rel="stylesheet" href="../assets/styles/plumbing.css">
     
     <!-- Tailwind Configuration -->
     <script>
@@ -55,6 +76,13 @@
                         inter: ['Inter', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
@@ -118,112 +146,14 @@
       ]
     }
     </script>
-    
-    <style>
-        body { width: 100vw; overflow-x: hidden; }
-        
-        /* Video hero styles */
-        .video-hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .video-hero video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
-            z-index: 10;
-        }
-        
-        /* Navigation dots */
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.3);
-            margin: 8px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .nav-dot:hover, .nav-dot.active {
-            background-color: #22c55e;
-            border-color: white;
-            transform: scale(1.2);
-        }
-        
-        .guide-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-        .guide-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border-color: rgba(37, 99, 235, 0.5);
-        }
-        
-        .tech-term {
-            background: rgba(37, 99, 235, 0.2);
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        
-        .section-divider {
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #22c55e, transparent);
-        }
-        
-        .toc-item {
-            transition: all 0.2s;
-        }
-        .toc-item:hover {
-            transform: translateX(10px);
-            color: #22c55e;
-        }
-    </style>
 </head>
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-comic">
 
     <!-- Dynamic Navbar Container -->
-    <div id="navbar-container"></div>
-    
-    <!-- URGENCY BUTTON -->
-    <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
-        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-        <span data-translate="urgence">URGENCE 24/7</span>
-    </a>
+    <div id="pages-navbar-container"></div>
 
     <!-- Video Hero Section -->
-    <section id="hero" class="video-hero relative w-full overflow-hidden" style="height: 60vh;">
-        <!-- Background Video -->
-        <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="auto">
-            <source src="../assets/videos/video_00.mp4" type="video/mp4">
-        </video>
-        
-        <!-- Dark Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
-        
-        <!-- Hero Content: Title + Button Only -->
-        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-ops text-white mb-8 [text-shadow:_3px_3px_0_#000]" data-translate="hero_title">
-                DÉBOUCHEUR EXPERT
-            </h1>
-            <a href="../index.html#contact" class="flex items-center justify-center bg-blue text-white font-ops text-lg md:text-2xl px-6 md:px-8 py-3 md:py-4 rounded-full shadow-lg border-2 border-black transform hover:scale-110 transition-transform" data-translate="btn_rdv">
-                PRENDRE RENDEZ-VOUS
-            </a>
-        </div>
-    </section>
+    <div id="plumbing-hero-container"></div>
 
     <!-- Table of Contents -->
     <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt sticky top-0 z-40 shadow-lg" style="margin-top: 6vh;">
@@ -238,7 +168,7 @@
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
                     <span data-translate="toc_drainage">Système de drainage</span>
                 </a>
-                <a href="plumbing/debouchage.html" class="toc-item px-4 py-2 bg-cardinal text-white rounded-lg hover:bg-red-700 flex items-center gap-2">
+                <a href="plumbing/unclog.html" class="toc-item px-4 py-2 bg-cardinal text-white rounded-lg hover:bg-red-700 flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
                     <span data-translate="toc_debouchage">Débouchage</span>
                 </a>
@@ -415,7 +345,7 @@
                             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cardinal mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span data-translate="urg_3">Absence totale d'eau dans la maison</span></li>
                         </ul>
                         <ul class="space-y-3">
-                            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cardinal mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span data-translate="urg_4">Odeur de gaz près des canalisations</span></li>
+                            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cardinal mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span data-translate="urg_4">Douche et/ou bain inutilisables</span></li>
                             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cardinal mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span data-translate="urg_5">Toilette unique bouchée (sans alternative)</span></li>
                             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cardinal mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span data-translate="urg_6">Tuyau gelé menaçant d'éclater</span></li>
                         </ul>
@@ -486,11 +416,11 @@
     </section>
 
     <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <div id="pages-footer-container"></div>
 
     <!-- Dynamic Components: Cookie Banner & AI Helper -->
-    <div id="banner-container"></div>
-    <div id="helper-container"></div>
+    <div id="pages-banner-container"></div>
+    <div id="pages-helper-container"></div>
 
     <!-- Core Libraries -->
     <script src="../assets/scripts/libs.js" defer></script>

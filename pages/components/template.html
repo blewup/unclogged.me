@@ -1,0 +1,35 @@
+<!-- Pages Components: template.html -->
+<!-- Simplified hero for pages/conditions.html and pages/politics.html -->
+<!-- Single static slide_01.webp at 40vh height -->
+
+<section id="hero" class="relative w-full bg-lightBase dark:bg-darkBase" style="height: 40vh;">
+    <!-- Static Background Image -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('../assets/images/slide/slide_01.webp')"></div>
+    
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+    <!-- Hero Content - Title and Button only -->
+    <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+        <!-- Hero Title -->
+        <h1 class="font-ops text-white text-4xl md:text-5xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+            <span data-translate="hero_title_fr">DÉBOUCHEUR EXPERT</span>
+        </h1>
+        
+        <!-- CTA Button -->
+        <a href="../index.html#contact" class="mt-4 flex items-center justify-center bg-blue text-white font-ops text-lg px-6 py-3 rounded-full shadow-lg border-2 border-black transform transition-transform hover:scale-110" data-translate="btn_rdv">
+            PRENDRE RENDEZ-VOUS
+        </a>
+    </div>
+</section>
+
+<script>
+// Update hero title based on language
+(function updateHeroTitle() {
+    const titleEl = document.querySelector('[data-translate="hero_title_fr"]');
+    if (!titleEl) return;
+    
+    const lang = localStorage.getItem('language') || 'fr';
+    titleEl.textContent = lang === 'en' ? 'UNCLOGGED.ME' : 'DÉBOUCHEUR EXPERT';
+})();
+</script>

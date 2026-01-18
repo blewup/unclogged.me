@@ -1,0 +1,75 @@
+<!--
+    COOKIE CONSENT BANNER COMPONENT - Déboucheur Expert (Level 3: pages/errors/codes/)
+    Displays GDPR-compliant cookie consent notification
+    Includes: consent logic, theme/language detection, backend logging
+    Paths configured for: pages/errors/codes/*.html
+    
+    Usage: Include this component at the end of <body>
+-->
+
+<div id="cookie-banner" class="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 p-3 text-sm shadow-lg box-radius z-50 flex flex-col gap-2 max-w-xs">
+    <p class="font-playfair" data-translate="cookie_msg">En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.</p>
+    <div class="flex items-center gap-2">
+        <button id="accept-cookies" class="px-3 py-1 bg-blue-600 text-white box-radius font-ops hover:bg-blue-700 transition-colors" data-translate="cookie_accept">Accepter</button>
+        <a href="../../politics.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap font-playfair" data-translate="cookie_learn">En savoir plus</a>
+    </div>
+</div>
+
+<script>
+(function() {
+    const banner = document.getElementById('cookie-banner');
+    const btn = document.getElementById('accept-cookies');
+    if (!banner || !btn) return;
+    
+    // API path for codes level pages (pages/errors/codes/*.html)
+    const apiBasePath = '../../../api/';
+    
+    // Hide banner if consent already stored
+    if (localStorage.getItem('consentAccepted')) {
+        banner.style.display = 'none';
+    }
+    
+    btn.addEventListener('click', function() {
+        banner.style.display = 'none';
+        localStorage.setItem('consentAccepted', 'true');
+        
+        // Determine preferred theme and language based on system settings
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Apply theme and store preference
+        if (prefersDark) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // Determine preferred language (default fr if starts with fr)
+        const browserLang = (navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+        
+        // If currentLang differs, update translations
+        if (typeof currentLang !== 'undefined' && typeof toggleLanguage === 'function') {
+            if (currentLang !== browserLang) {
+                toggleLanguage();
+            }
+        }
+        localStorage.setItem('language', browserLang);
+        
+        // Build diagnostics for backend
+        const data = {
+            tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || ''),
+            lang: browserLang,
+            theme: prefersDark ? 'dark' : 'light',
+            screen: (window.innerWidth + 'x' + window.innerHeight),
+            ua: navigator.userAgent
+        };
+        
+        fetch(apiBasePath + 'backend.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(() => {}); // silently ignore errors
+    });
+})();
+</script>

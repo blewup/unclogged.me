@@ -1,16 +1,15 @@
 <!--
     COOKIE CONSENT BANNER COMPONENT - Déboucheur Expert
+    Level: pages/components/ → For pages/*.html files
     Displays GDPR-compliant cookie consent notification
     Includes: consent logic, theme/language detection, backend logging
-    
-    Usage: Include this component at the end of <body>
 -->
 
 <div id="cookie-banner" class="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 p-3 text-sm shadow-lg box-radius z-50 flex flex-col gap-2 max-w-xs">
     <p class="font-playfair" data-translate="cookie_msg">En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.</p>
     <div class="flex items-center gap-2">
         <button id="accept-cookies" class="px-3 py-1 bg-blue-600 text-white box-radius font-ops hover:bg-blue-700 transition-colors" data-translate="cookie_accept">Accepter</button>
-        <a href="pages/politics.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap font-playfair" data-translate="cookie_learn">En savoir plus</a>
+        <a href="politics.html" class="underline text-blue-600 hover:text-blue-700 whitespace-nowrap font-playfair" data-translate="cookie_learn">En savoir plus</a>
     </div>
 </div>
 
@@ -20,17 +19,8 @@
     const btn = document.getElementById('accept-cookies');
     if (!banner || !btn) return;
     
-    // Determine base path for API calls
-    const isIndexPage = window.location.pathname.endsWith('index.html') || 
-                        window.location.pathname.endsWith('/') ||
-                        window.location.pathname === '';
-    const apiBasePath = isIndexPage ? 'api/' : '../api/';
-    
-    // Fix politics link based on current page location
-    const politicsLink = banner.querySelector('a[href*="politics"]');
-    if (politicsLink) {
-        politicsLink.href = isIndexPage ? 'pages/politics.html' : 'politics.html';
-    }
+    // API path for pages/*.html level
+    const apiBasePath = '../api/';
     
     // Hide banner if consent already stored
     if (localStorage.getItem('consentAccepted')) {

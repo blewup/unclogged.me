@@ -1,0 +1,12 @@
+<!-- 7. LESSONS SECTION (Video background) -->
+<!-- Component: pages/index/section_06.html -->
+<section id="lessons" class="sticky-section relative w-full overflow-hidden bg-black text-white">
+    <!-- Video fills the entire section and plays silently in a loop. It will start once the user reaches this section. -->
+    <video id="lesson-video" class="absolute inset-0 w-full h-full object-cover" src="assets/videos/video_00.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <!-- Semi-transparent overlay with call‑to‑action -->
+    <div class="lesson-overlay">
+        <h2 class="text-4xl md:text-6xl font-ops mb-4 text-white [text-shadow:_2px_2px_0_#000,_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000]" data-translate="lessons_title">Leçons&nbsp;Interactives</h2>
+        <p class="font-playfair max-w-xl mb-6 text-lg md:text-xl text-white [text-shadow:_1px_1px_0_#000,_-1px_-1px_0_#000,_1px_-1px_0_#000,_-1px_1px_0_#000]" data-translate="lessons_desc">Découvrez des conseils pratiques de plomberie avec Billy et apprenez à mieux comprendre votre système de drainage. Cette vidéo boucle toutes les 40&nbsp;secondes.</p>
+        <button onclick="scrollToSection(7)" class="bg-blue px-8 py-3 font-ops text-lg rounded-full border-2 border-black shadow-lg transition-transform hover:scale-110" data-translate="lessons_btn">ENCORE PLUS</button>
+    </div>
+</section>

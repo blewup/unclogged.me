@@ -3,20 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <title>Erreur | Déboucheur Expert</title>
     <meta name="robots" content="noindex, nofollow">
     
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="assets/images/logo/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="assets/images/logo/favicon-16x16.png" sizes="16x16" />
-    <link href="assets/images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Extended Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/logo/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon-128.png" sizes="128x128">
+    <link href="assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="application-name" content="Déboucheur Expert">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts -->
     <link rel="stylesheet" href="assets/styles/fonts.css">
-    <link rel="stylesheet" href="assets/styles/style_00.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
     
     <script>
         tailwind.config = {
@@ -36,11 +62,21 @@
                         ops: ['"Black Ops One"', 'cursive'],
                         comic: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
                         inter: ['Inter', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
         }
     </script>
+    
+    <!-- Global Icons Library -->
+    <script src="assets/scripts/icons.js" defer></script>
     
     <style>
         .error-code {
@@ -129,7 +165,7 @@
                             <svg class="w-5 h-5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
-                            <a href="tel:+14385302343" class="text-blue hover:underline font-bold">+1 (514) 972-2078</a>
+                            <a href="tel:+14385302343" class="text-blue hover:underline font-bold">+1 (438) 530-2343</a>
                         </div>
                         <div class="flex items-center gap-3">
                             <svg class="w-5 h-5 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -156,7 +192,7 @@
         
         <!-- Footer -->
         <footer class="py-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500">
-            <p>&copy; 2026 Déboucheur Expert (unclogged.me). Tous droits réservés.</p>
+            <p>&copy; 2025 Déboucheur Expert (unclogged.me). Tous droits réservés.</p>
         </footer>
     </div>
     

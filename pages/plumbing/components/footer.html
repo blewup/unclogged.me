@@ -1,0 +1,40 @@
+<!--
+    FOOTER COMPONENT - Déboucheur Expert (Level: pages/plumbing/)
+    Include this in all pages using: <div id="footer-container"></div>
+    Then load with: loadComponent('footer-container', 'components/footer.html')
+    Paths configured for: pages/plumbing/*.html
+-->
+
+        <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-800 text-gray-600 dark:text-gray-400 relative" style="height: 10vh;">
+            <div class="max-w-full mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between text-xs md:text-sm relative">
+                <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
+                    <!-- Footer name at 90% of normal 2.4rem = ~2.16rem -->
+                    <h4 class="font-impact text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
+                    <p class="mt-1 text-[10px] font-inter italic">&copy; 2025 deboucheur expert</p>
+                </div>
+                <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
+                    <a href="#" class="text-blue-600 hover:scale-125 transition-transform"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-blue-400 hover:scale-125 transition-transform"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-red-500 hover:scale-125 transition-transform"><i class="fab fa-google text-xl"></i></a>
+                </div>
+                <div class="md:absolute md:right-[5px] flex items-center gap-4">
+                    <a href="../politics.html" class="hover:text-blue transition-colors">Politique de confidentialité</a>
+                    <a href="../conditions.html" class="hover:text-blue transition-colors">Conditions d'utilisation</a>
+                    <a href="../team.html" class="hover:text-blue transition-colors">Équipe</a>
+                </div>
+            </div>
+        </footer>
+
+<script>
+// Initialize footer links based on context (index vs subpage)
+(function initFooterLinks() {
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const prefix = isIndex ? 'data-href-index' : 'data-href-page';
+    
+    // Update footer navigation links
+    document.querySelectorAll('#footer-container [data-href-index]').forEach(link => {
+        const href = link.getAttribute(prefix);
+        if (href) link.href = href;
+    });
+})();
+</script>

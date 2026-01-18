@@ -9,24 +9,44 @@
     <meta lang="fr" name="description" content="Erreur 502 - Déboucheur Expert, services de plomberie résidentielle à Montréal et Montérégie.">
     <meta lang="en" name="description" content="Error 502 - Déboucheur Expert, residential plumbing services in Montreal and Montérégie.">
     
+    <!-- Security & Performance Headers -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Extended Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../../assets/images/logo/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../assets/images/logo/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../assets/images/logo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../assets/images/logo/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../../assets/images/logo/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../../assets/images/logo/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../../assets/images/logo/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../assets/images/logo/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-196x196.png" sizes="196x196">
     <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../../../assets/images/logo/favicon-128.png" sizes="128x128">
     <link href="../../../assets/images/logo/favicon.ico" rel="icon" type="image/x-icon">
+    <meta lang="fr" name="application-name" content="Déboucheur Expert">
+    <meta lang="en" name="application-name" content="Unclogged Me">
     <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="../../../assets/images/logo/mstile-144x144.png">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="../../../manifest.json">
     <meta name="theme-color" content="#2563EB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Local Fonts (NO external CDN) -->
     <link rel="stylesheet" href="../../../assets/styles/fonts.css">
-    <link rel="stylesheet" href="../../../assets/styles/style_00.css">
-    <link rel="stylesheet" href="../../../assets/styles/style_08.css">
+    <link rel="stylesheet" href="../../../assets/styles/idex.css">
+    <link rel="stylesheet" href="../../../assets/styles/errors.css">
     <link rel="stylesheet" href="../../../assets/styles/tailwind.css">
     <link rel="stylesheet" href="../../../assets/styles/panda.css">
     
@@ -54,6 +74,13 @@
                         merriweather: ['Merriweather', 'serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    screens: {
+                        'portrait': {'raw': '(orientation: portrait)'},
+                        'landscape': {'raw': '(orientation: landscape)'},
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
@@ -67,7 +94,7 @@
 <body class="bg-lightBase dark:bg-darkBase text-gray-800 dark:text-gray-100 font-playfair error-502">
 
     <!-- Dynamic Component Containers -->
-    <div id="navbar-container"></div>
+    <div id="codes-navbar-container"></div>
     
     <!-- URGENCY BUTTON -->
     <a href="tel:+14385302343" id="urgency-btn" class="fixed top-[13vh] right-4 z-[200] bg-cardinal hover:bg-red-700 text-white px-4 py-2 rounded-lg font-ops shadow-lg transform transition-all duration-300 hover:scale-105 border-2 border-black flex items-center gap-2 box-radius">
@@ -104,11 +131,11 @@
     </section>
 
     <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <div id="codes-footer-container"></div>
 
     <!-- Dynamic Components -->
-    <div id="banner-container"></div>
-    <div id="helper-container"></div>
+    <div id="codes-banner-container"></div>
+    <div id="codes-helper-container"></div>
 
     <script>
         // Theme detection
