@@ -1,4 +1,4 @@
-const CACHE_NAME = 'deboucheur-cache-v9';
+const CACHE_NAME = 'deboucheur-cache';
 const PRECACHE_URLS = [
   './index.html',
   './manifest.json',
