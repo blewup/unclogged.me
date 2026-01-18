@@ -110,6 +110,37 @@ const ScrollModule = (() => {
     };
 
     /**
+     * Handle scroll reveal effects for elements with .reveal-on-scroll class
+     */
+    const handleScrollReveal = () => {
+        const revealElements = $$('.reveal-on-scroll');
+        const scrollFadeElements = $$('.scroll-fade');
+        const windowHeight = window.innerHeight;
+        
+        revealElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            const revealPoint = windowHeight * 0.85;
+            
+            if (elementTop < revealPoint) {
+                el.classList.add('revealed');
+            }
+        });
+        
+        scrollFadeElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            const elementBottom = el.getBoundingClientRect().bottom;
+            const viewCenter = windowHeight * 0.5;
+            
+            // Element is in center of viewport
+            if (elementTop < viewCenter && elementBottom > viewCenter) {
+                el.classList.add('in-view');
+            } else {
+                el.classList.remove('in-view');
+            }
+        });
+    };
+
+    /**
      * Handle scroll events on main content
      */
     const handleScroll = () => {
@@ -127,6 +158,9 @@ const ScrollModule = (() => {
 
         // Navbar hide/show logic
         handleNavbarVisibility(scrollPos);
+        
+        // Scroll reveal effects
+        handleScrollReveal();
 
         lastScrollY = scrollPos;
     };

@@ -139,7 +139,7 @@ const Session = {
 // ============================================================================
 
 const Language = {
-    current: localStorage.getItem('language') || (navigator.language?.startsWith('fr') ? 'fr' : 'fr'),
+    current: localStorage.getItem('language') || 'fr',
     
     translations: {
         fr: {
@@ -478,33 +478,70 @@ const Language = {
 
     toggle() {
         this.current = this.current === 'fr' ? 'en' : 'fr';
-        this.apply();
         localStorage.setItem('language', this.current);
-        const langDisplay = Utils.$('#lang-display');
-        if (langDisplay) langDisplay.innerText = this.current === 'fr' ? 'EN' : 'FR';
         document.documentElement.lang = this.current;
+        
+        // Update all lang-display buttons (may be multiple on page)
+        Utils.$$('#lang-display, [data-lang-display]').forEach(el => {
+            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
+        });
+        
+        this.apply();
         Tracking.event('language_change', { language: this.current });
     },
 
     apply() {
+        const lang = this.current;
+        const trans = this.translations[lang];
+        if (!trans) return;
+        
         Utils.$$('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
-            const translation = this.translations[this.current]?.[key];
-            if (translation) el.innerText = translation;
+            const translation = trans[key];
+            if (translation) {
+                // Use innerHTML to preserve formatting, but escape if needed
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translation;
+                } else {
+                    el.innerText = translation;
+                }
+            }
         });
+        
+        // Update page title if translation exists
+        if (trans.page_title) {
+            const baseTitle = document.title.includes('|') 
+                ? document.title.split('|')[1].trim()
+                : 'Déboucheur Expert';
+            document.title = `${trans.page_title} | ${baseTitle}`;
+        }
     },
 
     t(key) { return this.translations[this.current]?.[key] || key; },
 
     init() {
+        // Read from localStorage
+        this.current = localStorage.getItem('language') || 'fr';
         document.documentElement.lang = this.current;
-        const langDisplay = Utils.$('#lang-display');
-        if (langDisplay) langDisplay.innerText = this.current === 'fr' ? 'EN' : 'FR';
-        this.apply();
+        
+        // Update lang display button
+        Utils.$$('#lang-display, [data-lang-display]').forEach(el => {
+            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
+        });
+        
+        // Apply translations after DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.apply());
+        } else {
+            this.apply();
+        }
     }
 };
 
 const t = (key) => Language.t(key);
+
+// Make Language globally accessible for navbar component
+window.Language = Language;
 
 // ============================================================================
 // THEME MANAGEMENT

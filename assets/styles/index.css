@@ -234,6 +234,32 @@ body {
 }
 
 /* ============================================
+   MOBILE MENU ANIMATION
+   ============================================ */
+.mobile-menu-closed {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transform-origin: top right;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.mobile-menu-open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mobile-nav-link {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* ============================================
    DROPDOWN MENU
    ============================================ */
 .dropdown-closed {
@@ -312,8 +338,8 @@ body {
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(255, 255, 255, 0.7) 100%
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.4) 100%
     );
     transition: opacity var(--transition-base);
 }
@@ -321,8 +347,8 @@ body {
 .dark .service-card::before {
     background: linear-gradient(
         135deg,
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0.65) 100%
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.6) 100%
     );
 }
 
