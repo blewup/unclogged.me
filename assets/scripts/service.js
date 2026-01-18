@@ -1,4 +1,4 @@
-const CACHE_NAME = 'deboucheur-cache-v7';
+const CACHE_NAME = 'deboucheur-cache-v8';
 const PRECACHE_URLS = [
   './index.html',
   './manifest.json',
@@ -22,6 +22,8 @@ const PRECACHE_URLS = [
   './assets/scripts/main.js',
   './assets/scripts/time.js',
   './assets/scripts/icons.js',
+  './assets/scripts/scroll.js',
+  './assets/scripts/testimonials.js',
   './assets/scripts/components/loader.js',
   // Slides
   './assets/images/slide/slide_00.webp',
@@ -46,6 +48,8 @@ const PRECACHE_URLS = [
   // Overlay logos
   './assets/images/location/lord_logo.webp',
   './assets/images/location/apt_logo.webp',
+  // Contact background
+  './assets/images/contact/contact_00.webp',
   // Shared Components (pages/ level)
   './pages/components/navbar.html',
   './pages/components/footer.html',
