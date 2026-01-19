@@ -134,7 +134,7 @@ const SharedComponents = (() => {
         <footer class="bg-lightBase dark:bg-darkBase border-t border-gray-800 text-gray-600 dark:text-gray-400 relative" style="height: 10vh;">
             <div class="max-w-full mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between text-xs md:text-sm relative">
                 <div class="md:absolute md:left-4 md:bottom-2 text-left z-10 hidden md:block">
-                    <h4 class="font-impact text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
+                    <h4 class="font-ops text-gray-900 dark:text-white text-[2.16rem]">BILLY ST-HILAIRE</h4>
                     <p class="mt-1 text-[10px]">&copy; ${new Date().getFullYear()} Billy le deboucheur</p>
                 </div>
                 <div class="flex-grow flex justify-center gap-6 pr-[8vw]">
