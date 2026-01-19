@@ -192,6 +192,12 @@
         
         // Initial translation update
         if (currentLang === 'en') updateTranslations();
+        
+        // Listen for global language change event
+        window.addEventListener('languageChanged', (e) => {
+            currentLang = e.detail?.language || localStorage.getItem('language') || 'fr';
+            updateTranslations();
+        });
     </script>
 
     <!-- Dynamic Components: Cookie Banner & AI Helper -->

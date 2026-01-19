@@ -122,17 +122,27 @@ function toggleTheme() {
 let currentLang = localStorage.getItem('language') || 'fr';
 function toggleLanguage() {
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
-    document.getElementById('lang-display').innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    
+    // Update all language display elements
+    const langDisplay = document.getElementById('lang-display');
+    const mobileLangDisplay = document.getElementById('mobile-lang-display');
+    if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    if (mobileLangDisplay) mobileLangDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+    
     // Apply translations if translations object exists
     if (typeof translations !== 'undefined') {
         document.querySelectorAll('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             if (translations[currentLang] && translations[currentLang][key]) {
-                el.innerText = translations[currentLang][key];
+                el.innerHTML = translations[currentLang][key];
             }
         });
     }
+    
     localStorage.setItem('language', currentLang);
+    
+    // Dispatch global event for pages with local translations
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: currentLang } }));
 }
 
 // Initialize theme and language from localStorage

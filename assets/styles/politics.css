@@ -9,7 +9,7 @@ body {
     overflow-x: hidden; 
 }
 
-/* Hero slideshow */
+/* Hero slideshow with zoom effect */
 .hero-slide {
     position: absolute;
     inset: 0;
@@ -17,8 +17,18 @@ body {
     background-position: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    will-change: opacity, transform;
+    transform: scale(1.25);
+    overflow: hidden;
 }
 
 .hero-slide.active { 
-    opacity: 1; 
+    opacity: 1;
+    animation: heroZoomOut 8s ease-out forwards;
+}
+
+/* Hero zoom keyframes */
+@keyframes heroZoomOut {
+    0% { transform: scale(1.25); }
+    100% { transform: scale(1); }
 }

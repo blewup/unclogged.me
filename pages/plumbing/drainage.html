@@ -338,30 +338,65 @@
 
                 <!-- Pente d'évacuation -->
                 <section id="pente" class="scroll-mt-24">
-                    <h2 class="text-3xl font-ops mb-6">LA PENTE D'ÉVACUATION</h2>
+                    <h2 class="text-3xl font-ops mb-6" data-translate="drainage_slope_title">LA PENTE D'ÉVACUATION</h2>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-                        <p class="mb-4">
-                            Les tuyaux acheminent par gravité l'eau usée d'un appareil vers un collecteur d'évacuation. Ces canalisations doivent respecter une <strong>pente minimale</strong> pour garantir un écoulement optimal.
+                        <p class="mb-4" data-translate="drainage_slope_intro">
+                            Les tuyaux acheminent par gravité l'eau usée d'un appareil vers un collecteur d'évacuation. Ces canalisations doivent respecter une <strong>pente minimale</strong> pour garantir un écoulement optimal selon leur diamètre.
                         </p>
                         
-                        <div class="grid md:grid-cols-3 gap-4 my-6">
-                            <div class="text-center p-4 bg-green/10 rounded-lg border border-green/30">
-                                <div class="text-2xl font-ops text-green">1/8-3/8"/ft</div>
-                                <p class="text-sm mt-1">Pente idéale</p>
-                            </div>
-                            <div class="text-center p-4 bg-cardinal/10 rounded-lg border border-cardinal/30">
-                                <div class="text-2xl font-ops text-cardinal">&lt; 1/8"/ft</div>
-                                <p class="text-sm mt-1">Stagnation</p>
-                            </div>
-                            <div class="text-center p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/30">
-                                <div class="text-2xl font-ops text-yellow-600">&gt; 3/8"/ft</div>
-                                <p class="text-sm mt-1">Vide les siphons</p>
+                        <!-- Pipe diameter ≤ 3" (≤ 76mm) -->
+                        <div class="mb-6">
+                            <h4 class="font-ops text-lg mb-3 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-blue rounded-full flex items-center justify-center text-white text-sm">≤3"</span>
+                                <span data-translate="drainage_small_pipes">Tuyaux ≤ 3" <span class="text-sm opacity-70">(≤ 76 mm)</span></span>
+                            </h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-green/10 rounded-lg border border-green/30">
+                                    <div class="text-2xl font-ops text-green">1/4"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(21 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_ideal">Pente idéale</p>
+                                </div>
+                                <div class="text-center p-4 bg-blue/10 rounded-lg border border-blue/30">
+                                    <div class="text-2xl font-ops text-blue">1/8"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(10 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_minimum">Minimum acceptable</p>
+                                </div>
+                                <div class="text-center p-4 bg-cardinal/10 rounded-lg border border-cardinal/30">
+                                    <div class="text-2xl font-ops text-cardinal">&lt; 1/8"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(&lt; 10 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_stagnation">Stagnation</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Une pente trop faible provoque la stagnation, une pente trop forte peut vider prématurément les siphons.
-                        </p>
+                        <!-- Pipe diameter ≥ 4" (≥ 100mm) -->
+                        <div class="mb-4">
+                            <h4 class="font-ops text-lg mb-3 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-white text-sm">≥4"</span>
+                                <span data-translate="drainage_large_pipes">Tuyaux ≥ 4" <span class="text-sm opacity-70">(≥ 100 mm)</span></span>
+                            </h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-green/10 rounded-lg border border-green/30">
+                                    <div class="text-2xl font-ops text-green">1/8"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(10 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_ideal">Pente idéale</p>
+                                </div>
+                                <div class="text-center p-4 bg-blue/10 rounded-lg border border-blue/30">
+                                    <div class="text-2xl font-ops text-blue">1/16"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(5 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_minimum">Minimum acceptable</p>
+                                </div>
+                                <div class="text-center p-4 bg-cardinal/10 rounded-lg border border-cardinal/30">
+                                    <div class="text-2xl font-ops text-cardinal">&lt; 1/16"/ft</div>
+                                    <p class="text-xs opacity-70 mt-0.5">(&lt; 5 mm/m)</p>
+                                    <p class="text-sm mt-1" data-translate="slope_stagnation">Stagnation</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box rounded-lg p-4 mt-4 text-sm">
+                            <p data-translate="drainage_slope_warning"><strong>⚠️ Attention :</strong> Une pente trop faible provoque la stagnation des solides, une pente trop forte peut vider prématurément les siphons (effet de siphonnage).</p>
+                        </div>
                     </div>
                 </section>
 

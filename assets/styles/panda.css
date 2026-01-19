@@ -1007,3 +1007,229 @@ button.font-comic,
 .stagger-children > *:nth-child(4) { transition-delay: 0.2s; }
 .stagger-children > *:nth-child(5) { transition-delay: 0.25s; }
 .stagger-children > *:nth-child(6) { transition-delay: 0.3s; }
+
+/* ============================================
+   HERO SLIDE ZOOM EFFECT (Task 1)
+   Scale 1.25 → 1 over 8 seconds
+   ============================================ */
+@keyframes heroZoomOut {
+    0% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hero-slide {
+    transform: scale(1.25);
+}
+
+.hero-slide.active {
+    animation: heroZoomOut 8s ease-out forwards;
+}
+
+/* ============================================
+   NAVBAR RESPONSIVE HEIGHT (Task 2)
+   0.65x original height on mobile
+   ============================================ */
+@media (max-width: 767px) {
+    #navbar {
+        height: 7.8vh !important; /* 12vh × 0.65 = 7.8vh */
+    }
+    
+    #urgency-btn {
+        top: 8.5vh !important; /* Adjusted for smaller navbar */
+    }
+    
+    #mobile-menu {
+        top: 7.8vh !important;
+    }
+}
+
+/* ============================================
+   TESTIMONIALS MOBILE STYLING (Task 3)
+   Comic Sans MS italic 400, 1.65x larger
+   ============================================ */
+@media (max-width: 767px) {
+    .testimonial-card p,
+    .testimonial-card .font-comic {
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        font-size: 1.4rem !important; /* 1.65x larger than base ~0.85rem */
+        line-height: 1.7 !important;
+    }
+}
+
+/* ============================================
+   TESTIMONIALS DESKTOP SIZING (Task 4)
+   0.65x text size on desktop
+   ============================================ */
+@media (min-width: 768px) {
+    .testimonial-card p,
+    .testimonial-card .font-comic {
+        font-size: 0.65rem !important; /* 0.65x of ~1rem base */
+        line-height: 1.5 !important;
+    }
+    
+    .testimonial-card h4 {
+        font-size: 1.1rem !important; /* 0.65x of ~1.68rem */
+    }
+    
+    .testimonial-card img {
+        width: 125px !important; /* 0.65x of 192px */
+        height: 125px !important;
+    }
+    
+    .testimonial-card .text-yellow-400 svg {
+        width: 0.9rem !important; /* 0.65x of star size */
+        height: 0.9rem !important;
+    }
+}
+
+/* ============================================
+   TEXT STROKE EFFECTS (Tasks 5 & 6)
+   Thin stroke on all text, thick blur on titles
+   ============================================ */
+
+/* Thin text stroke - dark theme: black, light theme: white */
+/* Using text-shadow for better browser support */
+body {
+    -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.4);
+    text-shadow: 
+        0.3px 0 0 rgba(0, 0, 0, 0.15),
+        -0.3px 0 0 rgba(0, 0, 0, 0.15),
+        0 0.3px 0 rgba(0, 0, 0, 0.15),
+        0 -0.3px 0 rgba(0, 0, 0, 0.15);
+}
+
+.dark body {
+    -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.3);
+    text-shadow: 
+        0.3px 0 0 rgba(255, 255, 255, 0.1),
+        -0.3px 0 0 rgba(255, 255, 255, 0.1),
+        0 0.3px 0 rgba(255, 255, 255, 0.1),
+        0 -0.3px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Thick blur-md stroke on main titles (h1, h2, .font-ops titles) */
+h1, h2, .font-ops,
+.hero-title, [class*="hero"] h1, [class*="hero"] h2,
+section h2, #hero h1 {
+    text-shadow: 
+        0 0 8px rgba(0, 0, 0, 0.3),
+        1px 1px 2px rgba(0, 0, 0, 0.2),
+        -1px -1px 2px rgba(0, 0, 0, 0.2),
+        2px 0 4px rgba(0, 0, 0, 0.15),
+        -2px 0 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dark h1, .dark h2, .dark .font-ops,
+.dark .hero-title, .dark [class*="hero"] h1, .dark [class*="hero"] h2,
+.dark section h2, .dark #hero h1 {
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.25),
+        1px 1px 2px rgba(255, 255, 255, 0.15),
+        -1px -1px 2px rgba(255, 255, 255, 0.15),
+        2px 0 4px rgba(255, 255, 255, 0.1),
+        -2px 0 4px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ============================================
+   INACTIVE TESTIMONIAL GLASS EFFECT (Task 7)
+   Apply --gradient-glass with higher opacity
+   ============================================ */
+.testimonial-card:not(.active-card) img {
+    position: relative;
+}
+
+.testimonial-card:not(.active-card) img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-glass);
+    opacity: 0.7;
+    border-radius: inherit;
+}
+
+/* Alternative approach using filter + overlay */
+.testimonial-card:not(.active-card) {
+    position: relative;
+}
+
+.testimonial-card:not(.active-card)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 8px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.testimonial-card:not(.active-card) img {
+    filter: grayscale(30%) brightness(0.85);
+}
+
+.dark .testimonial-card:not(.active-card)::before {
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+/* ============================================
+   HELPER BOUNCE ANIMATION (Task 8)
+   4.2s interval, 5vh height
+   ============================================ */
+@keyframes helperBounce {
+    0%, 100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(-5vh);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+/* Override the default animate-bounce-3d for helper button */
+#helper-toggle-btn.animate-bounce-3d {
+    animation: helperBounce 4.2s infinite !important;
+}
+
+/* ============================================
+   INDEX SCROLLBAR HIDDEN + SMOOTH WHEEL (Task 9)
+   Hide scrollbar but maintain smooth scrolling
+   ============================================ */
+#main-content {
+    /* Hide scrollbar for all browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#main-content::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+    width: 0;
+    height: 0;
+}
+
+/* Ensure html/body allow smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar hide utility class */
+.scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}

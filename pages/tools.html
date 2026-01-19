@@ -140,14 +140,14 @@
             { key: 'needle_nose_pliers', img: '../assets/images/tools/tool_13.png' },
             { key: 'tongue_groove_pliers', img: '../assets/images/tools/tool_14.png' },
             { key: 'screwdriver_set', img: '../assets/images/tools/tool_15.png' },
-            { key: 'stubby_screwdriver', img: '../assets/images/tools/tool_16.png' },
+            { key: 'drain_cleaning_cable', img: '../assets/images/tools/tool_16.png' },
             { key: 'cartridge_puller', img: '../assets/images/tools/tool_17.png' },
             { key: 'nipple_extractor', img: '../assets/images/tools/tool_18.png' },
             { key: 'pex_tool_kit', img: '../assets/images/tools/tool_19.png' },
             { key: 'inspection_camera', img: '../assets/images/tools/tool_20.png' },
             { key: 'plunger', img: '../assets/images/tools/tool_21.png' },
             { key: 'drain_auger', img: '../assets/images/tools/tool_22.png' },
-            { key: 'pipe_cleaning_brush', img: '../assets/images/tools/tool_23.png' }
+            { key: 'drain_key', img: '../assets/images/tools/tool_23.png' }
         ];
 
         const translations = {
@@ -155,61 +155,357 @@
                 hero_title: "DÉBOUCHEUR EXPERT",
                 urgence: "URGENCE 24/7",
                 tools_grid_title: "ÉQUIPEMENT PROFESSIONNEL",
-                pipe_cutter: { name: "Coupe‑tube", desc: "Permet de découper proprement des tuyaux en acier, cuivre ou plastique pour un ajustement précis." },
-                internal_pvc_cutter: { name: "Coupe‑tube PVC interne", desc: "Cylindre à main qui coupe le tuyau de l'intérieur pour des travaux en espaces restreints." },
-                hacksaw: { name: "Scie à métaux", desc: "Scie polyvalente pour couper des tuyaux aux formes irrégulières et des tiges filetées." },
-                junior_hacksaw: { name: "Scie à métaux junior", desc: "Version réduite de la scie à métaux pour des découpes fines et de précision." },
-                ratcheting_cutter: { name: "Coupe‑tube à cliquet", desc: "Utilise un mécanisme à cliquet pour réaliser des coupes progressives sans effort." },
-                press_fitting_system: { name: "Système de sertissage", desc: "Outil mécanique qui sertit des raccords créant un joint étanche et rapide." },
-                plumbing_brush: { name: "Brosse de plomberie", desc: "Prépare l'intérieur des tuyaux en enlevant les résidus pour assurer un collage efficace." },
-                basin_wrench: { name: "Clé de lavabo", desc: "Permet de serrer ou desserrer les écrous situés derrière ou sous les lavabos." },
-                pipe_wrench: { name: "Clé à tuyau", desc: "Clé robuste avec mâchoires ajustables pour tourner les raccords filetés." },
-                faucet_key: { name: "Clé d'arrosage", desc: "Clé en forme de croix utilisée pour ouvrir ou fermer les robinets extérieurs." },
-                ratchet_wrench: { name: "Clé à cliquet", desc: "Serre et desserre les boulons grâce à un mécanisme à cliquet facilitant la rotation." },
-                adjustable_wrench: { name: "Clé à molette", desc: "Clé universelle dont la mâchoire ajustable s'adapte à différentes tailles d'écrous." },
-                strap_wrench: { name: "Clé à sangle", desc: "Utilise une sangle flexible pour serrer des surfaces délicates sans les abîmer." },
-                needle_nose_pliers: { name: "Pince à bec effilé", desc: "Pince fine qui saisit de petits objets dans des espaces étroits." },
-                tongue_groove_pliers: { name: "Pince multiprise", desc: "Pince réglable offrant un meilleur levier pour tourner et saisir divers matériaux." },
-                screwdriver_set: { name: "Jeu de tournevis", desc: "Comprend différents embouts et tailles pour serrer ou desserrer des vis variées." },
-                stubby_screwdriver: { name: "Tournevis court", desc: "Tournevis compact idéal pour les espaces restreints où un manche long ne passe pas." },
-                cartridge_puller: { name: "Extracteur de cartouche", desc: "Outil spécialisé pour retirer les cartouches des robinets lors des réparations." },
-                nipple_extractor: { name: "Extracteur de mamelon", desc: "Permet de retirer les petites sections filetées bloquées à l'intérieur d'un tuyau." },
-                pex_tool_kit: { name: "Kit d'outils PEX", desc: "Ensemble complet d'outils pour couper, sertir et installer des tuyaux PEX." },
-                inspection_camera: { name: "Caméra d'inspection", desc: "Caméra flexible qui explore les drains pour localiser les blocages ou dommages." },
-                plunger: { name: "Ventouse", desc: "Outil manuel pour déloger les bouchons dans les lavabos et toilettes." },
-                drain_auger: { name: "Tire‑bouchon", desc: "Câble hélicoïdal qui retire les blocages plus tenaces dans les canalisations." },
-                pipe_cleaning_brush: { name: "Brosse nettoyante", desc: "Outil pour nettoyer l'intérieur des tuyaux et améliorer l'adhérence des raccords." }
+                search_placeholder: "Rechercher un outil...",
+                sizes_label: "Tailles disponibles",
+                price_variation: "Prix variable selon taille",
+                utility_label: "Utilités",
+                pipe_cutter: { 
+                    name: "Coupe‑tube", 
+                    desc: "Permet de découper proprement des tuyaux en acier, cuivre ou plastique pour un ajustement précis.",
+                    sizes: "1/8\" à 2-5/8\" (3 à 67 mm)",
+                    utility: "Coupe nette, sans bavure, pour raccords étanches",
+                    priceRange: "15$ – 80$"
+                },
+                internal_pvc_cutter: { 
+                    name: "Coupe‑tube PVC interne", 
+                    desc: "Cylindre à main qui coupe le tuyau de l'intérieur pour des travaux en espaces restreints.",
+                    sizes: "1-1/4\" à 4\" (32 à 100 mm)",
+                    utility: "Réparations sous plancher, espaces confinés",
+                    priceRange: "25$ – 60$"
+                },
+                hacksaw: { 
+                    name: "Scie à métaux", 
+                    desc: "Scie polyvalente pour couper des tuyaux aux formes irrégulières et des tiges filetées.",
+                    sizes: "Lames 10\" et 12\" (250/300 mm)",
+                    utility: "Métal, plastique, découpes grossières",
+                    priceRange: "10$ – 35$"
+                },
+                junior_hacksaw: { 
+                    name: "Scie à métaux junior", 
+                    desc: "Version réduite de la scie à métaux pour des découpes fines et de précision.",
+                    sizes: "Lames 6\" (150 mm)",
+                    utility: "Espaces restreints, petites coupes précises",
+                    priceRange: "8$ – 20$"
+                },
+                ratcheting_cutter: { 
+                    name: "Coupe‑tube à cliquet", 
+                    desc: "Utilise un mécanisme à cliquet pour réaliser des coupes progressives sans effort.",
+                    sizes: "1/8\" à 1-5/8\" (3 à 42 mm)",
+                    utility: "PVC, PEX, coupes à une main",
+                    priceRange: "20$ – 50$"
+                },
+                press_fitting_system: { 
+                    name: "Système de sertissage", 
+                    desc: "Outil mécanique qui sertit des raccords créant un joint étanche et rapide.",
+                    sizes: "1/2\" à 2\" (15 à 50 mm)",
+                    utility: "Cuivre sans soudure, installation rapide",
+                    priceRange: "200$ – 2000$"
+                },
+                plumbing_brush: { 
+                    name: "Brosse de plomberie", 
+                    desc: "Prépare l'intérieur des tuyaux en enlevant les résidus pour assurer un collage efficace.",
+                    sizes: "1/2\" à 2\" (15 à 50 mm)",
+                    utility: "Préparation soudure, nettoyage raccords",
+                    priceRange: "5$ – 15$"
+                },
+                basin_wrench: { 
+                    name: "Clé de lavabo", 
+                    desc: "Permet de serrer ou desserrer les écrous situés derrière ou sous les lavabos.",
+                    sizes: "3/8\" à 1-1/4\" (10 à 32 mm)",
+                    utility: "Écrous de robinetterie, endroits difficiles",
+                    priceRange: "15$ – 40$"
+                },
+                pipe_wrench: { 
+                    name: "Clé à tuyau", 
+                    desc: "Clé robuste avec mâchoires ajustables pour tourner les raccords filetés.",
+                    sizes: "8\" à 36\" (200 à 900 mm)",
+                    utility: "Raccords galvanisés, fonte, gros tuyaux",
+                    priceRange: "25$ – 150$"
+                },
+                faucet_key: { 
+                    name: "Clé d'arrosage", 
+                    desc: "Clé en forme de croix utilisée pour ouvrir ou fermer les robinets extérieurs.",
+                    sizes: "Universel",
+                    utility: "Robinets extérieurs, vannes municipales",
+                    priceRange: "8$ – 20$"
+                },
+                ratchet_wrench: { 
+                    name: "Clé à cliquet", 
+                    desc: "Serre et desserre les boulons grâce à un mécanisme à cliquet facilitant la rotation.",
+                    sizes: "1/4\", 3/8\", 1/2\" (6, 10, 13 mm)",
+                    utility: "Boulons, écrous, assemblages rapides",
+                    priceRange: "15$ – 80$"
+                },
+                adjustable_wrench: { 
+                    name: "Clé à molette", 
+                    desc: "Clé universelle dont la mâchoire ajustable s'adapte à différentes tailles d'écrous.",
+                    sizes: "6\" à 18\" (150 à 450 mm)",
+                    utility: "Polyvalent, plomberie générale",
+                    priceRange: "10$ – 50$"
+                },
+                strap_wrench: { 
+                    name: "Clé à sangle", 
+                    desc: "Utilise une sangle flexible pour serrer des surfaces délicates sans les abîmer.",
+                    sizes: "Jusqu'à 6\" (150 mm)",
+                    utility: "Plastique, chrome, surfaces fragiles",
+                    priceRange: "12$ – 35$"
+                },
+                needle_nose_pliers: { 
+                    name: "Pince à bec effilé", 
+                    desc: "Pince fine qui saisit de petits objets dans des espaces étroits.",
+                    sizes: "5\" à 8\" (125 à 200 mm)",
+                    utility: "Petites pièces, clips, fils",
+                    priceRange: "8$ – 25$"
+                },
+                tongue_groove_pliers: { 
+                    name: "Pince multiprise", 
+                    desc: "Pince réglable offrant un meilleur levier pour tourner et saisir divers matériaux.",
+                    sizes: "6\" à 16\" (150 à 400 mm)",
+                    utility: "Tuyaux, écrous, prise ferme",
+                    priceRange: "15$ – 50$"
+                },
+                screwdriver_set: { 
+                    name: "Jeu de tournevis", 
+                    desc: "Comprend différents embouts et tailles pour serrer ou desserrer des vis variées.",
+                    sizes: "Phillips #0-#3, plat 3-8 mm",
+                    utility: "Vis, robinets, boîtiers",
+                    priceRange: "15$ – 60$"
+                },
+                drain_cleaning_cable: { 
+                    name: "Câble de débouchage (snake)", 
+                    desc: "Câble rotatif professionnel pour déboucher les canalisations obstruées. Flexible en acier avec tête de coupe interchangeable.",
+                    sizes: "1/4\" × 25', 3/8\" × 50', 1/2\" × 75', 5/8\" × 100', 3/4\" × 100' (6 mm à 19 mm × 7.5 m à 30 m)",
+                    utility: "Débouchage professionnel, racines, graisses",
+                    priceRange: "40$ – 300$ selon diamètre et longueur"
+                },
+                cartridge_puller: { 
+                    name: "Extracteur de cartouche", 
+                    desc: "Outil spécialisé pour retirer les cartouches des robinets lors des réparations.",
+                    sizes: "Universel / Moen / Delta",
+                    utility: "Réparation robinets, remplacement cartouche",
+                    priceRange: "20$ – 45$"
+                },
+                nipple_extractor: { 
+                    name: "Extracteur de mamelon", 
+                    desc: "Permet de retirer les petites sections filetées bloquées à l'intérieur d'un tuyau.",
+                    sizes: "1/2\" à 2\" (15 à 50 mm)",
+                    utility: "Mamelons cassés, raccords coincés",
+                    priceRange: "12$ – 30$"
+                },
+                pex_tool_kit: { 
+                    name: "Kit d'outils PEX", 
+                    desc: "Ensemble complet d'outils pour couper, sertir et installer des tuyaux PEX.",
+                    sizes: "3/8\" à 1\" (10 à 25 mm)",
+                    utility: "Installation PEX, rénovation plomberie",
+                    priceRange: "50$ – 200$"
+                },
+                inspection_camera: { 
+                    name: "Caméra d'inspection", 
+                    desc: "Caméra flexible qui explore les drains pour localiser les blocages ou dommages.",
+                    sizes: "Câble 10' à 100' (3 à 30 m)",
+                    utility: "Diagnostic, localisation blocages",
+                    priceRange: "80$ – 500$"
+                },
+                plunger: { 
+                    name: "Ventouse", 
+                    desc: "Outil manuel pour déloger les bouchons dans les lavabos et toilettes.",
+                    sizes: "Standard, flasque, accordéon",
+                    utility: "Toilettes, lavabos, douches",
+                    priceRange: "5$ – 25$"
+                },
+                drain_auger: { 
+                    name: "Tire‑bouchon manuel", 
+                    desc: "Câble hélicoïdal qui retire les blocages plus tenaces dans les canalisations.",
+                    sizes: "1/4\" × 25' à 1/2\" × 50' (6 × 7.5 m à 13 × 15 m)",
+                    utility: "Débouchage lavabos, baignoires",
+                    priceRange: "15$ – 60$"
+                },
+                drain_key: { 
+                    name: "Clé de drain", 
+                    desc: "L'outil adapté pour dévisser les drains de bains et d'évier par l'intérieur.",
+                    sizes: "1/2\" à 2\" (15 à 50 mm)",
+                    utility: "Dévisse le drain par l'intérieur",
+                    priceRange: "3$ – 12$"
+                }
             },
             en: {
                 hero_title: "UNCLOGGED.ME",
                 urgence: "EMERGENCY 24/7",
                 tools_grid_title: "PROFESSIONAL EQUIPMENT",
-                pipe_cutter: { name: "Pipe cutter", desc: "Cuts through steel, copper or plastic pipes cleanly for precise fitting." },
-                internal_pvc_cutter: { name: "Internal PVC cutter", desc: "Hand‑held cylinder that slices pipe from the inside in tight spaces." },
-                hacksaw: { name: "Hacksaw", desc: "Versatile saw to cut oddly shaped pipes and threaded rod." },
-                junior_hacksaw: { name: "Junior hacksaw", desc: "Smaller version of the hacksaw for fine, detailed cutting." },
-                ratcheting_cutter: { name: "Ratcheting cutter", desc: "Ratchet mechanism allows incremental cuts without excessive force." },
-                press_fitting_system: { name: "Press fitting system", desc: "Mechanically presses fittings to form quick watertight seals." },
-                plumbing_brush: { name: "Plumbing brush", desc: "Cleans the inside of pipes to ensure surfaces are ready for bonding." },
-                basin_wrench: { name: "Basin wrench", desc: "Tightens or loosens nuts located behind or under sinks." },
-                pipe_wrench: { name: "Pipe wrench", desc: "Sturdy wrench with adjustable jaws for turning threaded fittings." },
-                faucet_key: { name: "Faucet key", desc: "Cross‑shaped key used to open or close outdoor spigots." },
-                ratchet_wrench: { name: "Ratchet wrench", desc: "Turns bolts using a ratcheting mechanism to speed up work." },
-                adjustable_wrench: { name: "Adjustable wrench", desc: "Universal wrench with a sliding jaw to fit various bolt sizes." },
-                strap_wrench: { name: "Strap wrench", desc: "Uses a flexible strap to tighten delicate surfaces without damage." },
-                needle_nose_pliers: { name: "Needle nose pliers", desc: "Tapered pliers for gripping small objects in tight spots." },
-                tongue_groove_pliers: { name: "Tongue‑and‑groove pliers", desc: "Adjustable pliers providing extra leverage for turning and gripping." },
-                screwdriver_set: { name: "Screwdriver set", desc: "Includes different heads and sizes to fasten or loosen screws." },
-                stubby_screwdriver: { name: "Stubby screwdriver", desc: "Compact screwdriver perfect for confined areas." },
-                cartridge_puller: { name: "Cartridge puller", desc: "Specialised tool to remove faucet cartridges during repair." },
-                nipple_extractor: { name: "Nipple extractor", desc: "Removes small threaded sections stuck inside a pipe." },
-                pex_tool_kit: { name: "PEX tool kit", desc: "Complete set for cutting, pressing and installing PEX tubing." },
-                inspection_camera: { name: "Inspection camera", desc: "Flexible camera explores drains to locate blockages or damage." },
-                plunger: { name: "Plunger", desc: "Manual tool that dislodges clogs in sinks and toilets." },
-                drain_auger: { name: "Drain auger", desc: "Helical cable that removes stubborn blockages in pipes." },
-                pipe_cleaning_brush: { name: "Cleaning brush", desc: "Brush used to clean inside pipes and improve joint adhesion." }
+                search_placeholder: "Search for a tool...",
+                sizes_label: "Available sizes",
+                price_variation: "Price varies by size",
+                utility_label: "Uses",
+                pipe_cutter: { 
+                    name: "Pipe cutter", 
+                    desc: "Cuts through steel, copper or plastic pipes cleanly for precise fitting.",
+                    sizes: "1/8\" to 2-5/8\" (3 to 67 mm)",
+                    utility: "Clean cuts, burr-free, for watertight joints",
+                    priceRange: "$15 – $80"
+                },
+                internal_pvc_cutter: { 
+                    name: "Internal PVC cutter", 
+                    desc: "Hand-held cylinder that slices pipe from the inside in tight spaces.",
+                    sizes: "1-1/4\" to 4\" (32 to 100 mm)",
+                    utility: "Under-floor repairs, confined spaces",
+                    priceRange: "$25 – $60"
+                },
+                hacksaw: { 
+                    name: "Hacksaw", 
+                    desc: "Versatile saw to cut oddly shaped pipes and threaded rod.",
+                    sizes: "10\" and 12\" blades (250/300 mm)",
+                    utility: "Metal, plastic, rough cuts",
+                    priceRange: "$10 – $35"
+                },
+                junior_hacksaw: { 
+                    name: "Junior hacksaw", 
+                    desc: "Smaller version of the hacksaw for fine, detailed cutting.",
+                    sizes: "6\" blades (150 mm)",
+                    utility: "Tight spaces, small precise cuts",
+                    priceRange: "$8 – $20"
+                },
+                ratcheting_cutter: { 
+                    name: "Ratcheting cutter", 
+                    desc: "Ratchet mechanism allows incremental cuts without excessive force.",
+                    sizes: "1/8\" to 1-5/8\" (3 to 42 mm)",
+                    utility: "PVC, PEX, one-handed cuts",
+                    priceRange: "$20 – $50"
+                },
+                press_fitting_system: { 
+                    name: "Press fitting system", 
+                    desc: "Mechanically presses fittings to form quick watertight seals.",
+                    sizes: "1/2\" to 2\" (15 to 50 mm)",
+                    utility: "Solder-free copper, fast installation",
+                    priceRange: "$200 – $2000"
+                },
+                plumbing_brush: { 
+                    name: "Plumbing brush", 
+                    desc: "Cleans the inside of pipes to ensure surfaces are ready for bonding.",
+                    sizes: "1/2\" to 2\" (15 to 50 mm)",
+                    utility: "Soldering prep, fitting cleaning",
+                    priceRange: "$5 – $15"
+                },
+                basin_wrench: { 
+                    name: "Basin wrench", 
+                    desc: "Tightens or loosens nuts located behind or under sinks.",
+                    sizes: "3/8\" to 1-1/4\" (10 to 32 mm)",
+                    utility: "Faucet nuts, hard-to-reach spots",
+                    priceRange: "$15 – $40"
+                },
+                pipe_wrench: { 
+                    name: "Pipe wrench", 
+                    desc: "Sturdy wrench with adjustable jaws for turning threaded fittings.",
+                    sizes: "8\" to 36\" (200 to 900 mm)",
+                    utility: "Galvanized fittings, cast iron, large pipes",
+                    priceRange: "$25 – $150"
+                },
+                faucet_key: { 
+                    name: "Faucet key", 
+                    desc: "Cross-shaped key used to open or close outdoor spigots.",
+                    sizes: "Universal",
+                    utility: "Outdoor spigots, municipal valves",
+                    priceRange: "$8 – $20"
+                },
+                ratchet_wrench: { 
+                    name: "Ratchet wrench", 
+                    desc: "Turns bolts using a ratcheting mechanism to speed up work.",
+                    sizes: "1/4\", 3/8\", 1/2\" (6, 10, 13 mm)",
+                    utility: "Bolts, nuts, quick assembly",
+                    priceRange: "$15 – $80"
+                },
+                adjustable_wrench: { 
+                    name: "Adjustable wrench", 
+                    desc: "Universal wrench with a sliding jaw to fit various bolt sizes.",
+                    sizes: "6\" to 18\" (150 to 450 mm)",
+                    utility: "Versatile, general plumbing",
+                    priceRange: "$10 – $50"
+                },
+                strap_wrench: { 
+                    name: "Strap wrench", 
+                    desc: "Uses a flexible strap to tighten delicate surfaces without damage.",
+                    sizes: "Up to 6\" (150 mm)",
+                    utility: "Plastic, chrome, fragile surfaces",
+                    priceRange: "$12 – $35"
+                },
+                needle_nose_pliers: { 
+                    name: "Needle nose pliers", 
+                    desc: "Tapered pliers for gripping small objects in tight spots.",
+                    sizes: "5\" to 8\" (125 to 200 mm)",
+                    utility: "Small parts, clips, wires",
+                    priceRange: "$8 – $25"
+                },
+                tongue_groove_pliers: { 
+                    name: "Tongue-and-groove pliers", 
+                    desc: "Adjustable pliers providing extra leverage for turning and gripping.",
+                    sizes: "6\" to 16\" (150 to 400 mm)",
+                    utility: "Pipes, nuts, firm grip",
+                    priceRange: "$15 – $50"
+                },
+                screwdriver_set: { 
+                    name: "Screwdriver set", 
+                    desc: "Includes different heads and sizes to fasten or loosen screws.",
+                    sizes: "Phillips #0-#3, flat 3-8 mm",
+                    utility: "Screws, faucets, housings",
+                    priceRange: "$15 – $60"
+                },
+                cartridge_puller: { 
+                    name: "Cartridge puller", 
+                    desc: "Specialised tool to remove faucet cartridges during repair.",
+                    sizes: "Universal / Moen / Delta",
+                    utility: "Faucet repair, cartridge replacement",
+                    priceRange: "$20 – $45"
+                },
+                nipple_extractor: { 
+                    name: "Nipple extractor", 
+                    desc: "Removes small threaded sections stuck inside a pipe.",
+                    sizes: "1/2\" to 2\" (15 to 50 mm)",
+                    utility: "Broken nipples, stuck fittings",
+                    priceRange: "$12 – $30"
+                },
+                pex_tool_kit: { 
+                    name: "PEX tool kit", 
+                    desc: "Complete set for cutting, pressing and installing PEX tubing.",
+                    sizes: "3/8\" to 1\" (10 to 25 mm)",
+                    utility: "PEX installation, plumbing renovation",
+                    priceRange: "$50 – $200"
+                },
+                inspection_camera: { 
+                    name: "Inspection camera", 
+                    desc: "Flexible camera explores drains to locate blockages or damage.",
+                    sizes: "Cable 10' to 100' (3 to 30 m)",
+                    utility: "Diagnostics, blockage location",
+                    priceRange: "$80 – $500"
+                },
+                plunger: { 
+                    name: "Plunger", 
+                    desc: "Manual tool that dislodges clogs in sinks and toilets.",
+                    sizes: "Standard, flange, accordion",
+                    utility: "Toilets, sinks, showers",
+                    priceRange: "$5 – $25"
+                },
+                drain_auger: { 
+                    name: "Hand drain auger", 
+                    desc: "Helical cable that removes stubborn blockages in pipes.",
+                    sizes: "1/4\" × 25' to 1/2\" × 50' (6 × 7.5 m to 13 × 15 m)",
+                    utility: "Sink/tub unclogging",
+                    priceRange: "$15 – $60"
+                },
+                drain_key: { 
+                    name: "Drain key", 
+                    desc: "The right tool to unscrew bath and sink drains from the inside.",
+                    sizes: "1/2\" to 2\" (15 to 50 mm)",
+                    utility: "Unscrews drain from inside",
+                    priceRange: "$3 – $12"
+                },
+                drain_cleaning_cable: { 
+                    name: "Drain cleaning cable (snake)", 
+                    desc: "Professional rotating cable for unclogging obstructed drains. Steel flexible with interchangeable cutting head.",
+                    sizes: "1/4\" × 25', 3/8\" × 50', 1/2\" × 75', 5/8\" × 100', 3/4\" × 100' (6 mm to 19 mm × 7.5 m to 30 m)",
+                    utility: "Professional unclogging, roots, grease",
+                    priceRange: "$40 – $300 depending on diameter and length"
+                }
             }
-        };
+        }
 
         let currentLang = localStorage.getItem('language') || 'fr';
 
@@ -226,13 +522,18 @@
             container.innerHTML = '';
             const lowerFilter = filter.toLowerCase();
             
+            const labels = translations[currentLang];
+            const sizesLabel = labels.sizes_label || 'Sizes';
+            const utilityLabel = labels.utility_label || 'Uses';
+            
             toolsData.forEach((tool) => {
                 const data = translations[currentLang][tool.key];
                 if (!data) return;
                 
                 const nameMatch = data.name.toLowerCase().includes(lowerFilter);
                 const descMatch = data.desc.toLowerCase().includes(lowerFilter);
-                if (filter && !(nameMatch || descMatch)) return;
+                const sizesMatch = data.sizes ? data.sizes.toLowerCase().includes(lowerFilter) : false;
+                if (filter && !(nameMatch || descMatch || sizesMatch)) return;
                 
                 const shoppingUrl = getGoogleShoppingUrl(data.name);
                 
@@ -240,12 +541,27 @@
                 card.href = shoppingUrl;
                 card.target = '_blank';
                 card.rel = 'noopener noreferrer';
-                card.className = 'tool-card bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col cursor-pointer hover:scale-105 hover:shadow-lg transition-all';
+                card.className = 'tool-card bg-white dark:bg-white/5 p-4 rounded-lg border border-gray-200 dark:border-white/10 shadow-md flex flex-col cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all';
+                
+                // Build sizes and utility info if available
+                let extraInfo = '';
+                if (data.sizes) {
+                    extraInfo += `<div class="mt-2 text-xs"><span class="text-blue font-bold">${sizesLabel}:</span> <span class="opacity-80">${data.sizes}</span></div>`;
+                }
+                if (data.utility) {
+                    extraInfo += `<div class="mt-1 text-xs"><span class="text-green font-bold">${utilityLabel}:</span> <span class="opacity-80">${data.utility}</span></div>`;
+                }
+                if (data.priceRange) {
+                    extraInfo += `<div class="mt-2 text-sm font-ops text-cardinal">${data.priceRange}</div>`;
+                }
                 
                 card.innerHTML = `
-                    <img src="${tool.img}" alt="${data.name}" class="w-full h-40 object-cover mb-4 rounded-lg" onerror="this.src='../assets/images/logo/logo.png'">
-                    <h3 class="text-lg font-ops text-blue mb-2">${data.name}</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">${data.desc}</p>
+                    <div class="w-full aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3 overflow-hidden">
+                        <img src="${tool.img}" alt="${data.name}" class="w-full h-full object-contain p-2" onerror="this.src='../assets/images/logo/logo.png'">
+                    </div>
+                    <h3 class="text-base font-ops text-blue mb-1">${data.name}</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-300 flex-grow leading-relaxed">${data.desc}</p>
+                    ${extraInfo}
                 `;
                 
                 container.appendChild(card);
@@ -262,6 +578,12 @@
                     }
                 }
             });
+            
+            // Update search placeholder
+            const searchInput = document.getElementById('tool-search');
+            if (searchInput) {
+                searchInput.placeholder = translations[currentLang].search_placeholder || 'Search...';
+            }
         }
 
         // Initialize

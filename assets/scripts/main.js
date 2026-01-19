@@ -294,6 +294,16 @@ const Language = {
             tip_never: "Ne jamais jeter", tip_never_desc: "Graisses, lingettes, cotons-tiges dans les drains.",
             tip_winter: "Préparation hivernale", tip_winter_desc: "Protégez vos tuyaux du gel.",
             
+            // Drainage Slope Section
+            drainage_slope_title: "LA PENTE D'ÉVACUATION",
+            drainage_slope_intro: "La pente des conduites d'évacuation est cruciale pour le bon écoulement des eaux usées. Une pente incorrecte cause des blocages récurrents et des odeurs. Les codes de plomberie spécifient des pentes différentes selon le diamètre du tuyau.",
+            drainage_small_pipes: "Tuyaux ≤ 3\" <span class=\"text-sm opacity-70\">(≤ 76 mm)</span>",
+            drainage_large_pipes: "Tuyaux ≥ 4\" <span class=\"text-sm opacity-70\">(≥ 100 mm)</span>",
+            slope_ideal: "Pente idéale",
+            slope_minimum: "Minimum acceptable",
+            slope_stagnation: "Stagnation",
+            drainage_slope_warning: "<strong>⚠️ Attention :</strong> Une pente trop faible provoque la stagnation des solides, une pente trop forte peut vider prématurément les siphons (effet de siphonnage).",
+            
             // Tools Page
             tools_grid_title: "NOTRE ÉQUIPEMENT",
             
@@ -460,6 +470,16 @@ const Language = {
             tip_never: "Never throw", tip_never_desc: "Grease, wipes, cotton swabs in drains.",
             tip_winter: "Winter preparation", tip_winter_desc: "Protect your pipes from freezing.",
             
+            // Drainage Slope Section
+            drainage_slope_title: "DRAIN PIPE SLOPE",
+            drainage_slope_intro: "The slope of drain pipes is crucial for proper wastewater flow. Incorrect slope causes recurring blockages and odors. Plumbing codes specify different slopes depending on pipe diameter.",
+            drainage_small_pipes: "Pipes ≤ 3\" <span class=\"text-sm opacity-70\">(≤ 76 mm)</span>",
+            drainage_large_pipes: "Pipes ≥ 4\" <span class=\"text-sm opacity-70\">(≥ 100 mm)</span>",
+            slope_ideal: "Ideal slope",
+            slope_minimum: "Minimum acceptable",
+            slope_stagnation: "Stagnation",
+            drainage_slope_warning: "<strong>⚠️ Warning:</strong> A slope that's too shallow causes solids to stagnate, while a slope that's too steep can prematurely empty trap seals (siphoning effect).",
+            
             // Tools Page
             tools_grid_title: "OUR EQUIPMENT",
             
@@ -482,11 +502,15 @@ const Language = {
         document.documentElement.lang = this.current;
         
         // Update all lang-display buttons (may be multiple on page)
-        Utils.$$('#lang-display, [data-lang-display]').forEach(el => {
+        Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
             el.innerText = this.current === 'fr' ? 'EN' : 'FR';
         });
         
         this.apply();
+        
+        // Dispatch custom event for pages with local translations (e.g., tools page)
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: this.current } }));
+        
         Tracking.event('language_change', { language: this.current });
     },
 
@@ -524,8 +548,8 @@ const Language = {
         this.current = localStorage.getItem('language') || 'fr';
         document.documentElement.lang = this.current;
         
-        // Update lang display button
-        Utils.$$('#lang-display, [data-lang-display]').forEach(el => {
+        // Update lang display button (desktop and mobile)
+        Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
             el.innerText = this.current === 'fr' ? 'EN' : 'FR';
         });
         
