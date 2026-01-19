@@ -311,6 +311,24 @@ const Language = {
             events_subtitle: "Calendrier et disponibilités",
             calendar_title: "DISPONIBILITÉS", view_calendar: "Voir le calendrier",
             
+            // Team Page
+            team_title: "NOTRE ÉQUIPE",
+            billy_role: "Plombier retraité & Propriétaire",
+            billy_bio: "Billy St‑Hilaire est un ancien plombier possédant plus de quinze années d'expérience. Après une carrière bien remplie, il se consacre désormais à offrir son expertise comme propriétaire de Déboucheur Expert. Passionné par les nouvelles technologies et la mécanique, il veille à ce que chaque intervention soit réalisée avec la même précision et la même rigueur que celles de sa carrière de plombier.",
+            nancy_role: "Conductrice & Associée",
+            nancy_bio: "Nancy Boulianne est conductrice et associée au sein de l'entreprise. Elle accompagne Billy lors des interventions et s'assure que l'équipe arrive à destination rapidement et en toute sécurité. Fortement organisée et chaleureuse, elle joue un rôle clé pour offrir un service incomparable.",
+            
+            // Offline Page
+            offline_title: "HORS LIGNE",
+            offline_msg: "Vous n'êtes pas connecté à Internet. Le site fonctionne en mode hors ligne.",
+            
+            // Conditions Page
+            conditions_title: "CONDITIONS GÉNÉRALES",
+            
+            // Politics Page
+            politics_title: "POLITIQUE DE CONFIDENTIALITÉ",
+            politics_index: "Index",
+            
             // Index Sections
             idx_1: "ACCUEIL", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",
             idx_5: "CONTACT", idx_6: "TÉMOIGNAGES", idx_7: "LEÇONS", idx_8: "CARTE", idx_9: "PIED DE PAGE",
@@ -487,6 +505,24 @@ const Language = {
             events_subtitle: "Calendar and availability",
             calendar_title: "AVAILABILITY", view_calendar: "View calendar",
             
+            // Team Page
+            team_title: "OUR TEAM",
+            billy_role: "Retired Plumber & Owner",
+            billy_bio: "Billy St‑Hilaire is a retired plumber with more than fifteen years of experience. After a successful career he now dedicates himself to offering his expertise as the owner of Déboucheur Expert. Passionate about new technologies and mechanics, he ensures that every intervention is carried out with the same precision and rigour as during his plumbing career.",
+            nancy_role: "Driver & Partner",
+            nancy_bio: "Nancy Boulianne is the driver and partner in the business. She accompanies Billy on service calls and makes sure the team arrives quickly and safely. Well organised and friendly, she plays a key role in delivering an exceptional service.",
+            
+            // Offline Page
+            offline_title: "OFFLINE",
+            offline_msg: "You are not connected to the Internet. The site is running in offline mode.",
+            
+            // Conditions Page
+            conditions_title: "TERMS & CONDITIONS",
+            
+            // Politics Page  
+            politics_title: "PRIVACY POLICY",
+            politics_index: "Index",
+            
             // Index Sections
             idx_1: "HOME", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",
             idx_5: "CONTACT", idx_6: "TESTIMONIALS", idx_7: "LESSONS", idx_8: "MAP", idx_9: "FOOTER",
@@ -502,8 +538,9 @@ const Language = {
         document.documentElement.lang = this.current;
         
         // Update all lang-display buttons (may be multiple on page)
+        // Show current language on button (FR when French, EN when English)
         Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
-            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
+            el.innerText = this.current === 'fr' ? 'FR' : 'EN';
         });
         
         this.apply();
@@ -523,9 +560,11 @@ const Language = {
             const key = el.getAttribute('data-translate');
             const translation = trans[key];
             if (translation) {
-                // Use innerHTML to preserve formatting, but escape if needed
+                // Use innerHTML for translations containing HTML, innerText otherwise
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translation;
+                } else if (translation.includes('<') && translation.includes('>')) {
+                    el.innerHTML = translation;
                 } else {
                     el.innerText = translation;
                 }
@@ -549,8 +588,9 @@ const Language = {
         document.documentElement.lang = this.current;
         
         // Update lang display button (desktop and mobile)
+        // Show current language on button (FR when French, EN when English)
         Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
-            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
+            el.innerText = this.current === 'fr' ? 'FR' : 'EN';
         });
         
         // Apply translations after DOM is ready
@@ -559,6 +599,14 @@ const Language = {
         } else {
             this.apply();
         }
+        
+        // Re-apply translations when components are loaded (they load async)
+        // Listen for componentLoaded events and re-apply
+        document.addEventListener('componentLoaded', () => this.apply(), true);
+        
+        // Also apply after a delay to catch any late-loading components
+        setTimeout(() => this.apply(), 500);
+        setTimeout(() => this.apply(), 1500);
     }
 };
 

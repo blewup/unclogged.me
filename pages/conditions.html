@@ -164,19 +164,7 @@
             ]
         };
 
-        const translations = {
-            fr: {
-                hero_title: "DÉBOUCHEUR EXPERT",
-                urgence: "URGENCE 24/7",
-                index_title: "Index"
-            },
-            en: {
-                hero_title: "UNCLOGGED.ME",
-                urgence: "EMERGENCY 24/7",
-                index_title: "Index"
-            }
-        };
-
+        // Page-specific content rendering only - translations handled by main.js
         let currentLang = localStorage.getItem('language') || 'fr';
         
         function render() {
@@ -201,23 +189,12 @@
             });
         }
 
-        function applyTranslations() {
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
-            });
-        }
-
         window.addEventListener('DOMContentLoaded', () => {
-            applyTranslations();
             render();
         });
 
         window.addEventListener('languageChanged', () => {
             currentLang = localStorage.getItem('language') || 'fr';
-            applyTranslations();
             render();
         });
     </script>

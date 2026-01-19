@@ -132,18 +132,18 @@ body {
 }
 
 /* Theme-adaptive text outlines */
-/* Dark theme = black outline (visible on light text) */
-/* Light theme = white outline (visible on dark text) */
+/* Dark theme = black outline (readable on dark bg with light text) */
+/* Light theme = white outline (readable on light bg with dark text) */
 .theme-text-outline {
     text-shadow: 
-        1px 1px 0 rgba(255, 255, 255, 0.3),
-        -1px -1px 0 rgba(255, 255, 255, 0.3);
+        1px 1px 0 rgba(0, 0, 0, 0.3),
+        -1px -1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .dark .theme-text-outline {
     text-shadow: 
-        1px 1px 0 rgba(0, 0, 0, 0.3),
-        -1px -1px 0 rgba(0, 0, 0, 0.3);
+        1px 1px 0 rgba(255, 255, 255, 0.3),
+        -1px -1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .dark-mode-outline {
@@ -328,7 +328,7 @@ body {
 
 .hero-slide.active {
     opacity: 1;
-    animation: heroZoomInOut 8s ease-in-out forwards;
+    animation: heroZoomOut 10s ease-out forwards;
 }
 
 /* Hero zoom keyframes defined in panda.css */

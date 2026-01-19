@@ -121,14 +121,9 @@ async function loadComponent(containerId, componentPath) {
             script.remove();
         });
         
-        // Apply translations if available
-        if (typeof translations !== 'undefined' && typeof currentLang !== 'undefined') {
-            container.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (translations[currentLang] && translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
-            });
+        // Apply translations if Language object is available (from main.js)
+        if (typeof Language !== 'undefined' && Language.apply) {
+            Language.apply();
         }
         
         // Dispatch event when component is loaded

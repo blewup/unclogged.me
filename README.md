@@ -88,10 +88,80 @@ Billy St-Hilaire offers professional residential plumbing services including:
 
 ## 🚀 Deployment (Namecheap cPanel)
 
-### 1. Upload Files
+### Quick Start with `script.sh`
+
+The included deployment script automates the entire setup process. Upload `script.sh` along with your site ZIP file to `public_html`, then run:
+
+```bash
+chmod +x script.sh && ./script.sh
+```
+
+#### Environment Requirements
+
+| Requirement | Minimum | Recommended |
+|-------------|---------|-------------|
+| **Bash** | 4.0+ | 5.0+ |
+| **PHP** | 7.4+ | 8.2+ |
+| **unzip** | Any | Latest |
+| **curl** | 7.0+ | Latest |
+| **tar** | Any | GNU tar |
+
+**Required PHP Extensions:**
+- `mysqli` — Database connectivity
+- `curl` — HTTP requests (webhooks, APIs)
+- `json` — JSON parsing
+- `mbstring` — Multibyte string handling
+- `fileinfo` — MIME type detection for uploads
+- `imap` — Email piping (optional, for SMS replies)
+
+#### Script Usage Options
+
+```bash
+# Option 1: Auto-detect ZIP file in current directory
+./script.sh
+
+# Option 2: Specify a ZIP file
+./script.sh --zip unclogged-me-main.zip
+./script.sh -z site.zip
+
+# Option 3: Clone directly from GitHub (requires git)
+./script.sh --git
+./script.sh -g
+
+# Show help
+./script.sh --help
+```
+
+#### What the Script Does
+
+| Step | Description |
+|------|-------------|
+| **1. Pre-flight Checks** | Validates PHP version, required extensions, and available utilities |
+| **2. Backup** | Creates timestamped `.tar.gz` backup of existing deployment (keeps last 5) |
+| **3. Extract/Clone** | Extracts ZIP or clones from GitHub to temp directory |
+| **4. Prepare Files** | Removes dev files (`.git`, `README`, etc.), updates service worker cache version |
+| **5. Set Permissions** | Directories: 755, Files: 644, `credentials.php`: 600, `email-pipe.php`: 755 |
+| **6. Create .htaccess** | HTTPS redirect, GZIP compression, browser caching, security headers, error pages |
+| **7. Deploy** | Syncs files to `public_html`, preserving `uploads/`, `logs/`, `conscent/`, `credentials.php` |
+| **8. Verify** | Counts deployed files, checks critical files, validates PHP syntax |
+| **9. Cleanup** | Removes temp directory and ZIP file |
+| **10. Checklist** | Shows post-deployment steps and tests website accessibility |
+
+#### Script Output Files
+
+| Location | Purpose |
+|----------|---------|
+| `/home/deboucheur/logs/deploy_*.log` | Timestamped deployment logs |
+| `/home/deboucheur/backups/backup_*.tar.gz` | Deployment backups (last 5 kept) |
+
+### Manual Deployment Steps
+
+If you prefer manual setup:
+
+#### 1. Upload Files
 Upload all files to `public_html` via File Manager or FTP.
 
-### 2. Database Setup
+#### 2. Database Setup
 ```sql
 -- Run in phpMyAdmin:
 CREATE DATABASE IF NOT EXISTS deboucheur_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -99,35 +169,30 @@ USE deboucheur_prod;
 SOURCE setup.sql;
 ```
 
-### 3. Configure Database
-Edit `api/db.php` with your credentials:
-```php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'your_cpanel_user');
-define('DB_PASS', 'your_password');
-```
+#### 3. Configure Database
+Edit `api/credentials.php` with your database credentials.
 
-### 4. File Permissions
+#### 4. File Permissions
 ```bash
-chmod 755 api/
-chmod 644 api/*.php
-chmod 755 api/uploads/
-chmod 755 api/conscent/
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+chmod 600 api/credentials.php
+chmod 755 api/email-pipe.php
+chmod 755 api/uploads api/logs api/conscent
 ```
 
-### 5. SSL/HTTPS
-Enable SSL certificate in cPanel → SSL/TLS and force HTTPS redirect:
-```apache
-# .htaccess
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-```
+#### 5. SSL/HTTPS
+Enable SSL certificate in cPanel → SSL/TLS. The `.htaccess` created by the script handles HTTPS redirect.
 
-### 6. Email Configuration
-Set up email accounts for:
+#### 6. Email Configuration
+Set up email accounts:
 - info@unclogged.me
 - info@deboucheur.expert
+
+For SMS reply handling via email piping:
+- cPanel → Email → Forwarders → Add Forwarder
+- Address: `reply@deboucheur.expert`
+- Pipe to: `/home/deboucheur/public_html/api/email-pipe.php`
 
 ## 🎨 Theming
 

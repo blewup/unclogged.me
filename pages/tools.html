@@ -556,8 +556,8 @@
                 }
                 
                 card.innerHTML = `
-                    <div class="w-full aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3 overflow-hidden">
-                        <img src="${tool.img}" alt="${data.name}" class="w-full h-full object-contain p-2" onerror="this.src='../assets/images/logo/logo.png'">
+                    <div class="w-full aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3 overflow-hidden" style="border-radius: 8px;">
+                        <img src="${tool.img}" alt="${data.name}" class="w-full h-full object-cover" style="border-radius: 8px; aspect-ratio: 1/1;" onerror="this.src='../assets/images/logo/logo.png'">
                     </div>
                     <h3 class="text-base font-ops text-blue mb-1">${data.name}</h3>
                     <p class="text-xs text-gray-600 dark:text-gray-300 flex-grow leading-relaxed">${data.desc}</p>

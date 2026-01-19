@@ -256,9 +256,9 @@
          */
         function initLanguage() {
             try {
-                const savedLang = localStorage.getItem('language') || 'fr';
-                if (savedLang === 'en') {
-                    applyTranslations('en');
+                // Use Language object from main.js if available
+                if (typeof Language !== 'undefined' && Language.apply) {
+                    Language.apply();
                 }
             } catch (e) {
                 console.error('Language init error:', e);
@@ -270,43 +270,12 @@
          */
         function toggleLanguage() {
             try {
-                const currentLang = localStorage.getItem('language') || 'fr';
-                const newLang = currentLang === 'fr' ? 'en' : 'fr';
-                localStorage.setItem('language', newLang);
-                applyTranslations(newLang);
-                
-                // Update language display
-                const langDisplay = document.getElementById('lang-display');
-                if (langDisplay) {
-                    langDisplay.textContent = newLang === 'fr' ? 'EN' : 'FR';
-                }
-                
-                // Update mobile lang display if exists
-                const mobileLangDisplay = document.getElementById('mobile-lang-display');
-                if (mobileLangDisplay) {
-                    mobileLangDisplay.textContent = newLang === 'fr' ? 'EN' : 'FR';
+                // Use Language object from main.js if available
+                if (typeof Language !== 'undefined' && Language.toggle) {
+                    Language.toggle();
                 }
             } catch (e) {
                 console.error('Language toggle error:', e);
-            }
-        }
-        
-        /**
-         * Apply translations to all elements with data-translate attribute
-         */
-        function applyTranslations(lang) {
-            try {
-                // Translations object would be loaded from data.js
-                if (typeof translations !== 'undefined') {
-                    document.querySelectorAll('[data-translate]').forEach(el => {
-                        const key = el.getAttribute('data-translate');
-                        if (translations[lang] && translations[lang][key]) {
-                            el.innerHTML = translations[lang][key];
-                        }
-                    });
-                }
-            } catch (e) {
-                console.error('Translation apply error:', e);
             }
         }
         

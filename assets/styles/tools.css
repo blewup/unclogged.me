@@ -26,3 +26,12 @@ body {
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     border-color: rgba(37, 99, 235, 0.5);
 }
+
+/* Tool images - 8px border radius, 1:1 aspect ratio, cover fit */
+.tool-card img {
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}

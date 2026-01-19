@@ -1009,15 +1009,13 @@ button.font-comic,
 .stagger-children > *:nth-child(6) { transition-delay: 0.3s; }
 
 /* ============================================
-   HERO SLIDE ZOOM EFFECT (Task 1)
-   Scale 1 → 1.25 → 1 over 8 seconds
+   HERO SLIDE ZOOM EFFECT
+   Smooth zoom-out only: Scale 1.15 → 1 over 10 seconds
+   Starts zoomed in, slowly zooms out for cinematic effect
    ============================================ */
-@keyframes heroZoomInOut {
+@keyframes heroZoomOut {
     0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.25);
+        transform: scale(1.15);
     }
     100% {
         transform: scale(1);
@@ -1025,11 +1023,11 @@ button.font-comic,
 }
 
 .hero-slide {
-    transform: scale(1);
+    transform: scale(1.15);
 }
 
 .hero-slide.active {
-    animation: heroZoomInOut 8s ease-in-out forwards;
+    animation: heroZoomOut 10s ease-out forwards;
 }
 
 /* ============================================

@@ -145,39 +145,10 @@
             document.documentElement.classList.add('dark');
         }
         
-        // Language detection
-        let currentLang = localStorage.getItem('language') || 'fr';
-        const translations = {
-            fr: { 
-                err_title: 'HORS LIGNE', 
-                err_msg: 'Vous n\'êtes pas connecté à Internet. Le site fonctionne en mode hors ligne.', 
-                err_home: 'Retour à l\'accueil', 
-                err_call: 'Appelez Billy!', 
-                err_help: 'Besoin d\'aide?',
-                urgence: 'URGENCE 24/7'
-            },
-            en: { 
-                err_title: 'OFFLINE', 
-                err_msg: 'You are not connected to the Internet. The site is running in offline mode.', 
-                err_home: 'Back to Home', 
-                err_call: 'Call Billy!', 
-                err_help: 'Need help?',
-                urgence: 'EMERGENCY 24/7'
-            }
-        };
-        
-        function applyTranslations() {
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (translations[currentLang] && translations[currentLang][key]) {
-                    el.innerHTML = translations[currentLang][key];
-                }
-            });
-        }
-        
-        if (currentLang === 'en') {
-            applyTranslations();
-        }
+        // Offline page uses main.js Language object for translations
+        // All translation keys (err_title, err_msg, err_home, err_call, err_help, urgence) 
+        // are defined in main.js Language.translations
+        // main.js will apply translations after loading
     </script>
     
     <!-- Core Libraries -->

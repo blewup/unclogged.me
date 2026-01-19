@@ -387,9 +387,6 @@
 
         const translations = {
             fr: {
-                hero_title: "DÉBOUCHEUR EXPERT",
-                urgence: "URGENCE 24/7",
-                index_title: "Index",
                 idx_1: "Introduction",
                 idx_2: "Renseignements",
                 idx_3: "Finalités",
@@ -401,9 +398,6 @@
                 idx_9: "Contact"
             },
             en: {
-                hero_title: "UNCLOGGED.ME",
-                urgence: "EMERGENCY 24/7",
-                index_title: "Index",
                 idx_1: "Introduction",
                 idx_2: "Information",
                 idx_3: "Purposes",
@@ -422,23 +416,24 @@
             document.getElementById('policy-content').innerHTML = content[currentLang];
         }
 
-        function applyTranslations() {
+        function applyLocalTranslations() {
+            // Apply page-specific index translations only
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
-                if (translations[currentLang][key]) {
+                if (translations[currentLang] && translations[currentLang][key]) {
                     el.innerText = translations[currentLang][key];
                 }
             });
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            applyTranslations();
+            applyLocalTranslations();
             render();
         });
 
         window.addEventListener('languageChanged', () => {
             currentLang = localStorage.getItem('language') || 'fr';
-            applyTranslations();
+            applyLocalTranslations();
             render();
         });
     </script>
