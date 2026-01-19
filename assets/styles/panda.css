@@ -649,6 +649,28 @@
     font-size: 1.125rem !important;
 }
 
+/* --- Navbar Toggle Buttons - Landscape Orientation (0.65x scale) --- */
+@media (orientation: landscape) {
+    .navbar-toggle {
+        width: 36px !important;  /* 56 * 0.65 ≈ 36 */
+        height: 36px !important;
+        min-width: 36px;
+        min-height: 36px;
+        padding: 2px;
+    }
+    
+    .navbar-toggle i,
+    .navbar-toggle svg {
+        font-size: 1rem !important;  /* 1.5 * 0.65 ≈ 1 */
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .navbar-toggle span {
+        font-size: 0.75rem !important;  /* 1.125 * 0.65 ≈ 0.73 */
+    }
+}
+
 /* --- Services Icons (use inline Tailwind classes, no override) --- */
 .service-icon-sm {
     font-size: 0.75rem;
@@ -1028,7 +1050,7 @@ button.font-comic,
 }
 
 .hero-slide.active {
-    animation: heroZoomOut 10s ease-out forwards;
+    animation: heroZoomOut 6s linear forwards;
 }
 
 /* Keep zoomed-out state after slide was shown */
