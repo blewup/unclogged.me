@@ -107,17 +107,17 @@
         <!-- Sidebar Index -->
         <aside class="md:w-1/4">
             <div class="sticky top-24 bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-lg">
-                <h3 class="font-ops text-xl mb-4 text-blue" data-translate="index_title">Index</h3>
+                <h3 class="font-ops text-xl mb-4 text-blue" data-translate="politics_index">Index</h3>
                 <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300">
-                    <li><a href="#section1" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">1</span> <span data-translate="idx_1">Introduction</span></a></li>
-                    <li><a href="#section2" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">2</span> <span data-translate="idx_2">Renseignements</span></a></li>
-                    <li><a href="#section3" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">3</span> <span data-translate="idx_3">Finalités</span></a></li>
-                    <li><a href="#section4" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">4</span> <span data-translate="idx_4">Communication</span></a></li>
-                    <li><a href="#section5" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">5</span> <span data-translate="idx_5">Sécurité</span></a></li>
-                    <li><a href="#section6" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">6</span> <span data-translate="idx_6">Vos droits</span></a></li>
-                    <li><a href="#section7" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">7</span> <span data-translate="idx_7">Cookies</span></a></li>
-                    <li><a href="#section8" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">8</span> <span data-translate="idx_8">Modifications</span></a></li>
-                    <li><a href="#section9" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">9</span> <span data-translate="idx_9">Contact</span></a></li>
+                    <li><a href="#section1" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">1</span> <span data-translate="pol_1">Introduction</span></a></li>
+                    <li><a href="#section2" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">2</span> <span data-translate="pol_2">Renseignements</span></a></li>
+                    <li><a href="#section3" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">3</span> <span data-translate="pol_3">Finalités</span></a></li>
+                    <li><a href="#section4" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">4</span> <span data-translate="pol_4">Communication</span></a></li>
+                    <li><a href="#section5" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">5</span> <span data-translate="pol_5">Sécurité</span></a></li>
+                    <li><a href="#section6" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">6</span> <span data-translate="pol_6">Vos droits</span></a></li>
+                    <li><a href="#section7" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">7</span> <span data-translate="pol_7">Cookies</span></a></li>
+                    <li><a href="#section8" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">8</span> <span data-translate="pol_8">Modifications</span></a></li>
+                    <li><a href="#section9" class="hover:text-blue transition flex items-center gap-2"><span class="text-xs bg-blue/10 px-2 py-0.5 rounded-full text-blue">9</span> <span data-translate="pol_9">Contact</span></a></li>
                 </ul>
             </div>
         </aside>
@@ -138,6 +138,7 @@
         const slides = document.querySelectorAll('.hero-slide');
         
         function nextSlide() {
+            slides[currentSlide].classList.add('was-active');
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');

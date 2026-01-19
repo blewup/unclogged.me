@@ -107,7 +107,7 @@
         <!-- Sidebar Index -->
         <aside class="md:w-1/4">
             <div class="sticky top-24 bg-white dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10 shadow-lg">
-                <h3 class="font-ops text-xl mb-4 text-blue" data-translate="index_title">Index</h3>
+                <h3 class="font-ops text-xl mb-4 text-blue" data-translate="politics_index">Index</h3>
                 <ul class="space-y-3 text-sm font-medium text-gray-600 dark:text-gray-300" id="index-list">
                     <!-- JS Generated -->
                 </ul>
@@ -130,6 +130,7 @@
         const slides = document.querySelectorAll('.hero-slide');
         
         function nextSlide() {
+            slides[currentSlide].classList.add('was-active');
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');

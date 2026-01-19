@@ -328,6 +328,8 @@ const Language = {
             // Politics Page
             politics_title: "POLITIQUE DE CONFIDENTIALITÉ",
             politics_index: "Index",
+            pol_1: "Introduction", pol_2: "Renseignements", pol_3: "Finalités", pol_4: "Communication",
+            pol_5: "Sécurité", pol_6: "Vos droits", pol_7: "Cookies", pol_8: "Modifications", pol_9: "Contact",
             
             // Index Sections
             idx_1: "ACCUEIL", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",
@@ -522,6 +524,8 @@ const Language = {
             // Politics Page  
             politics_title: "PRIVACY POLICY",
             politics_index: "Index",
+            pol_1: "Introduction", pol_2: "Information", pol_3: "Purposes", pol_4: "Sharing",
+            pol_5: "Security", pol_6: "Your Rights", pol_7: "Cookies", pol_8: "Modifications", pol_9: "Contact",
             
             // Index Sections
             idx_1: "HOME", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",

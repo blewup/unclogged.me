@@ -1012,6 +1012,7 @@ button.font-comic,
    HERO SLIDE ZOOM EFFECT
    Smooth zoom-out only: Scale 1.15 → 1 over 10 seconds
    Starts zoomed in, slowly zooms out for cinematic effect
+   After animation completes, slide stays zoomed out
    ============================================ */
 @keyframes heroZoomOut {
     0% {
@@ -1028,6 +1029,12 @@ button.font-comic,
 
 .hero-slide.active {
     animation: heroZoomOut 10s ease-out forwards;
+}
+
+/* Keep zoomed-out state after slide was shown */
+.hero-slide.was-active {
+    transform: scale(1);
+    animation: none;
 }
 
 /* ============================================
