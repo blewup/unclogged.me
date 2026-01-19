@@ -74,7 +74,7 @@ const TestimonialsModule = (() => {
                     <img src="${t.img}" onerror="this.src='assets/images/clients/client_00.png'" 
                          class="w-32 h-32 md:w-40 md:h-40 box-radius object-cover mb-4 testimonial-img-shadow aspect-square" 
                          alt="Photo de ${t.name}" loading="lazy">
-                    <div class="flex-grow flex flex-col justify-center" style="transform: scale(0.81);">
+                    <div class="flex-grow flex flex-col justify-center" style="transform: scale(0.65);">
                         <h4 class="font-ops text-xs md:text-sm text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
                         <div class="text-yellow-400 text-[10px] md:text-xs mb-2">${renderStars(t.stars)}</div>
                         <p class="font-inter font-normal text-[8px] md:text-[9px] text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[25vh] scrollbar-thin">"${t.text}"</p>

@@ -238,7 +238,7 @@
             document.documentElement.classList.add('dark');
         }
 
-        // Hero slideshow
+        // Hero slideshow - infinite zoom effect
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         
@@ -246,6 +246,8 @@
             slides[currentSlide].classList.add('was-active');
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
+            // Remove was-active so animation replays on subsequent cycles
+            slides[currentSlide].classList.remove('was-active');
             slides[currentSlide].classList.add('active');
         }
         

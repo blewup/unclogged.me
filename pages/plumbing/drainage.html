@@ -537,21 +537,28 @@
     <div id="plumbing-footer-container"></div>
 
     <script>
-        // Theme toggle
+        // Theme toggle - delegates to main.js Theme if available
         function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            if (typeof Theme !== 'undefined' && Theme.toggle) {
+                Theme.toggle();
+            } else {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            }
         }
         
-        // Language toggle
-        let currentLang = 'fr';
-        function toggleLang() {
-            currentLang = currentLang === 'fr' ? 'en' : 'fr';
-            document.getElementById('lang-display').textContent = currentLang === 'fr' ? 'EN' : 'FR';
-            localStorage.setItem('language', currentLang);
+        // Language toggle - delegates to main.js Language
+        function toggleLanguage() {
+            if (typeof Language !== 'undefined' && Language.toggle) {
+                Language.toggle();
+            } else {
+                console.warn('Language module not loaded yet');
+            }
         }
+        // Alias for backward compatibility
+        function toggleLang() { toggleLanguage(); }
         
-        // Initialize theme
+        // Initialize theme immediately (before main.js loads)
         (function() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -561,10 +568,12 @@
                 document.documentElement.classList.remove('dark');
             }
             
-            const savedLang = localStorage.getItem('language');
-            if (savedLang) {
-                currentLang = savedLang;
-                document.getElementById('lang-display').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+            // Set initial language display
+            const savedLang = localStorage.getItem('language') || 'fr';
+            document.documentElement.lang = savedLang;
+            const langDisplay = document.getElementById('lang-display');
+            if (langDisplay) {
+                langDisplay.textContent = savedLang === 'fr' ? 'EN' : 'FR';
             }
         })();
         

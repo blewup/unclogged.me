@@ -37,7 +37,7 @@
 </section>
 
 <script>
-// Index hero slideshow - 6 second interval
+// Index hero slideshow - 6 second interval with infinite zoom effect
 (function initIndexHeroSlideshow() {
     const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
     if (slides.length === 0) return;
@@ -48,6 +48,8 @@
         slides[currentSlide].classList.add('was-active');
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
+        // Remove was-active so animation replays on subsequent cycles
+        slides[currentSlide].classList.remove('was-active');
         slides[currentSlide].classList.add('active');
     }
     

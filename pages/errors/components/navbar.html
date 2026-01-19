@@ -111,38 +111,38 @@ function toggleMobileMenu() {
     if (menu) menu.classList.toggle('hidden');
 }
 
-// Theme toggle
+// Theme toggle - delegates to main.js Theme if available
 function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
+    if (typeof Theme !== 'undefined' && Theme.toggle) {
+        Theme.toggle();
+    } else {
+        document.documentElement.classList.toggle('dark');
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+    }
 }
 
-// Language toggle
-let currentLang = localStorage.getItem('language') || 'fr';
+// Language toggle - delegates to main.js Language
 function toggleLanguage() {
-    currentLang = currentLang === 'fr' ? 'en' : 'fr';
-    
-    // Update all language display elements
-    const langDisplay = document.getElementById('lang-display');
-    const mobileLangDisplay = document.getElementById('mobile-lang-display');
-    if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
-    if (mobileLangDisplay) mobileLangDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
-    
-    // Apply translations if translations object exists
-    if (typeof translations !== 'undefined') {
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            if (translations[currentLang] && translations[currentLang][key]) {
-                el.innerHTML = translations[currentLang][key];
-            }
-        });
+    if (typeof Language !== 'undefined' && Language.toggle) {
+        Language.toggle();
+    } else {
+        // Fallback if Language not loaded yet
+        let currentLang = localStorage.getItem('language') || 'fr';
+        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+        
+        // Update all language display elements
+        const langDisplay = document.getElementById('lang-display');
+        const mobileLangDisplay = document.getElementById('mobile-lang-display');
+        if (langDisplay) langDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+        if (mobileLangDisplay) mobileLangDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
+        
+        localStorage.setItem('language', currentLang);
+        document.documentElement.lang = currentLang;
+        
+        // Dispatch global event for pages with local translations
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: currentLang } }));
     }
-    
-    localStorage.setItem('language', currentLang);
-    
-    // Dispatch global event for pages with local translations
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: currentLang } }));
 }
 
 // Initialize theme and language from localStorage
@@ -154,11 +154,8 @@ function toggleLanguage() {
         document.documentElement.classList.remove('dark');
     }
     
-    const savedLang = localStorage.getItem('language');
-    if (savedLang) {
-        currentLang = savedLang;
-    }
-    const displayText = currentLang === 'fr' ? 'EN' : 'FR';
+    const savedLang = localStorage.getItem('language') || 'fr';
+    const displayText = savedLang === 'fr' ? 'EN' : 'FR';
     const langDisplay = document.getElementById('lang-display');
     const mobileLangDisplay = document.getElementById('mobile-lang-display');
     if (langDisplay) langDisplay.innerText = displayText;

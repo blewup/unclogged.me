@@ -167,13 +167,6 @@ function toggleMobileMenu() {
         if (iconOpen) iconOpen.classList.remove('hidden');
         if (iconClose) iconClose.classList.add('hidden');
     }
-    
-    // Update mobile lang display
-    const mobileLangDisplay = document.getElementById('mobile-lang-display');
-    const currentLang = localStorage.getItem('language') || 'fr';
-    if (mobileLangDisplay) {
-        mobileLangDisplay.innerText = currentLang === 'fr' ? 'EN' : 'FR';
-    }
 }
 
 // Theme toggle - delegates to main.js Theme object
@@ -188,18 +181,49 @@ function toggleTheme() {
     }
 }
 
-// Language toggle - delegates to main.js Language object
+// Language toggle - NO PAGE RELOAD, pure client-side switching
 function toggleLanguage() {
+    // Toggle language in localStorage
+    let currentLang = localStorage.getItem('language') || 'fr';
+    const newLang = currentLang === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('language', newLang);
+    document.documentElement.lang = newLang;
+    
+    // Update all language display buttons
+    updateLangDisplayButtons(newLang);
+    
+    // Use Language object if available, otherwise apply translations directly
     if (typeof Language !== 'undefined' && Language.toggle) {
+        // Reset to match our change, then let Language handle it
+        localStorage.setItem('language', currentLang); // Reset so toggle flips correctly
         Language.toggle();
     } else {
-        // Fallback for pages without main.js loaded yet
-        let currentLang = localStorage.getItem('language') || 'fr';
-        currentLang = currentLang === 'fr' ? 'en' : 'fr';
-        localStorage.setItem('language', currentLang);
-        // Reload to apply translations properly
-        window.location.reload();
+        // Direct translation application without page reload
+        applyTranslations(newLang);
     }
+}
+
+// Update all language display buttons
+function updateLangDisplayButtons(lang) {
+    const displayText = lang === 'fr' ? 'FR' : 'EN';
+    document.querySelectorAll('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
+        el.innerText = displayText;
+    });
+}
+
+// Apply translations directly (fallback when main.js not ready)
+function applyTranslations(lang) {
+    // Wait for Language object to be available, then use it
+    const checkAndApply = () => {
+        if (typeof Language !== 'undefined' && Language.apply) {
+            Language.current = lang;
+            Language.apply();
+        } else {
+            // Retry in 100ms if Language not available yet
+            setTimeout(checkAndApply, 100);
+        }
+    };
+    checkAndApply();
 }
 
 // Initialize theme and language from localStorage
@@ -213,24 +237,23 @@ function toggleLanguage() {
     
     // Show current language on button (FR when French, EN when English)
     const savedLang = localStorage.getItem('language') || 'fr';
-    const displayText = savedLang === 'fr' ? 'FR' : 'EN';
+    updateLangDisplayButtons(savedLang);
     
-    const langDisplay = document.getElementById('lang-display');
-    if (langDisplay) {
-        langDisplay.innerText = displayText;
-    }
+    // Listen for languageChanged events from main.js
+    window.addEventListener('languageChanged', (e) => {
+        const newLang = e.detail?.language || localStorage.getItem('language') || 'fr';
+        updateLangDisplayButtons(newLang);
+    });
     
-    const mobileLangDisplay = document.getElementById('mobile-lang-display');
-    if (mobileLangDisplay) {
-        mobileLangDisplay.innerText = displayText;
-    }
-    
-    // Apply translations on page load after a small delay to ensure all elements are loaded
-    setTimeout(() => {
+    // Apply translations after main.js loads
+    const waitForLanguage = () => {
         if (typeof Language !== 'undefined' && Language.apply) {
             Language.apply();
+        } else {
+            setTimeout(waitForLanguage, 50);
         }
-    }, 100);
+    };
+    setTimeout(waitForLanguage, 100);
 })();
 
 // Navbar hide/show on scroll with smooth transition

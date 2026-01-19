@@ -335,6 +335,14 @@ const Language = {
             idx_1: "ACCUEIL", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",
             idx_5: "CONTACT", idx_6: "TÉMOIGNAGES", idx_7: "LEÇONS", idx_8: "CARTE", idx_9: "PIED DE PAGE",
             
+            // Footer Links
+            footer_privacy: "Politique de confidentialité",
+            footer_terms: "Conditions d'utilisation",
+            footer_team: "Équipe",
+            
+            // Search Placeholder
+            search_placeholder: "Rechercher un outil...",
+            
             // Page title
             page_title: "Déboucheur Expert"
         },
@@ -531,6 +539,14 @@ const Language = {
             idx_1: "HOME", idx_2: "SERVICES", idx_3: "EXPERTISE", idx_4: "FAQ",
             idx_5: "CONTACT", idx_6: "TESTIMONIALS", idx_7: "LESSONS", idx_8: "MAP", idx_9: "FOOTER",
             
+            // Footer Links
+            footer_privacy: "Privacy Policy",
+            footer_terms: "Terms of Use",
+            footer_team: "Team",
+            
+            // Search Placeholder
+            search_placeholder: "Search for a tool...",
+            
             // Page title
             page_title: "Unclogger Expert"
         }
@@ -605,12 +621,37 @@ const Language = {
         }
         
         // Re-apply translations when components are loaded (they load async)
-        // Listen for componentLoaded events and re-apply
         document.addEventListener('componentLoaded', () => this.apply(), true);
         
-        // Also apply after a delay to catch any late-loading components
+        // MutationObserver for dynamically added content with data-translate
+        const observer = new MutationObserver((mutations) => {
+            let needsApply = false;
+            for (const mutation of mutations) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    for (const node of mutation.addedNodes) {
+                        if (node.nodeType === Node.ELEMENT_NODE) {
+                            if (node.hasAttribute?.('data-translate') || node.querySelector?.('[data-translate]')) {
+                                needsApply = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (needsApply) break;
+            }
+            if (needsApply) {
+                // Debounce to avoid multiple rapid calls
+                clearTimeout(this._applyTimeout);
+                this._applyTimeout = setTimeout(() => this.apply(), 50);
+            }
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        // Also apply after delays to catch late-loading components
         setTimeout(() => this.apply(), 500);
         setTimeout(() => this.apply(), 1500);
+        setTimeout(() => this.apply(), 3000);
     }
 };
 

@@ -34,7 +34,7 @@
 </section>
 
 <script>
-// Hero slideshow animation for subpages - 6 second interval
+// Hero slideshow animation for subpages - 6 second interval with infinite zoom
 (function initHeroSlideshow() {
     const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
     if (slides.length === 0) return;
@@ -45,6 +45,8 @@
         slides[currentSlide].classList.add('was-active');
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
+        // Remove was-active so animation replays on subsequent cycles
+        slides[currentSlide].classList.remove('was-active');
         slides[currentSlide].classList.add('active');
     }
     

@@ -126,8 +126,8 @@ async function loadComponent(containerId, componentPath) {
             Language.apply();
         }
         
-        // Dispatch event when component is loaded
-        container.dispatchEvent(new CustomEvent('componentLoaded', { 
+        // Dispatch event on document when component is loaded (for global listeners)
+        document.dispatchEvent(new CustomEvent('componentLoaded', { 
             detail: { containerId, componentPath } 
         }));
         

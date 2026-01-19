@@ -188,6 +188,11 @@
                         }
                         document.body.appendChild(newScript);
                     });
+                    
+                    // Dispatch componentLoaded event for translation system
+                    document.dispatchEvent(new CustomEvent('componentLoaded', { 
+                        detail: { containerId, componentPath } 
+                    }));
                 }
             } catch (error) {
                 console.error(`Error loading component ${componentPath}:`, error);
@@ -256,23 +261,50 @@
          */
         function initLanguage() {
             try {
-                // Use Language object from main.js if available
-                if (typeof Language !== 'undefined' && Language.apply) {
-                    Language.apply();
-                }
+                // Apply translations after main.js loads
+                const waitForLanguage = () => {
+                    if (typeof Language !== 'undefined' && Language.apply) {
+                        Language.apply();
+                    } else {
+                        setTimeout(waitForLanguage, 50);
+                    }
+                };
+                waitForLanguage();
             } catch (e) {
                 console.error('Language init error:', e);
             }
         }
         
         /**
-         * Toggle between French and English with error handling
+         * Toggle between French and English - NO PAGE RELOAD
          */
         function toggleLanguage() {
             try {
-                // Use Language object from main.js if available
                 if (typeof Language !== 'undefined' && Language.toggle) {
                     Language.toggle();
+                } else {
+                    // Fallback: toggle localStorage and wait for Language to be ready
+                    let currentLang = localStorage.getItem('language') || 'fr';
+                    const newLang = currentLang === 'fr' ? 'en' : 'fr';
+                    localStorage.setItem('language', newLang);
+                    document.documentElement.lang = newLang;
+                    
+                    // Update display buttons
+                    const displayText = newLang === 'fr' ? 'FR' : 'EN';
+                    document.querySelectorAll('#lang-display, #mobile-lang-display').forEach(el => {
+                        el.innerText = displayText;
+                    });
+                    
+                    // Wait for Language object then apply
+                    const waitAndApply = () => {
+                        if (typeof Language !== 'undefined' && Language.apply) {
+                            Language.current = newLang;
+                            Language.apply();
+                        } else {
+                            setTimeout(waitAndApply, 50);
+                        }
+                    };
+                    waitAndApply();
                 }
             } catch (e) {
                 console.error('Language toggle error:', e);
