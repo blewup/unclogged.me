@@ -5,7 +5,7 @@
     Include: <div id="hero-container"></div>
 -->
 
-<section id="pages-hero" class="relative w-full bg-lightBase dark:bg-darkBase" style="height: 60vh; min-height: 40vh;">
+<section id="pages-hero" class="relative w-full bg-lightBase dark:bg-darkBase" style="height: 60vh; max-height: 60vh; min-height: 40vh;">
     <!-- Hero Slideshow with slides 06-11 -->
     <div id="hero-slideshow" class="absolute inset-0 z-0">
         <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
@@ -65,7 +65,7 @@
 </script>
 
 <style>
-/* Hero slide styles with zoom effect */
+/* Hero slide styles with zoom-in effect */
 .hero-slide {
     position: absolute;
     inset: 0;
@@ -74,18 +74,18 @@
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity, transform;
-    transform: scale(1.25);
+    transform: scale(1);
     overflow: hidden;
 }
 
 .hero-slide.active {
     opacity: 1;
-    animation: heroZoomOut 8s ease-out forwards;
+    animation: heroZoomIn 8s ease-out forwards;
 }
 
-@keyframes heroZoomOut {
-    0% { transform: scale(1.25); }
-    100% { transform: scale(1); }
+@keyframes heroZoomIn {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.25); }
 }
 
 /* Text outline for readability on image backgrounds */

@@ -67,6 +67,19 @@
         }
         return theme;
     }
+
+    function setConsentCookies(payload) {
+        const maxAge = 60 * 60 * 24 * 365 * 10; // 10 years
+        const pairs = [
+            ['consentAccepted', 'true'],
+            ['consentLang', payload.lang || 'fr'],
+            ['consentTheme', payload.theme || 'dark'],
+            ['consentSession', payload.sessionId || ''],
+            ['consentTZ', payload.tz || ''],
+            ['consentUA', navigator.userAgent || '']
+        ];
+        pairs.forEach(([k, v]) => document.cookie = `${k}=${encodeURIComponent(v || '')}; path=/; max-age=${maxAge}; SameSite=Lax`);
+    }
     
     function storageAvailable(storage) {
         if (!storage) return false;
@@ -411,6 +424,7 @@
         applyLanguagePreference(browserLang);
         
         const payload = await buildPayload(browserLang, theme);
+        setConsentCookies(payload);
         
         Promise.allSettled([
             fetch(apiBasePath + 'track.php', {
