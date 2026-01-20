@@ -234,6 +234,35 @@ const Language = {
             form_invalid_email: "Veuillez entrer une adresse courriel valide.",
             form_invalid_phone: "Veuillez entrer un numéro de téléphone valide.",
             
+            // Hero
+            billy_name: "BILLY ST-HILAIRE,",
+            
+            // Contact Form Placeholders
+            form_fname: "Prénom",
+            form_lname: "Nom",
+            form_email: "Courriel",
+            form_phone: "(###) ###-####",
+            form_message: "Message",
+            
+            // Billy's Info
+            billy_age: "Billy St-Hilaire, 35 ans,",
+            billy_school_1: "Diplômé de l'École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 ans pour le groupe Centco inc,",
+            billy_exp_2: "Contrats multiples avec le local 144,",
+            billy_exp_3: "Fier supporteur et employé de",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Toujours actif pour répondre aux",
+            billy_bio_2: "diverses appels de services.",
+            billy_bio_3: "Que ce soit pour changer une valve",
+            billy_bio_4: "ou réparer un tuyau qui coule.",
+            billy_bio_5: "Le déboucheur sait s'y prendre.",
+            billy_note: "*Aucune construction neuve",
+            
+            // Map Actions (already exist but verify)
+            map_satellite: "Satellite",
+            map_roadmap: "Plan",
+            
             // Error Pages
             err_title: "PAGE NON TROUVÉE", err_msg: "Oups ! La page que vous cherchez semble avoir fui... comme un tuyau mal joint.",
             err_home: "Retour à l'accueil", err_call: "Appelez Billy!", err_help: "Besoin d'aide?",
@@ -459,6 +488,35 @@ const Language = {
             form_invalid_email: "Please enter a valid email address.",
             form_invalid_phone: "Please enter a valid phone number.",
             
+            // Hero
+            billy_name: "BILLY ST-HILAIRE,",
+            
+            // Contact Form Placeholders
+            form_fname: "First Name",
+            form_lname: "Last Name",
+            form_email: "Email",
+            form_phone: "(###) ###-####",
+            form_message: "Message",
+            
+            // Billy's Info
+            billy_age: "Billy St-Hilaire, 35 years old,",
+            billy_school_1: "Graduate of École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 years with Centco inc.,",
+            billy_exp_2: "Multiple contracts with local 144,",
+            billy_exp_3: "Proud supporter and employee of",
+            billy_exp_4: "Plomberie Martin Boisvert inc.",
+            billy_bio_1: "Always ready to respond to",
+            billy_bio_2: "various service calls.",
+            billy_bio_3: "Whether changing a valve",
+            billy_bio_4: "or fixing a leaking pipe.",
+            billy_bio_5: "The unclogger knows how to do it.",
+            billy_note: "*No new construction",
+            
+            // Map Actions (already exist but verify)
+            map_satellite: "Satellite",
+            map_roadmap: "Map",
+            
             // Error Pages
             err_title: "PAGE NOT FOUND", err_msg: "Oops! The page you're looking for seems to have leaked away... like a poorly sealed pipe.",
             err_home: "Back to Home", err_call: "Call Billy!", err_help: "Need help?",
@@ -642,18 +700,31 @@ const Language = {
         const trans = this.translations[lang];
         if (!trans) return;
         
+        // Handle data-translate attributes
         Utils.$$('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             const translation = trans[key];
             if (translation) {
-                // Use innerHTML for translations containing HTML, innerText otherwise
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = translation;
+                    if (el.hasAttribute('placeholder')) {
+                        el.placeholder = translation;
+                    } else {
+                        el.value = translation;
+                    }
                 } else if (translation.includes('<') && translation.includes('>')) {
                     el.innerHTML = translation;
                 } else {
                     el.innerText = translation;
                 }
+            }
+        });
+        
+        // Handle data-translate-placeholder attributes (for form inputs)
+        Utils.$$('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            const translation = trans[key];
+            if (translation && el.placeholder !== undefined) {
+                el.placeholder = translation;
             }
         });
         
