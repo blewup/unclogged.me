@@ -69,15 +69,15 @@ const TestimonialsModule = (() => {
     // Create testimonial card HTML
     const createCard = (t, index, widthPercent) => {
         return `
-            <div class="flex-shrink-0 p-4 testimonial-card h-[60vh]" style="width: ${widthPercent}%;" data-index="${index}">
-                <div class="bg-white dark:bg-gray-800 p-6 box-radius shadow-lg border border-gray-200 dark:border-gray-700 h-full flex flex-col items-center text-center overflow-hidden justify-between">
+            <div class="flex-shrink-0 p-2 md:p-3 testimonial-card h-[60vh]" style="width: ${widthPercent}%;" data-index="${index}">
+                <div class="bg-white dark:bg-gray-800 p-4 md:p-5 box-radius shadow-lg border border-gray-200 dark:border-gray-700 h-full flex flex-col items-center text-center overflow-hidden justify-between">
                     <img src="${t.img}" onerror="this.src='assets/images/clients/client_00.png'" 
-                         class="w-32 h-32 md:w-40 md:h-40 box-radius object-cover mb-4 testimonial-img-shadow aspect-square" 
+                         class="w-40 h-40 md:w-48 md:h-48 box-radius object-cover mb-4 testimonial-img-shadow aspect-square" 
                          alt="Photo de ${t.name}" loading="lazy">
-                    <div class="flex-grow flex flex-col justify-center" style="transform: scale(0.65);">
-                        <h4 class="font-ops text-xs md:text-sm text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
-                        <div class="text-yellow-400 text-[10px] md:text-xs mb-2">${renderStars(t.stars)}</div>
-                        <p class="font-inter font-normal text-[8px] md:text-[9px] text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[25vh] scrollbar-thin">"${t.text}"</p>
+                    <div class="flex-grow flex flex-col justify-center" style="transform: scale(0.975);">
+                        <h4 class="font-ops text-lg md:text-xl text-gray-900 dark:text-white truncate w-full mb-2">${t.name}</h4>
+                        <div class="text-yellow-400 text-sm md:text-base mb-2">${renderStars(t.stars)}</div>
+                        <p class="font-inter font-normal text-sm md:text-base text-gray-600 dark:text-gray-300 overflow-y-auto max-h-[25vh] scrollbar-thin">"${t.text}"</p>
                     </div>
                 </div>
             </div>

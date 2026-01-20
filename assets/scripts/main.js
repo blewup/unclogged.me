@@ -600,9 +600,9 @@ const Language = {
         document.documentElement.lang = this.current;
         
         // Update all lang-display buttons (may be multiple on page)
-        // Show current language on button (FR when French, EN when English)
+        // Show target language (EN when French is active, FR when English is active)
         Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
-            el.innerText = this.current === 'fr' ? 'FR' : 'EN';
+            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
         });
         
         this.apply();
@@ -650,9 +650,9 @@ const Language = {
         document.documentElement.lang = this.current;
         
         // Update lang display button (desktop and mobile)
-        // Show current language on button (FR when French, EN when English)
+        // Show target language on button (EN when French is active, FR when English is active)
         Utils.$$('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
-            el.innerText = this.current === 'fr' ? 'FR' : 'EN';
+            el.innerText = this.current === 'fr' ? 'EN' : 'FR';
         });
         
         // Apply translations after DOM is ready
@@ -661,6 +661,7 @@ const Language = {
         } else {
             this.apply();
         }
+        window.addEventListener('load', () => this.apply());
         
         // Re-apply translations when components are loaded (they load async)
         document.addEventListener('componentLoaded', () => this.apply(), true);
@@ -694,6 +695,8 @@ const Language = {
         setTimeout(() => this.apply(), 500);
         setTimeout(() => this.apply(), 1500);
         setTimeout(() => this.apply(), 3000);
+        setTimeout(() => this.apply(), 5000);
+        setInterval(() => this.apply(), 8000);
     }
 };
 

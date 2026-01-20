@@ -484,9 +484,8 @@ show_checklist() {
     echo "   └─ Messaging Webhook: https://deboucheur.expert/api/sms-webhook.php"
     echo ""
     
-    echo -e "${YELLOW}4. VERIFY SITES${NC}"
-    echo "   └─ 🇫🇷 French: https://deboucheur.expert"
-    echo "   └─ 🇬🇧 English: https://unclogged.me"
+    echo -e "${YELLOW}4. VERIFY SITE${NC}"
+    echo "   └─ https://deboucheur.expert"
     echo ""
     
     echo -e "${GREEN}╔═══════════════════════════════════════════════════════════════════════╗${NC}"
@@ -494,9 +493,9 @@ show_checklist() {
     echo -e "${GREEN}╚═══════════════════════════════════════════════════════════════════════╝${NC}"
     echo ""
     
-    # Test website if curl is available
+    # Test primary site if curl is available
     if command -v curl &> /dev/null; then
-        log "🌐 Testing website accessibility..."
+        log "🌐 Testing primary site accessibility..."
         
         HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://deboucheur.expert" 2>/dev/null || echo "000")
         if [ "$HTTP_STATUS" = "200" ]; then
@@ -505,15 +504,6 @@ show_checklist() {
             info "Could not reach deboucheur.expert (check DNS/SSL)"
         else
             warning "deboucheur.expert returned HTTP $HTTP_STATUS"
-        fi
-        
-        HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://unclogged.me" 2>/dev/null || echo "000")
-        if [ "$HTTP_STATUS" = "200" ]; then
-            success "unclogged.me is online (HTTP $HTTP_STATUS)"
-        elif [ "$HTTP_STATUS" = "000" ]; then
-            info "Could not reach unclogged.me (check DNS/SSL)"
-        else
-            warning "unclogged.me returned HTTP $HTTP_STATUS"
         fi
     fi
     
