@@ -322,13 +322,18 @@ body {
     opacity: 0;
     transition: opacity 1s ease-in-out;
     will-change: opacity, transform;
-    transform: scale(1);
+    transform: scale(1.15);
     overflow: hidden;
 }
 
 .hero-slide.active {
     opacity: 1;
-    animation: heroZoomOut 10s ease-out forwards;
+    animation: heroZoomOut 6s linear forwards;
+}
+
+.hero-slide.was-active {
+    transform: scale(1);
+    animation: none;
 }
 
 /* Hero zoom keyframes defined in panda.css */

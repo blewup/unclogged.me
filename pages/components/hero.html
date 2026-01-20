@@ -5,9 +5,9 @@
     Include: <div id="hero-container"></div>
 -->
 
-<section id="pages-hero" class="relative w-full bg-lightBase dark:bg-darkBase" style="height: 60vh; max-height: 60vh; min-height: 40vh;">
+<section id="pages-hero" class="relative w-full bg-lightBase dark:bg-darkBase overflow-hidden" style="height: 60vh; max-height: 60vh; min-height: 40vh;">
     <!-- Hero Slideshow with slides 06-11 -->
-    <div id="hero-slideshow" class="absolute inset-0 z-0">
+    <div id="hero-slideshow" class="absolute inset-0 z-0 overflow-hidden" style="height: 60vh;">
         <div class="hero-slide active" style="background-image: url('../assets/images/slide/slide_06.webp')"></div>
         <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_07.webp')"></div>
         <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_08.webp')"></div>
@@ -16,11 +16,11 @@
         <div class="hero-slide" style="background-image: url('../assets/images/slide/slide_11.webp')"></div>
     </div>
     
-    <!-- Dark overlay for text readability -->
-    <div class="absolute inset-0 bg-black/50 z-10"></div>
+    <!-- Dark overlay for text readability - matches 60vh height -->
+    <div class="absolute inset-0 bg-black/50 z-10" style="height: 60vh;"></div>
 
     <!-- Hero Content - Title and Button only (no text on subpages) -->
-    <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+    <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4" style="height: 60vh;">
         <!-- Hero Title - font-size in vh for responsive scaling -->
         <h1 class="font-ops text-white" style="font-size: 8vh; line-height: 1.1; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
             <span data-translate="hero_title_fr">DÉBOUCHEUR EXPERT</span>
@@ -65,27 +65,33 @@
 </script>
 
 <style>
-/* Hero slide styles with zoom-in effect */
+/* Hero slide styles with zoom-out effect (scale 1.15 → 1) */
 .hero-slide {
     position: absolute;
     inset: 0;
+    height: 60vh;
     background-size: cover;
     background-position: center;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
     will-change: opacity, transform;
-    transform: scale(1);
+    transform: scale(1.15);
     overflow: hidden;
 }
 
 .hero-slide.active {
     opacity: 1;
-    animation: heroZoomIn 8s ease-out forwards;
+    animation: heroZoomOut 6s linear forwards;
 }
 
-@keyframes heroZoomIn {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.25); }
+.hero-slide.was-active {
+    transform: scale(1);
+    animation: none;
+}
+
+@keyframes heroZoomOut {
+    0% { transform: scale(1.15); }
+    100% { transform: scale(1); }
 }
 
 /* Text outline for readability on image backgrounds */
