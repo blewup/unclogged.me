@@ -389,7 +389,43 @@ const Language = {
             search_placeholder: "Rechercher un outil...",
             
             // Page title
-            page_title: "Déboucheur Expert"
+            page_title: "Déboucheur Expert",
+            
+            // Contact Form Placeholders
+            form_fname: "Prénom",
+            form_lname: "Nom",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy's Information (Contact Section)
+            billy_name: "BILLY ST-HILAIRE,",
+            billy_age: "Billy St-Hilaire, 35 ans,",
+            billy_school_1: "Diplômé de l'École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 ans pour le groupe Centco inc,",
+            billy_exp_2: "Contrats multiples avec le local 144,",
+            billy_exp_3: "Fier supporteur et employé de",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Toujours actif pour répondre aux",
+            billy_bio_2: "diverses appels de services.",
+            billy_bio_3: "Que ce soit pour changer une valve",
+            billy_bio_4: "ou réparer un tuyau qui coule.",
+            billy_bio_5: "Le déboucheur sait s'y prendre.",
+            billy_note: "*Aucune construction neuve",
+            
+            // Map Section Labels
+            map_satellite: "Satellite",
+            map_plumber_location: "Déboucheur Expert",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530‑2343",
+            map_phone_secondary: "+1 (438) 765‑7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            
+            // Footer
+            copyright: "© 2025 Déboucheur Expert. Tous droits réservés."
         },
         en: {
             // Navigation
@@ -614,7 +650,43 @@ const Language = {
             search_placeholder: "Search for a tool...",
             
             // Page title
-            page_title: "Unclogger Expert"
+            page_title: "Unclogger Expert",
+            
+            // Contact Form Placeholders
+            form_fname: "First Name",
+            form_lname: "Last Name",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy's Information (Contact Section)
+            billy_name: "BILLY ST-HILAIRE,",
+            billy_age: "Billy St-Hilaire, 35 years old,",
+            billy_school_1: "Graduate of École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 years with Centco inc group,",
+            billy_exp_2: "Multiple contracts with local 144,",
+            billy_exp_3: "Proud supporter and employee of",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Always active to respond to",
+            billy_bio_2: "various service calls.",
+            billy_bio_3: "Whether to change a valve",
+            billy_bio_4: "or repair a leaking pipe.",
+            billy_bio_5: "The unclogger knows how to do it.",
+            billy_note: "*No new construction",
+            
+            // Map Section Labels
+            map_satellite: "Satellite",
+            map_plumber_location: "Unclogger Expert",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530‑2343",
+            map_phone_secondary: "+1 (438) 765‑7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            
+            // Footer
+            copyright: "© 2025 Unclogger Expert. All rights reserved."
         }
     },
 
@@ -642,6 +714,7 @@ const Language = {
         const trans = this.translations[lang];
         if (!trans) return;
         
+        // Handle elements with data-translate
         Utils.$$('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             const translation = trans[key];
@@ -654,6 +727,15 @@ const Language = {
                 } else {
                     el.innerText = translation;
                 }
+            }
+        });
+        
+        // Handle elements with data-translate-placeholder (for input/textarea placeholders)
+        Utils.$$('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            const translation = trans[key];
+            if (translation) {
+                el.placeholder = translation;
             }
         });
         
