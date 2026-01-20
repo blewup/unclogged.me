@@ -237,7 +237,7 @@ const Language = {
             lessons_btn: "ENCORE PLUS",
             
             // Map Section
-            map_call: "APPELER", map_directions: "ITINÉRAIRE", map_save: "ENREGISTRER", map_share: "PARTAGER",
+            map_call: "APPELER", map_directions: "ITINÉRAIRE", map_save: "SAUVER", map_share: "PARTAGER",
             
             // Cookie Banner
             cookie_msg: "En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.",
