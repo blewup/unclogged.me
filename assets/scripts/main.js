@@ -208,6 +208,28 @@ const Language = {
             cta_desc: "Notre équipe est disponible pour répondre à toutes vos questions.",
             cta_contact: "NOUS CONTACTER", cta_form: "FORMULAIRE",
             
+            // Form placeholders
+            form_fname: "Prénom",
+            form_lname: "Nom",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy's info
+            billy_age: "Billy St-Hilaire, 35 ans,",
+            billy_school_1: "Diplômé de l'École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 ans pour le groupe Centco inc,",
+            billy_exp_2: "Contrats multiples avec le local 144,",
+            billy_exp_3: "Fier supporteur et employé de",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Toujours actif pour répondre aux",
+            billy_bio_2: "diverses appels de services.",
+            billy_bio_3: "Que ce soit pour changer une valve",
+            billy_bio_4: "ou réparer un tuyau qui coule.",
+            billy_bio_5: "Le déboucheur sait s'y prendre.",
+            billy_note: "*Aucune construction neuve",
+            
             // Testimonials & Lessons
             testimonials_title: "TÉMOIGNAGES", phone_title: "TELEPHONE",
             lessons_title: "Leçons Interactives",
@@ -433,6 +455,28 @@ const Language = {
             cta_desc: "Our team is available to answer all your questions.",
             cta_contact: "CONTACT US", cta_form: "FORM",
             
+            // Form placeholders
+            form_fname: "First Name",
+            form_lname: "Last Name",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy's info
+            billy_age: "Billy St-Hilaire, 35 years old,",
+            billy_school_1: "Graduate of École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 years with Centco inc group,",
+            billy_exp_2: "Multiple contracts with local 144,",
+            billy_exp_3: "Proud supporter and employee of",
+            billy_exp_4: "Plomberie Martin Boisvert inc.",
+            billy_bio_1: "Always ready to answer",
+            billy_bio_2: "various service calls.",
+            billy_bio_3: "Whether changing a valve",
+            billy_bio_4: "or fixing a leaking pipe.",
+            billy_bio_5: "The unclogger knows how to do it.",
+            billy_note: "*No new construction",
+            
             // Testimonials & Lessons
             testimonials_title: "TESTIMONIALS", phone_title: "PHONE",
             lessons_title: "Interactive Lessons",
@@ -654,6 +698,15 @@ const Language = {
                 } else {
                     el.innerText = translation;
                 }
+            }
+        });
+        
+        // Handle data-translate-placeholder for form inputs
+        Utils.$$('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            const translation = trans[key];
+            if (translation) {
+                el.placeholder = translation;
             }
         });
         

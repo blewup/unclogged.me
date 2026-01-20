@@ -24,6 +24,11 @@ on:
           - production
           - staging
 
+# Permissions for GitHub Pages deployment
+permissions:
+  contents: write
+  pages: write
+
 # Prevent concurrent deployments
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -214,8 +219,8 @@ jobs:
       - name: 🚀 Deploy via GitHub Token
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/
           destination_dir: ./
           cname: https://blewup.github.io/unclogged.me
 
