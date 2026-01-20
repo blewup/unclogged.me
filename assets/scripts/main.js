@@ -69,7 +69,7 @@ const Utils = {
     formatPhone(phone) {
         const cleaned = phone.replace(/\D/g, '');
         return cleaned.length === 10 
-            ? \`(\${cleaned.slice(0,3)}) \${cleaned.slice(3,6)}-\${cleaned.slice(6)}\`
+            ? `(${cleaned.slice(0,3)}) ${cleaned.slice(3,6)}-${cleaned.slice(6)}`
             : phone;
     },
 
