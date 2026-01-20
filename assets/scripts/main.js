@@ -216,6 +216,41 @@ const Language = {
             
             // Map Section
             map_call: "APPELER", map_directions: "ITINÉRAIRE", map_save: "ENREGISTRER", map_share: "PARTAGER",
+            map_plumber_location: "Plombier · Montréal & Montérégie",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530‑2343",
+            map_phone_secondary: "+1 (438) 765‑7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            map_satellite: "Satellite",
+            map_roadmap: "Plan",
+            
+            // Form placeholders
+            form_fname: "Prénom",
+            form_lname: "Nom",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy Profile (Contact Section)
+            billy_name: "Billy St-Hilaire",
+            billy_age: "35 ans",
+            billy_school_1: "Diplômé de l'École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 ans pour le groupe Centco inc,",
+            billy_exp_2: "Contrats multiples avec le local 144,",
+            billy_exp_3: "Fier supporteur et employé de",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Toujours actif pour répondre aux",
+            billy_bio_2: "diverses appels de services.",
+            billy_bio_3: "Que ce soit pour changer une valve",
+            billy_bio_4: "ou réparer un tuyau qui coule.",
+            billy_bio_5: "Le déboucheur sait s'y prendre.",
+            billy_note: "*Aucune construction neuve",
+            
+            // Copyright
+            copyright: "© 2025 deboucheur expert",
             
             // Cookie Banner
             cookie_msg: "En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.",
@@ -441,6 +476,41 @@ const Language = {
             
             // Map Section
             map_call: "CALL", map_directions: "DIRECTIONS", map_save: "SAVE", map_share: "SHARE",
+            map_plumber_location: "Plumber · Montreal & Montérégie",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530‑2343",
+            map_phone_secondary: "+1 (438) 765‑7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            map_satellite: "Satellite",
+            map_roadmap: "Map",
+            
+            // Form placeholders
+            form_fname: "First Name",
+            form_lname: "Last Name",
+            form_email: "Email",
+            form_phone: "(###)###-####",
+            form_message: "Message",
+            
+            // Billy Profile (Contact Section)
+            billy_name: "Billy St-Hilaire",
+            billy_age: "35 years old",
+            billy_school_1: "Graduate of École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 years with Centco inc,",
+            billy_exp_2: "Multiple contracts with local 144,",
+            billy_exp_3: "Proud supporter and employee of",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Always active to respond to",
+            billy_bio_2: "various service calls.",
+            billy_bio_3: "Whether it's changing a valve",
+            billy_bio_4: "or fixing a leaky pipe.",
+            billy_bio_5: "The unclogger knows what to do.",
+            billy_note: "*No new construction",
+            
+            // Copyright
+            copyright: "© 2025 unclogger expert",
             
             // Cookie Banner
             cookie_msg: "By continuing to browse, you accept the use of cookies to improve your experience.",
@@ -642,6 +712,7 @@ const Language = {
         const trans = this.translations[lang];
         if (!trans) return;
         
+        // Handle data-translate elements
         Utils.$$('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             const translation = trans[key];
@@ -654,6 +725,15 @@ const Language = {
                 } else {
                     el.innerText = translation;
                 }
+            }
+        });
+        
+        // Handle data-translate-placeholder elements
+        Utils.$$('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            const translation = trans[key];
+            if (translation && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) {
+                el.placeholder = translation;
             }
         });
         

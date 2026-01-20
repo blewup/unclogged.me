@@ -192,10 +192,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    # Environment configuration (optional - requires setup in repo settings)
-    # environment:
-    #   name: production
-    #   url: https://blewup.github.io/unclogged.me
+    
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     
     steps:
       - name: 📥 Download build artifact
@@ -211,13 +212,13 @@ jobs:
           sed -i "s/deboucheur-cache-v[0-9]*/deboucheur-cache-v$(date +%s)/" dist/assets/scripts/service.js || true
           echo "✅ Deployment prepared"
 
-      - name: 🚀 Deploy via GitHub Token
+      - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./
-          destination_dir: ./
-          cname: https://blewup.github.io/unclogged.me
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/
+          publish_branch: gh-pages
+          force_orphan: true
 
       - name: ✅ Deployment complete
         run: |
