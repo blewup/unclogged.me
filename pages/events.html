@@ -59,7 +59,8 @@
     
     <!-- Tailwind Configuration -->
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
@@ -255,30 +256,67 @@
 
         // Quebec statutory holidays (X3 rate)
         const holidays = {
-            '2025-01-01': { name: 'Jour de l\'An', type: 'holiday' },
-            '2025-04-18': { name: 'Vendredi saint', type: 'holiday' },
-            '2025-05-19': { name: 'Journée nationale des patriotes', type: 'holiday' },
-            '2025-06-24': { name: 'Fête nationale du Québec', type: 'holiday' },
-            '2025-07-01': { name: 'Fête du Canada', type: 'holiday' },
-            '2025-09-01': { name: 'Fête du Travail', type: 'holiday' },
-            '2025-10-13': { name: 'Action de grâce', type: 'holiday' },
-            '2025-12-25': { name: 'Noël', type: 'holiday' },
-            '2026-01-01': { name: 'Jour de l\'An', type: 'holiday' },
-            '2026-04-03': { name: 'Vendredi saint', type: 'holiday' },
-            '2026-05-18': { name: 'Journée nationale des patriotes', type: 'holiday' },
-            '2026-06-24': { name: 'Fête nationale du Québec', type: 'holiday' },
-            '2026-07-01': { name: 'Fête du Canada', type: 'holiday' },
-            '2026-09-07': { name: 'Fête du Travail', type: 'holiday' },
-            '2026-10-12': { name: 'Action de grâce', type: 'holiday' },
-            '2026-12-25': { name: 'Noël', type: 'holiday' },
+            '2025-01-01': { fr: "Jour de l'An", en: "New Year's Day", type: 'holiday' },
+            '2025-04-18': { fr: 'Vendredi saint', en: 'Good Friday', type: 'holiday' },
+            '2025-05-19': { fr: 'Journée nationale des patriotes', en: 'National Patriots Day', type: 'holiday' },
+            '2025-06-24': { fr: 'Fête nationale du Québec', en: 'Saint-Jean-Baptiste Day', type: 'holiday' },
+            '2025-07-01': { fr: 'Fête du Canada', en: 'Canada Day', type: 'holiday' },
+            '2025-09-01': { fr: 'Fête du Travail', en: 'Labour Day', type: 'holiday' },
+            '2025-10-13': { fr: 'Action de grâce', en: 'Thanksgiving', type: 'holiday' },
+            '2025-12-25': { fr: 'Noël', en: 'Christmas Day', type: 'holiday' },
+            '2026-01-01': { fr: "Jour de l'An", en: "New Year's Day", type: 'holiday' },
+            '2026-04-03': { fr: 'Vendredi saint', en: 'Good Friday', type: 'holiday' },
+            '2026-05-18': { fr: 'Journée nationale des patriotes', en: 'National Patriots Day', type: 'holiday' },
+            '2026-06-24': { fr: 'Fête nationale du Québec', en: 'Saint-Jean-Baptiste Day', type: 'holiday' },
+            '2026-07-01': { fr: 'Fête du Canada', en: 'Canada Day', type: 'holiday' },
+            '2026-09-07': { fr: 'Fête du Travail', en: 'Labour Day', type: 'holiday' },
+            '2026-10-12': { fr: 'Action de grâce', en: 'Thanksgiving', type: 'holiday' },
+            '2026-12-25': { fr: 'Noël', en: 'Christmas Day', type: 'holiday' },
         };
 
-        const monthNames = [
-            'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-            'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-        ];
+        const fallbackMonths = {
+            fr: [
+                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+            ],
+            en: [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ]
+        };
 
-        const dayNames = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+        const fallbackDays = {
+            fr: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        };
+
+        function getActiveLang() {
+            return (window.Language && Language.current) || localStorage.getItem('language') || 'fr';
+        }
+
+        function getTranslation(key, fallback) {
+            const lang = getActiveLang();
+            const trans = window.Language && Language.translations ? Language.translations[lang] : null;
+            return (trans && trans[key]) || fallback || key;
+        }
+
+        function getMonths() {
+            const lang = getActiveLang();
+            const trans = window.Language && Language.translations ? Language.translations[lang] : null;
+            const months = trans && Array.isArray(trans.calendar_months) ? trans.calendar_months : null;
+            return months && months.length === 12 ? months : fallbackMonths[lang] || fallbackMonths.fr;
+        }
+
+        function getDays() {
+            const lang = getActiveLang();
+            const trans = window.Language && Language.translations ? Language.translations[lang] : null;
+            const days = trans && Array.isArray(trans.calendar_days) ? trans.calendar_days : null;
+            return days && days.length === 7 ? days : fallbackDays[lang] || fallbackDays.fr;
+        }
+
+        function formatTemplate(template, values) {
+            return template.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? '');
+        }
 
         function formatDateKey(year, month, day) {
             return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -302,12 +340,12 @@
 
             let html = `
                 <div class="month-card">
-                    <h3 class="text-center font-ops text-xl mb-4 text-gray-900 dark:text-white">${monthNames[month]} ${year}</h3>
+                    <h3 class="text-center font-ops text-xl mb-4 text-gray-900 dark:text-white">${getMonths()[month]} ${year}</h3>
                     <div class="calendar-grid">
             `;
 
             // Day headers
-            dayNames.forEach(day => {
+            getDays().forEach(day => {
                 html += `<div class="calendar-header">${day}</div>`;
             });
 
@@ -323,15 +361,18 @@
                 const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
                 const priceClass = getPriceClass(dayOfWeek, dateKey);
                 const holiday = holidays[dateKey];
+                const lang = getActiveLang();
+                const holidayName = holiday ? (holiday[lang] || holiday.fr || holiday.en || '') : '';
 
                 let classes = `calendar-day ${priceClass}`;
                 if (isToday) classes += ' today';
 
+                const holidayTemplate = getTranslation('calendar_tooltip_holiday', '{name} (X3)');
                 const tooltip = holiday 
-                    ? `<span class="day-tooltip">${holiday.name} (X3)</span>`
+                    ? `<span class="day-tooltip">${formatTemplate(holidayTemplate, { name: holidayName })}</span>`
                     : priceClass === 'x2' 
-                        ? `<span class="day-tooltip">Fin de semaine (X2)</span>`
-                        : `<span class="day-tooltip">Standard (X1)</span>`;
+                        ? `<span class="day-tooltip">${getTranslation('calendar_tooltip_weekend', 'Fin de semaine (X2)')}</span>`
+                        : `<span class="day-tooltip">${getTranslation('calendar_tooltip_standard', 'Standard (X1)')}</span>`;
 
                 html += `
                     <div class="${classes}">
@@ -360,29 +401,30 @@
             let html = '';
             upcomingHolidays.forEach(([date, info]) => {
                 const d = new Date(date);
+                const lang = getActiveLang();
+                const holidayName = info[lang] || info.fr || info.en || '';
                 html += `
                     <div class="flex items-center gap-4 p-4 rounded-xl bg-cardinal/10 border border-cardinal/30 hover:bg-cardinal/20 transition">
                         <div class="text-center bg-cardinal text-white p-3 rounded-lg min-w-[60px]">
                             <div class="font-ops text-2xl">${d.getDate()}</div>
-                            <div class="text-xs uppercase">${monthNames[d.getMonth()].slice(0, 3)}</div>
+                            <div class="text-xs uppercase">${getMonths()[d.getMonth()].slice(0, 3)}</div>
                         </div>
                         <div>
-                            <div class="font-ops text-lg text-gray-900 dark:text-white">${info.name}</div>
-                            <div class="text-sm text-cardinal font-bold">Tarif X3</div>
+                            <div class="font-ops text-lg text-gray-900 dark:text-white">${holidayName}</div>
+                            <div class="text-sm text-cardinal font-bold">${getTranslation('calendar_holiday_rate', 'Tarif X3')}</div>
                         </div>
                     </div>
                 `;
             });
             
             if (upcomingHolidays.length === 0) {
-                html = '<p class="text-center text-gray-500 col-span-2">Aucun jour férié dans les 6 prochains mois</p>';
+                html = `<p class="text-center text-gray-500 col-span-2">${getTranslation('calendar_no_holidays', 'Aucun jour férié dans les 6 prochains mois')}</p>`;
             }
             
             return html;
         }
 
-        // Generate calendars for next 6 months
-        document.addEventListener('DOMContentLoaded', () => {
+        function renderCalendar() {
             const container = document.getElementById('calendar-container');
             const today = new Date();
             let html = '';
@@ -394,6 +436,19 @@
 
             container.innerHTML = html;
             document.getElementById('holiday-list').innerHTML = generateHolidayList();
+        }
+
+        // Generate calendars for next 6 months
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendar();
+        });
+
+        window.addEventListener('languageChanged', () => {
+            renderCalendar();
+        });
+
+        window.addEventListener('language-changed', () => {
+            renderCalendar();
         });
     </script>
 

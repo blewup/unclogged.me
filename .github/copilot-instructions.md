@@ -100,17 +100,379 @@ Uses Google Gemini API (`gemini-2.5-flash-preview`) for "L'Apprenti" chatbot. Su
 
 ## File Organization
 ```
-assets/
-├── styles/         # style_00.css = base, others for specific pages
-├── fonts/          # Local font files (Inter, JetBrains, Playfair)
-├── images/
-│   ├── slide/      # Hero slideshow (slide_00.webp - slide_16.webp)
-│   ├── logo/       # Favicon variants + main logo
-│   ├── services/   # Service card backgrounds
-│   ├── clients/    # Testimonial avatars
-│   └── location/   # Map overlay logos
-├── scripts/        # JavaScript modules
-└── videos/         # Tutorial videos (video_00.mp4, video_01.mp4)
+codespace@codespaces-36a39d:/workspaces/unclogged.me$ tree
+.
+├── LICENSE
+├── README.md
+├── api
+│   ├── backend.php
+│   ├── chat-forward.php
+│   ├── chat-reply.php
+│   ├── chat-responses.php
+│   ├── config.php
+│   ├── conscent
+│   │   └── conscent.log
+│   ├── contact.php
+│   ├── credentials.php
+│   ├── db.php
+│   ├── email-pipe.php
+│   ├── email-service.php
+│   ├── event.php
+│   ├── logs
+│   ├── setup.sql
+│   ├── sms-status.php
+│   ├── sms-webhook.php
+│   ├── track.php
+│   └── uploads
+├── assets
+│   ├── fonts
+│   │   ├── BlackOps.ttf
+│   │   ├── ComicSansMS.ttf
+│   │   ├── Impact.ttf
+│   │   ├── Inter-Italic.ttf
+│   │   ├── Inter.ttf
+│   │   ├── JetBrainsMono-Italic.ttf
+│   │   ├── JetBrainsMono.ttf
+│   │   ├── Merriweather-Italic.ttf
+│   │   ├── Merriweather.ttf
+│   │   ├── PlayfairDisplay-Italic.ttf
+│   │   ├── PlayfairDisplay.ttf
+│   │   ├── PlusJakartaSans-Italic.ttf
+│   │   ├── PlusJakartaSans.ttf
+│   │   ├── inter-static
+│   │   │   ├── Inter_18pt-Black.ttf
+│   │   │   ├── Inter_18pt-BlackItalic.ttf
+│   │   │   ├── Inter_18pt-Bold.ttf
+│   │   │   ├── Inter_18pt-BoldItalic.ttf
+│   │   │   ├── Inter_18pt-ExtraBold.ttf
+│   │   │   ├── Inter_18pt-ExtraBoldItalic.ttf
+│   │   │   ├── Inter_18pt-ExtraLight.ttf
+│   │   │   ├── Inter_18pt-ExtraLightItalic.ttf
+│   │   │   ├── Inter_18pt-Italic.ttf
+│   │   │   ├── Inter_18pt-Light.ttf
+│   │   │   ├── Inter_18pt-LightItalic.ttf
+│   │   │   ├── Inter_18pt-Medium.ttf
+│   │   │   ├── Inter_18pt-MediumItalic.ttf
+│   │   │   ├── Inter_18pt-Regular.ttf
+│   │   │   ├── Inter_18pt-SemiBold.ttf
+│   │   │   ├── Inter_18pt-SemiBoldItalic.ttf
+│   │   │   ├── Inter_18pt-Thin.ttf
+│   │   │   ├── Inter_18pt-ThinItalic.ttf
+│   │   │   ├── Inter_24pt-Black.ttf
+│   │   │   ├── Inter_24pt-BlackItalic.ttf
+│   │   │   ├── Inter_24pt-Bold.ttf
+│   │   │   ├── Inter_24pt-BoldItalic.ttf
+│   │   │   ├── Inter_24pt-ExtraBold.ttf
+│   │   │   ├── Inter_24pt-ExtraBoldItalic.ttf
+│   │   │   ├── Inter_24pt-ExtraLight.ttf
+│   │   │   ├── Inter_24pt-ExtraLightItalic.ttf
+│   │   │   ├── Inter_24pt-Italic.ttf
+│   │   │   ├── Inter_24pt-Light.ttf
+│   │   │   ├── Inter_24pt-LightItalic.ttf
+│   │   │   ├── Inter_24pt-Medium.ttf
+│   │   │   ├── Inter_24pt-MediumItalic.ttf
+│   │   │   ├── Inter_24pt-Regular.ttf
+│   │   │   ├── Inter_24pt-SemiBold.ttf
+│   │   │   ├── Inter_24pt-SemiBoldItalic.ttf
+│   │   │   ├── Inter_24pt-Thin.ttf
+│   │   │   ├── Inter_24pt-ThinItalic.ttf
+│   │   │   ├── Inter_28pt-Black.ttf
+│   │   │   ├── Inter_28pt-BlackItalic.ttf
+│   │   │   ├── Inter_28pt-Bold.ttf
+│   │   │   ├── Inter_28pt-BoldItalic.ttf
+│   │   │   ├── Inter_28pt-ExtraBold.ttf
+│   │   │   ├── Inter_28pt-ExtraBoldItalic.ttf
+│   │   │   ├── Inter_28pt-ExtraLight.ttf
+│   │   │   ├── Inter_28pt-ExtraLightItalic.ttf
+│   │   │   ├── Inter_28pt-Italic.ttf
+│   │   │   ├── Inter_28pt-Light.ttf
+│   │   │   ├── Inter_28pt-LightItalic.ttf
+│   │   │   ├── Inter_28pt-Medium.ttf
+│   │   │   ├── Inter_28pt-MediumItalic.ttf
+│   │   │   ├── Inter_28pt-Regular.ttf
+│   │   │   ├── Inter_28pt-SemiBold.ttf
+│   │   │   ├── Inter_28pt-SemiBoldItalic.ttf
+│   │   │   ├── Inter_28pt-Thin.ttf
+│   │   │   └── Inter_28pt-ThinItalic.ttf
+│   │   ├── jetbrains-static
+│   │   │   ├── JetBrainsMono-Bold.ttf
+│   │   │   ├── JetBrainsMono-BoldItalic.ttf
+│   │   │   ├── JetBrainsMono-ExtraBold.ttf
+│   │   │   ├── JetBrainsMono-ExtraBoldItalic.ttf
+│   │   │   ├── JetBrainsMono-ExtraLight.ttf
+│   │   │   ├── JetBrainsMono-ExtraLightItalic.ttf
+│   │   │   ├── JetBrainsMono-Italic.ttf
+│   │   │   ├── JetBrainsMono-Light.ttf
+│   │   │   ├── JetBrainsMono-LightItalic.ttf
+│   │   │   ├── JetBrainsMono-Medium.ttf
+│   │   │   ├── JetBrainsMono-MediumItalic.ttf
+│   │   │   ├── JetBrainsMono-Regular.ttf
+│   │   │   ├── JetBrainsMono-SemiBold.ttf
+│   │   │   ├── JetBrainsMono-SemiBoldItalic.ttf
+│   │   │   ├── JetBrainsMono-Thin.ttf
+│   │   │   └── JetBrainsMono-ThinItalic.ttf
+│   │   └── playfair-static
+│   │       ├── PlayfairDisplay-Black.ttf
+│   │       ├── PlayfairDisplay-BlackItalic.ttf
+│   │       ├── PlayfairDisplay-Bold.ttf
+│   │       ├── PlayfairDisplay-BoldItalic.ttf
+│   │       ├── PlayfairDisplay-ExtraBold.ttf
+│   │       ├── PlayfairDisplay-ExtraBoldItalic.ttf
+│   │       ├── PlayfairDisplay-Italic.ttf
+│   │       ├── PlayfairDisplay-Medium.ttf
+│   │       ├── PlayfairDisplay-MediumItalic.ttf
+│   │       ├── PlayfairDisplay-Regular.ttf
+│   │       ├── PlayfairDisplay-SemiBold.ttf
+│   │       └── PlayfairDisplay-SemiBoldItalic.ttf
+│   ├── icons
+│   │   ├── arrow-down.svg
+│   │   ├── arrow-up.svg
+│   │   ├── bookmark.svg
+│   │   ├── camera.svg
+│   │   ├── chevron-down.svg
+│   │   ├── chevron-left.svg
+│   │   ├── chevron-right.svg
+│   │   ├── close.svg
+│   │   ├── directions.svg
+│   │   ├── emergency.svg
+│   │   ├── envelope.svg
+│   │   ├── facebook.svg
+│   │   ├── globe.svg
+│   │   ├── google.svg
+│   │   ├── linkedin.svg
+│   │   ├── location.svg
+│   │   ├── logo.svg
+│   │   ├── menu.svg
+│   │   ├── moon.svg
+│   │   ├── paper-plane.svg
+│   │   ├── phone.svg
+│   │   ├── robot.svg
+│   │   ├── search.svg
+│   │   ├── share.svg
+│   │   ├── star-half.svg
+│   │   ├── star.svg
+│   │   ├── sun.svg
+│   │   ├── toilet.svg
+│   │   └── tools.svg
+│   ├── images
+│   │   ├── clients
+│   │   │   ├── client_00.png
+│   │   │   ├── client_01.png
+│   │   │   ├── client_02.png
+│   │   │   ├── client_03.png
+│   │   │   ├── client_04.png
+│   │   │   ├── client_05.png
+│   │   │   ├── client_06.png
+│   │   │   └── client_07.png
+│   │   ├── contact
+│   │   │   └── contact_00.webp
+│   │   ├── equipe
+│   │   │   ├── equipe_00.webp
+│   │   │   └── equipe_01.webp
+│   │   ├── header
+│   │   │   └── header_00.webp
+│   │   ├── location
+│   │   │   ├── Untitled.png
+│   │   │   ├── apt.jpg
+│   │   │   ├── apt_logo.webp
+│   │   │   └── lord_logo.webp
+│   │   ├── logo
+│   │   │   ├── apple-touch-icon-114x114.png
+│   │   │   ├── apple-touch-icon-120x120.png
+│   │   │   ├── apple-touch-icon-144x144.png
+│   │   │   ├── apple-touch-icon-152x152.png
+│   │   │   ├── apple-touch-icon-57x57.png
+│   │   │   ├── apple-touch-icon-60x60.png
+│   │   │   ├── apple-touch-icon-72x72.png
+│   │   │   ├── apple-touch-icon-76x76.png
+│   │   │   ├── favicon-128.png
+│   │   │   ├── favicon-16x16.png
+│   │   │   ├── favicon-196x196.png
+│   │   │   ├── favicon-32x32.png
+│   │   │   ├── favicon-96x96.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo.png
+│   │   │   ├── logo.svg
+│   │   │   ├── mstile-144x144.png
+│   │   │   ├── mstile-150x150.png
+│   │   │   ├── mstile-310x150.png
+│   │   │   ├── mstile-310x310.png
+│   │   │   ├── mstile-70x70.png
+│   │   │   └── original.png
+│   │   ├── maps
+│   │   │   ├── maps_dark.webp
+│   │   │   └── maps_light.webp
+│   │   ├── services
+│   │   │   ├── services_00.webp
+│   │   │   ├── services_01.webp
+│   │   │   ├── services_02.webp
+│   │   │   └── services_03.webp
+│   │   ├── slide
+│   │   │   ├── slide_00.webp
+│   │   │   ├── slide_01.webp
+│   │   │   ├── slide_02.webp
+│   │   │   ├── slide_03.webp
+│   │   │   ├── slide_04.webp
+│   │   │   ├── slide_05.webp
+│   │   │   ├── slide_06.webp
+│   │   │   ├── slide_07.webp
+│   │   │   ├── slide_08.webp
+│   │   │   ├── slide_09.webp
+│   │   │   ├── slide_10.webp
+│   │   │   └── slide_11.webp
+│   │   └── tools
+│   │       ├── tool_00.png
+│   │       ├── tool_01.png
+│   │       ├── tool_02.png
+│   │       ├── tool_03.png
+│   │       ├── tool_04.png
+│   │       ├── tool_05.png
+│   │       ├── tool_06.png
+│   │       ├── tool_07.png
+│   │       ├── tool_08.png
+│   │       ├── tool_09.png
+│   │       ├── tool_10.png
+│   │       ├── tool_11.png
+│   │       ├── tool_12.png
+│   │       ├── tool_13.png
+│   │       ├── tool_14.png
+│   │       ├── tool_15.png
+│   │       ├── tool_16.png
+│   │       ├── tool_17.png
+│   │       ├── tool_18.png
+│   │       ├── tool_19.png
+│   │       ├── tool_20.png
+│   │       ├── tool_21.png
+│   │       ├── tool_22.png
+│   │       └── tool_23.png
+│   ├── scripts
+│   │   ├── chat.js
+│   │   ├── components
+│   │   │   └── loader.js
+│   │   ├── components.js
+│   │   ├── data.js
+│   │   ├── icons
+│   │   │   ├── debouchage.js
+│   │   │   ├── drainage.js
+│   │   │   ├── events.js
+│   │   │   ├── normes.js
+│   │   │   ├── plumbing.js
+│   │   │   ├── prices.js
+│   │   │   ├── shared.js
+│   │   │   ├── supply.js
+│   │   │   └── tools.js
+│   │   ├── icons.js
+│   │   ├── libs.js
+│   │   ├── main.js
+│   │   ├── navbar.js
+│   │   ├── scroll.js
+│   │   ├── seoen.js
+│   │   ├── seofr.js
+│   │   ├── service.js
+│   │   ├── testimonials.js
+│   │   └── time.js
+│   ├── styles
+│   │   ├── conditions.css
+│   │   ├── errors.css
+│   │   ├── events.css
+│   │   ├── fonts.css
+│   │   ├── index.css
+│   │   ├── panda.css
+│   │   ├── plumbing.css
+│   │   ├── politics.css
+│   │   ├── prices.css
+│   │   ├── tailwind.css
+│   │   ├── team.css
+│   │   └── tools.css
+│   └── videos
+│       ├── video_00.mp4
+│       ├── video_01.mp4
+│       ├── video_02.mp4
+│       ├── video_03.mp4
+│       ├── video_04.mp4
+│       └── video_05.mp4
+├── errors.html
+├── index.html
+├── manifest.json
+├── pages
+│   ├── components
+│   │   ├── banner.html
+│   │   ├── footer.html
+│   │   ├── helper.html
+│   │   ├── hero.html
+│   │   ├── navbar.html
+│   │   ├── plumbing.html
+│   │   ├── template.html
+│   │   └── tools.html
+│   ├── conditions.html
+│   ├── errors
+│   │   ├── codes
+│   │   │   ├── 400.html
+│   │   │   ├── 401.html
+│   │   │   ├── 403.html
+│   │   │   ├── 404.html
+│   │   │   ├── 408.html
+│   │   │   ├── 410.html
+│   │   │   ├── 429.html
+│   │   │   ├── 500.html
+│   │   │   ├── 502.html
+│   │   │   ├── 503.html
+│   │   │   ├── 504.html
+│   │   │   └── components
+│   │   │       ├── banner.html
+│   │   │       ├── footer.html
+│   │   │       ├── helper.html
+│   │   │       ├── hero.html
+│   │   │       └── navbar.html
+│   │   ├── components
+│   │   │   ├── banner.html
+│   │   │   ├── footer.html
+│   │   │   ├── helper.html
+│   │   │   ├── hero.html
+│   │   │   └── navbar.html
+│   │   └── offline.html
+│   ├── events.html
+│   ├── index
+│   │   ├── components
+│   │   │   ├── banner.html
+│   │   │   ├── footer.html
+│   │   │   ├── helper.html
+│   │   │   ├── hero.html
+│   │   │   └── navbar.html
+│   │   ├── section_00.html
+│   │   ├── section_01.html
+│   │   ├── section_02.html
+│   │   ├── section_03.html
+│   │   ├── section_04.html
+│   │   ├── section_05.html
+│   │   ├── section_06.html
+│   │   ├── section_07.html
+│   │   └── section_08.html
+│   ├── plumbing
+│   │   ├── components
+│   │   │   ├── banner.html
+│   │   │   ├── footer.html
+│   │   │   ├── helper.html
+│   │   │   ├── hero.html
+│   │   │   └── navbar.html
+│   │   ├── drainage
+│   │   │   └── hero.html
+│   │   ├── drainage.html
+│   │   ├── normes
+│   │   │   └── hero.html
+│   │   ├── normes.html
+│   │   ├── supply
+│   │   │   └── hero.html
+│   │   ├── supply.html
+│   │   ├── unclog
+│   │   │   └── hero.html
+│   │   └── unclog.html
+│   ├── plumbing.html
+│   ├── politics.html
+│   ├── prices.html
+│   ├── team.html
+│   └── tools.html
+└── script.sh
 ```
 
 ## Development Notes

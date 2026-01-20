@@ -23,53 +23,409 @@
     
     // API path for plumbing level pages (pages/plumbing/*.html)
     const apiBasePath = '../../api/';
+    const consentVersion = '1.0';
     
     // Hide banner if consent already stored
     if (localStorage.getItem('consentAccepted')) {
         banner.style.display = 'none';
+        return;
     }
     
-    btn.addEventListener('click', function() {
+    function getSessionId() {
+        const key = 'deboucheur_session';
+        let sessionId = localStorage.getItem(key);
+        if (!sessionId) {
+            sessionId = `ses_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+            localStorage.setItem(key, sessionId);
+            localStorage.setItem(`${key}_timestamp`, Date.now().toString());
+        }
+        return sessionId;
+    }
+    
+    function updateLangDisplay(lang) {
+        const displayText = lang === 'fr' ? 'FR' : 'EN';
+        document.querySelectorAll('#lang-display, #mobile-lang-display, [data-lang-display]').forEach(el => {
+            el.innerText = displayText;
+        });
+    }
+    
+    function applyLanguagePreference(lang) {
+        localStorage.setItem('language', lang);
+        document.documentElement.lang = lang;
+        updateLangDisplay(lang);
+        if (window.Language && typeof Language.apply === 'function') {
+            Language.current = lang;
+            Language.apply();
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+        }
+    }
+    
+    function applyThemePreference(prefersDark) {
+        const theme = prefersDark ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', prefersDark);
+        localStorage.setItem('theme', theme);
+        if (window.Theme && typeof Theme.current === 'string') {
+            Theme.current = theme;
+        }
+        return theme;
+    }
+    
+    function storageAvailable(storage) {
+        if (!storage) return false;
+        try {
+            const testKey = '__storage_test__';
+            storage.setItem(testKey, '1');
+            storage.removeItem(testKey);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+    
+    function getConnectionInfo() {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (!connection) return null;
+        return {
+            effectiveType: connection.effectiveType || null,
+            downlink: typeof connection.downlink === 'number' ? connection.downlink : null,
+            rtt: typeof connection.rtt === 'number' ? connection.rtt : null,
+            saveData: !!connection.saveData
+        };
+    }
+    
+    async function getUaData() {
+        const uaData = navigator.userAgentData;
+        if (!uaData) return null;
+        const result = { mobile: !!uaData.mobile, brands: uaData.brands || uaData.uaList || [] };
+        if (typeof uaData.getHighEntropyValues === 'function') {
+            try {
+                const high = await uaData.getHighEntropyValues([
+                    'architecture', 'model', 'platform', 'platformVersion',
+                    'uaFullVersion', 'fullVersionList', 'bitness'
+                ]);
+                return { ...result, ...high };
+            } catch (e) {
+                return result;
+            }
+        }
+        return result;
+    }
+    
+    async function getBatteryInfo() {
+        if (!navigator.getBattery) return null;
+        try {
+            const battery = await navigator.getBattery();
+            return {
+                charging: battery.charging,
+                chargingTime: battery.chargingTime,
+                dischargingTime: battery.dischargingTime,
+                level: battery.level
+            };
+        } catch (e) {
+            return null;
+        }
+    }
+    
+    function getMediaPreferences() {
+        const prefs = {};
+        if (window.matchMedia) {
+            prefs.prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            prefs.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            prefs.prefersContrast = window.matchMedia('(prefers-contrast: more)').matches;
+            prefs.prefersReducedTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)').matches;
+        }
+        return prefs;
+    }
+    
+    function normalizeValue(value) {
+        if (value === null || value === undefined) return null;
+        const text = String(value).trim();
+        return text === '' ? null : text;
+    }
+    
+    function readInputValue(selectors) {
+        for (const selector of selectors) {
+            const el = document.querySelector(selector);
+            if (!el) continue;
+            const value = normalizeValue(el.value || el.textContent);
+            if (value) return value;
+        }
+        return null;
+    }
+    
+    function readStorageValue(keys) {
+        if (!storageAvailable(window.localStorage)) return null;
+        for (const key of keys) {
+            const value = normalizeValue(localStorage.getItem(key));
+            if (value) return value;
+        }
+        return null;
+    }
+    
+    function getUrlParam(keys) {
+        const params = new URLSearchParams(window.location.search);
+        for (const key of keys) {
+            const value = normalizeValue(params.get(key));
+            if (value) return value;
+        }
+        return null;
+    }
+    
+    function detectSocialNetwork(referrer, utmSource) {
+        const source = normalizeValue(utmSource)?.toLowerCase() || '';
+        const ref = normalizeValue(referrer)?.toLowerCase() || '';
+        const haystack = `${source} ${ref}`;
+        if (haystack.includes('facebook') || haystack.includes('fb.')) return 'Facebook';
+        if (haystack.includes('instagram')) return 'Instagram';
+        if (haystack.includes('tiktok')) return 'TikTok';
+        if (haystack.includes('linkedin')) return 'LinkedIn';
+        if (haystack.includes('twitter') || haystack.includes('t.co') || haystack.includes('x.com')) return 'X';
+        if (haystack.includes('youtube') || haystack.includes('youtu.be')) return 'YouTube';
+        if (haystack.includes('pinterest')) return 'Pinterest';
+        if (haystack.includes('snapchat')) return 'Snapchat';
+        if (haystack.includes('threads')) return 'Threads';
+        return normalizeValue(utmSource);
+    }
+    
+    async function getGeolocation() {
+        return new Promise((resolve) => {
+            if (!navigator.geolocation) {
+                resolve(null);
+                return;
+            }
+            let settled = false;
+            const timeoutId = setTimeout(() => {
+                if (!settled) {
+                    settled = true;
+                    resolve(null);
+                }
+            }, 5000);
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    if (settled) return;
+                    settled = true;
+                    clearTimeout(timeoutId);
+                    resolve({
+                        latitude: pos.coords.latitude,
+                        longitude: pos.coords.longitude,
+                        accuracy: pos.coords.accuracy
+                    });
+                },
+                () => {
+                    if (settled) return;
+                    settled = true;
+                    clearTimeout(timeoutId);
+                    resolve(null);
+                },
+                { enableHighAccuracy: true, timeout: 4000, maximumAge: 600000 }
+            );
+        });
+    }
+    
+    async function buildPayload(lang, theme) {
+        const screenInfo = window.screen || {};
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth || screenInfo.width || 0;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || screenInfo.height || 0;
+        const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+        const connection = getConnectionInfo();
+        const battery = await getBatteryInfo();
+        const uaData = await getUaData();
+        const consentText = banner.querySelector('[data-translate=\"cookie_msg\"]')?.innerText || '';
+        const referrer = document.referrer || '';
+        const firstName = normalizeValue(
+            readInputValue(['#fname', 'input[name=\"fname\"]', 'input[name=\"first_name\"]', '#first-name']) ||
+            readStorageValue(['form_fname', 'fname', 'first_name'])
+        );
+        const lastName = normalizeValue(
+            readInputValue(['#lname', 'input[name=\"lname\"]', 'input[name=\"last_name\"]', '#last-name']) ||
+            readStorageValue(['form_lname', 'lname', 'last_name'])
+        );
+        const fullName = normalizeValue(
+            readInputValue(['#full_name', '#full-name', '#fullname', 'input[name=\"full_name\"]', 'input[name=\"fullname\"]']) ||
+            [firstName, lastName].filter(Boolean).join(' ')
+        );
+        const email = normalizeValue(
+            readInputValue(['#email', 'input[name=\"email\"]', 'input[type=\"email\"]']) ||
+            readStorageValue(['form_email', 'email'])
+        );
+        const phone = normalizeValue(
+            readInputValue(['#phone', '#tel', 'input[name=\"phone\"]', 'input[type=\"tel\"]']) ||
+            readStorageValue(['form_phone', 'phone', 'tel'])
+        );
+        const gender = normalizeValue(
+            readInputValue(['#gender', 'select[name=\"gender\"]', 'input[name=\"gender\"]', 'input[data-gender]']) ||
+            readStorageValue(['gender'])
+        );
+        const age = normalizeValue(
+            readInputValue(['#age', 'input[name=\"age\"]', 'input[data-age]']) ||
+            readStorageValue(['age', 'form_age'])
+        );
+        const nationality = normalizeValue(
+            readInputValue(['#nationality', '#country', 'input[name=\"nationality\"]', 'input[name=\"country\"]']) ||
+            readStorageValue(['nationality', 'country']) ||
+            navigator.language
+        );
+        const country = normalizeValue(
+            readInputValue(['#country', 'input[name=\"country\"]', 'input[name=\"country_code\"]']) ||
+            readStorageValue(['country'])
+        );
+        const region = normalizeValue(
+            readInputValue(['#region', '#state', 'input[name=\"region\"]', 'input[name=\"state\"]', 'input[name=\"province\"]']) ||
+            readStorageValue(['region', 'state', 'province'])
+        );
+        const city = normalizeValue(
+            readInputValue(['#city', 'input[name=\"city\"]', 'input[name=\"town\"]']) ||
+            readStorageValue(['city', 'town'])
+        );
+        const postalCode = normalizeValue(
+            readInputValue(['#postal', '#postal-code', '#zip', 'input[name=\"postal\"]', 'input[name=\"postal_code\"]', 'input[name=\"zip\"]']) ||
+            readStorageValue(['postal', 'postal_code', 'zip'])
+        );
+        const lastPurchase = normalizeValue(
+            getUrlParam(['last_purchase', 'purchase', 'order', 'product', 'item']) ||
+            readStorageValue(['last_purchase', 'last_product', 'last_item', 'last_order'])
+        );
+        const lastPurchaseValue = normalizeValue(
+            getUrlParam(['last_purchase_value', 'purchase_value', 'order_value', 'amount']) ||
+            readStorageValue(['last_purchase_value', 'purchase_value', 'order_value', 'amount'])
+        );
+        const lastPurchaseCurrency = normalizeValue(
+            getUrlParam(['last_purchase_currency', 'currency']) ||
+            readStorageValue(['last_purchase_currency', 'currency'])
+        );
+        const lastVisitedSite = normalizeValue(
+            referrer || readStorageValue(['last_visited_site', 'last_site'])
+        );
+        const socialNetwork = detectSocialNetwork(referrer, getUrlParam(['utm_source', 'source']) || readStorageValue(['utm_source', 'source']));
+        const lastMessage = normalizeValue(
+            readInputValue(['#msg', '#message', '#contact-message', 'textarea[name=\"message\"]', 'textarea[name=\"msg\"]']) ||
+            readStorageValue(['form_msg', 'message', 'last_message'])
+        );
+        const geo = await getGeolocation();
+        const currentLocation = geo ? `${geo.latitude},${geo.longitude}` : null;
+        
+        const clientHints = {
+            uaData,
+            battery,
+            platform: navigator.platform || null,
+            vendor: navigator.vendor || null,
+            maxTouchPoints: navigator.maxTouchPoints || 0,
+            deviceMemory: navigator.deviceMemory || null,
+            hardwareConcurrency: navigator.hardwareConcurrency || null,
+            cookieEnabled: !!navigator.cookieEnabled,
+            doNotTrack: navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack || null,
+            languages: navigator.languages || [],
+            language: navigator.language || null,
+            screen: {
+                width: screenInfo.width || null,
+                height: screenInfo.height || null,
+                availWidth: screenInfo.availWidth || null,
+                availHeight: screenInfo.availHeight || null,
+                colorDepth: screenInfo.colorDepth || null,
+                pixelDepth: screenInfo.pixelDepth || null
+            },
+            viewport: { width: viewportWidth, height: viewportHeight },
+            orientation: screenInfo.orientation ? screenInfo.orientation.type : null,
+            pixelRatio: window.devicePixelRatio || 1,
+            connection,
+            mediaPreferences: getMediaPreferences(),
+            storageSupport: {
+                localStorage: storageAvailable(window.localStorage),
+                sessionStorage: storageAvailable(window.sessionStorage),
+                indexedDb: !!window.indexedDB,
+                serviceWorker: 'serviceWorker' in navigator
+            },
+            plugins: Array.from(navigator.plugins || []).map(p => p.name).slice(0, 50),
+            mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).slice(0, 50),
+            historyLength: window.history ? window.history.length : null
+        };
+        
+        if (storageAvailable(window.localStorage)) {
+            localStorage.setItem('last_visited_site', window.location.href);
+        }
+        
+        return {
+            sessionId: getSessionId(),
+            consentGiven: true,
+            consentText,
+            consentVersion,
+            tz,
+            timezoneOffset: new Date().getTimezoneOffset(),
+            lang,
+            language: lang,
+            languages: navigator.languages || [],
+            theme,
+            screenWidth: screenInfo.width || null,
+            screenHeight: screenInfo.height || null,
+            viewportWidth,
+            viewportHeight,
+            colorDepth: screenInfo.colorDepth || null,
+            pixelRatio: window.devicePixelRatio || 1,
+            cookiesEnabled: navigator.cookieEnabled ? 1 : 0,
+            doNotTrack: navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack || null,
+            platform: navigator.platform || null,
+            vendor: navigator.vendor || null,
+            maxTouchPoints: navigator.maxTouchPoints || 0,
+            deviceMemory: navigator.deviceMemory || null,
+            hardwareConcurrency: navigator.hardwareConcurrency || null,
+            connectionType: connection ? connection.effectiveType : null,
+            pageUrl: window.location.href,
+            page: window.location.pathname,
+            pageTitle: document.title,
+            queryString: window.location.search,
+            hash: window.location.hash,
+            referrer: referrer || null,
+            userAgent: navigator.userAgent,
+            firstName,
+            lastName,
+            fullName,
+            email,
+            phone,
+            gender,
+            age,
+            nationality,
+            currentLocation,
+            latitude: geo ? geo.latitude : null,
+            longitude: geo ? geo.longitude : null,
+            geoAccuracy: geo ? geo.accuracy : null,
+            lastPurchase,
+            lastPurchaseValue,
+            lastPurchaseCurrency,
+            lastVisitedSite,
+            socialNetwork,
+            lastMessage,
+            country,
+            region,
+            city,
+            postalCode,
+            clientHints
+        };
+    }
+    
+    btn.addEventListener('click', async function() {
         banner.style.display = 'none';
         localStorage.setItem('consentAccepted', 'true');
         
-        // Determine preferred theme and language based on system settings
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = applyThemePreference(prefersDark);
         
-        // Apply theme and store preference
-        if (prefersDark) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-        
-        // Determine preferred language (default fr if starts with fr)
         const browserLang = (navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+        applyLanguagePreference(browserLang);
         
-        // If currentLang differs, update translations
-        if (typeof currentLang !== 'undefined' && typeof toggleLanguage === 'function') {
-            if (currentLang !== browserLang) {
-                toggleLanguage();
-            }
-        }
-        localStorage.setItem('language', browserLang);
+        const payload = await buildPayload(browserLang, theme);
         
-        // Build diagnostics for backend
-        const data = {
-            tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || ''),
-            lang: browserLang,
-            theme: prefersDark ? 'dark' : 'light',
-            screen: (window.innerWidth + 'x' + window.innerHeight),
-            ua: navigator.userAgent
-        };
-        
-        fetch(apiBasePath + 'backend.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).catch(() => {}); // silently ignore errors
+        Promise.allSettled([
+            fetch(apiBasePath + 'track.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }),
+            fetch(apiBasePath + 'backend.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+        ]).catch(() => {});
     });
 })();
 </script>

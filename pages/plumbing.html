@@ -54,7 +54,8 @@
     
     <!-- Tailwind Configuration -->
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
@@ -103,7 +104,7 @@
     <div id="plumbing-hero-container"></div>
 
     <!-- Table of Contents -->
-    <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt sticky top-0 z-40 shadow-lg" style="margin-top: 6vh;">
+    <section class="py-8 px-4 bg-lightAlt dark:bg-darkAlt shadow-lg">
         <div class="max-w-6xl mx-auto">
             <h3 class="text-center font-ops text-sm text-gray-500 dark:text-gray-400 mb-4" data-translate="toc_detailed">GUIDES DÉTAILLÉS</h3>
             <div class="flex flex-wrap justify-center gap-4 text-sm mb-6">
@@ -149,6 +150,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Header Image -->
+    <div class="w-full h-[40vh] overflow-hidden relative">
+        <img src="../assets/images/header/header_00.webp" alt="Déboucheur Expert" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/10 pointer-events-none"></div>
+    </div>
 
     <!-- Main Content -->
     <main class="py-12 px-4">

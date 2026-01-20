@@ -310,6 +310,27 @@ const Language = {
             // Events Page
             events_subtitle: "Calendrier et disponibilités",
             calendar_title: "DISPONIBILITÉS", view_calendar: "Voir le calendrier",
+            calendar_months: [
+                "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+            ],
+            calendar_days: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+            calendar_tooltip_holiday: "{name} (X3)",
+            calendar_tooltip_weekend: "Fin de semaine (X2)",
+            calendar_tooltip_standard: "Standard (X1)",
+            calendar_holiday_rate: "Tarif X3",
+            calendar_no_holidays: "Aucun jour férié dans les 6 prochains mois",
+            toc_detailed: "GUIDES DÉTAILLÉS",
+            toc_supply: "Alimentation en eau",
+            toc_drainage: "Système de drainage",
+            toc_debouchage: "Débouchage",
+            toc_normes: "Normes plomberie",
+            toc_quick: "SECTIONS RAPIDES",
+            sec_debouchage: "Débouchage",
+            sec_inspection: "Inspection",
+            sec_entretien: "Entretien",
+            sec_urgences: "Urgences",
+            sec_conseils: "Conseils",
             
             // Team Page
             team_title: "NOTRE ÉQUIPE",
@@ -514,6 +535,27 @@ const Language = {
             // Events Page
             events_subtitle: "Calendar and availability",
             calendar_title: "AVAILABILITY", view_calendar: "View calendar",
+            calendar_months: [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ],
+            calendar_days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            calendar_tooltip_holiday: "{name} (X3)",
+            calendar_tooltip_weekend: "Weekend (X2)",
+            calendar_tooltip_standard: "Standard (X1)",
+            calendar_holiday_rate: "Rate X3",
+            calendar_no_holidays: "No holidays in the next 6 months",
+            toc_detailed: "DETAILED GUIDES",
+            toc_supply: "Water supply",
+            toc_drainage: "Drainage system",
+            toc_debouchage: "Unclogging",
+            toc_normes: "Plumbing codes",
+            toc_quick: "QUICK SECTIONS",
+            sec_debouchage: "Unclogging",
+            sec_inspection: "Inspection",
+            sec_entretien: "Maintenance",
+            sec_urgences: "Emergencies",
+            sec_conseils: "Tips",
             
             // Team Page
             team_title: "OUR TEAM",
@@ -733,12 +775,72 @@ const Tracking = {
     },
 
     async pageView() {
+        const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+        const screenInfo = window.screen || {};
+        const languages = Array.isArray(navigator.languages) ? navigator.languages : (navigator.languages ? [navigator.languages] : []);
+        let uaDataPayload = null;
+        if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
+            try {
+                uaDataPayload = await navigator.userAgentData.getHighEntropyValues([
+                    'architecture', 'model', 'platform', 'platformVersion', 'uaFullVersion', 'fullVersionList', 'bitness'
+                ]);
+                uaDataPayload.brands = navigator.userAgentData.brands || navigator.userAgentData.uaList || [];
+                uaDataPayload.mobile = navigator.userAgentData.mobile || false;
+            } catch (_) {
+                uaDataPayload = {
+                    brands: navigator.userAgentData.brands || navigator.userAgentData.uaList || [],
+                    mobile: navigator.userAgentData.mobile || false
+                };
+            }
+        }
         try {
             const data = {
-                sessionId: Session.get(), page: window.location.pathname,
-                referrer: document.referrer, screenWidth: window.innerWidth,
-                screenHeight: window.innerHeight, language: Language.current,
-                theme: Theme.current, userAgent: navigator.userAgent, timestamp: Date.now()
+                sessionId: Session.get(),
+                page: window.location.pathname,
+                pageUrl: window.location.href,
+                pageTitle: document.title,
+                hash: window.location.hash,
+                queryString: window.location.search,
+                referrer: document.referrer,
+                screenWidth: screenInfo.width || window.innerWidth,
+                screenHeight: screenInfo.height || window.innerHeight,
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                colorDepth: screenInfo.colorDepth || null,
+                pixelRatio: window.devicePixelRatio || 1,
+                language: Language.current,
+                lang: Language.current,
+                languages,
+                theme: Theme.current,
+                tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+                timezoneOffset: new Date().getTimezoneOffset(),
+                cookiesEnabled: navigator.cookieEnabled ? 1 : 0,
+                doNotTrack: navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack || null,
+                deviceMemory: navigator.deviceMemory || null,
+                hardwareConcurrency: navigator.hardwareConcurrency || null,
+                maxTouchPoints: navigator.maxTouchPoints || 0,
+                platform: navigator.platform || null,
+                vendor: navigator.vendor || null,
+                connectionType: conn.effectiveType || null,
+                connectionDownlink: typeof conn.downlink === 'number' ? conn.downlink : null,
+                connectionRtt: typeof conn.rtt === 'number' ? conn.rtt : null,
+                saveData: !!conn.saveData,
+                userAgent: navigator.userAgent,
+                clientHints: {
+                    uaData: uaDataPayload,
+                    connection: {
+                        effectiveType: conn.effectiveType || null,
+                        downlink: typeof conn.downlink === 'number' ? conn.downlink : null,
+                        rtt: typeof conn.rtt === 'number' ? conn.rtt : null,
+                        saveData: !!conn.saveData
+                    },
+                    storageSupport: {
+                        localStorage: (() => { try { localStorage.setItem('_t','1'); localStorage.removeItem('_t'); return true; } catch(_) { return false; } })(),
+                        sessionStorage: (() => { try { sessionStorage.setItem('_t','1'); sessionStorage.removeItem('_t'); return true; } catch(_) { return false; } })(),
+                        indexedDb: !!window.indexedDB
+                    }
+                },
+                timestamp: Date.now()
             };
             await fetch(\`\${CONFIG.apiBase}/track.php\`, {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },

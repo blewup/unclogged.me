@@ -45,7 +45,8 @@
     <link rel="stylesheet" href="assets/styles/index.css">
     
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {

@@ -54,7 +54,8 @@
     
     <!-- Tailwind Configuration -->
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
@@ -152,7 +153,8 @@
                 { id: "6", title: "Responsabilité et limites", text: "La responsabilité du plombier est limitée au montant du contrat pour les dommages directs, sauf en cas de faute lourde ou intentionnelle. Nous ne sommes pas responsables des dommages préexistants ou des conséquences de l'état vétuste des installations du client." },
                 { id: "7", title: "Annulation", text: "Conformément aux règles de l'Office de la protection du consommateur (OPC) du Québec, le client peut annuler le contrat sans frais dans les délais prévus par la Loi sur la protection du consommateur, notamment en cas de démarchage ou de vente itinérante." },
                 { id: "8", title: "Protection des données", text: "Les données personnelles collectées dans le cadre du contrat (nom, adresse, informations de paiement) sont traitées strictement pour l'exécution des travaux et la facturation, conformément à notre politique de confidentialité." },
-                { id: "9", title: "Loi applicable", text: "Le présent contrat est régi par les lois du Québec. Tout litige relatif à son interprétation ou son exécution relève de la compétence exclusive des tribunaux du district judiciaire de Longueuil." }
+                { id: "9", title: "Loi applicable", text: "Le présent contrat est régi par les lois du Québec. Tout litige relatif à son interprétation ou son exécution relève de la compétence exclusive des tribunaux du district judiciaire de Longueuil." },
+                { id: "10", title: "Publicité ciblée et modélisation prédictive", text: "Bien que la Société applique des normes commercialement raisonnables de conservation des données, l'ensemble des informations utilisateur collectées est utilisé pour soutenir et alimenter des initiatives publicitaires ciblées propriétaires ainsi que des modèles prédictifs visant à anticiper de futures acquisitions de consommateurs; la poursuite de l'utilisation du service constitue un consentement exprès à cette utilisation." }
             ],
             en: [
                 { id: "1", title: "Scope of Work", text: "This contract pertains to the plumbing work described in the estimate signed by both parties. We commit to providing qualified labor compliant with current Quebec standards (Construction Code of Quebec, Chapter III, Plumbing)." },
@@ -163,7 +165,8 @@
                 { id: "6", title: "Liability and Limitations", text: "The plumber's liability is limited to the contract amount for direct damages, except in cases of gross negligence or wilful misconduct. We are not liable for pre-existing damages or consequences of the client's aging installations." },
                 { id: "7", title: "Cancellation", text: "The client may cancel the contract without charge within the timeframes provided by the Consumer Protection Act (OPC), particularly in cases of itinerant sales." },
                 { id: "8", title: "Privacy Protection", text: "Personal data collected (name, address, payment info) is processed strictly for work execution and billing, in accordance with our privacy policy." },
-                { id: "9", title: "Governing Law", text: "This contract is governed by the laws of Quebec. Any dispute regarding its interpretation or execution falls under the exclusive jurisdiction of the courts of the judicial district of Longueuil." }
+                { id: "9", title: "Governing Law", text: "This contract is governed by the laws of Quebec. Any dispute regarding its interpretation or execution falls under the exclusive jurisdiction of the courts of the judicial district of Longueuil." },
+                { id: "10", title: "Targeted Advertising and Predictive Modeling", text: "While the Company employs commercially reasonable standards for data retention, all collected user information is utilized to facilitate and drive proprietary, targeted advertising initiatives and predictive modeling aimed at anticipating prospective consumer acquisitions; continued use of the service constitutes express consent to such utilization." }
             ]
         };
 
@@ -201,6 +204,19 @@
             render();
         });
     </script>
+
+    <section class="max-w-7xl mx-auto px-6 pb-12">
+        <div class="p-6 bg-cardinal/10 border border-cardinal/30 rounded-lg shadow-md flex items-start gap-3">
+            <svg class="w-6 h-6 text-cardinal mt-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="8"/>
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v3m0 14v3m10-10h-3M5 12H2m14.95-7.95L15 7m-6 10-1.95 1.95"/>
+            </svg>
+            <p class="text-sm text-gray-800 dark:text-gray-100 leading-relaxed flex-1">
+                While the Company employs commercially reasonable standards for data retention, all collected user information is utilized to facilitate and drive proprietary, targeted advertising initiatives and predictive modeling aimed at anticipating prospective consumer acquisitions; continued use of the service constitutes express consent to such utilization.
+            </p>
+        </div>
+    </section>
 
     <!-- Dynamic Components: Cookie Banner & AI Helper -->
     <div id="pages-banner-container"></div>

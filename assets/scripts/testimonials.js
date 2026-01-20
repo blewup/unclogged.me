@@ -20,8 +20,8 @@ const TestimonialsModule = (() => {
 
     // Testimonial data
     const testimonials = Object.freeze([
-        { name: "JEAN TREMBLAY", img: "assets/images/clients/client_00.png", stars: 5, text: "Service impeccable! Billy est arrivé rapidement et a réglé le problème en un rien de temps. Je recommande fortement pour tous vos besoins de plomberie résidentielle." },
-        { name: "SOPHIE LAPOINTE", img: "assets/images/clients/client_01.png", stars: 5, text: "Très rapide et courtois. Le travail a été fait proprement, sans laisser de traces. Une expérience client fantastique du début à la fin. Merci encore!" },
+        { name: "JEAN TREMBLAY", img: "assets/images/clients/client_00.png", stars: 5, text: "Service impeccable! Billy a réglé notre problème en un rien de temps. Je recommande fortement pour tous vos besoins de plomberie résidentielle." },
+        { name: "SOPHIE LAPOINTE", img: "assets/images/clients/client_01.png", stars: 5, text: "Très rapide et courtois. Une expérience client fantastique du début à la fin. Merci encore!" },
         { name: "MARC GAGNON", img: "assets/images/clients/client_02.png", stars: 4, text: "Bon travail sur la tuyauterie de ma cuisine. Le prix était juste et le délai respecté. Je n'hésiterai pas à rappeler pour d'autres travaux." },
         { name: "PIERRETTE BOUCHER", img: "assets/images/clients/client_03.png", stars: 5, text: "Aucun frais caché, ce qui est rare de nos jours. Billy est honnête et compétent. Merci pour le service d'urgence un dimanche." },
         { name: "JULIE ROY", img: "assets/images/clients/client_04.png", stars: 5, text: "Courtois et professionnel. Il a pris le temps de m'expliquer le problème et la solution. Très satisfaite du résultat final." },

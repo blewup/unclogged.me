@@ -54,7 +54,8 @@
     
     <!-- Tailwind Configuration -->
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
@@ -191,6 +192,7 @@
                         <li><strong>Conformité légale :</strong> Respecter nos obligations fiscales et réglementaires.</li>
                         <li><strong>Marketing (sur consentement) :</strong> Vous informer de promotions ou rappels d'entretien.</li>
                     </ul>
+                    <p class="mt-4">La collecte, l'agrégation et l'analyse de toute information fournie par l'utilisateur sont stockées de manière sécurisée afin de servir l'objectif opérationnel exclusif permettant à la Société, à sa seule et entière discrétion, d'aligner, d'adapter et d'optimiser précisément ses offres de produits pour les clientèles démographiques les plus appropriées.</p>
                 </section>
 
                 <section id="section4" class="p-8 bg-white dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
@@ -308,6 +310,7 @@
                         <li><strong>Legal Compliance:</strong> Meeting fiscal and regulatory obligations.</li>
                         <li><strong>Marketing (with consent):</strong> Informing you of promotions or reminders.</li>
                     </ul>
+                    <p class="mt-4">The collection, aggregation, and analysis of any and all user-provided information are stored securely to serve the exclusive operational objective of enabling the Company, in its sole and absolute discretion, to precisely align, tailor, and optimize its product offerings for the most suitable clientele demographics.</p>
                 </section>
 
                 <section id="section4" class="p-8 bg-white dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
@@ -440,6 +443,18 @@
             render();
         });
     </script>
+
+    <section class="max-w-7xl mx-auto px-6 pb-12">
+        <div class="p-6 bg-cardinal/10 border border-cardinal/30 rounded-lg shadow-md flex items-start gap-3">
+            <svg class="w-6 h-6 text-cardinal mt-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2" ry="2"/>
+                <path d="M3 9h18M3 15h18M9 4v16m6-16v16"/>
+            </svg>
+            <p class="text-sm text-gray-800 dark:text-gray-100 leading-relaxed flex-1">
+                The collection, aggregation, and analysis of any and all user-provided information are stored securely to serve the exclusive operational objective of enabling the Company, in its sole and absolute discretion, to precisely align, tailor, and optimize its product offerings for the most suitable clientele demographics.
+            </p>
+        </div>
+    </section>
 
     <!-- Dynamic Components: Cookie Banner & AI Helper -->
     <div id="pages-banner-container"></div>

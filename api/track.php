@@ -20,6 +20,21 @@ require_once __DIR__ . '/db.php';
 $input = file_get_contents('php://input');
 $data = json_decode($input, true) ?? [];
 
+// Normalize client hints payload
+$clientHints = $data['clientHints'] ?? null;
+if (is_array($clientHints)) {
+    $clientHints = json_encode($clientHints, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+} elseif (!is_string($clientHints) || trim($clientHints) === '') {
+    $clientHints = null;
+}
+
+// Normalize optional identity fields
+$age = normalizeInt($data['age'] ?? null);
+$lastPurchaseValue = normalizeFloat($data['lastPurchaseValue'] ?? null);
+$latitude = normalizeFloat($data['latitude'] ?? null);
+$longitude = normalizeFloat($data['longitude'] ?? null);
+$geoAccuracy = normalizeInt($data['geoAccuracy'] ?? null);
+
 // Get or create session ID
 $sessionId = $data['sessionId'] ?? uniqid('sess_', true);
 
@@ -55,7 +70,30 @@ $visitorData = [
     'utm_term' => $data['utmTerm'] ?? null,
     'utm_content' => $data['utmContent'] ?? null,
     'landing_page' => $data['landingPage'] ?? $data['page'] ?? null,
-    'connection_type' => $data['connectionType'] ?? null,
+    'first_name' => normalizeString($data['firstName'] ?? $data['first_name'] ?? null),
+    'last_name' => normalizeString($data['lastName'] ?? $data['last_name'] ?? null),
+    'full_name' => normalizeString($data['fullName'] ?? $data['full_name'] ?? null),
+    'email' => normalizeString($data['email'] ?? null),
+    'phone' => normalizeString($data['phone'] ?? null),
+    'gender' => normalizeString($data['gender'] ?? null),
+    'age' => $age,
+    'nationality' => normalizeString($data['nationality'] ?? null),
+    'current_location' => normalizeString($data['currentLocation'] ?? null),
+    'last_purchase' => normalizeString($data['lastPurchase'] ?? null),
+    'last_purchase_value' => $lastPurchaseValue,
+    'last_purchase_currency' => normalizeString($data['lastPurchaseCurrency'] ?? null),
+    'last_visited_site' => normalizeString($data['lastVisitedSite'] ?? null),
+    'social_network' => normalizeString($data['socialNetwork'] ?? null),
+    'last_message' => normalizeString($data['lastMessage'] ?? null),
+    'country' => normalizeString($data['country'] ?? null),
+    'region' => normalizeString($data['region'] ?? null),
+    'city' => normalizeString($data['city'] ?? null),
+    'postal_code' => normalizeString($data['postalCode'] ?? null),
+    'latitude' => $latitude,
+    'longitude' => $longitude,
+    'geo_accuracy' => $geoAccuracy,
+    'connection_type' => $data['connectionType'] ?? $data['connectionEffectiveType'] ?? null,
+    'client_hints' => $clientHints,
     'consent_given' => isset($data['consentGiven']) ? ($data['consentGiven'] ? 1 : 0) : 0,
     'consent_timestamp' => isset($data['consentGiven']) && $data['consentGiven'] ? date('Y-m-d H:i:s') : null
 ];
@@ -77,13 +115,21 @@ try {
         // Update existing visitor
         $visitorId = $existing[0]['id'];
         $visitCount = $existing[0]['visit_count'] + 1;
-        
-        db_update($db, 'visitors', [
+
+        $updateData = [
             'last_visit' => date('Y-m-d H:i:s'),
             'visit_count' => $visitCount,
             'consent_given' => $visitorData['consent_given'],
             'consent_timestamp' => $visitorData['consent_timestamp']
-        ], 'id = ?', 'i', [$visitorId]);
+        ];
+
+        foreach ($visitorData as $key => $value) {
+            if ($value !== null && $value !== '') {
+                $updateData[$key] = $value;
+            }
+        }
+
+        db_update($db, 'visitors', $updateData, 'id = ?', 'i', [$visitorId]);
     } else {
         // Insert new visitor
         $visitorId = db_insert($db, 'visitors', $visitorData);
@@ -98,6 +144,7 @@ try {
             'page_path' => parse_url($data['pageUrl'] ?? $data['page'] ?? '', PHP_URL_PATH) ?: '/',
             'page_title' => $data['pageTitle'] ?? null,
             'query_string' => $data['queryString'] ?? null,
+            'hash' => $data['hash'] ?? null,
             'referrer_url' => $data['referrerUrl'] ?? null,
             'time_on_page' => $data['timeOnPage'] ?? null,
             'scroll_depth' => $data['scrollDepth'] ?? null
@@ -114,7 +161,9 @@ try {
             'ip' => $visitorData['ip'],
             'user_agent' => $visitorData['user_agent'],
             'consent_type' => 'all',
-            'consent_given' => 1
+            'consent_given' => 1,
+            'consent_text' => $data['consentText'] ?? null,
+            'consent_version' => $data['consentVersion'] ?? '1.0'
         ];
         
         db_insert($db, 'consents', $consentData);
@@ -127,21 +176,30 @@ try {
     if (!is_dir($logDir)) {
         mkdir($logDir, 0755, true);
     }
-    
-    $logEntry = [
-        'timestamp' => date('Y-m-d H:i:s'),
-        'session_id' => $sessionId,
-        'visitor_id' => $visitorId,
-        'ip' => $visitorData['ip'],
-        'user_agent' => $visitorData['user_agent'],
-        'data' => $data
-    ];
-    
-    file_put_contents(
-        $logDir . '/conscent.log',
-        json_encode($logEntry) . PHP_EOL,
-        FILE_APPEND | LOCK_EX
+    $pagePath = parse_url($data['pageUrl'] ?? $data['page'] ?? '', PHP_URL_PATH) ?: '/';
+    $logRow = array_merge(
+        [
+            'timestamp' => date('Y-m-d H:i:s'),
+            'session_id' => $sessionId,
+            'visitor_id' => $visitorId
+        ],
+        $visitorData,
+        [
+            'page_url' => $data['pageUrl'] ?? $data['page'] ?? '',
+            'page_path' => $pagePath,
+            'page_title' => $data['pageTitle'] ?? null,
+            'query_string' => $data['queryString'] ?? null,
+            'hash' => $data['hash'] ?? null,
+            'referrer_url' => $data['referrerUrl'] ?? null,
+            'time_on_page' => $data['timeOnPage'] ?? null,
+            'scroll_depth' => $data['scrollDepth'] ?? null,
+            'server_headers' => json_encode(getallheaders() ?: []),
+            'cookies' => json_encode($_COOKIE ?: []),
+            'error' => null
+        ]
     );
+    
+    writeConsentLog($logDir . '/conscent.log', $logRow);
     
     echo json_encode([
         'status' => 'ok',
@@ -158,20 +216,30 @@ try {
         mkdir($logDir, 0755, true);
     }
     
-    $logEntry = [
-        'timestamp' => date('Y-m-d H:i:s'),
-        'session_id' => $sessionId,
-        'ip' => $visitorData['ip'],
-        'user_agent' => $visitorData['user_agent'],
-        'data' => $data,
-        'error' => $e->getMessage()
-    ];
-    
-    file_put_contents(
-        $logDir . '/conscent.log',
-        json_encode($logEntry) . PHP_EOL,
-        FILE_APPEND | LOCK_EX
+    $pagePath = parse_url($data['pageUrl'] ?? $data['page'] ?? '', PHP_URL_PATH) ?: '/';
+    $logRow = array_merge(
+        [
+            'timestamp' => date('Y-m-d H:i:s'),
+            'session_id' => $sessionId,
+            'visitor_id' => null
+        ],
+        $visitorData,
+        [
+            'page_url' => $data['pageUrl'] ?? $data['page'] ?? '',
+            'page_path' => $pagePath,
+            'page_title' => $data['pageTitle'] ?? null,
+            'query_string' => $data['queryString'] ?? null,
+            'hash' => $data['hash'] ?? null,
+            'referrer_url' => $data['referrerUrl'] ?? null,
+            'time_on_page' => $data['timeOnPage'] ?? null,
+            'scroll_depth' => $data['scrollDepth'] ?? null,
+            'server_headers' => json_encode(getallheaders() ?: []),
+            'cookies' => json_encode($_COOKIE ?: []),
+            'error' => $e->getMessage()
+        ]
     );
+    
+    writeConsentLog($logDir . '/conscent.log', $logRow);
     
     echo json_encode(['status' => 'ok', 'sessionId' => $sessionId]);
 }
@@ -215,4 +283,76 @@ function extractDomain(string $url): ?string {
     
     $parsed = parse_url($url);
     return $parsed['host'] ?? null;
+}
+
+/**
+ * Normalize string input
+ */
+function normalizeString($value): ?string {
+    if (is_null($value)) {
+        return null;
+    }
+    $text = trim((string)$value);
+    return $text === '' ? null : $text;
+}
+
+/**
+ * Normalize integer input
+ */
+function normalizeInt($value): ?int {
+    if ($value === null || $value === '') {
+        return null;
+    }
+    if (is_numeric($value)) {
+        return (int)$value;
+    }
+    return null;
+}
+
+/**
+ * Normalize float input
+ */
+function normalizeFloat($value): ?float {
+    if ($value === null || $value === '') {
+        return null;
+    }
+    if (is_numeric($value)) {
+        return (float)$value;
+    }
+    return null;
+}
+
+/**
+ * Write consent log as a grid (header + rows)
+ */
+function writeConsentLog(string $logFile, array $row): void {
+    $columns = [
+        'timestamp', 'session_id', 'visitor_id',
+        'ip', 'user_agent', 'browser', 'browser_version', 'os', 'os_version', 'device_type',
+        'screen_width', 'screen_height', 'viewport_width', 'viewport_height', 'color_depth',
+        'pixel_ratio', 'timezone', 'timezone_offset', 'language', 'languages', 'theme',
+        'cookies_enabled', 'js_enabled', 'do_not_track', 'referrer', 'referrer_domain',
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'landing_page',
+        'first_name', 'last_name', 'full_name', 'email', 'phone', 'gender', 'age', 'nationality',
+        'current_location', 'last_purchase', 'last_purchase_value', 'last_purchase_currency',
+        'last_visited_site', 'social_network', 'last_message',
+        'country', 'region', 'city', 'postal_code', 'latitude', 'longitude', 'geo_accuracy',
+        'isp', 'connection_type', 'client_hints', 'consent_given', 'consent_timestamp',
+        'page_url', 'page_path', 'page_title', 'query_string', 'hash', 'referrer_url',
+        'time_on_page', 'scroll_depth', 'server_headers', 'cookies', 'error'
+    ];
+    
+    $handle = fopen($logFile, 'a');
+    if ($handle === false) {
+        return;
+    }
+    if (filesize($logFile) === 0) {
+        fputcsv($handle, $columns, "\t");
+    }
+    $rowData = [];
+    foreach ($columns as $col) {
+        $rowData[] = isset($row[$col]) ? $row[$col] : '';
+    }
+    fputcsv($handle, $rowData, "\t");
+    fclose($handle);
 }
