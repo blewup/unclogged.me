@@ -511,4 +511,4 @@ Update `CACHE_NAME` version in assets/scripts/service.js when deploying asset ch
 
 ### Border Radius and Shadows
 - All boxes use 8px radius with theme-relative shadow
-- Dark mode: lighter shadow, Light mode: darker shadow
+- Dark mode: darker shadow, Light mode: lighter shadow

@@ -44,3 +44,6 @@ api/uploads/*
 # PHP errors
 php_errors.log
 error_log
+
+# files
+assets/videos/*.mp4
