@@ -176,8 +176,16 @@ const Language = {
             // Hero Section
             hero_l1: "BIENVENU CHEZ", hero_l3: "LE DEBOUCHEUR EXPERT", hero_title: "DÉBOUCHEUR EXPERT",
             hero_title_fr: "DÉBOUCHEUR EXPERT", index_title: "DÉBOUCHEUR EXPERT",
+            billy_name: "BILLY ST-HILAIRE,",
             hero_text: "Avec plus de 15 ans d'expérience en plomberie, 10 ans comme compagnon. Billy St-Hilaire est à votre service et vous offre le meilleur service garanti.",
             btn_rdv: "PRENDRE RENDEZ-VOUS",
+            
+            // Form placeholders
+            form_fname: "Prénom",
+            form_lname: "Nom",
+            form_email: "Courriel",
+            form_phone: "(###) ###-####",
+            form_message: "Message",
             
             // Services Section
             services_title: "NOS SERVICES", services_sub: "DE PLOMBERIE",
@@ -217,6 +225,20 @@ const Language = {
             // Map Section
             map_call: "APPELER", map_directions: "ITINÉRAIRE", map_save: "ENREGISTRER", map_share: "PARTAGER",
             
+            // Map overlay
+            map_plumber_location: "Plombier · Montréal & Montérégie",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530-2343",
+            map_phone_secondary: "+1 (438) 765-7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            map_satellite: "Satellite",
+            map_roadmap: "Plan",
+            
+            // Satellite toggle
+            satellite_toggle: "Satellite",
+            
             // Cookie Banner
             cookie_msg: "En poursuivant votre navigation, vous acceptez l'utilisation de cookies afin d'améliorer votre expérience.",
             cookie_accept: "Accepter", cookie_learn: "En savoir plus",
@@ -225,6 +247,21 @@ const Language = {
             ped_man: "L'HOMME :", ped_exp: "EXPÉRIENCES :", ped_bio: "BIOGRAPHIE :",
             billy_role: "Fondateur & Plombier Compagnon", billy_bio: "15+ ans d'expérience en plomberie résidentielle.",
             nancy_role: "Administration & Service Client", nancy_bio: "Gestion des rendez-vous et suivi client.",
+            
+            // Billy info section
+            billy_age: "Billy St-Hilaire, 35 ans,",
+            billy_school_1: "Diplômé de l'École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 ans pour le groupe Centco inc,",
+            billy_exp_2: "Contrats multiples avec le local 144,",
+            billy_exp_3: "Fier supporteur et employé de",
+            billy_exp_4: "Plomberie Martin Boisvert enr.",
+            billy_bio_1: "Toujours actif pour répondre aux",
+            billy_bio_2: "diverses appels de services.",
+            billy_bio_3: "Que ce soit pour changer une valve",
+            billy_bio_4: "ou réparer un tuyau qui coule.",
+            billy_bio_5: "Le déboucheur sait s'y prendre.",
+            billy_note: "*Aucune construction neuve",
             
             // Form Messages
             form_required: "Veuillez remplir tous les champs obligatoires.",
@@ -389,7 +426,10 @@ const Language = {
             search_placeholder: "Rechercher un outil...",
             
             // Page title
-            page_title: "Déboucheur Expert"
+            page_title: "Déboucheur Expert",
+            
+            // Copyright
+            copyright: "© 2025 deboucheur expert"
         },
         en: {
             // Navigation
@@ -401,8 +441,16 @@ const Language = {
             // Hero Section
             hero_l1: "WELCOME TO", hero_l3: "THE UNCLOGGER EXPERT", hero_title: "UNCLOGGER EXPERT",
             hero_title_fr: "DÉBOUCHEUR EXPERT", index_title: "UNCLOGGER EXPERT",
+            billy_name: "BILLY ST-HILAIRE,",
             hero_text: "With over 15 years of plumbing experience, 10 years as a journeyman. Billy St-Hilaire is at your service with guaranteed satisfaction.",
             btn_rdv: "BOOK APPOINTMENT",
+            
+            // Form placeholders
+            form_fname: "First name",
+            form_lname: "Last name",
+            form_email: "Email",
+            form_phone: "(###) ###-####",
+            form_message: "Message",
             
             // Services Section
             services_title: "OUR SERVICES", services_sub: "PLUMBING",
@@ -442,6 +490,20 @@ const Language = {
             // Map Section
             map_call: "CALL", map_directions: "DIRECTIONS", map_save: "SAVE", map_share: "SHARE",
             
+            // Map overlay
+            map_plumber_location: "Plumber · Montreal & Montérégie",
+            map_address: "290 Rue Lord #01, Napierville, QC J0J 1L0",
+            map_website: "unclogged.me",
+            map_phone_primary: "+1 (438) 530-2343",
+            map_phone_secondary: "+1 (438) 765-7040",
+            map_email_primary: "info@deboucheur.expert",
+            map_email_secondary: "info@unclogged.me",
+            map_satellite: "Satellite",
+            map_roadmap: "Map",
+            
+            // Satellite toggle
+            satellite_toggle: "Satellite",
+            
             // Cookie Banner
             cookie_msg: "By continuing to browse, you accept the use of cookies to improve your experience.",
             cookie_accept: "Accept", cookie_learn: "Learn more",
@@ -450,6 +512,21 @@ const Language = {
             ped_man: "THE MAN:", ped_exp: "EXPERIENCE:", ped_bio: "BIOGRAPHY:",
             billy_role: "Founder & Journeyman Plumber", billy_bio: "15+ years of residential plumbing experience.",
             nancy_role: "Administration & Customer Service", nancy_bio: "Appointment scheduling and client follow-up.",
+            
+            // Billy info section
+            billy_age: "Billy St-Hilaire, 35 years old,",
+            billy_school_1: "Graduate of École des Métiers,",
+            billy_school_2: "de la Construction de Montréal,",
+            billy_exp_1: "10 years with Centco inc.,",
+            billy_exp_2: "Multiple contracts with local 144,",
+            billy_exp_3: "Proud supporter and employee of",
+            billy_exp_4: "Plomberie Martin Boisvert inc.",
+            billy_bio_1: "Always ready to respond to",
+            billy_bio_2: "various service calls.",
+            billy_bio_3: "Whether changing a valve",
+            billy_bio_4: "or fixing a leaking pipe.",
+            billy_bio_5: "The unclogger knows how to do it.",
+            billy_note: "*No new construction",
             
             // Form Messages
             form_required: "Please fill in all required fields.",
@@ -614,7 +691,10 @@ const Language = {
             search_placeholder: "Search for a tool...",
             
             // Page title
-            page_title: "Unclogger Expert"
+            page_title: "Unclogger Expert",
+            
+            // Copyright
+            copyright: "© 2025 unclogged expert"
         }
     },
 
@@ -642,22 +722,35 @@ const Language = {
         const trans = this.translations[lang];
         if (!trans) return;
         
+        // Handle data-translate attributes
         Utils.$$('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             const translation = trans[key];
-            if (translation) {
-                // Use innerHTML for translations containing HTML, innerText otherwise
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            if (!translation) return;
+            
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                if (el.hasAttribute('placeholder')) {
                     el.placeholder = translation;
-                } else if (translation.includes('<') && translation.includes('>')) {
-                    el.innerHTML = translation;
                 } else {
-                    el.innerText = translation;
+                    el.value = translation;
                 }
+            } else if (typeof translation === 'string' && translation.includes('<') && translation.includes('>')) {
+                el.innerHTML = translation;
+            } else {
+                el.innerText = translation;
             }
         });
         
-        // Update page title if translation exists
+        // Handle data-translate-placeholder attributes
+        Utils.$$('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            const translation = trans[key];
+            if (translation && el.placeholder !== undefined) {
+                el.placeholder = translation;
+            }
+        });
+        
+        // Update page title
         if (trans.page_title) {
             const baseTitle = document.title.includes('|') 
                 ? document.title.split('|')[1].trim()

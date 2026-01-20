@@ -33,6 +33,11 @@ env:
   PHP_VERSION: '8.2'
   NODE_VERSION: '20'
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   # ===========================================================================
   # JOB 1: Validate & Lint
@@ -214,10 +219,10 @@ jobs:
       - name: 🚀 Deploy via GitHub Token
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./
-          destination_dir: ./
-          cname: https://blewup.github.io/unclogged.me
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/
+          publish_branch: gh-pages
+          force_orphan: true
 
       - name: ✅ Deployment complete
         run: |
