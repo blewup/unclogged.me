@@ -38,8 +38,22 @@ const CONFIG = Object.freeze({
 const Utils = {
     debounce(func, wait = CONFIG.debounceDelay) {
         let timeout;
+        // Defensive guard: ensure func is a function before returning a wrapper that will call it.
+        if (typeof func !== 'function') {
+            console.warn('Utils.debounce expected a function but received:', func);
+            // Return a no-op function to avoid runtime TypeErrors in callers.
+            return function() { /* no-op */ };
+        }
         return function executedFunction(...args) {
-            const later = () => { clearTimeout(timeout); func(...args); };
+            const later = () => {
+                clearTimeout(timeout);
+                try {
+                    func(...args);
+                } catch (e) {
+                    // Catch errors from func to avoid bubbling to global runtime
+                    console.error('Error in debounced function:', e);
+                }
+            };
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
@@ -47,9 +61,19 @@ const Utils = {
 
     throttle(func, limit = 16) {
         let inThrottle;
+        // Defensive guard: ensure func is a function before returning a wrapper that will call it.
+        if (typeof func !== 'function') {
+            console.warn('Utils.throttle expected a function but received:', func);
+            // Return a no-op function to avoid runtime TypeErrors in callers.
+            return function() { /* no-op */ };
+        }
         return function(...args) {
             if (!inThrottle) {
-                func.apply(this, args);
+                try {
+                    func.apply(this, args);
+                } catch (e) {
+                    console.error('Error in throttled function:', e);
+                }
                 inThrottle = true;
                 setTimeout(() => inThrottle = false, limit);
             }
@@ -80,7 +104,7 @@ const Utils = {
     },
 
     generateId(prefix = 'id') {
-        return \`\${prefix}_\${Date.now()}_\${Math.random().toString(36).substr(2, 9)}\`;
+        return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     },
 
     prefersReducedMotion() {
@@ -97,8 +121,8 @@ const Utils = {
 };
 
 // ============================================================================
-// SESSION MANAGEMENT
-// ============================================================================
+ // SESSION MANAGEMENT
+ // ============================================================================
 
 const Session = {
     id: null,
@@ -113,15 +137,15 @@ const Session = {
         return this.id;
     },
     
-    generateId() { return \`ses_\${Date.now()}_\${Math.random().toString(36).substr(2, 9)}\`; },
+    generateId() { return `ses_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`; },
     
     save() {
         localStorage.setItem(this.storageKey, this.id);
-        localStorage.setItem(\`\${this.storageKey}_timestamp\`, Date.now().toString());
+        localStorage.setItem(`${this.storageKey}_timestamp`, Date.now().toString());
     },
     
     isExpired() {
-        const timestamp = localStorage.getItem(\`\${this.storageKey}_timestamp\`);
+        const timestamp = localStorage.getItem(`${this.storageKey}_timestamp`);
         return !timestamp || Date.now() - parseInt(timestamp) > 86400000;
     },
     
@@ -129,7 +153,7 @@ const Session = {
     
     clear() {
         localStorage.removeItem(this.storageKey);
-        localStorage.removeItem(\`\${this.storageKey}_timestamp\`);
+        localStorage.removeItem(`${this.storageKey}_timestamp`);
         this.id = null;
     }
 };

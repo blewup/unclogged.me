@@ -99,8 +99,7 @@ Uses Google Gemini API (`gemini-2.5-flash-preview`) for "L'Apprenti" chatbot. Su
 - **Widget closed by default** - bouncing logo button triggers open
 
 ## File Organization
-```
-codespace@codespaces-36a39d:/workspaces/unclogged.me$ tree
+```codespace@codespaces-36a39d:/workspaces/unclogged.me$ tree
 .
 ├── LICENSE
 ├── README.md
@@ -472,8 +471,7 @@ codespace@codespaces-36a39d:/workspaces/unclogged.me$ tree
 │   ├── prices.html
 │   ├── team.html
 │   └── tools.html
-└── script.sh
-```
+└── script.sh ```
 
 ## Development Notes
 
