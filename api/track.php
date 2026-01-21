@@ -1,24 +1,33 @@
 <?php
+declare(strict_types=1);
 /**
  * Déboucheur Expert - Enhanced Visitor Tracking
  * Comprehensive user data collection for client analysis
+ * 
+ * @version 2.1.0 - Modernized with security module
+ * @requires PHP 8.2+
  */
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
-
+require_once __DIR__ . '/security.php';
 require_once __DIR__ . '/db.php';
 
-// Get JSON input
+// Apply security headers and CORS
+SecurityHeaders::apply(isApi: true);
+SecurityHeaders::cors(['POST', 'OPTIONS']);
+
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    JsonResponse::error('Method not allowed', 405);
+}
+
+// Apply rate limiting (120 requests per minute - tracking can be frequent)
+$rateLimiter = new RateLimiter();
+$rateLimiter->enforce(maxRequests: 120, windowSeconds: 60);
+
+// Get and validate JSON input
 $input = file_get_contents('php://input');
-$data = json_decode($input, true) ?? [];
+$data = InputValidator::json($input) ?? [];
 
 // Normalize client hints payload
 $clientHints = $data['clientHints'] ?? null;

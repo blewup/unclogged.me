@@ -1,31 +1,22 @@
 <?php
+declare(strict_types=1);
 /**
  * Déboucheur Expert - SMS Webhook Handler
  * Receives incoming SMS replies via Twilio webhook
  * 
- * Configure in Twilio Console:
- * Phone Number → Messaging → A MESSAGE COMES IN
- * Webhook URL: https://deboucheur.expert/api/sms-webhook.php
- * HTTP Method: POST
- * 
- * SMS format from owner: REPLY:{sessionId} Your message here
- * Example: REPLY:abc123 Oui, je peux venir demain à 10h
+ * @version 2.1.0 - Modernized with security module
+ * @requires PHP 8.2+
  */
 
-header('Content-Type: text/xml');
-
-// Log all incoming webhooks for debugging
-$logFile = __DIR__ . '/logs/sms-webhook.log';
-$logDir = dirname($logFile);
-if (!is_dir($logDir)) {
-    mkdir($logDir, 0755, true);
-}
-
-$logEntry = date('Y-m-d H:i:s') . " | " . json_encode($_POST) . "\n";
-file_put_contents($logFile, $logEntry, FILE_APPEND | LOCK_EX);
-
+require_once __DIR__ . '/security.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/credentials.php';
+
+// Apply security headers (limited for webhook)
+header('Content-Type: text/xml; charset=utf-8');
+
+// Log all incoming webhooks for debugging
+SecurityLogger::info('SMS webhook received', ['post_data' => $_POST]);
 
 // Authorized phone numbers that can send replies
 $twilioConfig = SecureCredentials::getTwilioConfig();

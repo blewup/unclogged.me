@@ -1,52 +1,56 @@
 <?php
+declare(strict_types=1);
 /**
  * Déboucheur Expert - Contact Form Handler
  * 
- * Accepts multipart/form-data submissions with user details (fname, lname, 
- * email, phone, msg), preferred language (lang) and optional file attachment.
- * 
- * Required PHP modules: json, mysqli, fileinfo, mbstring
- * 
- * Actions performed:
- * 1. Saves uploaded file (if any) to uploads directory (PNG, JPEG, WEBP, AVIF)
- * 2. Inserts record into contacts table via MariaDB
- * 3. Sends email notification via EmailService (SMTP)
- *    - French: info@deboucheur.expert
- *    - English: info@unclogged.me
- * 
- * Returns JSON {status: 'ok'} on success, {error: '...'} on failure.
+ * @version 2.1.0 - Modernized with security module
+ * @requires PHP 8.2+
  */
 
-header('Content-Type: application/json');
-
-// Only accept POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
-
+require_once __DIR__ . '/security.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/email-service.php';
 
-// Determine environment (prod/test/dev) from POST; default prod
-$env = $_POST['env'] ?? 'prod';
+// Apply security headers and CORS
+SecurityHeaders::apply(isApi: true);
+SecurityHeaders::cors(['POST', 'OPTIONS']);
 
-// Gather fields
-$fname = trim($_POST['fname'] ?? '');
-$lname = trim($_POST['lname'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$phone = trim($_POST['phone'] ?? '');
-$msg = trim($_POST['msg'] ?? '');
-$lang = strtolower(trim($_POST['lang'] ?? 'fr'));
+header('Content-Type: application/json; charset=utf-8');
+
+// Only accept POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    JsonResponse::error('Method not allowed', 405);
+}
+
+// Apply rate limiting (10 submissions per hour)
+$rateLimiter = new RateLimiter();
+$rateLimiter->enforce(maxRequests: 10, windowSeconds: 3600);
+
+// Determine environment (prod/test/dev) from POST; default prod
+$env = InputValidator::string($_POST['env'] ?? 'prod', 10);
+if (!in_array($env, ['prod', 'test', 'dev'], true)) {
+    $env = 'prod';
+}
+
+// Gather and validate fields
+$fname = InputValidator::string($_POST['fname'] ?? '', 100);
+$lname = InputValidator::string($_POST['lname'] ?? '', 100);
+$email = InputValidator::email($_POST['email'] ?? '');
+$phone = InputValidator::phone($_POST['phone'] ?? '') ?? '';
+$msg = InputValidator::string($_POST['msg'] ?? '', 5000);
+$lang = InputValidator::language($_POST['lang'] ?? 'fr');
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$userAgent = InputValidator::string($_SERVER['HTTP_USER_AGENT'] ?? '', 512);
 
 // Validate required fields
-if (!$fname || !$lname || !$email || !$msg) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Missing required fields']);
-    exit;
+$errors = [];
+if (empty($fname)) $errors['fname'] = 'First name is required';
+if (empty($lname)) $errors['lname'] = 'Last name is required';
+if (!$email) $errors['email'] = 'Valid email is required';
+if (empty($msg)) $errors['msg'] = 'Message is required';
+
+if (!empty($errors)) {
+    JsonResponse::validationError($errors);
 }
 
 // Handle optional file upload
@@ -135,9 +139,15 @@ try {
     
 } catch (Exception $e) {
     // Log error but don't fail the request - DB insert was successful
-    error_log("Contact form email failed: " . $e->getMessage());
+    SecurityLogger::warning('Contact form email failed', ['error' => $e->getMessage()]);
 }
 
+// Log successful submission
+SecurityLogger::info('Contact form submitted', [
+    'email' => $email,
+    'lang' => $lang,
+    'hasAttachment' => !empty($attachmentPath)
+]);
+
 // Respond with success
-echo json_encode(['status' => 'ok']);
-exit;
+JsonResponse::success();

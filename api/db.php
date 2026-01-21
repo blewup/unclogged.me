@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 /**
  * Déboucheur Expert - Enhanced Database Connection Helper
  * Supports: deboucheur_prod, deboucheur_test, deboucheur_dev
  * Host: Namecheap cPanel MariaDB 10.6+
  * 
- * Required PHP modules: mysqli, mysqlnd, pdo, pdo_mysql
+ * @version 2.1.0 - Modernized with strict types
+ * @requires PHP 8.2+, mysqli, mysqlnd, pdo, pdo_mysql
  */
 
 if (!defined('DB_ACCESS')) {
