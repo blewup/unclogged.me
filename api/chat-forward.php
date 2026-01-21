@@ -41,6 +41,8 @@ $aiResponse = InputValidator::string($data['aiResponse'] ?? '', 10000);
 $conversationHistory = $data['conversationHistory'] ?? [];
 $timestamp = $data['timestamp'] ?? date('Y-m-d H:i:s');
 $pageUrl = InputValidator::url($data['pageUrl'] ?? '') ?? '';
+$isEscalation = (bool)($data['isEscalation'] ?? false);
+$lang = InputValidator::string($data['lang'] ?? 'fr', 5);
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
 $userAgent = InputValidator::string($_SERVER['HTTP_USER_AGENT'] ?? '', 512);
 
@@ -91,18 +93,25 @@ try {
     $emailSent = false;
     $smsSent = false;
     
-    // Send notification on first message or every 5th message
-    if ($messageCount == 1 || $messageCount % 5 == 0) {
+    // Send notification on first message, every 5th message, or on escalation request
+    $shouldNotify = ($messageCount == 1 || $messageCount % 5 == 0 || $isEscalation);
+    
+    if ($shouldNotify) {
         
         // ========== EMAIL NOTIFICATION (via SMTP) ==========
         try {
+            $emailSubject = $isEscalation 
+                ? "🚨 URGENT: Client demande un expert - Déboucheur.Expert"
+                : "💬 Nouveau chat - Déboucheur.Expert";
+                
             $emailService = new EmailService();
             $emailResult = $emailService->sendChatNotification(
                 $sessionId,
                 htmlspecialchars($userMessage),
                 htmlspecialchars($aiResponse),
                 $pageUrl,
-                $timestamp
+                $timestamp,
+                $isEscalation
             );
             
             if ($emailResult['primary']['success'] || $emailResult['secondary']['success']) {
@@ -116,15 +125,20 @@ try {
         // ========== SMS NOTIFICATION (via Twilio) ==========
         $twilioSid = $twilioConfig['account_sid'];
         $twilioToken = $twilioConfig['auth_token'];
+        $messagingServiceSid = $twilioConfig['messaging_service_sid'] ?? '';
         $twilioFrom = $twilioConfig['from_number'];
         $ownerPhone = $twilioConfig['owner_phone'];
         
-        if (!empty($twilioSid) && !empty($twilioToken) && !empty($twilioFrom)) {
+        if (!empty($twilioSid) && !empty($twilioToken)) {
             // Prepare SMS content with reply instructions
-            $smsContent = "💬 Nouveau chat Déboucheur\n";
+            $urgentFlag = $isEscalation ? "🚨 URGENT - Client demande EXPERT\n" : "";
+            $smsContent = $urgentFlag;
+            $smsContent .= "💬 Chat Déboucheur\n";
             $smsContent .= "📅 " . date('H:i d/m') . "\n";
             $smsContent .= "👤 " . mb_substr($userMessage, 0, 80) . "...\n";
-            $smsContent .= "🤖 " . mb_substr($aiResponse, 0, 60) . "...\n";
+            if (!$isEscalation) {
+                $smsContent .= "🤖 " . mb_substr($aiResponse, 0, 60) . "...\n";
+            }
             $smsContent .= "📱 Pour répondre:\n";
             $smsContent .= "REPLY:" . $sessionId . " Votre message";
             
@@ -133,10 +147,16 @@ try {
                 
                 $smsData = [
                     'To' => $ownerPhone,
-                    'From' => $twilioFrom,
                     'Body' => $smsContent,
-                    'StatusCallback' => 'https://deboucheur.expert/api/sms-status.php' // Optional status webhook
+                    'StatusCallback' => $twilioConfig['status_callback'] ?? 'https://deboucheur.expert/api/sms-status.php'
                 ];
+                
+                // Use MessagingServiceSid if available, otherwise use From number
+                if (!empty($messagingServiceSid)) {
+                    $smsData['MessagingServiceSid'] = $messagingServiceSid;
+                } else {
+                    $smsData['From'] = $twilioFrom;
+                }
                 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $twilioUrl);
@@ -162,6 +182,7 @@ try {
                 $secondaryPhone = $twilioConfig['secondary_phone'];
                 if (!empty($secondaryPhone) && $secondaryPhone !== $ownerPhone) {
                     $smsData['To'] = $secondaryPhone;
+                    // Keep same MessagingServiceSid or From
                     
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $twilioUrl);
@@ -184,6 +205,7 @@ try {
     
     JsonResponse::success([
         'sessionId' => $sessionId,
+        'isEscalation' => $isEscalation,
         'notifications' => [
             'email' => $emailSent,
             'sms' => $smsSent

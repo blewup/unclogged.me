@@ -1,16 +1,5 @@
-<!--
-    AI HELPER WIDGET COMPONENT - Déboucheur Expert
-    Level: pages/components/ → For pages/*.html files
-    Chat assistant powered by Google Gemini AI with SMS/Email conversation forwarding
-    
-    Features:
-    - Real-time AI responses for plumbing questions
-    - Image upload for problem diagnosis
-    - Conversation forwarding to owner via SMS and email
-    - Owner responses displayed as "Billy" in chat
-    - 0-12 hour response time for owner replies
---><!-- L'APPRENTI FLOATING BUTTON --><html><head></head><body><button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-transparent hover:bg-transparent text-white rounded-none shadow-none p-0 transition-transform hover:scale-110 border-0 animate-bounce-slow flex items-center justify-center overflow-visible" style="width: 80px; height: 80px;">
-    <img src="../assets/images/logo/logo.png" alt="L'Apprenti" class="w-full h-full object-cover rounded-none" id="helper-logo-img">
+<!-- Index Components: helper.html --><!-- Loaded into root index.html via JavaScript --><!-- Paths: api/, assets/ (dynamic based on page location) --><!-- L'APPRENTI FLOATING BUTTON with 3D Effect --><html><head></head><body><button id="helper-toggle-btn" class="fixed bottom-[2%] right-[2%] z-[70] bg-transparent hover:bg-transparent text-white rounded-none p-0 border-0 flex items-center justify-center overflow-visible helper-3d animate-bounce-3d" style="width: 80px; height: 80px;">
+    <img src="" alt="L'Apprenti" class="w-full h-full object-cover rounded-none drop-shadow-lg" id="helper-logo-img">
 </button>
 
 <!-- AI CHAT WIDGET -->
@@ -19,8 +8,8 @@
         <div class="flex items-center gap-2">
             <svg class="w-6 h-6 text-white" viewBox="0 0 640 512" fill="currentColor"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"></path></svg>
             <div>
-                <h4 class="font-ops text-white text-sm" data-translate="pages_components_helper.html_apprenti-deboucheur">Apprenti Déboucheur</h4>
-                <p class="text-xs text-blue-100 font-inter font-normal" data-translate="pages_components_helper.html_assistant-ia-and-diagnostic">Assistant IA &amp; Diagnostic</p>
+                <h4 class="font-ops text-white text-sm" data-translate="pages_index_components_helper.html_apprenti-deboucheur">Apprenti Déboucheur</h4>
+                <p class="text-xs text-blue-100 font-inter font-normal" data-translate="pages_index_components_helper.html_assistant-ia-and-diagnostic">Assistant IA &amp; Diagnostic</p>
             </div>
         </div>
         <button id="helper-close-btn" class="text-white hover:text-gray-200">
@@ -28,9 +17,14 @@
         </button>
     </div>
     <div id="chat-messages" class="flex-grow overflow-y-auto p-4 flex flex-col gap-2 bg-gray-800 scrollbar-thin">
-        <div class="ai-msg font-inter font-normal" data-translate="pages_components_helper.html_bonjour-je-suis-lassistant-virtuel-de">Bonjour! Je suis l'assistant virtuel de Billy. Je peux répondre à vos questions ou analyser une photo de votre problème de plomberie! 🛠️📸</div>
+        <div class="ai-msg font-inter font-normal" data-translate="pages_index_components_helper.html_bonjour-je-suis-lassistant-virtuel-de">Bonjour! Je suis l'assistant virtuel de Billy. Je peux répondre à vos questions ou analyser une photo de votre problème de plomberie! 🛠️📸</div>
     </div>
     <div class="p-3 bg-gray-900 border-t border-gray-700">
+        <!-- Talk to Expert Button -->
+        <button id="helper-escalate-btn" class="w-full mb-2 px-3 py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-inter font-medium rounded-lg flex items-center justify-center gap-2 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 512 512" fill="currentColor"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+            <span data-translate="helper_talk_to_expert">Parler à un expert</span>
+        </button>
         <div class="flex items-center gap-2 mb-2">
             <label for="helper-image-upload" class="cursor-pointer text-gray-400 hover:text-blue transition p-2">
                 <svg class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor"><path d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"></path></svg>
@@ -39,7 +33,7 @@
             <span id="helper-file-name" class="text-xs text-gray-500 truncate max-w-[100px] font-inter"></span>
         </div>
         <div class="flex gap-2">
-            <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-blue outline-none font-inter font-normal" data-translate-placeholder="pages_components_helper.html_phposez-une-question">
+            <input type="text" id="chat-input" placeholder="Posez une question..." class="flex-grow bg-gray-800 text-white border border-gray-600 box-radius px-3 py-2 text-sm focus:border-blue outline-none font-inter font-normal" data-translate-placeholder="pages_index_components_helper.html_phposez-une-question">
             <button id="helper-send-btn" class="bg-blue hover:bg-blue-600 text-white p-2 box-radius transition">
                 <svg class="w-4 h-4" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 googl 493.4 256 512c0-12.6-7.4-24-18.9-29.2L48 256 57.5 232.1C63.9 215 80.1 203.6 98.3 201.9L256 224 416 64z"></path></svg>
             </button>
@@ -55,15 +49,28 @@
         model: 'gemini-2.5-flash-preview-09-2025',
         ownerPhone: '+14385302343',
         ownerEmail: 'info@deboucheur.expert',
-        responseTime: '0-12 heures'
+        responseTime: '0-12 heures',
+        pollInterval: 10000, // 10 seconds for faster response
+        fastPollInterval: 5000, // 5 seconds when waiting for agent
+        maxRetries: 3
     };
 
-    const SYSTEM_PROMPT = `Tu es 'L'Apprenti de Billy', un assistant virtuel expert en plomberie résidentielle pour Billy St-Hilaire, Déboucheur Expert basé à Montréal et Montérégie.
+    const SYSTEM_PROMPT = `Tu es 'L'Apprenti de Billy', un assistant virtuel chaleureux et expert en plomberie résidentielle pour Billy St-Hilaire, Déboucheur Expert basé à Montréal et Montérégie.
+
+SECTIONS DU SITE WEB (utilise ces liens pour guider l'utilisateur):
+- Services: #services - Urgences 24/7, Rénovation, Inspection caméra, Débouchage
+- FAQ: #faq - Questions fréquentes sur les tarifs, garanties, paiements
+- Contact: #contact - Formulaire de contact et coordonnées
+- Témoignages: #testimonials - Avis de nos clients satisfaits
+- Localisation: #map-section - Notre adresse et zones desservies
+- Tarification: pages/prices.html - Détails des prix
+- Équipe: pages/team.html - Rencontrer Billy et Nancy
+- Outils: pages/tools.html - Équipement professionnel
 
 SERVICES ET TARIFS:
-- Débouchage: 200-640$/h selon complexité
+- Débouchage: 200-640$/h selon complexité (câble standard 320$, moyen 480$, gros 560$)
 - Rénovation plomberie (salle de bain, cuisine)
-- Inspection caméra HD avec rapport détaillé
+- Inspection caméra HD: 150$ avec rapport détaillé
 - Urgences 24/7 disponibles
 
 OUTILS PROFESSIONNELS:
@@ -77,19 +84,36 @@ DÉLAIS DE RÉPONSE:
 - Messagerie vocale: 12-24 heures
 - Courriel: 24-48 heures
 
-COMPORTEMENT:
-- Sois amical et professionnel
-- Réponds en français par défaut, en anglais si demandé
+COMPORTEMENT CONVERSATIONNEL:
+- Si l'utilisateur dit "Bonjour", "Salut", "Hi", "Hello", ou similaire, réponds chaleureusement: "Bonjour! 👋 Comment puis-je vous aider aujourd'hui? Je peux vous renseigner sur nos services, nos tarifs, ou analyser une photo de votre problème de plomberie!"
+- Sois amical, conversationnel et professionnel
+- Réponds en français par défaut, en anglais si demandé ou si le message est en anglais
 - Pour les urgences, incite à appeler (438) 530-2343
-- Dirige vers unclogged.me ou deboucheur.expert pour plus d'infos
-- Si une photo est envoyée, analyse le problème de plomberie visible
+- IMPORTANT: Quand tu suggères une section du site, formatte le lien comme: <a href="#section" class="text-blue underline hover:text-blue-400">Texte du lien</a>
+- Par exemple: "Consultez notre <a href='#services' class='text-blue underline hover:text-blue-400'>section Services</a> pour en savoir plus!"
+- Si une photo est envoyée, analyse le problème de plomberie visible et donne des conseils
 - Ne donne pas de conseils dangereux (électricité, gaz)
-- Si le client a besoin d'une réponse personnalisée, informe-le que Billy répondra dans les 0-12 heures`;
+- TRANSFERT À UN EXPERT: Si le client demande explicitement de parler à un humain, un expert, Billy, ou s'il a une question très spécifique que tu ne peux pas résoudre, réponds: "Je transfère votre demande à Billy! 📱 Il vous répondra dans les prochaines minutes à quelques heures. En attendant, n'hésitez pas à me poser d'autres questions!"
+- Utilise des emojis pour rendre la conversation plus vivante 🔧💧🛠️`;
+
+    // Agent escalation detection patterns
+    const ESCALATION_PATTERNS = [
+        /parler.*(?:humain|agent|expert|billy|quelqu'un|personne)/i,
+        /(?:talk|speak).*(?:human|agent|expert|someone|person|billy)/i,
+        /(?:besoin|need).*(?:aide|help).*(?:vrai|real|humain|human)/i,
+        /(?:transfert|transfer|escalade|escalation)/i,
+        /(?:pas|not).*(?:satisfait|satisfied|comprends|understand)/i,
+        /(?:veux|want|voudrais|would like).*(?:parler|talk|speak).*(?:à|to|with)/i
+    ];
 
     // State
     let uploadedImageBase64 = null;
     let conversationHistory = [];
     let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    let lastResponseId = 0;
+    let isWaitingForAgent = false;
+    let pollIntervalId = null;
+    let seenResponseIds = new Set();
 
     // Determine paths based on page location
     const isIndexPage = window.location.pathname.endsWith('index.html') || 
@@ -113,6 +137,7 @@ COMPORTEMENT:
     const sendBtn = document.getElementById('helper-send-btn');
     const imageUpload = document.getElementById('helper-image-upload');
     const fileName = document.getElementById('helper-file-name');
+    const escalateBtn = document.getElementById('helper-escalate-btn');
 
     // Toggle chat widget
     function toggleChat() {
@@ -135,6 +160,9 @@ COMPORTEMENT:
     }
     if (imageUpload) {
         imageUpload.addEventListener('change', handleImageUpload);
+    }
+    if (escalateBtn) {
+        escalateBtn.addEventListener('click', requestAgentEscalation);
     }
 
     // Handle image upload
@@ -229,8 +257,12 @@ COMPORTEMENT:
                 timestamp: new Date().toISOString()
             });
 
+            // Check if escalation was requested
+            const userRequestedEscalation = detectEscalation(message);
+            const aiSuggestedEscalation = /transfère|transfer|Billy.*répond|will respond|prochaines minutes/i.test(aiResponse);
+            
             // Forward conversation to owner via backend
-            await forwardToOwner(message, aiResponse);
+            await forwardToOwner(message, aiResponse, userRequestedEscalation || aiSuggestedEscalation);
 
         } catch (error) {
             const loader = document.getElementById(loadingId);
@@ -240,9 +272,9 @@ COMPORTEMENT:
     }
 
     // Forward conversation to owner via SMS and email
-    async function forwardToOwner(userMessage, aiResponse) {
+    async function forwardToOwner(userMessage, aiResponse, forceEscalation = false) {
         try {
-            await fetch(apiBasePath + 'chat-forward.php', {
+            const response = await fetch(apiBasePath + 'chat-forward.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -251,40 +283,143 @@ COMPORTEMENT:
                     aiResponse: aiResponse,
                     conversationHistory: conversationHistory,
                     timestamp: new Date().toISOString(),
-                    pageUrl: window.location.href
+                    pageUrl: window.location.href,
+                    isEscalation: forceEscalation || isWaitingForAgent,
+                    lang: document.documentElement.lang || 'fr'
                 })
             });
+            
+            // If escalation, enable fast polling
+            if (forceEscalation) {
+                isWaitingForAgent = true;
+                startFastPolling();
+            }
         } catch (error) {
             console.log('Forward failed, continuing conversation locally');
         }
     }
 
-    // Poll for owner responses
+    // Check if message requests agent escalation
+    function detectEscalation(message) {
+        return ESCALATION_PATTERNS.some(pattern => pattern.test(message));
+    }
+
+    // Start faster polling when waiting for agent
+    function startFastPolling() {
+        if (pollIntervalId) clearInterval(pollIntervalId);
+        pollIntervalId = setInterval(checkOwnerResponses, CONFIG.fastPollInterval);
+        
+        // Show waiting indicator
+        showAgentWaitingIndicator();
+    }
+
+    // Show agent waiting indicator
+    function showAgentWaitingIndicator() {
+        const existingIndicator = document.getElementById('agent-waiting-indicator');
+        if (existingIndicator) return;
+        
+        const indicator = document.createElement('div');
+        indicator.id = 'agent-waiting-indicator';
+        indicator.className = 'flex items-center gap-2 px-3 py-2 bg-green-900/30 border border-green-700 rounded-lg text-green-400 text-xs font-inter';
+        indicator.innerHTML = `
+            <span class="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span data-translate="helper_waiting_for_agent">En attente de Billy...</span>
+        `;
+        
+        const inputArea = document.querySelector('#ai-chat-widget .p-3.bg-gray-900');
+        if (inputArea) inputArea.insertBefore(indicator, inputArea.firstChild);
+    }
+
+    // Remove agent waiting indicator
+    function hideAgentWaitingIndicator() {
+        const indicator = document.getElementById('agent-waiting-indicator');
+        if (indicator) indicator.remove();
+    }
+
+    // Poll for owner responses with lastId tracking
     async function checkOwnerResponses() {
         try {
-            const response = await fetch(apiBasePath + 'chat-responses.php?sessionId=' + sessionId);
+            const response = await fetch(apiBasePath + 'chat-responses.php?sessionId=' + sessionId + '&lastId=' + lastResponseId);
             const data = await response.json();
             
             if (data.responses && data.responses.length > 0) {
                 data.responses.forEach(resp => {
-                    addMessage(`<strong class="text-green-400">Billy:</strong> ${resp.message}`, 'owner');
-                    conversationHistory.push({
-                        role: 'owner',
-                        content: resp.message,
-                        timestamp: resp.timestamp
-                    });
+                    // Prevent duplicates using Set
+                    if (!seenResponseIds.has(resp.id)) {
+                        seenResponseIds.add(resp.id);
+                        addMessage(`<strong class="text-green-400">🔧 Billy:</strong> ${resp.message}`, 'owner');
+                        conversationHistory.push({
+                            role: 'owner',
+                            content: resp.message,
+                            timestamp: resp.timestamp
+                        });
+                        
+                        // Play notification sound
+                        playNotificationSound();
+                        
+                        // Hide waiting indicator when agent responds
+                        hideAgentWaitingIndicator();
+                        isWaitingForAgent = false;
+                        
+                        // Slow down polling again
+                        if (pollIntervalId) clearInterval(pollIntervalId);
+                        pollIntervalId = setInterval(checkOwnerResponses, CONFIG.pollInterval);
+                    }
                 });
+                
+                // Update lastId for next poll
+                if (data.lastId) lastResponseId = data.lastId;
             }
         } catch (error) {
             // Silent fail for polling
         }
     }
 
-    // Poll every 30 seconds for owner responses
-    setInterval(checkOwnerResponses, 30000);
+    // Play notification sound for owner message
+    function playNotificationSound() {
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(1000, audioContext.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        } catch (e) {
+            // Audio not supported, fail silently
+        }
+    }
+
+    // Request agent escalation manually
+    function requestAgentEscalation() {
+        const escalationMsg = document.documentElement.lang === 'en' 
+            ? "I would like to speak with Billy please."
+            : "Je voudrais parler à Billy s'il vous plaît.";
+        
+        if (chatInput) {
+            chatInput.value = escalationMsg;
+            sendMessage();
+        }
+    }
+
+    // Poll at normal interval initially
+    pollIntervalId = setInterval(checkOwnerResponses, CONFIG.pollInterval);
 
     // Expose for external use
-    window.HelperWidget = { toggleChat, sendMessage };
+    window.HelperWidget = { 
+        toggleChat, 
+        sendMessage, 
+        requestAgentEscalation,
+        getSessionId: () => sessionId,
+        isWaitingForAgent: () => isWaitingForAgent
+    };
 
     // PARALLAX & TILT EFFECTS FOR HELPER LOGO
     (function initParallaxTilt() {
@@ -299,7 +434,7 @@ COMPORTEMENT:
 
         // Apply combined transform
         function applyTransform() {
-            const baseTranslateY = -15 + (scrollOffset * 0.08); // Blend with bounce animation
+            const baseTranslateY = -15 + (scrollOffset * 0.08);
             const scale = 1 + Math.min(scrollOffset * 0.0003, 0.08);
             helperLogo.style.transform = `
                 perspective(800px)
@@ -323,15 +458,10 @@ COMPORTEMENT:
             const rect = helperBtn.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-            
-            // Calculate distance from center of button
             const distX = (e.clientX - centerX) / (window.innerWidth / 2);
             const distY = (e.clientY - centerY) / (window.innerHeight / 2);
-            
-            // Apply subtle tilt based on mouse position
             tiltX = distX * 15;
             tiltY = distY * 15;
-            
             if (rafId) cancelAnimationFrame(rafId);
             rafId = requestAnimationFrame(applyTransform);
         }
@@ -339,18 +469,14 @@ COMPORTEMENT:
         // Device orientation tilt effect (mobile)
         function handleOrientation(e) {
             if (!isMobile) return;
-            const gamma = e.gamma || 0; // Left/Right tilt (-90 to 90)
-            const beta = e.beta || 0;   // Front/Back tilt (-180 to 180)
-            
-            // Clamp and scale values
+            const gamma = e.gamma || 0;
+            const beta = e.beta || 0;
             tiltX = Math.max(-20, Math.min(20, gamma * 0.6));
-            tiltY = Math.max(-20, Math.min(20, (beta - 45) * 0.4)); // Offset for natural phone holding position
-            
+            tiltY = Math.max(-20, Math.min(20, (beta - 45) * 0.4));
             if (rafId) cancelAnimationFrame(rafId);
             rafId = requestAnimationFrame(applyTransform);
         }
 
-        // Request permission for device orientation on iOS 13+
         function requestOrientationPermission() {
             if (typeof DeviceOrientationEvent !== 'undefined' && 
                 typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -366,7 +492,6 @@ COMPORTEMENT:
             }
         }
 
-        // Hover effect for desktop
         helperBtn.addEventListener('mouseenter', () => {
             helperLogo.style.transition = 'transform 0.3s ease-out';
         });
@@ -378,11 +503,9 @@ COMPORTEMENT:
             applyTransform();
         });
 
-        // Initialize event listeners
         window.addEventListener('scroll', handleScroll, { passive: true });
         
         if (isMobile) {
-            // Request orientation permission on first touch (iOS requirement)
             document.addEventListener('touchstart', function initOrientation() {
                 requestOrientationPermission();
                 document.removeEventListener('touchstart', initOrientation);
@@ -391,7 +514,6 @@ COMPORTEMENT:
             window.addEventListener('mousemove', handleMouseMove, { passive: true });
         }
 
-        // Initial transform
         handleScroll();
     })();
 })();

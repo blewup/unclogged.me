@@ -3,8 +3,8 @@
  * Déboucheur Expert - Chat Responses API
  * Returns owner responses for a chat session
  * 
- * Client polls this endpoint to check for owner replies
- * Owner can reply via email with subject REPLY:{sessionId}
+ * Client polls this endpoint to check for owner replies via SMS
+ * Owner replies by SMS with format: REPLY:sessionId message
  */
 
 header('Content-Type: application/json');
@@ -21,7 +21,7 @@ require_once __DIR__ . '/db.php';
 
 // Get sessionId from query or POST
 $sessionId = $_GET['sessionId'] ?? $_POST['sessionId'] ?? '';
-$lastCheck = $_GET['lastCheck'] ?? $_POST['lastCheck'] ?? '';
+$lastId = intval($_GET['lastId'] ?? $_POST['lastId'] ?? 0);
 
 if (empty($sessionId)) {
     http_response_code(400);
@@ -32,40 +32,38 @@ if (empty($sessionId)) {
 try {
     $db = get_db_connection('prod');
     
-    // Build query to get owner responses
-    $sessionId = $db->real_escape_string($sessionId);
-    
-    $sql = "SELECT id, content, timestamp 
-            FROM chat_conversations 
-            WHERE session_id = '$sessionId' 
-            AND role = 'owner'";
-    
-    // If lastCheck provided, only get newer messages
-    if (!empty($lastCheck)) {
-        $lastCheck = $db->real_escape_string($lastCheck);
-        $sql .= " AND timestamp > '$lastCheck'";
-    }
-    
-    $sql .= " ORDER BY timestamp ASC";
-    
-    $result = $db->query($sql);
+    // Build query to get owner responses not yet seen
+    $stmt = $db->prepare("SELECT id, content, timestamp 
+                          FROM chat_conversations 
+                          WHERE session_id = ? 
+                          AND role = 'owner'
+                          AND id > ?
+                          ORDER BY id ASC");
+    $stmt->bind_param('si', $sessionId, $lastId);
+    $stmt->execute();
+    $result = $stmt->get_result();
     
     $responses = [];
+    $maxId = $lastId;
+    
     while ($row = $result->fetch_assoc()) {
         $responses[] = [
             'id' => (int)$row['id'],
-            'content' => $row['content'],
+            'message' => $row['content'],
             'timestamp' => $row['timestamp'],
             'sender' => 'Billy'
         ];
+        $maxId = max($maxId, (int)$row['id']);
     }
     
+    $stmt->close();
     db_close($db);
     
     echo json_encode([
         'status' => 'ok',
         'responses' => $responses,
         'count' => count($responses),
+        'lastId' => $maxId,
         'serverTime' => date('Y-m-d H:i:s')
     ]);
     
@@ -74,6 +72,7 @@ try {
     echo json_encode([
         'status' => 'ok',
         'responses' => [],
-        'count' => 0
+        'count' => 0,
+        'lastId' => $lastId
     ]);
 }

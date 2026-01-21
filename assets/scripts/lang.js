@@ -135,6 +135,9 @@
                 chat_thinking: "Réflexion...",
                 chat_error: "Erreur de connexion",
                 chat_welcome: "Bonjour! Comment puis-je vous aider aujourd'hui?",
+                helper_talk_to_expert: "Parler à un expert",
+                helper_waiting_for_agent: "En attente de Billy...",
+                helper_agent_connected: "Billy est connecté!",
                 
                 // Prices Page
                 prices_title: "TARIFICATION",
@@ -416,6 +419,9 @@
                 chat_thinking: "Thinking...",
                 chat_error: "Connection error",
                 chat_welcome: "Hello! How can I help you today?",
+                helper_talk_to_expert: "Talk to an expert",
+                helper_waiting_for_agent: "Waiting for Billy...",
+                helper_agent_connected: "Billy is connected!",
                 
                 // Prices Page
                 prices_title: "PRICING",

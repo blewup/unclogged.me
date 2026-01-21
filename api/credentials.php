@@ -188,10 +188,12 @@ class SecureCredentials {
         return [
             'account_sid' => 'AC2a232bd5f87d8f272c490ef7951f8550',
             'auth_token' => self::get('twilio_auth_token'),
+            'messaging_service_sid' => 'MG0d1a02829181deb94de50be3e8856f12',
             'from_number' => '+18126489709',
             'owner_phone' => '+14385302343',
             'secondary_phone' => '+14387657040',
             'webhook_url' => 'https://deboucheur.expert/api/sms-webhook.php',
+            'status_callback' => 'https://deboucheur.expert/api/sms-status.php',
         ];
     }
     
