@@ -14,6 +14,7 @@ concurrency:
 env:
   PHP_VERSION: '8.2'
   NODE_VERSION: '20'
+  GIT_USER: 'blewup'
 
 permissions:
   contents: write
@@ -25,20 +26,35 @@ jobs:
     name: "Validate Code"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout with token
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          fetch-depth: 0
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
           extensions: mysqli, mbstring, json, curl
           tools: composer:v2
+      - name: Validate PHP syntax
+        run: |
+          find . -name "*.php" -type f -exec php -l {} \; 2>&1 | grep -v "No syntax errors"
 
   build:
     name: "Build"
     runs-on: ubuntu-latest
     needs: validate
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout with token
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          fetch-depth: 0
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ env.GIT_USER }}"
+          git config --global user.email "${{ env.GIT_USER }}@users.noreply.github.com"
       - name: Create dist package
         run: |
           mkdir -p dist
@@ -48,7 +64,12 @@ jobs:
             --exclude='backup' \
             --exclude='node_modules' \
             --exclude='*.bak' \
+            --exclude='full-patch.sh' \
             . dist/
+      - name: Update service worker cache version
+        run: |
+          CACHE_VERSION="deboucheur-cache-v$(date +%s)"
+          sed -i "s/const CACHE_NAME = '[^']*'/const CACHE_NAME = '$CACHE_VERSION'/" dist/assets/scripts/service.js || true
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -62,15 +83,27 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
+      - name: Checkout with token
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          fetch-depth: 0
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: website-build
           path: dist/
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ env.GIT_USER }}"
+          git config --global user.email "${{ env.GIT_USER }}@users.noreply.github.com"
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: dist/
           publish_branch: gh-pages
           force_orphan: true
+          user_name: ${{ env.GIT_USER }}
+          user_email: ${{ env.GIT_USER }}@users.noreply.github.com
+          commit_message: "Deploy: ${{ github.sha }}"

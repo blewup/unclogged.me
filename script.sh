@@ -1,16 +1,26 @@
 #!/bin/bash
 # =============================================================================
-# Déboucheur Expert - Post-Setup Deployment Script
-# For Namecheap shared hosting
+# Déboucheur Expert - Unified Deployment Script
+# For Namecheap cPanel shared hosting
+# Version 3.0.0
 # =============================================================================
 # 
-# PREREQUISITES (already completed before running this script):
-#   1. Project files already unzipped in /home/deboucheur/public_html/
-#   2. Database tables created via setup.sql in phpMyAdmin
-#   3. Script executed from: /home/deboucheur/public_html/
+# This script combines setup and deployment into a single automated workflow.
+# It handles initial setup, directory creation, permissions, and production config.
+#
+# PREREQUISITES:
+#   1. Project files in /home/deboucheur/public_html/
+#   2. Database tables created via api/setup.sql in phpMyAdmin
+#   3. PHP 8.2+ with required extensions enabled in cPanel
 #
 # USAGE:
 #   cd /home/deboucheur/public_html && chmod +x script.sh && ./script.sh
+#   
+# OPTIONS:
+#   --setup     Run initial setup only (directories, permissions, composer)
+#   --deploy    Run deployment only (cache update, htaccess, verify)
+#   --full      Run complete setup + deployment (default)
+#   --help      Show help
 #
 # =============================================================================
 
@@ -22,9 +32,14 @@ set -e  # Exit on any error
 DEPLOY_DIR="/home/deboucheur/public_html"
 LOG_DIR="/home/deboucheur/logs"
 LOG_FILE="${LOG_DIR}/deploy_$(date '+%Y%m%d_%H%M%S').log"
+SCRIPT_VERSION="3.0.0"
 
 # Service Worker cache version (auto-generated)
 CACHE_VERSION="deboucheur-cache-v$(date '+%s')"
+
+# cPanel Composer path (common locations)
+CPANEL_COMPOSER="/opt/cpanel/composer/bin/composer"
+ALT_COMPOSER="/usr/local/bin/composer"
 
 # Colors for output
 RED='\033[0;31m'
@@ -76,12 +91,96 @@ show_banner() {
     echo -e "${MAGENTA}"
     echo "╔═══════════════════════════════════════════════════════════════════════╗"
     echo "║                                                                       ║"
-    echo "║       🔧 DÉBOUCHEUR EXPERT - Post-Setup Deployment Script 🔧         ║"
+    echo "║       🔧 DÉBOUCHEUR EXPERT - Unified Deployment Script 🔧            ║"
+    echo "║                       Version ${SCRIPT_VERSION}                                   ║"
     echo "║                                                                       ║"
     echo "║           unclogged.me  |  deboucheur.expert                          ║"
     echo "║                                                                       ║"
     echo "╚═══════════════════════════════════════════════════════════════════════╝"
     echo -e "${NC}"
+    echo ""
+}
+
+# =============================================================================
+# INITIAL SETUP (from setup.sh)
+# =============================================================================
+run_initial_setup() {
+    log "━━━ Initial Setup ━━━"
+    
+    cd "$DEPLOY_DIR"
+    
+    # Create required directories with proper permissions
+    info "Creating required directories..."
+    mkdir -p api/logs
+    mkdir -p api/uploads
+    mkdir -p api/logs/rate-limits
+    mkdir -p api/conscent
+    success "Directories created"
+    
+    # Set directory permissions (775 for writable dirs)
+    info "Setting directory permissions..."
+    chmod 755 .
+    chmod 755 api
+    chmod 755 assets
+    chmod 755 pages
+    chmod 775 api/logs
+    chmod 775 api/uploads
+    chmod 775 api/logs/rate-limits
+    chmod 775 api/conscent
+    success "Directory permissions set"
+    
+    # Set file permissions
+    info "Setting file permissions..."
+    [ -f .htaccess ] && chmod 644 .htaccess
+    [ -f .user.ini ] && chmod 644 .user.ini
+    [ -f php.ini ] && chmod 644 php.ini
+    
+    # Secure sensitive files
+    [ -f api/credentials.php ] && chmod 640 api/credentials.php
+    [ -f api/db.php ] && chmod 640 api/db.php
+    [ -f api/security.php ] && chmod 640 api/security.php
+    chmod 644 api/*.php 2>/dev/null || true
+    success "File permissions set"
+    
+    # Run Composer
+    info "Checking for Composer..."
+    if command -v composer &> /dev/null; then
+        success "Composer found in PATH"
+        composer install --no-dev --optimize-autoloader 2>/dev/null || warning "Composer install skipped (no composer.json or error)"
+    elif [ -f "$CPANEL_COMPOSER" ]; then
+        success "Using cPanel Composer: $CPANEL_COMPOSER"
+        php "$CPANEL_COMPOSER" install --no-dev --optimize-autoloader 2>/dev/null || warning "Composer install skipped"
+    elif [ -f "$ALT_COMPOSER" ]; then
+        success "Using system Composer: $ALT_COMPOSER"
+        php "$ALT_COMPOSER" install --no-dev --optimize-autoloader 2>/dev/null || warning "Composer install skipped"
+    else
+        warning "Composer not found. You can run manually:"
+        info "php /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader"
+    fi
+    
+    # Verify PHP version and extensions
+    info "Checking PHP environment..."
+    if command -v php &> /dev/null; then
+        PHP_VERSION=$(php -v 2>/dev/null | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1,2)
+        success "PHP Version: $PHP_VERSION"
+        
+        # Check required PHP extensions
+        REQUIRED_EXTENSIONS=("mysqli" "pdo" "pdo_mysql" "json" "mbstring" "openssl" "curl" "fileinfo")
+        MISSING_EXT=()
+        for ext in "${REQUIRED_EXTENSIONS[@]}"; do
+            if php -m 2>/dev/null | grep -qi "^$ext$"; then
+                success "PHP extension: $ext ✓"
+            else
+                MISSING_EXT+=("$ext")
+                warning "PHP extension missing: $ext"
+            fi
+        done
+        
+        if [ ${#MISSING_EXT[@]} -gt 0 ]; then
+            info "Enable missing extensions in cPanel → Software → Select PHP Version"
+        fi
+    fi
+    
     echo ""
 }
 
@@ -516,38 +615,72 @@ show_checklist() {
 main() {
     show_banner
     
-    # Show help if requested
-    if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
-        echo "Usage: ./script.sh"
-        echo ""
-        echo "Prerequisites:"
-        echo "  1. Project files already unzipped in /home/deboucheur/public_html/"
-        echo "  2. Database tables created via setup.sql in phpMyAdmin"
-        echo ""
-        echo "This script will:"
-        echo "  - Update service worker cache version"
-        echo "  - Configure server environment (.user.ini)"
-        echo "  - Configure backend credentials (if env provided)"
-        echo "  - Configure frontend API base"
-        echo "  - Configure CORS/OPTIONS routing"
-        echo "  - Set correct file permissions"
-        echo "  - Clean development files"
-        echo "  - Create optimized .htaccess"
-        echo "  - Verify deployment integrity"
-        exit 0
+    # Parse command line arguments
+    RUN_SETUP=true
+    RUN_DEPLOY=true
+    
+    case "${1:-}" in
+        --setup)
+            RUN_SETUP=true
+            RUN_DEPLOY=false
+            info "Running setup only..."
+            ;;
+        --deploy)
+            RUN_SETUP=false
+            RUN_DEPLOY=true
+            info "Running deployment only..."
+            ;;
+        --full)
+            RUN_SETUP=true
+            RUN_DEPLOY=true
+            info "Running full setup + deployment..."
+            ;;
+        --help|-h)
+            echo "Usage: ./script.sh [OPTION]"
+            echo ""
+            echo "Options:"
+            echo "  --setup     Run initial setup only (directories, permissions, composer)"
+            echo "  --deploy    Run deployment only (cache update, htaccess, verify)"
+            echo "  --full      Run complete setup + deployment (default)"
+            echo "  --help      Show this help message"
+            echo ""
+            echo "Prerequisites:"
+            echo "  1. Project files in /home/deboucheur/public_html/"
+            echo "  2. Database tables created via api/setup.sql in phpMyAdmin"
+            echo "  3. PHP 8.2+ with required extensions enabled in cPanel"
+            echo ""
+            echo "This script will:"
+            echo "  - Create required directories (api/logs, api/uploads, etc.)"
+            echo "  - Set correct file/directory permissions"
+            echo "  - Run Composer install (if available)"
+            echo "  - Update service worker cache version"
+            echo "  - Configure server environment (.user.ini)"
+            echo "  - Configure CORS/OPTIONS routing"
+            echo "  - Create optimized .htaccess"
+            echo "  - Verify deployment integrity"
+            exit 0
+            ;;
+    esac
+    
+    # Run selected steps
+    if [ "$RUN_SETUP" = true ]; then
+        preflight_checks
+        run_initial_setup
     fi
     
-    # Run deployment steps
-    preflight_checks
-    update_service_worker
-    configure_server_environment
-    configure_backend
-    configure_frontend
-    configure_cors_and_routing
-    set_permissions
-    clean_dev_files
-    create_htaccess
-    verify_deployment
+    if [ "$RUN_DEPLOY" = true ]; then
+        [ "$RUN_SETUP" = false ] && preflight_checks
+        update_service_worker
+        configure_server_environment
+        configure_backend
+        configure_frontend
+        configure_cors_and_routing
+        set_permissions
+        clean_dev_files
+        create_htaccess
+        verify_deployment
+    fi
+    
     show_checklist
     
     exit 0
