@@ -135,7 +135,7 @@ try {
         $attachments[] = $attachmentFullPath;
     }
     
-    $emailService->send($to, $subject, $htmlBody, $textBody, $email, $attachments);
+    $emailService->send($to, $subject, $htmlBody, true, $email, $attachments);
     
 } catch (Exception $e) {
     // Log error but don't fail the request - DB insert was successful
