@@ -1,6 +1,15 @@
 # Déboucheur Expert - Apache Configuration
-# Version 2.1.0 - Security Enhanced
+# Version 2.2.0 - cPanel Shared Hosting Optimized
+# Compatible with: cPanel, CloudLinux, LiteSpeed, Apache 2.4+
 # ============================================================================
+
+# Set default handler for PHP (cPanel compatibility)
+<IfModule mod_mime.c>
+    AddHandler application/x-httpd-php .php
+</IfModule>
+
+# Set default charset
+AddDefaultCharset UTF-8
 
 # 4xx Client Errors - Using pages/errors/codes/ structure
 ErrorDocument 400 /pages/errors/codes/400.html
@@ -157,8 +166,12 @@ Options -Indexes
 </IfModule>
 
 # ============================================================================
-# PHP SETTINGS
+# PHP SETTINGS (cPanel CGI/FastCGI compatibility)
 # ============================================================================
+
+# Note: On cPanel shared hosting with CGI/FastCGI, php_* directives don't work.
+# PHP settings are configured via .user.ini or php.ini in the document root.
+# The settings below are for mod_php fallback only.
 
 <IfModule mod_php.c>
     # Security
@@ -177,4 +190,10 @@ Options -Indexes
     php_value max_execution_time 30
     php_value max_input_time 30
     php_value memory_limit 128M
+</IfModule>
+
+# LiteSpeed-specific settings (common on cPanel)
+<IfModule LiteSpeed>
+    RewriteEngine On
+    RewriteRule .* - [E=noabort:1]
 </IfModule>

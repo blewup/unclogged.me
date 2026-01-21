@@ -1,5 +1,7 @@
 # Déboucheur Expert - API Security Configuration
-# Version 2.1.0
+# Version 2.2.0 - cPanel Shared Hosting Optimized
+# Compatible with: cPanel, CloudLinux, LiteSpeed, Apache 2.4+
+# ============================================================================
 
 # ============================================================================
 # SECURITY HEADERS
@@ -91,8 +93,12 @@
 Options -Indexes
 
 # ============================================================================
-# PHP SECURITY SETTINGS
+# PHP SECURITY SETTINGS (cPanel CGI/FastCGI compatibility)
 # ============================================================================
+
+# Note: On cPanel shared hosting with CGI/FastCGI, php_* directives don't work.
+# PHP settings are configured via .user.ini in the document root.
+# The settings below are for mod_php fallback only.
 
 <IfModule mod_php.c>
     # Disable dangerous functions
