@@ -101,7 +101,7 @@ chmod +x script.sh && ./script.sh
 | Requirement | Minimum | Recommended |
 |-------------|---------|-------------|
 | **Bash** | 4.0+ | 5.0+ |
-| **PHP** | 7.4+ | 8.2+ |
+| **PHP** | 7.4+ | 8.5+ |
 | **unzip** | Any | Latest |
 | **curl** | 7.0+ | Latest |
 | **tar** | Any | GNU tar |

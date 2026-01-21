@@ -469,7 +469,7 @@ show_checklist() {
     echo ""
     
     echo -e "${YELLOW}1. PHP VERSION (cPanel → Software → Select PHP Version)${NC}"
-    echo "   └─ Select PHP 8.1+ (8.2 or 8.3 recommended)"
+    echo "   └─ Select PHP 8.5 (recommended for cPanel)"
     echo "   └─ Required extensions: mysqli, curl, json, mbstring, fileinfo, imap"
     echo ""
     

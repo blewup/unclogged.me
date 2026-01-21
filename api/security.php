@@ -5,7 +5,7 @@ declare(strict_types=1);
  * Provides security headers, CSRF protection, input validation, and rate limiting
  * 
  * @version 2.0.0
- * @requires PHP 8.2+
+ * @requires PHP 8.5+
  */
 
 // ============================================================================
