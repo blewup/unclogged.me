@@ -476,9 +476,9 @@ Uses Google Gemini API (`gemini-2.5-flash-preview`) for "L'Apprenti" chatbot. Su
 ## Development Notes
 
 ### Adding New Pages
-1. Create HTML in [pages/](../pages/)
+1. Create HTML in [pages/](../repo/pages/)
 2. Use same Tailwind CDN + config pattern from index.html
-3. Link appropriate stylesheet from `assets/styles/`
+3. Link appropriate stylesheet from `../repo/assets/styles/`
 4. Include local fonts.css - NO external font CDNs
 5. Add navigation links in navbar and footer
 6. Include dot navigation on right side (except error pages)
@@ -492,10 +492,10 @@ Key custom classes in `style_00.css`:
 - `.hidden-widget` - Chat widget hidden state
 
 ### Contact Form Submission
-Posts multipart/form-data to `api/contact.php`. Accepted file types: PNG, JPEG, WEBP, AVIF.
+Posts multipart/form-data to `../repo/api/contact.php`. Accepted file types: PNG, JPEG, WEBP, AVIF.
 
 ### Service Worker Cache
-Update `CACHE_NAME` version in assets/scripts/service.js when deploying asset changes. Add new critical assets to `PRECACHE_URLS` array.
+Update `CACHE_NAME` version in `../repo/assets/scripts/service.js` when deploying asset changes. Add new critical assets to `PRECACHE_URLS` array.
 
 ### Phone Number Format
 - Always use (438) 530-2343 format for display

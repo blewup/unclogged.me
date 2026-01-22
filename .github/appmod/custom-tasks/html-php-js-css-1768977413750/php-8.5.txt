@@ -1,0 +1,96 @@
+Key PHP 8.5 Features for Your Rewrite
+
+The biggest game-changer for simplicity in PHP 8.5 is the Pipe Operator (|>). It stops you from having to read code "inside-out" and lets you chain actions together logically.
+
+Here are practical "Before & After" examples tailored for a typical service website.
+
+1. Cleaning User Input (e.g., from a "Request Service" form)
+Imagine a user enters their phone number as "(555) 123-4567 " and you need to store it as just numbers.
+
+The Old "Inside-Out" Way (Harder to Read): You have to read this from the inside bracket outwards to understand what's happening.
+
+PHP
+// Old Way
+$raw_phone = "(555) 123-4567 ";
+$clean_phone = strip_tags(trim(str_replace(['(', ')', '-', ' '], '', $raw_phone)));
+
+// What is happening?
+// 1. str_replace runs first
+// 2. trim runs on that result
+// 3. strip_tags runs on that result
+The Modern PHP 8.5 Way (Simple & Clear): Use the pipe operator (|>) to pass the value down a chain of tasks. It reads like a set of instructions.
+
+PHP
+// New PHP 8.5 Way
+$raw_phone = "(555) 123-4567 ";
+
+$clean_phone = $raw_phone
+    |> str_replace(['(', ')', '-', ' '], '', ...) // Step 1: Remove symbols
+    |> trim(...)                                  // Step 2: Remove outer whitespace
+    |> strip_tags(...);                           // Step 3: Remove any HTML tags
+
+// Result: "5551234567"
+// The (...) is a placeholder for the value coming from the previous step.
+Why it's better: It's perfectly clear what happens step-by-step. It's easier to write and much easier for someone else to understand later.
+
+2. Working with Lists (e.g., Service Areas or Testimonials)
+Let's say you have a list of service areas and you want to display the main one (the first) and the furthest one (the last) on your homepage.
+
+The Old Way (Clunky): Using older functions like reset() and end() moves an internal pointer inside the array, which can lead to weird bugs if you aren't careful.
+
+PHP
+// Old Way
+$service_areas = ['Monteregie', 'Montreal'];
+
+$primary_area = reset($service_areas); // Moves pointer to start
+$furthest_area = end($service_areas);  // Moves pointer to end
+The Modern PHP 8.5 Way (Efficient & Safe): Use the new native functions. They don't mess with internal pointers and do exactly what their names say.
+
+PHP
+// New PHP 8.5 Way
+$service_areas = ['Monteregie', 'Montreal'];
+
+$primary_area = array_first($service_areas); // "Downtown"
+$furthest_area = array_last($service_areas);  // "Monteregie"
+Why it's better: The intent is instantly clear by reading the function name. It's simpler and less error-prone.
+
+3. Handling Page URLs
+If your site needs to look at the current URL to decide which "active" tab to highlight in the navigation menu.
+
+The Old Way (Loose & Messy): Using parse_url() gives you a simple array that you have to manually check parts of.
+
+PHP
+// Old Way
+$current_url = "https://plumbingservices.com/services/drain-cleaning?source=ad";
+$url_parts = parse_url($current_url);
+$path = $url_parts['path'] ?? '/'; // Have to manually handle missing keys
+The Modern PHP 8.5 Way (Object-Oriented & Clean): Use the new URI Extension. It gives you a powerful object to work with.
+
+PHP
+// New PHP 8.5 Way
+$uri = Uri::new("https://plumbingservices.com/services/drain-cleaning?source=ad");
+
+$path = $uri->getPath(); // "/services/drain-cleaning"
+$is_secure = $uri->isHttps(); // true
+Why it's better: It uses a modern, object-oriented approach that is more robust and easier to read than dealing with raw arrays.
+
+General Modern Best Practices to Apply
+Beyond the specific 8.5 features, apply these rules to make your whole codebase better understood.
+
+Use Type Hinting Everywhere: Don't let PHP guess what kind of data it's using. Be explicit. This prevents bugs and makes code self-documenting.
+
+Bad: function getQuote($plumbingIssue) { ... }
+
+Good: function getQuote(string $plumbingIssue): float { ... }
+
+Separate Logic from Views: Don't mix your PHP business logic with your HTML.
+
+Do this: Have a PHP file that gets data (e.g., fetches list of services from a database).
+
+Then do this: Have a separate HTML template file that simply loops through that data and displays it. This makes changing the design vastly simpler without breaking the code.
+
+Use Descriptive Names:
+
+Bad: $d = get_data();
+
+Good: $availableServices = fetchServicesFromDatabase();
