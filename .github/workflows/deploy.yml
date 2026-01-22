@@ -7,6 +7,12 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# Permissions for GitHub Pages deployment
+permissions:
+  contents: write
+  pages: write
+
+# Prevent concurrent deployments
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -100,6 +106,79 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/
+          destination_dir: ./
+          cname: https://blewup.github.io/unclogged.me
+
+      - name: ✅ Deployment complete
+        run: |
+          echo "🎉 Deployment successful!"
+          echo "🌐 Website: https://blewup.github.io/unclogged.me"
+          echo "📅 Deployed: $(date)"
+
+  # ===========================================================================
+  # JOB 5: Post-Deploy Verification
+  # ===========================================================================
+  verify:
+    name: ✅ Verify Deployment
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: 🌐 Check website availability
+        run: |
+          echo "🔍 Verifying deployment..."
+          
+          # Check main site
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://blewup.github.io/unclogged.me || echo "000")
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "✅ https://blewup.github.io/unclogged.me is online (HTTP $HTTP_STATUS)"
+          else
+            echo "⚠️ https://blewup.github.io/unclogged.me returned HTTP $HTTP_STATUS"
+          fi
+
+      - name: 📱 Check PWA manifest
+        run: |
+          echo "🔍 Verifying PWA manifest..."
+          curl -s https://blewup.github.io/unclogged.me/manifest.json | python3 -m json.tool > /dev/null && \
+            echo "✅ PWA manifest is valid" || echo "⚠️ PWA manifest check failed"
+
+      - name: 🔔 Notify completion
+        run: |
+          echo "================================================"
+          echo "🎉 DEPLOYMENT COMPLETE"
+          echo "================================================"
+          echo "📅 Date: $(date)"
+          echo "🔗 Commit: ${{ github.sha }}"
+          echo "👤 Author: ${{ github.actor }}"
+          echo "🌐 Sites:"
+          echo "   - https://blewup.github.io/unclogged.me (EN)"
+          echo "================================================"
+
+  # ===========================================================================
+  # JOB 6: Notify on Failure
+  # ===========================================================================
+  notify-failure:
+    name: 📧 Notify Failure
+    runs-on: ubuntu-latest
+    needs: [validate, security, build, deploy]
+    if: failure()
+    
+    steps:
+      - name: 🚨 Create failure summary
+        run: |
+          echo "================================================"
+          echo "❌ DEPLOYMENT FAILED"
+          echo "================================================"
+          echo "📅 Date: $(date)"
+          echo "🔗 Commit: ${{ github.sha }}"
+          echo "👤 Author: ${{ github.actor }}"
+          echo "🔍 Check the Actions log for details"
+          echo "================================================"
+          echo "❌ DEPLOYMENT FAILED"
+          echo "================================================"
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: dist/
           publish_branch: gh-pages

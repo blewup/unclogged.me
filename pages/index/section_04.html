@@ -12,6 +12,12 @@
                         </h3>
                         <form class="space-y-3 flex-grow flex flex-col">
                             <div class="grid grid-cols-2 gap-3">
+                                <input type="text" id="fname" data-translate-placeholder="form_fname" placeholder="Prénom" oninput="saveCache('fname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                                <input type="text" id="lname" data-translate-placeholder="form_lname" placeholder="Nom" oninput="saveCache('lname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                            </div>
+                            <input type="email" id="email" data-translate-placeholder="form_email" placeholder="Email" oninput="saveCache('email', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold">
+                            <input type="tel" id="phone" data-translate-placeholder="form_phone" placeholder="(###)###-####" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); saveCache('phone', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold font-inter">
+                            <textarea id="msg" data-translate-placeholder="form_message" placeholder="Message" oninput="saveCache('msg', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full flex-grow bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold"></textarea>
                                 <input type="text" id="fname" placeholder="Prénom" oninput="saveCache('fname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold" data-translate-placeholder="pages_index_section_04.html_phprenom">
                                 <input type="text" id="lname" placeholder="Nom" oninput="saveCache('lname', this.value); validateForm()" onfocus="highlightInput(this)" onblur="validateInput(this)" class="w-full bg-transparent border border-gray-500 box-radius px-4 py-2 dark:text-white text-black placeholder-gray-300 dark:placeholder-gray-400 outline-none theme-text-outline dark:dark-mode-outline light:light-mode-outline font-bold" data-translate-placeholder="pages_index_section_04.html_phnom">
                             </div>
@@ -35,6 +41,25 @@
                         <div class="space-y-4 md:space-y-6 font-inter font-normal dark:text-white text-black theme-text-outline dark:dark-mode-outline light:light-mode-outline pr-4">
                             <div>
                                 <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_man">L'HOMME :</h4>
+                                <p class="text-sm md:text-base" data-translate="billy_age">Billy St-Hilaire, 35 ans,</p>
+                                <p class="text-sm md:text-base" data-translate="billy_school_1">Diplômé de l'École des Métiers,</p>
+                                <p class="text-sm md:text-base" data-translate="billy_school_2">de la Construction de Montréal,</p>
+                            </div>
+                            <div>
+                                <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_exp">EXPÉRIENCES :</h4>
+                                <p class="text-sm md:text-base" data-translate="billy_exp_1">10 ans pour le groupe Centco inc,</p>
+                                <p class="text-sm md:text-base" data-translate="billy_exp_2">Contrats multiples avec le local 144,</p>
+                                <p class="text-sm md:text-base" data-translate="billy_exp_3">Fier supporteur et employé de</p>
+                                <p class="text-sm md:text-base" data-translate="billy_exp_4">Plomberie Martin Boisvert enr.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-ops text-base md:text-lg uppercase border-b border-blue inline-block mb-1" data-translate="ped_bio">BIOGRAPHIE :</h4>
+                                <p class="text-sm md:text-base" data-translate="billy_bio_1">Toujours actif pour répondre aux</p>
+                                <p class="text-sm md:text-base" data-translate="billy_bio_2">diverses appels de services.</p>
+                                <p class="text-sm md:text-base" data-translate="billy_bio_3">Que ce soit pour changer une valve</p>
+                                <p class="text-sm md:text-base" data-translate="billy_bio_4">ou réparer un tuyau qui coule.</p>
+                                <p class="text-sm md:text-base" data-translate="billy_bio_5">Le déboucheur sait s'y prendre.</p>
+                                <p class="text-xs mt-1 font-inter italic" data-translate="billy_note">*Aucune construction neuve</p>
                                 <p class="text-sm md:text-base" data-translate="pages_index_section_04.html_billy-st-hilaire-35-ans">Billy St-Hilaire, 35 ans,</p>
                                 <p class="text-sm md:text-base" data-translate="pages_index_section_04.html_diplome-de-lecole-des-metiers">Diplômé de l'École des Métiers,</p>
                                 <p class="text-sm md:text-base" data-translate="pages_index_section_04.html_de-la-construction-de-montreal">de la Construction de Montréal,</p>
