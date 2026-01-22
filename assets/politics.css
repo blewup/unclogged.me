@@ -1,0 +1,34 @@
+/**
+ * Déboucheur Expert - Politics Page Stylesheet
+ * assets/styles/politics.css - Dedicated styling for pages/politics.html
+ */
+
+/* Base body reset */
+body { 
+    width: 100vw; 
+    overflow-x: hidden; 
+}
+
+/* Hero slideshow with zoom effect */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    will-change: opacity, transform;
+    transform: scale(1.25);
+    overflow: hidden;
+}
+
+.hero-slide.active { 
+    opacity: 1;
+    animation: heroZoomOut 8s ease-out forwards;
+}
+
+/* Hero zoom keyframes */
+@keyframes heroZoomOut {
+    0% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
