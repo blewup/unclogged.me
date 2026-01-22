@@ -1,13 +1,28 @@
 <?php
+declare(strict_types=1);
 /**
- * Simple backend endpoint to log consented client data.
- * When a visitor accepts the cookie banner on the front‑end, their browser
- * sends a POST request with JSON containing basic diagnostics such as
- * timezone, language, screen resolution and user agent.  This script
- * appends those details to a log file under api/conscent so you can
- * analyse aggregate statistics later.  No data is logged unless the
- * visitor explicitly provides consent.
+ * Déboucheur Expert - Consent Backend Endpoint
+ * Logs consented client data when visitors accept cookie banner.
+ * 
+ * @version 2.1.0 - Modernized with security module
+ * @requires PHP 8.2+
  */
+
+require_once __DIR__ . '/security.php';
+
+// Apply security headers and CORS
+SecurityHeaders::apply(isApi: true);
+SecurityHeaders::cors(['POST', 'OPTIONS']);
+
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    JsonResponse::error('Method not allowed', 405);
+}
+
+// Apply rate limiting (30 requests per minute)
+$rateLimiter = new RateLimiter();
+$rateLimiter->enforce(maxRequests: 30, windowSeconds: 60);
 
 // Ensure the conscent directory exists
 $dir = __DIR__ . '/conscent';
@@ -16,12 +31,9 @@ if (!is_dir($dir)) {
 }
 $logFile = $dir . '/conscent.log';
 
-// Read POST body
+// Read and validate POST body
 $input = file_get_contents('php://input');
-$data = json_decode($input, true);
-if (!is_array($data)) {
-    $data = [];
-}
+$data = InputValidator::json($input) ?? [];
 
 // Collect server side info as well
 $row = [
@@ -100,9 +112,7 @@ $row = [
 writeConsentLog($logFile, $row);
 
 // Return success response
-header('Content-Type: application/json');
-echo json_encode(['status' => 'ok']);
-exit;
+JsonResponse::success();
 
 /**
  * Write consent log as a grid (header + rows)

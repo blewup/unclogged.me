@@ -23,7 +23,7 @@ class SecureCredentials {
     // To generate new tokens, use: python3 -c "from cryptography.fernet import Fernet; f=Fernet(b'Z4EHd01ACF3Oj3ivOJtxSqtnn_f_o9Fg4AY4c_We73M='); print(f.encrypt(b'YOUR_SECRET').decode())"
     private static array $encryptedTokens = [
         'email_password' => 'gAAAAABpa0fK_5U0zQmk6CCwlPfbvD8WbvIbmD4les3ykgcIL2Anr-507Sg8zXYZvsKbxYlxNzY1MUwbUxn_ct7nhHYO84nPrQ==',
-        'twilio_auth_token' => 'gAAAAABpa1F4uvWD1ktHYMgUPgNNobGbdZg9nPjsKWoCe44BO_AKVjSTEUPa4wZScwmTrWaw58s5DNo8qJ0z5CUERNW51eQicEPxBQ0fMiJneybP0ffVjSmBgoBbrQek5jNl0i3mjbjx',
+        'twilio_auth_token' => 'gAAAAABpcJH-n_lK1IowUw7foM9IpWD3QfBRcRFgPKeDtyHcitUCAn4EyXL8kxVJN_rmmnTNyCBz5LfRW2kCI0kt9oWEtZS1y9FHHsOWthKgH0BtPv9heh6epNb0Jg2J572pxs3r9Tr9',
         // Database password: encrypted
         'db_password' => 'gAAAAABpa2Ibi0RQO2EGS3eswzST3I8Uj4WTKboZaSK9mUycYyqz0FBLQabuBbVOaWdR2ylvhHEXfmYH06Y9wZRnzy2zV62qhg==',
         // Gemini API key: encrypted
@@ -188,10 +188,12 @@ class SecureCredentials {
         return [
             'account_sid' => 'AC2a232bd5f87d8f272c490ef7951f8550',
             'auth_token' => self::get('twilio_auth_token'),
+            'messaging_service_sid' => 'MG0d1a02829181deb94de50be3e8856f12',
             'from_number' => '+18126489709',
             'owner_phone' => '+14385302343',
             'secondary_phone' => '+14387657040',
             'webhook_url' => 'https://deboucheur.expert/api/sms-webhook.php',
+            'status_callback' => 'https://deboucheur.expert/api/sms-status.php',
         ];
     }
     

@@ -1,0 +1,38 @@
+---
+# Déboucheur Expert - cPanel Deployment Configuration
+# This file configures automatic deployment via cPanel Git
+# Version 2.1.0
+
+deployment:
+  tasks:
+    # Create required directories
+    - export DEPLOYPATH=/home/$USER/public_html
+    - mkdir -p $DEPLOYPATH/api/logs
+    - mkdir -p $DEPLOYPATH/api/uploads
+    - mkdir -p $DEPLOYPATH/api/logs/rate-limits
+    - mkdir -p $DEPLOYPATH/api/conscent
+    
+    # Deploy files from repo root to public_html
+    - /bin/cp -R * $DEPLOYPATH/
+    - /bin/cp .htaccess $DEPLOYPATH/
+    - /bin/cp .user.ini $DEPLOYPATH/
+    
+    # Set proper permissions
+    - chmod 755 $DEPLOYPATH
+    - chmod 755 $DEPLOYPATH/api
+    - chmod 755 $DEPLOYPATH/assets
+    - chmod 755 $DEPLOYPATH/pages
+    - chmod 644 $DEPLOYPATH/.htaccess
+    - chmod 644 $DEPLOYPATH/.user.ini
+    - chmod 640 $DEPLOYPATH/api/credentials.php
+    - chmod 640 $DEPLOYPATH/api/db.php
+    - chmod 640 $DEPLOYPATH/api/security.php
+    
+    # Writable directories
+    - chmod 775 $DEPLOYPATH/api/logs
+    - chmod 775 $DEPLOYPATH/api/uploads
+    - chmod 775 $DEPLOYPATH/api/logs/rate-limits
+    - chmod 775 $DEPLOYPATH/api/conscent
+    
+    # Run composer if available
+    - cd $DEPLOYPATH && [ -f composer.json ] && composer install --no-dev --optimize-autoloader 2>/dev/null || true

@@ -1,54 +1,50 @@
 <?php
+declare(strict_types=1);
 /**
  * Déboucheur Expert - Chat Forwarding API
  * Forwards AI chat conversations to owner via SMS and Email
  * 
- * Receives: sessionId, userMessage, aiResponse, conversationHistory, timestamp, pageUrl
- * Actions: Store conversation, send SMS via Twilio, send email via SMTP
- * 
- * Owner can reply via:
- * - Email: Reply with subject containing REPLY:{sessionId}
- * - SMS: Send "REPLY:{sessionId} Your message" to Twilio number
+ * @version 2.1.0 - Modernized with security module
+ * @requires PHP 8.2+
  */
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
-
+require_once __DIR__ . '/security.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/credentials.php';
 require_once __DIR__ . '/email-service.php';
 
-// Parse input
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
+// Apply security headers and CORS
+SecurityHeaders::apply(isApi: true);
+SecurityHeaders::cors(['POST', 'OPTIONS']);
 
-if (!$data || empty($data['sessionId'])) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Missing sessionId']);
-    exit;
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    JsonResponse::error('Method not allowed', 405);
 }
 
-$sessionId = $data['sessionId'];
-$userMessage = $data['userMessage'] ?? '';
-$aiResponse = $data['aiResponse'] ?? '';
+// Apply rate limiting (60 requests per minute)
+$rateLimiter = new RateLimiter();
+$rateLimiter->enforce(maxRequests: 60, windowSeconds: 60);
+
+// Parse and validate input
+$input = file_get_contents('php://input');
+$data = InputValidator::json($input);
+
+if (!$data || empty($data['sessionId'])) {
+    JsonResponse::error('Missing sessionId', 400);
+}
+
+$sessionId = InputValidator::string($data['sessionId'] ?? '', 100);
+$userMessage = InputValidator::string($data['userMessage'] ?? '', 5000);
+$aiResponse = InputValidator::string($data['aiResponse'] ?? '', 10000);
 $conversationHistory = $data['conversationHistory'] ?? [];
 $timestamp = $data['timestamp'] ?? date('Y-m-d H:i:s');
-$pageUrl = $data['pageUrl'] ?? '';
+$pageUrl = InputValidator::url($data['pageUrl'] ?? '') ?? '';
+$isEscalation = (bool)($data['isEscalation'] ?? false);
+$lang = InputValidator::string($data['lang'] ?? 'fr', 5);
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$userAgent = InputValidator::string($_SERVER['HTTP_USER_AGENT'] ?? '', 512);
 
 // Get configuration from secure credentials
 $twilioConfig = SecureCredentials::getTwilioConfig();
@@ -97,18 +93,25 @@ try {
     $emailSent = false;
     $smsSent = false;
     
-    // Send notification on first message or every 5th message
-    if ($messageCount == 1 || $messageCount % 5 == 0) {
+    // Send notification on first message, every 5th message, or on escalation request
+    $shouldNotify = ($messageCount == 1 || $messageCount % 5 == 0 || $isEscalation);
+    
+    if ($shouldNotify) {
         
         // ========== EMAIL NOTIFICATION (via SMTP) ==========
         try {
+            $emailSubject = $isEscalation 
+                ? "🚨 URGENT: Client demande un expert - Déboucheur.Expert"
+                : "💬 Nouveau chat - Déboucheur.Expert";
+                
             $emailService = new EmailService();
             $emailResult = $emailService->sendChatNotification(
                 $sessionId,
                 htmlspecialchars($userMessage),
                 htmlspecialchars($aiResponse),
                 $pageUrl,
-                $timestamp
+                $timestamp,
+                $isEscalation
             );
             
             if ($emailResult['primary']['success'] || $emailResult['secondary']['success']) {
@@ -122,15 +125,20 @@ try {
         // ========== SMS NOTIFICATION (via Twilio) ==========
         $twilioSid = $twilioConfig['account_sid'];
         $twilioToken = $twilioConfig['auth_token'];
+        $messagingServiceSid = $twilioConfig['messaging_service_sid'] ?? '';
         $twilioFrom = $twilioConfig['from_number'];
         $ownerPhone = $twilioConfig['owner_phone'];
         
-        if (!empty($twilioSid) && !empty($twilioToken) && !empty($twilioFrom)) {
+        if (!empty($twilioSid) && !empty($twilioToken)) {
             // Prepare SMS content with reply instructions
-            $smsContent = "💬 Nouveau chat Déboucheur\n";
+            $urgentFlag = $isEscalation ? "🚨 URGENT - Client demande EXPERT\n" : "";
+            $smsContent = $urgentFlag;
+            $smsContent .= "💬 Chat Déboucheur\n";
             $smsContent .= "📅 " . date('H:i d/m') . "\n";
             $smsContent .= "👤 " . mb_substr($userMessage, 0, 80) . "...\n";
-            $smsContent .= "🤖 " . mb_substr($aiResponse, 0, 60) . "...\n";
+            if (!$isEscalation) {
+                $smsContent .= "🤖 " . mb_substr($aiResponse, 0, 60) . "...\n";
+            }
             $smsContent .= "📱 Pour répondre:\n";
             $smsContent .= "REPLY:" . $sessionId . " Votre message";
             
@@ -139,10 +147,16 @@ try {
                 
                 $smsData = [
                     'To' => $ownerPhone,
-                    'From' => $twilioFrom,
                     'Body' => $smsContent,
-                    'StatusCallback' => 'https://deboucheur.expert/api/sms-status.php' // Optional status webhook
+                    'StatusCallback' => $twilioConfig['status_callback'] ?? 'https://deboucheur.expert/api/sms-status.php'
                 ];
+                
+                // Use MessagingServiceSid if available, otherwise use From number
+                if (!empty($messagingServiceSid)) {
+                    $smsData['MessagingServiceSid'] = $messagingServiceSid;
+                } else {
+                    $smsData['From'] = $twilioFrom;
+                }
                 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $twilioUrl);
@@ -168,6 +182,7 @@ try {
                 $secondaryPhone = $twilioConfig['secondary_phone'];
                 if (!empty($secondaryPhone) && $secondaryPhone !== $ownerPhone) {
                     $smsData['To'] = $secondaryPhone;
+                    // Keep same MessagingServiceSid or From
                     
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $twilioUrl);
@@ -181,16 +196,16 @@ try {
                 }
                 
             } catch (Exception $smsError) {
-                error_log("SMS notification error: " . $smsError->getMessage());
+                SecurityLogger::warning('SMS notification error', ['error' => $smsError->getMessage()]);
             }
         }
     }
     
     db_close($db);
     
-    echo json_encode([
-        'status' => 'ok',
+    JsonResponse::success([
         'sessionId' => $sessionId,
+        'isEscalation' => $isEscalation,
         'notifications' => [
             'email' => $emailSent,
             'sms' => $smsSent
@@ -198,6 +213,6 @@ try {
     ]);
     
 } catch (Exception $e) {
-    error_log("Chat forward error: " . $e->getMessage());
-    echo json_encode(['status' => 'ok']); // Don't expose errors to client
+    SecurityLogger::error('Chat forward error', ['error' => $e->getMessage()]);
+    JsonResponse::success(); // Don't expose errors to client
 }
